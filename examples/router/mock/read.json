@@ -1,0 +1,31 @@
+{
+    "code": 0,
+    "data": {
+        "id": 2,
+        "testText": "双11活动",
+        "testDate": 1539792000000,
+        "testTime": "11:23",
+        "testDatetime": 1539772664000,
+        "testSwitch": 0,
+        "testPassword": "abcdefg",
+        "testTextarea": "双11活动双11活动双11活动双11活动双11活动双11活动双11活动双11活动双11活动",
+        "testColor": "#f00",
+        "testRate": 3.7,
+        "testRadio": "d",
+        "testCheckbox": "b,c",
+        "testSelect": "b,c",
+        "testCascader": "zujian,form,checkbox",
+        "testTransfer": "b,c",
+        "testDatetimerange": "1540137600000,1541606400000",
+        "testSlider": 55,
+        "testProgress": 80,
+        "testInputnumber": 55,
+        "testImage": "//b.appsimg.com/upload/vivaadmin/2018/11/07/69/1541579376290922128.png",
+        "testHeadImage": "//a.vpimg4.com/upload/upimg2/u/3d/3649e9a98ad1212854ffad64e76927.jpeg",
+        "testFile": "http://b.appsimg.com/upload/vivaadmin/2018/11/07/69/1541579376290922128.png",
+        "testVideo": "https://1251962819.vod2.myqcloud.com/54067453vodtransgzp1251962819/78658b8d5285890781361289231/v.f20.mp4",
+        "testAudio": "https://a.vpimg2.com/upload/upimg2/i/9b0e909ed263b25c.mp3",
+        "testEditor": "<p>ddddd</p>",
+        "testMarkdown": "dd"
+    }
+}
