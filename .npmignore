@@ -1,0 +1,24 @@
+.DS_Store
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+material-list.json
+.git
+.npmrc
+examples
+build
+packages
+/.*
+/dist
+/test
+/docs
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
