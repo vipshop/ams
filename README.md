@@ -84,13 +84,30 @@ ams.render('demo')
 
 ## 相关链接
 
-- [文档](https://vipshop.github.io/ams/)
+- [文档与教程](https://vipshop.github.io/ams/)
 - [FAQ](./FAQ.md)
 - [官方入门Demo](http://jsrun.net/sehKp/edit?utm_source=website)
 
 ## 浏览器支持
 
 现代浏览器 及 Internet Explorer 10+。
+
+## 开发团队
+
+来自vip.com的开发者：
+
++ [bfkkkd](https://github.com/bfkkkd)
++ [w3cmark](https://github.com/w3cmark)
++ [wuzebin](https://github.com/wuzebin)
++ [EdwardQ](https://github.com/EdwardQ)
+
+vip.com以外的开发者：
+
++ [hodor-cn](https://github.com/hodor-cn)
+
+## 社区互助
+
+官方微信群： 请先搜索添加群主 `viptech128`（备注 `AMS`），欢迎加入讨论交流！
 
 ## LICENSE
 [Apache 2.0](LICENSE)
