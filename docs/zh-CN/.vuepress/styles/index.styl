@@ -1,0 +1,143 @@
+@import './material-card.styl'
+@import './material.styl'
+@import './ams-doc-index.styl'
+
+.el-popper, .ams-block {
+    tr:nth-child(2n) {
+        background-color: #fff;
+    }
+}
+
+#app .no-sidebar {
+    .content,.content__default{
+        max-width: none
+        padding-left:0
+        padding-right: 0
+        padding-bottom 0
+    }
+    .page{
+        padding-bottom: 0
+    }
+    .page-edit{
+        display: none
+    }
+}
+.sidebar{
+    border-right: 0;
+    width: 15rem;
+}
+.page{
+    padding-left 15rem;
+}
+.el-date-table {
+    th{
+        border none
+    }
+    tr,td{
+        border: none
+    }
+}
+.page .content:not(.custom),.page .content__default:not(.custom),.page .page-edit, .page .page-nav{
+    max-width: 1200px;
+}
+.demo { 
+    font-family: 'Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif';
+    text-rendering: 'optimizeLegibility';
+    -webkit-font-smoothing: 'antialiased';
+    margin-top: 25px;
+}
+.demo-item {
+    border-left: 2px solid #42b983;
+    padding-left: 10px;
+    line-height: 20px;
+    color: #555;
+}
+
+.el-date-table {
+    display: table
+}
+.el-table__body {
+    margin: 0
+}
+.el-table__header {
+    margin: 0
+}
+.el-table__body td {
+    border: none; border-bottom: 1px solid #ebeef5
+}
+.el-table__header th {
+    border: none
+}
+.el-table__body, .el-table__header{
+    table-layout: fixed;
+    border-collapse: separate;
+    display: table;
+    margin: 0
+}
+
+/* 设置滚动条的样式 */
+::-webkit-scrollbar {
+    width: 5px;
+}
+/* 滚动槽 */
+::-webkit-scrollbar-track {
+}
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: rgba(0,0,0,.1);
+}
+
+.demo-card{
+    position: relative;
+    z-index: 1;
+    padding-bottom: 42px;
+    >.el-card__body{
+        padding: 0;
+    }
+}
+.demo-card-preview{
+    padding: 20px;
+    box-sizing: border-box;
+    &.ams-block-router .sidebar-container{
+        position: absolute
+    }
+}
+.demo-card-config{
+    height: 0;
+    overflow: hidden;
+    .el-form-item{
+        margin-bottom: 0;
+    }
+    .CodeMirror{
+        height: auto;
+        min-height: 100px;
+    }
+    pre{
+        margin-bottom: 0;
+        border-radius: 0;
+        min-height: 100px;
+    }
+    &.open{
+        height: auto;
+    }
+}
+.demo-card-config-btn{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    color: #999;
+    border-top: 1px solid #f1f1f1;
+    z-index: 5;
+    cursor: pointer;
+    font-size: 14px;
+    background: #fff;
+    &:hover{
+        color: #46bd87;
+        background: #f9f9f9;
+    }
+}
