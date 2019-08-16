@@ -7,46 +7,40 @@ const blockConfig = {
   filters: {},
   sorts: {},
   operations: {
-    title: {
-      slot: 'searchs',
-      type: 'field',
-      field: {
-        type: 'text',
-        style: {
-          width: '110px'
-        },
-        props: {
-          placeholder: '请输入名称'
-        }
-      }
-    },
-    name: {
-      slot: 'searchs',
-      type: 'field',
-      field: {
-        type: 'text',
-        style: {
-          width: '110px'
-        },
-        props: {
-          placeholder: '请输入包名'
-        }
-      }
-    },
-    search: {
-      slot: 'searchs',
-      type: 'button',
-      label: '搜索',
-      props: {
-        type: 'primary'
-      },
-      event: 'list'
-    },
-    reset: {
-      slot: 'searchs',
-      type: 'reset',
-      label: '重置'
-    },
+    // title: {
+    //   slot: 'searchs',
+    //   type: 'field',
+    //   field: {
+    //     type: 'text',
+    //     props: {
+    //       placeholder: '请输入名称'
+    //     }
+    //   }
+    // },
+    // name: {
+    //   slot: 'searchs',
+    //   type: 'field',
+    //   field: {
+    //     type: 'text',
+    //     props: {
+    //       placeholder: '请输入包名'
+    //     }
+    //   }
+    // },
+    // search: {
+    //   slot: 'searchs',
+    //   type: 'button',
+    //   label: '搜索',
+    //   props: {
+    //     type: 'primary'
+    //   },
+    //   event: 'list'
+    // },
+    // reset: {
+    //   slot: 'searchs',
+    //   type: 'reset',
+    //   label: '重置'
+    // },
     view: {
       type: 'button',
       label: '查看详情',
@@ -73,7 +67,7 @@ const blockConfig = {
   },
   actions: {
     view({ $prevReturn }) {
-      window.open(`/market/detail.html?type=${this.data.type}&materielId=${$prevReturn.materielId}`, '_blank');
+      window.open(`/ams/market/detail.html?type=${this.data.type}&materielId=${$prevReturn.materielId}`, '_blank');
     },
     list() {
         this.data.list = fieldData;

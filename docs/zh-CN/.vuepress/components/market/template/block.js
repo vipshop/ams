@@ -97,7 +97,7 @@ const blockConfig = {
   },
   actions: {
     view({ $prevReturn }) {
-        window.open(`/market/template-preview.html?templateId=${$prevReturn.templateId}`, '_blank')
+        window.open(`/ams/market/template-preview.html?templateId=${$prevReturn.templateId}`, '_blank')
     },
     getList() {
       this.filters = {};

@@ -267,7 +267,7 @@ export default {
             return config
         },
         onToTemplate() {
-            window.open('/market/', '_self')
+            window.open('/ams/market/', '_self')
         },
         onToProduceHTML(e){
             const config = beautify(stringify(this.filterConfig()), { indent_size: 4, space_in_empty_paren: true });

@@ -2,11 +2,11 @@
     <div class="ams-material">
         <aside class="sidebar ams-sidebar">
             <ul class="sidebar-links">
-                <li><a href="/market/"
+                <li><a href="/ams/market/"
                        class="sidebar-link">模板物料</a></li>
-                <li><a href="/market/block.html"
+                <li><a href="/ams/market/block.html"
                        :class="{active:type==='block', 'sidebar-link':true}">区块物料</a></li>
-                <li><a href="/market/field.html"
+                <li><a href="/ams/market/field.html"
                        :class="{active:type==='field', 'sidebar-link':true}">字段物料</a></li>
             </ul>
         </aside>

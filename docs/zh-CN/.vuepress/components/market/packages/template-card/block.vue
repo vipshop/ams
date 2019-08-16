@@ -5,17 +5,17 @@
 
         <ams-blocks :blocks="block.slotBlocks.top" />
 
-        <ams-operations :name="name"
-                        slot-name="searchs" />
+        <!-- <ams-operations :name="name"
+                        slot-name="searchs" /> -->
 
-        <div class="card-class-list">
+        <!-- <div class="card-class-list">
             <ul>
                 <li v-for="(item, index) in block.options.classList"
                     :key="index"
                     :class="[index === activeIndex ? 'active': '']"
                     @click="handleClassChange(item, index)">{{ item.class }}</li>
             </ul>
-        </div>
+        </div> -->
 
         <div class="ams-card-list">
             <div v-for="(item, index) in data.list"
