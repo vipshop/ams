@@ -1,0 +1,3 @@
+<ClientOnly>
+<doc-index />
+</ClientOnly>

@@ -10,7 +10,7 @@
         "test": "npm run lint"
     },
     "dependencies": {
-        "@ams-team/ams": "file:../../",
+        "@ams-team/ams": "latest",
         "@ams/field-editor": "latest",
         "@ams/block-calendar": "latest",
         "@ams/block-chart": "latest",
