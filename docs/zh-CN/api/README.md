@@ -2,7 +2,7 @@
 
 ## AMS 是什么
 
-AMS 是 `Admin Materials System` 的首字母缩写，意为管理后台物料系统，是通过JSON配置的形式来快速搭建管理后台的一整套解决方案。
+AMS 是 `Admin Materials System` 的首字母缩写，意为管理后台物料系统，是通过类JSON配置的形式来快速搭建管理后台的一整套解决方案。
 
 AMS 目前提供以下能力：
 
@@ -10,7 +10,7 @@ AMS 目前提供以下能力：
 - 通过 `@ams-team/cli` 工具，提供快速搭建项目脚手架、编写定制模块、发布管理定制模块等功能。可前往查看[编写定制物料>>](/api/custom.md)
 
 ::: tip
-AMS假设你已经对其依赖的[Vue前端框架](https://cn.vuejs.org/v2/guide/)和[Element组件库](https://element.eleme.cn/#/zh-CN)有一定了解和开发经验。如果还没使用过它们，先去了解一下再来吧！
+AMS假设你已经对其依赖的[Vue前端框架](https://cn.vuejs.org/v2/guide/)和[Element组件库](https://element.eleme.cn/#/zh-CN)有一定了解。如果还没，建议先去了解一下再来吧！
 :::
 
 # 快速起步
@@ -23,7 +23,7 @@ AMS假设你已经对其依赖的[Vue前端框架](https://cn.vuejs.org/v2/guide
 npm i --save @ams-team/ams vue element-ui vue-router
 ```
 
-通过 Vue.use() 明确地安装ams功能：
+通过 `Vue.use()` 明确地安装`ams`功能：
 
 ```sh
 import ams from '@ams-team/ams';
@@ -55,6 +55,10 @@ Vue.use(ams);
 ## 使用
 
 AMS的核心思想是通过[规范数据接口](/api/api.html#read：读取单条数据)的数据结构，再用类JSON的格式配置对应的 `区块` 和 `资源`，即可渲染成有UI和数据交互的前端界面。
+
+<ClientOnly>
+<scrimba href="https://scrimba.com/c/cmkya6Tp" />
+</ClientOnly>
 
 ### 第一步，注册资源
 

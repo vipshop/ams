@@ -13,7 +13,7 @@ ams.resource(name: String, config: Object)
 
 ```js
 ams.resource('demo-resource', {
-    key: 'id',
+    key: 'id', // 【非必须】标识该resource的keyName
     api: { // 数据接口相关
         prefix: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/',
         create: 'create',
@@ -44,27 +44,23 @@ ams.resource('demo-resource', {
 
 以上注册了名字为 `demo-resource` 的资源，而这个资源由三部分组成，分别时`key` `api` `fields`，其中这三部分的意义为：
 
-- `key`： 标识该resource的keyName，有些场景需要通过 `queryString` 传入，通过解析 `key=value` 获取
+- `key`： 【非必须】标识该resource的`keyName`，有些场景需要通过 `queryString` 传入，通过解析 `key=value` 获取
 
 - `api`： 对resource的一些内置方法，`prefix`为接口地址，目前提供了`create` `update` `read` `delete` `list` 几个内置请求方法
 
-- `fields`： resource里的详细的字段描述，详情可以查看 字段 的介绍
+- `fields`： resource里的详细的字段描述，点击前往[更深入的了解fields](/api/field.html)
 
-### fields
-
-数据接口详细的字段描述，点击前往[更深入的了解fields](/api/field.html)
-
-#### 通用配置
+#### field通用配置
 
 | 参数 | 类型 | 是否必传 | 说明
 | -- | -- | -- | --
-| type | string | 是 | field的类型
+| type | string | 是 | field的类型，比如`text`、`textarea`、`rate`...
 | ctx | string | 否 | field的状态，可取值：`eidt`、`view`。默认是当前field所在的`block`的`ctx`配置决定
 | label | string | 否 | 标签文本
 | hidden | boolean | 否 | 是否隐藏field，默认为false
-| show | string、object、function | 否 | 联动显示条件，string为目标field名、如'a.b'，object为{name:'a.b', value:'2'}，function返回false则隐藏
-| info | string | 否 | 提示信息tooltip，会显示的form的label旁
-| props | object | 否 | 补充属性，用于添加DOM属性或者透传至element组件，如disabled
+| show | string、object、function | 否 | 联动显示条件，string为目标field名、如`a.b`，object为`{name:'a.b', value:'2'}`，function返回`false`则隐藏
+| info | string | 否 | 提示信息tooltip，会显示在form的`label`旁
+| props | object | 否 | 补充属性，用于添加DOM属性或者透传至element组件，如`disabled`
 | rules | array | 否 | 校验规则，详见[async-validator](https://github.com/yiminghe/async-validator)
 | default | any | 否 | 默认值
 | get | function | 否 | get函数，编辑状态下生效（`ctx: 'eidt'`）
