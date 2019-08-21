@@ -79,6 +79,14 @@ List: List 列表
 <block-list-demo blockName="operationsList"/>
 </ClientOnly>
 
+### 编辑状态的列表
+
++ 支持字段之间的联动：某个字段的状态根据另一个字段的取值发生变化（比如下面demo的`条件`字段会根据`对比`字段发生变化）
+
+<ClientOnly>
+<block-list-demo blockName="editList"/>
+</ClientOnly>
+
 ### 在线实验室
 <ClientOnly>
 <ams-config name="list" type="block"/>

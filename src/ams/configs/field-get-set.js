@@ -196,22 +196,27 @@ export const viewPassword = function (value) {
 // units 单位
 export const getUnits = function(val, field) {
     let currentUnit = field.defaultUnit;
+    const prependSlot = field.props && field.props.slot === 'prepend';
     for (let i = 0; i < field.units.length; i++) {
-        if (new RegExp(field.units[i] + '$').test(val)) {
+        const unitsReg = prependSlot ? ('^' + field.units[i]) : (field.units[i] + '$');
+        if (new RegExp(unitsReg).test(val)) {
             currentUnit = field.units[i];
             break;
         }
     }
-    console.log('getUnits', val, 'currentUnit', currentUnit);
+    // console.log('getUnits', val, 'currentUnit', currentUnit);
+    // console.log(field);
+    const reg = prependSlot ? ('^' + currentUnit) : (currentUnit + '$');
+
     return {
         unit: currentUnit,
-        val: val ? val.replace(new RegExp(currentUnit + '$'), '') : ''
+        val: val ? val.replace(new RegExp(reg), '') : ''
     };
 };
 
 export const setUnits = function(val, field) {
-    console.log('setUnits', val);
-    return val.val + val.unit;
+    // console.log('setUnits', val);
+    return field.props && field.props.slot === 'prepend' ? (val.unit + val.val) : (val.val + val.unit);
 };
 export const viewUnits = function(value, field) {
     return value;

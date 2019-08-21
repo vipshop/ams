@@ -1,0 +1,16 @@
+{
+    "name": "@ams-team/block-chart",
+    "version": "0.1.8",
+    "description": "图表",
+    "author": "edward.shao",
+    "main": "lib/block-chart.js",
+    "unpkg": "lib/block-chart.js",
+    "amsConfig": {
+        "externals": {
+            "echarts": "echarts"
+        }
+    },
+    "dependencies": {
+        "echarts": "4.2.1"
+    }
+}

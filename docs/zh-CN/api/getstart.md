@@ -24,13 +24,13 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="https://h5rsc.vipstatic.com/ams/element-ui@2.7.2/theme-chalk/index.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui@2.11.1/lib/theme-chalk/index.css"/>
 </head>
 
 <body></body>
-<script src="https://h5rsc.vipstatic.com/ams/vue@2.6.10.js"></script>
-<script src="https://h5rsc.vipstatic.com/ams/element-ui@2.7.2/index.js"></script>
-<script src="https://h5rsc.vipstatic.com/ams/ams@0.7.12.js"></script>
+<script src="https://unpkg.com/vue@2.6.10/dist/vue.min.js"></script>
+<script src="https://unpkg.com/element-ui@2.11.1/lib/index.js"></script>
+<script src="https://unpkg.com/@ams-team/ams/lib/ams.js"></script>
 <script>
 var config = {
     resources: {

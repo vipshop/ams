@@ -1,0 +1,15 @@
+{
+    "name": "@ams-team/field-<%=name%>",
+    "version": "<%=version%>",
+    "description": "<%=description%>",
+    "author": "<%-author%>",
+    "main": "lib/field-<%=name%>.js",
+    "unpkg": "lib/field-<%=name%>.js",
+    "amsConfig": {
+        "externals": {},
+        "cdn": [],
+        "title": "<%=name%>",
+        "tags": "",
+        "publish": true
+    }
+}

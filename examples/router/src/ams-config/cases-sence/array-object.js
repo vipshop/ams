@@ -24,7 +24,11 @@ ams.block('array-object', {
                                 clearable: false
                             },
                             labelWidth: '100px',
-                            info: '<p>info</p>1'
+                            info: '<p>info</p>1',
+                            changeConfig(field, context) {
+                                console.log(field, context);
+                                return field;
+                            }
                         },
                         date: {
                             type: 'date',
@@ -90,6 +94,40 @@ ams.block('array-object', {
                                                 trigger: 'blur'
                                             }
                                         ]
+                                    },
+                                    'selectA': {
+                                        'type': 'select',
+                                        'label': '对比',
+                                        'props': {
+                                            'multiple': false,
+                                            'options': {
+                                                '0': '昨天',
+                                                '1': '今天',
+                                                '5': '不对比'
+                                            }
+                                        }
+                                    },
+                                    'selectB': {
+                                        'type': 'select',
+                                        'label': '条件',
+                                        'props': {
+                                            'multiple': false,
+                                            'options': {
+                                                '0': '同比下降',
+                                                '1': '同比上升'
+                                            }
+                                        },
+                                        changeConfig(field, context) {
+                                            console.log(field, context);
+                                            if (context && context.selectA === '5') {
+                                                field.props.options = {
+                                                    '>': '>',
+                                                    '>=': '>='
+                                                };
+                                            }
+                                            !field.props.options[context.selectB] && (context.selectB = '');
+                                            return field;
+                                        }
                                     },
                                     date: {
                                         type: 'date',

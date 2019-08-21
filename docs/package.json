@@ -11,7 +11,7 @@
     "@ams/block-calendar": "latest",
     "@ams/block-chart": "latest",
     "@ams/json-stringify": "^0.3.0",
-    "element-ui": "^2.9.1",
+    "element-ui": "^2.11.1",
     "highlight.js": "^9.15.9",
     "js-beautify": "^1.10.0",
     "lodash": "^4.17.14",

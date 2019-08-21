@@ -43,8 +43,8 @@ Vue.use(ams);
 <script src="https://unpkg.com/vue"></script>
 
 <!-- element-ui -->
-<script src="https://unpkg.com/element-ui@2.9.1"></script>
-<link rel="stylesheet" href="https://unpkg.com/element-ui@2.9.1/lib/theme-chalk/index.css"/>
+<script src="https://unpkg.com/element-ui@2.11.1"></script>
+<link rel="stylesheet" href="https://unpkg.com/element-ui@2.11.1/lib/theme-chalk/index.css"/>
 
 <!-- 引入ams库 -->
 <script src="https://unpkg.com/@ams-team/ams/lib/ams.js"></script>

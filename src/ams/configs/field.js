@@ -50,9 +50,11 @@ export const defaultFieldConfig = {
 
     cascader: {
         props: {
-            'change-on-select': true,
+            checkStrictly: true,
             filterable: true,
-            'expand-trigger': 'hover'
+            props: {
+                expandTrigger: 'hover',
+            }
         },
         get: getArray,
         set: setArray,
@@ -295,6 +297,8 @@ export const defaultFieldConfig = {
 
 export const defaultListFieldWidth = {
     rate: '170px',
+    unitselect: '170px',
+    select: '140px',
     datetimerange: '340px',
     cascader: '250px',
     image: '120px',

@@ -2,7 +2,7 @@ import ams from '@ams-team/ams';
 
 ams.block('dropdown', {
     blocks: {
-        'text1': {
+        'dropdowntext1': {
             type: 'component',
             options: {
                 'is': 'h3',
@@ -25,11 +25,11 @@ ams.block('dropdown', {
                 'margin-bottom': '50px'
             }
         },
-        'text2': {
+        'dropdowntext2': {
             type: 'component',
             options: {
                 'is': 'h3',
-                'text': 'split-button示例：'
+                'text': 'button示例：'
             }
         },
         'dropdown2': {
@@ -55,23 +55,60 @@ ams.block('dropdown', {
             },
             props: {
                 trigger: 'click',
-                'split-button': true
+                type: 'primary',
+                'button': true
             },
             style: {
                 'margin-bottom': '50px'
             }
         },
-        'text3': {
+        'dropdowntext3': {
             type: 'component',
             options: {
                 'is': 'h3',
-                'text': '指令事件示例：'
+                'text': 'split-button示例：'
             }
         },
         'dropdown3': {
             type: 'dropdown',
             options: {
                 menu: '下拉菜单三',
+                menuItems: [
+                    '黄金糕',
+                    '狮子头',
+                    '螺蛳粉',
+                    {
+                        text: '双皮奶',
+                        props: {
+                            disabled: true,
+                        }
+                    }, {
+                        text: '蚵仔煎',
+                        props: {
+                            divided: true
+                        }
+                    }
+                ]
+            },
+            props: {
+                trigger: 'click',
+                'split-button': true
+            },
+            style: {
+                'margin-bottom': '50px'
+            }
+        },
+        'dropdowntext4': {
+            type: 'component',
+            options: {
+                'is': 'h3',
+                'text': '指令事件示例：'
+            }
+        },
+        'dropdown4': {
+            type: 'dropdown',
+            options: {
+                menu: '下拉菜单四',
                 menuItems: [
                     {
                         text: '黄金糕',

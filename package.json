@@ -1,6 +1,16 @@
 {
     "name": "@ams-team/ams",
-    "version": "0.9.0",
+    "description": "Admin Materials System.",
+    "license": "MIT",
+    "homepage": "https://github.com/vipshop/ams/",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/vipshop/ams.git"
+    },
+    "keywords": [
+        "ams", "vue", "element-ui"
+    ],
+    "version": "0.13.0",
     "main": "lib/ams.common.js",
     "unpkg": "lib/ams.js",
     "scripts": {
@@ -17,11 +27,9 @@
         "@babel/runtime": "^7.4.4",
         "gh-pages": "^2.1.0",
         "normalize.css": "^8.0.1",
-        "vue-router": "^3.0.6"
-    },
-    "peerDependencies": {
+        "vue-router": "^3.0.6",
         "vue": "^2.6.10",
-        "element-ui": "^2.7.2"
+        "element-ui": "^2.11.1"
     },
     "devDependencies": {
         "@babel/core": "^7.4.4",
@@ -36,7 +44,6 @@
         "babel-loader": "^8.0.5",
         "babel-plugin-transform-vue-jsx": "^4.0.1",
         "css-loader": "^1.0.1",
-        "element-ui": "^2.9.1",
         "eslint": "^5.15.1",
         "eslint-config-alloy": "^1.4.2",
         "eslint-plugin-vue": "^5.2.2",
@@ -48,6 +55,7 @@
         "jest": "^24.8.0",
         "jest-serializer-vue": "^2.0.2",
         "jest-sonar-reporter": "^2.0.0",
+        "lerna": "^3.16.4",
         "node-sass": "^4.11.0",
         "postcss-import": "^12.0.1",
         "postcss-loader": "^3.0.0",

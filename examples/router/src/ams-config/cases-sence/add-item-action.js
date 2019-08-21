@@ -13,9 +13,11 @@ ams.block('add-item-action', {
     fields: {
         testVideo: false,
         testAudio: false,
+        precent: false,
         testArrays: false,
         testText: false,
-        testRadioArray: false
+        testRadioArray: false,
+        testCheckboxArray: false
     },
     actions: {
         after() {

@@ -14,6 +14,10 @@ module.exports = {
         // eslint 的检测较弱、会误报、先关闭
         'vue/valid-template-root': 'off',
         // eslint 的检测较弱、会误报、先关闭
-        'vue/require-component-is': 'off'
+        'vue/require-component-is': 'off',
+        'vue/html-indent': 'off',
+        'vue/html-closing-bracket-spacing': 'off',
+        'vue/mustache-interpolation-spacing': 'off',
+        'function-paren-newline': 'off',
     }
 };

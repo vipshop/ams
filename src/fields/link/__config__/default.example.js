@@ -6,7 +6,7 @@ export default {
                     type: 'link',
                     label: 'href链接',
                     props: {
-                        href: 'https://www.baidu.com',
+                        href: 'https://vip.com',
                         target: '_blank'
                     }
                 },
@@ -17,7 +17,7 @@ export default {
                         type: 'primary',
                         target: '_blank',
                         href(value) {
-                            return 'http://10.208.74.136/v/gce/ruledetail?id=' + value;
+                            return 'http://vip.com/v/gce/ruledetail?id=' + value;
                         }
                     }
                 },
@@ -57,7 +57,7 @@ export default {
                             type: 'primary',
                             target: '_blank',
                             href(value, field) {
-                                return 'http://10.208.74.136/v/gce/ruledetail?id=' + value;
+                                return 'http://vip.com/v/gce/ruledetail?id=' + value;
                             }
                         }
                     }

@@ -127,6 +127,10 @@ const ams = {
             // 列表默认值
             block.sorts = block.sorts || {};
             block.filters = block.filters || {};
+            if (block.searchs || block.searchsOptions) {
+                // !!!!! 搜索配置兼容旧版本及废弃提示 !!!!!
+                console.warn('列表的searchs和searchsOptions已在ams@0.6.0+废弃，请使用 slot operations 替代，如：  \nsearchs:{testText:true} 修改为\noperations: { testText: {type: "field", field: "testText", slot: "searchs"} }\n详情请参考：https://vipshop.github.io/ams/api/operation.html');
+            }
         } else if (block.type === 'dialog') {
             // 初始化dialog
             block.data.visible = !!block.data.visible;

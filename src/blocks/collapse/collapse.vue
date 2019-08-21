@@ -8,7 +8,7 @@
                         <template slot="title">
                             <span v-html="value"></span>
                         </template>
-                        <ams-block :name="key" />
+                        <ams-block :name="key" v-if="(typeof data.active !== 'undefined') && (isAccordion ? data.active === key : data.active.indexOf(key) >= 0)"/>
                     </el-collapse-item>
             </template>
         </el-collapse>
@@ -23,6 +23,11 @@
 import mixins from '../../ams/mixins';
 
 export default {
-    mixins: [mixins.blockMixin]
+    mixins: [mixins.blockMixin],
+    computed: {
+        isAccordion() {
+            return this.block.props && this.block.props.accordion;
+        }
+    }
 };
 </script>

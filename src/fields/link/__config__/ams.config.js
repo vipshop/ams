@@ -8,7 +8,7 @@ export const config = {
         fields: {
             value: {
                 default: {
-                    href: 'https://www.baidu.com',
+                    href: 'https://vip.com',
                     target: '_blank',
                     type: 'primary'
                 }

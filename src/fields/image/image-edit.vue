@@ -1,7 +1,6 @@
 <template>
     <div :style="field.style">
-        <el-upload :show-file-list="false"
-                   :on-success="handleUploadSuccess"
+        <el-upload :on-success="handleUploadSuccess"
                    :before-upload="beforeUpload"
                    v-on="on"
                    v-bind="field.props">
@@ -18,6 +17,22 @@
         <div slot="tip"
              class="el-upload__tip"
              v-if="field.tip">{{field.tip}}</div>
+
+        <template v-if="field.props['default-image-list']">
+            可供选择的图片有：
+            <ul class="el-upload-list el-upload-list--picture-card el-default-list--picture-card">
+                <li
+                    :class="`el-upload-list__item ${imageUrl === item.url ? 'is-success' : ''}`"
+                    v-for="(item, index) in field.props['default-image-list']"
+                    :key="index"
+                    @click="previewUrl = item.url"
+                    :title="item.name">
+                    <img :src="item.url" :alt="item.name" class="el-upload-list__item-thumbnail">
+                    <span class="el-upload-list__item-name">{{item.name}}</span>
+                    <label class="el-upload-list__item-status-label"><i class="el-icon-upload-success el-icon-check"></i></label>
+                </li>
+            </ul>
+        </template>
     </div>
 </template>
 
@@ -155,6 +170,50 @@ export default {
                 display: block;
             }
         }
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: block;
+        }
+        &.el-upload--picture-card{
+            position: absolute;
+            top: 0;
+        }
+    }
+    .el-upload-list--picture-card{
+        display: block;
+        padding-top: 120px;
+        line-height: 0;
+        .el-upload-list__item{
+            width: 100px;
+            height: 100px;
+        }
+        &.el-default-list--picture-card{
+            padding-top: 0;
+            .el-upload-list__item {
+                cursor: pointer;
+                &:hover {
+                    .el-upload-list__item-status-label {
+                        display: block;
+                    }
+                }
+            }
+            .el-upload-list__item-name{
+                display: block;
+                position: absolute;
+                width: 100%;
+                bottom: 0;
+                left: 0;
+                background-color: rgba(0, 0, 0, 0.5);
+                color: #fff;
+                text-align: center;
+                font-size: 12px;
+            }
+        }
     }
     .el-icon-plus {
         font-size: 28px;
@@ -175,15 +234,6 @@ export default {
         &:hover {
             color: #c00;
         }
-    }
-    img {
-        max-width: 100%;
-        max-height: 100%;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        display: block;
     }
     .edit-text {
         width: 100%;

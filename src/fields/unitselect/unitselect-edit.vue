@@ -7,7 +7,8 @@
         <el-select v-model="unit"
                    @change="changeUnit"
                    placeholder="选择"
-                   slot="append">
+                   :style="`width:${field.props.unitWidth}`"
+                   :slot="field.props.slot || 'append'">
             <el-option v-for="key in field.units"
                        :key="key"
                        :label="key"
@@ -62,7 +63,8 @@ export default {
 <style lang="scss">
 .ams-field-unitselect-edit {
     .el-select .el-input {
-        width: 75px;
+        min-width: 75px;
+        width: 100%;
     }
     // .el-input-group__append {
     //     background-color: #f1f1f1;

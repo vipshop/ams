@@ -69,7 +69,7 @@ export default {
         showMenu() {
             // 隐藏所以菜单配置项
             let router = this.$block.block.router;
-            if (router.showMenu && router.showMenu === false) {
+            if (router && router.showMenu === false) {
                 return false;
             } else {
                 return true;

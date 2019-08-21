@@ -27,47 +27,15 @@ module.exports = {
       { text: '区块', link: '/block/' },
       { text: '市场', link: '/market/' },
       {
-        text: '0.9.0',
+        text: '0.13.0',
         items: [
+          {
+            text: '更新日志',
+            link: '/version/changelog'
+          },
           {
             text: '版本总览',
             link: '/version/VERSION'
-          },
-          {
-            text: '0.9.0（最新）',
-            link: '/version/0.9'
-          },
-          {
-            text: '0.8.7',
-            link: '/version/0.8'
-          },
-          {
-            text: '0.7.18',
-            link: '/version/0.7'
-          },
-          {
-            text: '0.6.12',
-            link: '/version/0.6'
-          },
-          {
-            text: '0.5.33',
-            link: '/version/0.5'
-          },
-          {
-            text: '0.4.14',
-            link: '/version/0.4'
-          },
-          {
-            text: '0.3.5',
-            link: '/version/0.3'
-          },
-          {
-            text: '0.2.1',
-            link: '/version/0.2'
-          },
-          {
-            text: '0.1.0',
-            link: '/version/0.1'
           }
         ]
       }
@@ -176,7 +144,7 @@ module.exports = {
             children: ['chart']
         }
       ],
-      '/version/': ['VERSION', '0.9', '0.8', '0.7', '0.6', '0.5', '0.4', '0.3', '0.2', '0.1']
+      '/version/': ['changelog', 'VERSION']
     }
   }
 };

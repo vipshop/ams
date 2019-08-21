@@ -13,6 +13,8 @@
                     <el-form-item v-if="typeof fieldLayout === 'string'"
                                   :key="key"
                                   :label-width="fields[key].labelWidth"
+                                  :class="fields[key].props && fields[key].props.inline ? 'el-form-item-inline' : ''"
+                                  :style="`width: ${fields[key].props && fields[key].props.formItemWidth}`"
                                   :rules="fields[key].ctx === 'view' ? undefined : fields[key].rules"
                                   :prop="fields[key].type !== 'array' && fields[key].type !== 'object' ? key : ''">
                         <template v-if="fields[key].label" slot="label">
@@ -82,12 +84,10 @@ export default {
 </script>
 
 <style lang="scss">
-.ams-form-inline {
-    .el-form-item {
-        display: inline-block;
-        vertical-align: top;
-        margin-right: 10px;
-    }
+.ams-block-form .el-form-item-inline, .ams-form-inline .el-form-item {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 10px;
 }
 .ams-form-label-info{
     margin-left: 2px;

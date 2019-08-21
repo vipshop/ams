@@ -1,0 +1,13 @@
+{
+    "name": "@ams-team/field-ams-code",
+    "version": "0.3.2",
+    "description": "ams代码编辑器",
+    "author": "hodor.wang",
+    "main": "lib/field-ams-code.js",
+    "unpkg": "lib/field-ams-code.js",
+    "dependencies": {
+        "@ams-team/json-stringify": "latest",
+        "codemirror": "^5.45.0",
+        "js-beautify": "^1.9.1"
+    }
+}

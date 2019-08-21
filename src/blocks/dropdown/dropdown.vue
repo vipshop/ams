@@ -3,7 +3,11 @@
         class="ams-block-dropdown"
         :style="block.style" >
         <el-dropdown v-bind="block.props" v-on="on">
-            <span class="el-dropdown-link">
+            <el-button class="el-dropdown-link" v-if="block.props && block.props['button'] && !block.props['split-button']" v-bind="block.props">
+                {{ block.options.menu }}
+                <i class="el-icon-arrow-down el-icon--right"></i>
+            </el-button>
+            <span class="el-dropdown-link" v-else>
                 {{ block.options.menu }}
                 <i v-if="!(block.props && block.props['split-button'])" class="el-icon-arrow-down el-icon--right"></i>
             </span>

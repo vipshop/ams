@@ -9,7 +9,7 @@ describe('utils/uri.js', () => {
         expect(isExternal('./a/b')).toBe(false);
     });
     it('parseString', () => {
-        expect(parseString('https://www.baidu.com?a=1&b=2')).toEqual({
+        expect(parseString('https://a.vip.com?a=1&b=2')).toEqual({
             a: '1',
             b: '2'
         });
@@ -38,7 +38,7 @@ describe('utils/uri.js', () => {
         });
     });
     it('getQueryString', () => {
-        expect(getQueryString('name', 'https://www.baidu.com?name=edward')).toBe('edward');
+        expect(getQueryString('name', 'https://a.vip.com?name=edward')).toBe('edward');
         expect(getQueryString('name', 'pages/index/index?name=edward')).toBe('edward');
         expect(getQueryString('age', 'pages/index/index?name=edward')).toBe('');
         expect(getQueryString('a', 'a=1')).toBe('1');

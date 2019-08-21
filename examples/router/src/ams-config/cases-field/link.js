@@ -8,7 +8,7 @@ ams.block('link', {
                     type: 'link',
                     label: 'href链接',
                     props: {
-                        href: 'https://www.baidu.com',
+                        href: 'https://vip.com',
                         target: '_blank'
                     }
                 },
@@ -19,7 +19,7 @@ ams.block('link', {
                         type: 'primary',
                         target: '_blank',
                         href(value) {
-                            return 'http://10.208.74.136/v/gce/ruledetail?id=' + value;
+                            return 'http://vip.com/v/gce/ruledetail?id=' + value;
                         }
                     }
                 },
@@ -59,7 +59,7 @@ ams.block('link', {
                             type: 'primary',
                             target: '_blank',
                             href(value, field) {
-                                return 'http://10.208.74.136/v/gce/ruledetail?id=' + value;
+                                return 'http://vip.com/v/gce/ruledetail?id=' + value;
                             }
                         }
                     }
@@ -93,15 +93,12 @@ ams.block('link', {
                 successLink: 'https://vip.com',
                 warningLink: 'warning',
                 dangerLink: 'danger',
-                infoLink: 'info'
-            },
-            actions: {
-                fieldChange({ name, value }) {
-                    // console.log(name, value);
-                    if (name === 'primaryLink') {
-                        this.fields.primaryLink.props.href = 'http://www.baidu.com?hello=' + value;
-                    }
-                }
+                infoLink: 'info',
+                objectLink: {
+                    name: 'w3cmark',
+                    link: 'http://w3cmark.com'
+                },
+                arrayLink: ['51853695-1', '51853695-2', '51853695-3']
             }
         }
     }

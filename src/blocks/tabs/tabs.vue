@@ -1,7 +1,12 @@
 <template>
   <div v-if="ready" :style="block.style" class="ams-block-tabs">
     <el-tabs v-model="data.active" v-on="on" v-bind="block.props">
-      <el-tab-pane v-for="name in showBlocks" :key="name" :name="name" :label="block.options[name]">
+      <el-tab-pane
+        v-for="name in showBlocks"
+        :key="name"
+        :name="name"
+        :label="typeof block.options[name] === 'string' ? block.options[name] : block.options[name]['label']"
+        v-bind="typeof block.options[name] !== 'string' && block.options[name]">
         <ams-block :name="name" />
       </el-tab-pane>
     </el-tabs>
