@@ -1,0 +1,58 @@
+{
+  "name": "<%=name%>",
+  "version": "<%=version%>",
+  "private": true,
+  "scripts": {
+    "dev": "vue-cli-service serve",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@ams-team/ams": "<%=amsVersion%>",
+    "@ams-team/block-chart": "latest",
+    "@ams-team/field-editor": "latest",
+    "@ams-team/field-markdown": "latest",
+    "core-js": "^2.6.5",
+    "element-ui": "^2.9.1",
+    "normalize.css": "^8.0.1",
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.6.1",
+    "sass-loader": "^7.2.0",
+    "vue-eslint-parser": "^6.0.4",
+    "node-sass": "^4.12.0",
+    "eslint-config-alloy": "^2.0.5",
+    "@vue/cli-plugin-babel": "^3.10.0",
+    "@vue/cli-plugin-eslint": "^3.10.0",
+    "@vue/cli-service": "^3.10.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}

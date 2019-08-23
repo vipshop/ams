@@ -37,7 +37,7 @@ export default {
         position: absolute;
         z-index: 2;
         top: 50%;
-        right: 20px;
+        right: 10px;
         transform: translateY(-41%);
     }
     &.ams-block-card-slot-header{ //如果是slotBlocks的header，把header的默认样式去掉，留给slotBlocks控制header样式

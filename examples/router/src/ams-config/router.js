@@ -1,4 +1,5 @@
 import ams from '@ams-team/ams';
+import outsideFile from './cases-sence/outside-file';
 
 ams.block('router', {
     type: 'router',
@@ -47,102 +48,6 @@ ams.block('router', {
                 }
             },
             {
-                name: '列表 & 表单',
-                path: 'list',
-                meta: {
-                    icon: 'document',
-                    noRedirect: true
-                },
-                children: [
-                    {
-                        name: '列表',
-                        path: 'list',
-                        block: 'list'
-                    },
-                    {
-                        name: '列表操作',
-                        path: 'list-operations',
-                        block: 'list-operations'
-                    },
-                    {
-                        name: '列表布局',
-                        path: 'list-layout',
-                        block: 'list-layout'
-                    },
-                    {
-                        name: '编辑',
-                        path: 'edit',
-                        block: 'form-edit',
-                        meta: {
-                            roles: ['admin', 'edit']
-                        }
-                    },
-                    {
-                        name: '查看',
-                        path: 'view',
-                        block: 'form-view',
-                        meta: {
-                            roles: ['admin', 'view']
-                        }
-                    }
-                ]
-            },
-            {
-                name: '场景示例',
-                path: 'cases-sence',
-                meta: {
-                    icon: 'video-camera-solid',
-                    noRedirect: true
-                },
-                children: [
-                    {
-                        name: '远程select',
-                        path: 'select',
-                        block: 'remote-select'
-                    },
-                    {
-                        name: 'OA搜索示例',
-                        path: 'select-oa',
-                        block: 'remote-oa'
-                    },
-                    {
-                        name: 'array & object',
-                        path: 'array',
-                        block: 'array-object'
-                    },
-                    {
-                        name: 'admin示例',
-                        path: 'admin',
-                        block: 'admin'
-                    },
-                    {
-                        name: 'table',
-                        path: 'table',
-                        block: 'table'
-                    },
-                    {
-                        name: '动态增加block',
-                        path: 'runtime-add-block',
-                        block: 'runtime-add-block'
-                    },
-                    {
-                        name: 'get-set-view',
-                        path: 'get-set-view',
-                        block: 'get-set-view'
-                    },
-                    {
-                        name: '权限 & 登录',
-                        path: 'login-auth',
-                        block: 'login-auth'
-                    },
-                    {
-                        name: '快速添加修改action',
-                        path: 'add-item-action',
-                        block: 'add-item-action'
-                    }
-                ]
-            },
-            {
                 name: '字段示例',
                 path: 'cases-field',
                 meta: {
@@ -151,9 +56,9 @@ ams.block('router', {
                 },
                 children: [
                     {
-                        name: 'component',
-                        path: 'component',
-                        block: 'component'
+                        name: '输入框',
+                        path: 'input',
+                        block: 'input'
                     },
                     {
                         name: '日期',
@@ -211,10 +116,51 @@ ams.block('router', {
                 },
                 children: [
                     {
-                        name: '日历看板',
-                        path: 'calendar',
-                        block: 'calendar'
+                        name: '列表',
+                        path: 'list',
+                        block: 'list'
                     },
+                    {
+                        name: '列表操作',
+                        path: 'list-operations',
+                        block: 'list-operations'
+                    },
+                    {
+                        name: '列表布局',
+                        path: 'list-layout',
+                        block: 'list-layout'
+                    },
+                    {
+                        name: '列表编辑',
+                        path: 'list-edit',
+                        block: 'list-edit'
+                    },
+                    {
+                        name: '表单编辑',
+                        path: 'edit',
+                        block: 'form-edit',
+                        meta: {
+                            roles: ['admin', 'edit']
+                        }
+                    },
+                    {
+                        name: '表单查看',
+                        path: 'view',
+                        block: 'form-view',
+                        meta: {
+                            roles: ['admin', 'view']
+                        }
+                    },
+                    {
+                        name: '万能区块',
+                        path: 'component',
+                        block: 'component'
+                    },
+                    // {
+                    //     name: '日历看板',
+                    //     path: 'calendar',
+                    //     block: 'calendar'
+                    // },
                     {
                         name: '折叠面板',
                         path: 'collapse',
@@ -239,26 +185,121 @@ ams.block('router', {
                         name: '导入导出',
                         path: 'xlsx',
                         block: 'xlsx'
+                    },
+                    {
+                        name: '网格布局',
+                        path: 'grid',
+                        block: 'grid'
+                    },
+                    {
+                        name: '走马灯',
+                        path: 'carousel',
+                        block: 'carousel'
+                    },
+                    {
+                        name: '回到顶部',
+                        path: 'backtop',
+                        block: 'backtop'
+                    },
+                    {
+                        name: '表格',
+                        path: 'table',
+                        block: 'table'
+                    },
+                    {
+                        name: '标签页',
+                        path: 'tabs',
+                        block: 'tabs'
                     }
                 ]
             },
             {
-                name: '可视化示例',
-                path: 'cases-chart',
+                name: '场景示例',
+                path: 'cases-sence',
                 meta: {
-                    icon: 'view',
+                    icon: 'video-camera-solid',
                     noRedirect: true
                 },
                 children: [
                     {
-                        name: '示例1',
-                        path: 'chart-demo1',
-                        block: 'chart-demo1'
+                        name: '远程select',
+                        path: 'select',
+                        block: 'remote-select'
                     },
                     {
-                        name: '示例2',
-                        path: 'chart-demo2',
-                        block: 'chart-demo2'
+                        name: 'OA搜索示例',
+                        path: 'select-oa',
+                        block: 'remote-oa'
+                    },
+                    {
+                        name: 'array & object',
+                        path: 'array',
+                        block: 'array-object'
+                    },
+                    {
+                        name: 'admin示例',
+                        path: 'admin',
+                        block: 'admin'
+                    },
+                    {
+                        name: '动态增加block',
+                        path: 'runtime-add-block',
+                        block: 'runtime-add-block'
+                    },
+                    {
+                        name: 'get-set-view',
+                        path: 'get-set-view',
+                        block: 'get-set-view'
+                    },
+                    {
+                        name: '权限 & 登录',
+                        path: 'login-auth',
+                        block: 'login-auth'
+                    },
+                    {
+                        name: '快速添加修改action',
+                        path: 'add-item-action',
+                        block: 'add-item-action'
+                    },
+                    {
+                        name: '可视化示例',
+                        path: 'cases-chart',
+                        meta: {
+                            noRedirect: true
+                        },
+                        children: [
+                            {
+                                name: '示例1',
+                                path: 'chart-demo1',
+                                block: 'chart-demo1'
+                            },
+                            {
+                                name: '示例2',
+                                path: 'chart-demo2',
+                                block: 'chart-demo2'
+                            }
+                        ]
+                    },
+                    {
+                        name: '引入外部文件',
+                        path: 'cases-outside',
+                        children: [
+                            {
+                                name: 'Vue文件引入A',
+                                path: 'file1',
+                                component: outsideFile
+                            },
+                            {
+                                name: 'Vue文件引入B',
+                                path: 'file2',
+                                component: () => import('./cases-sence/outside-file')
+                            },
+                            {
+                                name: '外部地址引入',
+                                path: 'file3',
+                                block: 'outside-website'
+                            }
+                        ]
                     }
                 ]
             },
@@ -267,7 +308,7 @@ ams.block('router', {
                 meta: {
                     icon: 'star-off'
                 },
-                path: 'http://www.baidu.com',
+                path: 'https://vipshop.github.io/ams/',
                 target: '_self'
             },
             {
@@ -301,6 +342,19 @@ ams.block('router', {
                 src: '//h5rsc.vipstatic.com/ams/ams-logo.png'
             },
             slot: 'menuTop'
+        },
+        menuBottom: {
+            type: 'component',
+            options: {
+                is: 'div',
+                text: 'www.vip.com'
+            },
+            style: {
+                color: '#777',
+                padding: '30px 10px 15px',
+                'font-size': '12px'
+            },
+            slot: 'menuBottom'
         }
     }
 });

@@ -1,0 +1,42 @@
+export default {
+    type: 'chart',
+    style: {
+        width: '500px',
+        height: '500px'
+    },
+    resource: {
+        api: {
+            // api前缀
+            prefix:
+                        'https://www.easy-mock.com/mock/5bf25b2b34392218c898a5fd/',
+            // 读取数据接口
+            read: 'read',
+        }
+    },
+    data: {
+        legend: ['邮件营销', '联盟广告'],
+        xAxis: ['周二', '周二', '周二', '周四', '周五', '周六', '周日'],
+        series1: [120, 132, 101, 134, 90, 230, 210],
+        series2: [220, 182, 191, 234, 290, 330, 310]
+    },
+    // 图表配置
+    options: {
+        BASE: 'BAR',
+        // 图例
+        series: [
+            {
+                name: '邮件营销',
+                stack: '总量',
+                data: 'data.series1'
+            },
+            {
+                name: '联盟广告',
+                stack: '总量',
+                data: 'data.series2'
+            }
+        ]
+    },
+    events: {
+        init: '@read'
+    }
+};

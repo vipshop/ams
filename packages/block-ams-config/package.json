@@ -1,0 +1,29 @@
+{
+    "name": "@ams-team/block-ams-config",
+    "version": "0.3.4",
+    "description": "ams可视化配置工具",
+    "author": "hodor.wang",
+    "main": "lib/block-ams-config.js",
+    "unpkg": "lib/block-ams-config.js",
+    "amsConfig": {
+        "externals": {
+            "@ams-team/json-stringify": {
+                "commonjs": "@ams-team/json-stringify",
+                "commonjs2": "@ams-team/json-stringify",
+                "amd": "@ams-team/json-stringify",
+                "root": "amsJSONStringify"
+            },
+            "js-beautify": {
+                "commonjs": "js-beautify",
+                "commonjs2": "js-beautify",
+                "amd": "js-beautify",
+                "root": "jsBeautify"
+            },
+            "@ams-team/field-ams-code": "@ams-team/field-ams-code",
+            "@ams-team/ams/lib/AMS_CONFIG": "@ams-team/ams/lib/AMS_CONFIG"
+        }
+    },
+    "dependencies": {
+        "@ams-team/field-ams-code": "latest"
+    }
+}

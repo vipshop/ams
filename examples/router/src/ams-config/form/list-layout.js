@@ -46,7 +46,11 @@ ams.block('list-layout', {
                     fields: {
                         testVideo: false,
                         testAudio: false,
-                        testUnits: false
+                        testUnits: false,
+                        precent: false,
+                        testArrays: false,
+                        testRadioArray: false,
+                        testCheckboxArray: false
                     },
                     data: {
                         searchs: {
@@ -98,7 +102,11 @@ ams.block('list-layout', {
                         testSwitch: {
                             slot: 'searchs',
                             type: 'field',
-                            field: 'testSwitch'
+                            field: 'testSwitch',
+                            style: {
+                                height: '40px',
+                                'line-height': '40px'
+                            }
                             // label: '可省略'
                         },
                         testNewInput: {
@@ -110,7 +118,7 @@ ams.block('list-layout', {
                                     placeholder: '折'
                                 },
                                 style: {
-                                    width: '50px'
+                                    width: '70px'
                                 }
                             }
                         },
@@ -214,24 +222,6 @@ ams.block('list-layout', {
                     }
                 }
             }
-        },
-        // 首屏外的block
-        // nextScreen: {
-        //     type: 'form',
-        //     resource: 'resource',
-        //     fields: {
-        //         a: false,
-        //         c: false,
-        //         testVideo: false,
-        //         testAudio: false,
-        //     },
-        //     actions: {
-        //         show({ row }) {
-        //             this.data = row
-        //             this.block.style.width = '25%'
-        //             this.block.style.border = '1px solid #EBEEF5'
-        //         }
-        //     }
-        // }
+        }
     }
 });

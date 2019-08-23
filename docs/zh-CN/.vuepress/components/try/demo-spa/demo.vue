@@ -50,7 +50,6 @@ div.demo:nth-last-of-type(2) {
 .ams-block-router .sidebar-container {
     position: absolute !important;
 }
-a { color: #3eaf7c; }
 .v-modal {
     display: none;
 }

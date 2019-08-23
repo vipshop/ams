@@ -3,9 +3,15 @@
          class="ams-block-list"
          :style="block.style">
         <ams-blocks :blocks="block.slotBlocks.top" />
-
+        <!-- 搜索operations插槽 -->
         <ams-operations :name="name"
                         slot-name="searchs"
+                        class="left-operations"
+                        @keyup.enter.native="handlerSearch"></ams-operations>
+        <!-- 顶部右边operations插槽 -->
+        <ams-operations :name="name"
+                        slot-name="rightTop"
+                        class="right-operations"
                         @keyup.enter.native="handlerSearch"></ams-operations>
 
         <ams-blocks :blocks="block.slotBlocks.tableTop" />
@@ -30,6 +36,9 @@
                 <el-table-column v-if="block.options.multipleSelect"
                                  type="selection"
                                  width="40" />
+                <el-table-column v-if="block.props.type === 'index'"
+                                 type="index"
+                                 align="center" />
                 <el-table-column v-for="(field, fieldName) in fields"
                                  :label="field.label"
                                  v-if="!field.hidden"
@@ -38,13 +47,13 @@
                                  type=""
                                  :column-key="fieldName"
                                  fit
-                                 :min-width="defaultListFieldWidth[field.type] || 'auto'"
+                                 :min-width="defaultListFieldWidth[field.type] || '90px'"
                                  :align="field.props['align'] || 'center'"
                                  v-bind="field.props">
                     <template slot-scope="scope">
                         <!--fields-->
                         <component :is="`ams-field-${field.type}-${field.ctx}`"
-                                   :field="field"
+                                   :field="getField(field, scope.row)"
                                    :value="scope.row[fieldName]"
                                    :name="name"
                                    :path="`list[${scope.$index}].${fieldName}`"
@@ -53,7 +62,6 @@
                 </el-table-column>
                 <el-table-column label="操作"
                                  v-if="block.operationsCounts.operations"
-                                 fit
                                  fixed="right"
                                  min-width="140px"
                                  align="center">
@@ -65,6 +73,21 @@
                 </el-table-column>
             </el-table>
         </el-form>
+
+        <div class="clearfix bottom-operations">
+            <!-- 底部左边operations插槽 -->
+            <ams-operations :name="name"
+                            slot-name="leftBottom"
+                            class="left-operations"
+                            @keyup.enter.native="handlerSearch"></ams-operations>
+
+            <!-- 底部右边operations插槽 -->
+            <ams-operations :name="name"
+                            slot-name="rightBottom"
+                            class="right-operations"
+                            @keyup.enter.native="handlerSearch"></ams-operations>
+        </div>
+
         <el-pagination ref="amsPagination"
                        v-if="data.total"
                        @size-change="handleSizeChange"
@@ -87,7 +110,7 @@ import { defaultListFieldWidth } from '../../ams/configs/field';
 import { addEvent, getDomPos, getDomStyle, debounce } from '../../utils/index';
 
 export default {
-    mixins: [mixins.blockMixin],
+    mixins: [mixins.blockMixin, mixins.getField],
     data() {
         return {
             defaultListFieldWidth,
@@ -191,6 +214,17 @@ export default {
     }
     .el-slider__button-wrapper {
         z-index: 1;
+    }
+    .left-operations{
+        float: left;
+    }
+    .right-operations{
+        float: right;
+    }
+    .bottom-operations{
+        .ams-operations{
+            margin-top: 20px;
+        }
     }
 }
 </style>

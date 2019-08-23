@@ -61,7 +61,7 @@ ams.block('chart-demo2', {
         }
     },
     blocks: {
-        titles: {
+        titles2: {
             type: 'title',
             options: {
                 title: '分货运营-销售分析'
@@ -70,12 +70,12 @@ ams.block('chart-demo2', {
         tab: {
             type: 'tabs',
             options: {
-                tab1: '大盘1',
-                tab2: '大盘2',
-                tab3: '大盘3',
-                tab4: '大盘4',
-                tab5: '大盘5',
-                tab6: '大盘6'
+                tab1: '大盘',
+                tab2: '特卖会',
+                tab3: '唯品仓',
+                tab4: '云品仓',
+                tab5: 'VIPSHOP',
+                tab6: 'VIPMAXX'
             },
             props: {
                 type: 'card'
@@ -166,7 +166,7 @@ ams.block('chart-demo2', {
                     type: 'component',
                     options: {
                         is: 'div',
-                        text: '大盘2'
+                        text: '我是特卖会的内容'
                     },
                     style: {
                         padding: '100px',
@@ -176,7 +176,7 @@ ams.block('chart-demo2', {
                     type: 'component',
                     options: {
                         is: 'div',
-                        text: '大盘3'
+                        text: '我是唯品仓的内容'
                     },
                     style: {
                         padding: '100px',
@@ -186,7 +186,7 @@ ams.block('chart-demo2', {
                     type: 'component',
                     options: {
                         is: 'div',
-                        text: '大盘4'
+                        text: '我是云品仓的内容'
                     },
                     style: {
                         padding: '100px',
@@ -196,7 +196,7 @@ ams.block('chart-demo2', {
                     type: 'component',
                     options: {
                         is: 'div',
-                        text: '大盘5'
+                        text: '我是VIPSHOP的内容'
                     },
                     style: {
                         padding: '100px',
@@ -206,7 +206,7 @@ ams.block('chart-demo2', {
                     type: 'component',
                     options: {
                         is: 'div',
-                        text: '大盘6'
+                        text: '我是VIPMAXX的内容'
                     },
                     style: {
                         padding: '100px',

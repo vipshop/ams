@@ -86,13 +86,13 @@ const mockBlock = {
                 }
             }
         },
-        err: function() {
+        err: function(){
             return {
                 type: 'error',
                 resource: 'resource'
-            };
+            }
         }
     }
-};
+}
 
 export default mockBlock;

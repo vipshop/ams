@@ -4,9 +4,8 @@ ams.block('originfile', {
     resources: {
         'res-originfile': {
             api: {
-                prefix: 'http://www.baidu.com/',
-                create: 'create',
-                read: 'read?id=1',
+                prefix: 'http://xxx.com/crazybuy/',
+                create: 'editLabel/create',
                 contentType: 'json'
             },
             fields: {
@@ -56,7 +55,6 @@ ams.block('originfile', {
         }
     },
     events: {
-        init: '@read',
         submit: '@create @confirm:111'
     },
     actions: {

@@ -28,7 +28,26 @@ ams.block('card', {
                 margin: '20px auto 0',
             },
             blocks: {
-                emptyCardText: {
+                emptyCardTextCard: {
+                    type: 'component',
+                    options: {
+                        is: 'div',
+                        text: '只有自定义内容，没有标题'
+                    }
+                }
+            }
+        },
+        headerTitle: {
+            type: 'card',
+            style: {
+                width: '600px',
+                margin: '20px auto 0',
+            },
+            options: {
+                headerTitle: '卡片类型自带的标题'
+            },
+            blocks: {
+                emptyCardTextCard1: {
                     type: 'component',
                     options: {
                         is: 'div',
@@ -44,17 +63,51 @@ ams.block('card', {
                 margin: '20px auto 0',
             },
             blocks: {
-                emptyCardText: {
+                emptyCardTextCard21: {
                     type: 'component',
                     options: {
                         is: 'div',
                         text: '自定义内容'
                     }
                 },
-                emptyCardText2: {
+                emptyCardTextCard22: {
                     type: 'title',
                     options: {
-                        'title': '标题标题标题'
+                        title: '标题类型的主标题',
+                        subTitle: '标题类型的副标题'
+                    },
+                    slot: 'header'
+                }
+            }
+        },
+        emptyCardBlock3: {
+            type: 'card',
+            style: {
+                width: '600px',
+                margin: '20px auto 0',
+            },
+            operations: {
+                submit: {
+                    type: 'button',
+                    label: '库存预警',
+                    props: {
+                        type: 'mini'
+                    }
+                }
+            },
+            blocks: {
+                emptyCardTextCard31: {
+                    type: 'component',
+                    options: {
+                        is: 'div',
+                        text: '自定义内容'
+                    }
+                },
+                emptyCardTextCard32: {
+                    type: 'title',
+                    options: {
+                        title: '标题类型的主标题',
+                        subTitle: '右边有个操作按钮喔'
                     },
                     slot: 'header'
                 }
@@ -68,7 +121,7 @@ ams.block('card', {
                 margin: '20px auto 0',
             },
             options: {
-                headerTitle: '自定义标题',
+                headerTitle: '卡片类型自带的标题',
             },
             operations: {
                 submit: {
@@ -126,6 +179,13 @@ ams.block('card', {
                     },
                     operations: {
                         text: {
+                            type: 'button',
+                            label: '部类货品',
+                            props: {
+                                type: 'mini'
+                            }
+                        },
+                        text2: {
                             type: 'button',
                             label: '部类货品',
                             props: {

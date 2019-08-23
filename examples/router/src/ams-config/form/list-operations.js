@@ -8,10 +8,7 @@ ams.block('list-operations', {
         // 支持多选
         multipleSelect: true,
         // 列表高度自适应屏幕
-        tableHeightFit: true
-    },
-    props: {
-        height: 600
+        // tableHeightFit: true
     },
 
     // 过滤设置（列表特有）
@@ -42,7 +39,11 @@ ams.block('list-operations', {
     fields: {
         testVideo: false,
         testAudio: false,
-        testUnits: false
+        testUnits: false,
+        precent: false,
+        testArrays: false,
+        testRadioArray: false,
+        testCheckboxArray: false
     },
 
     data: {
@@ -96,7 +97,11 @@ ams.block('list-operations', {
         testSwitch: {
             slot: 'searchs',
             type: 'field',
-            field: 'testSwitch'
+            field: 'testSwitch',
+            style: {
+                height: '40px',
+                'line-height': '40px'
+            }
             // label: '可省略'
         },
         testNewInput: {
@@ -108,7 +113,7 @@ ams.block('list-operations', {
                     placeholder: '折'
                 },
                 style: {
-                    width: '50px'
+                    width: '70px'
                 }
             }
         },

@@ -1,0 +1,8 @@
+{
+    "name": "@ams-team/field-arraylist",
+    "version": "1.2.1",
+    "description": "array列表",
+    "author": "zebin.wu",
+    "main": "lib/field-arraylist.js",
+    "unpkg": "lib/field-arraylist.js"
+}

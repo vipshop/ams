@@ -24,6 +24,9 @@ import table from './blocks/table';
 import title from './blocks/title';
 import steps from './blocks/steps';
 import dropdownBlock from './blocks/dropdown';
+import grid from './blocks/grid';
+import carousel from './blocks/carousel';
+import backtop from './blocks/backtop';
 
 // field 和文件夹一一对应
 import array from './fields/array';
@@ -67,7 +70,7 @@ import field from './operations/field';
 import dropdown from './operations/dropdown';
 
 // 版本号
-ams.version = '0.9.0';
+ams.version = '0.13.0';
 // 挂载到ams上
 ams.mixins = mixins;
 ams.utils = utils;
@@ -108,6 +111,10 @@ ams.install = function(Vue) {
     ams.registerBlock(title);
     ams.registerBlock(steps);
     ams.registerBlock(dropdownBlock);
+    ams.registerBlock(grid);
+    ams.registerBlock(carousel);
+    ams.registerBlock(backtop);
+
     // fields
     ams.registerField(array);
     ams.registerField(audio);

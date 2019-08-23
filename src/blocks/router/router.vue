@@ -78,6 +78,9 @@ export default {
         .is-active > .el-submenu__title {
             color: #f4f4f5 !important;
         }
+        .ams-blocks{
+            font-size: 16px;
+        }
     }
     &.hideSidebar {
         .sidebar-container {

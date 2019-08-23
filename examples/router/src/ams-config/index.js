@@ -10,6 +10,7 @@ import './form/form-view';
 import './form/list';
 import './form/list-operations';
 import './form/list-layout';
+import './form/list-edit';
 import './form/table';
 import './login';
 
@@ -24,8 +25,9 @@ import './cases-sence/runtime-add-block';
 import './cases-sence/get-set-view';
 import './cases-sence/login-auth';
 import './cases-sence/add-item-action';
+import './cases-sence/outside-website';
 // field
-import './cases-field/component';
+import './cases-field/input';
 import './cases-field/date';
 import './cases-field/editor';
 import './cases-field/union';
@@ -42,6 +44,11 @@ import './cases-block/steps';
 import './cases-block/card';
 import './cases-block/dropdown';
 import './cases-block/xlsx';
+import './cases-block/grid';
+import './cases-block/carousel';
+import './cases-block/backtop';
+import './cases-block/tabs';
+import './cases-block/component';
 
 // chart-demo
 import './cases-chart/demo1';

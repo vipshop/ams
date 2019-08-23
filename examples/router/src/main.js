@@ -9,24 +9,26 @@ import locale from 'element-ui/lib/locale/lang/zh-CN'; // lang i18n
 
 import '@/styles/index.scss'; // global css
 
-import calendar from '@ams/block-calendar';
-import editor from '@ams/field-editor';
-import markdown from '@ams/field-markdown';
-import arraylist from '@ams/field-arraylist';
-import chart from '@ams/block-chart';
-import xlsx from '@ams/block-xlsx';
+// import calendar from '@ams-team/block-calendar';
+import editor from '@ams-team/field-editor';
+import markdown from '@ams-team/field-markdown';
+import arraylist from '@ams-team/field-arraylist';
+import chart from '@ams-team/block-chart';
+// import xlsx from '@ams-team/block-xlsx';
+// import navUser from '@ams-team/block-nav-user';
 
 import App from './App';
 
 window.ElementUI = ElementUI;
 Vue.use(ElementUI, { locale });
 Vue.use(ams);
-Vue.use(calendar);
+// Vue.use(calendar);
 Vue.use(editor);
 Vue.use(markdown);
 Vue.use(arraylist);
 Vue.use(chart);
-Vue.use(xlsx);
+// Vue.use(xlsx);
+// Vue.use(navUser);
 
 Vue.config.productionTip = false;
 

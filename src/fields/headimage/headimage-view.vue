@@ -18,7 +18,7 @@ export default {
 
 <style lang="scss">
 .ams-field-headimage-view {
-    display: block;
+    // display: block;
     border: 1px solid #d9d9d9;
     border-radius: 50%;
     position: relative;
@@ -34,6 +34,10 @@ export default {
         display: inline-block;
         vertical-align: middle;
     }
+}
+/* 修复在表格下，无法居中问题*/
+td.is-center .ams-field-headimage-view{
+    display: inline-block;
 }
 </style>
 

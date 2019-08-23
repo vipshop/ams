@@ -2,6 +2,8 @@
 @import './material.styl'
 @import './ams-doc-index.styl'
 
+a, p a, li a, td a { color: #3eaf7c; }
+
 .el-popper, .ams-block {
     tr:nth-child(2n) {
         background-color: #fff;
@@ -38,7 +40,8 @@
     }
 }
 .page .content:not(.custom),.page .content__default:not(.custom),.page .page-edit, .page .page-nav{
-    max-width: 1200px;
+    max-width: 1000px;
+    box-sizing: border-box;
 }
 .demo { 
     font-family: 'Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif';

@@ -2,7 +2,7 @@ import ams from '@ams-team/ams';
 
 ams.block('unitselect', {
     resources: {
-        'unitselect': {
+        unitselect: {
             fields: {
                 money: {
                     type: 'unitselect',
@@ -55,10 +55,23 @@ ams.block('unitselect', {
                 meter: {
                     type: 'unitselect',
                     label: '距离',
-                    defaultUnit: '毫米',
-                    units: ['毫米', '厘米', '分米', '千米'],
+                    defaultUnit: '毫米米',
+                    units: ['毫米米', '厘米', '分米', '千米'],
                     style: {
                         width: '200px'
+                    }
+                },
+                url: {
+                    type: 'unitselect',
+                    label: '网址',
+                    defaultUnit: 'http://',
+                    units: ['http://', 'https://'],
+                    style: {
+                        width: '300px'
+                    },
+                    props: {
+                        slot: 'prepend',
+                        unitWidth: '100px'
                     }
                 }
             }
@@ -71,7 +84,8 @@ ams.block('unitselect', {
             ctx: 'edit',
             data: {
                 money: 123918241234,
-                meter: '222毫米'
+                meter: '222毫米米',
+                url: 'http://vip.com'
             },
             operations: {
                 update: {
@@ -89,7 +103,8 @@ ams.block('unitselect', {
             resource: 'unitselect',
             data: {
                 money: 123918241234,
-                meter: '222毫米'
+                meter: '222毫米',
+                url: 'http://vip.com'
             }
         }
     }

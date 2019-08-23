@@ -3,21 +3,24 @@ import ams from '@ams-team/ams';
 ams.block('collapse', {
     type: 'collapse',
     style: {
-        width: '30%',
-        marginLeft: '25%',
-        paddingTop: '25%'
+        width: '80%',
+        margin: '0 auto',
+        paddingTop: '5%'
     },
     props: {
         accordion: false
     },
     options: {
-        'block1': `一致性 <i class="header-icon el-icon-info"></i>`,
-        'block2': '反馈'
+        collapseblock1: `一致性 <i class="header-icon el-icon-info"></i>`,
+        collapseblock2: '反馈'
+    },
+    data: {
+        active: 'collapseblock2'
     },
     blocks: {
-        'block1': {
+        collapseblock1: {
             blocks: {
-                'block11': {
+                collapseblock11: {
                     type: 'form',
                     resource: 'resource',
                     ctx: 'edit',
@@ -45,9 +48,9 @@ ams.block('collapse', {
                 }
             }
         },
-        block2: {
+        collapseblock2: {
             blocks: {
-                'block12': {
+                collapseblock12: {
                     type: 'form',
                     resource: 'resource',
                     ctx: 'edit',

@@ -1,0 +1,21 @@
+{
+    "name": "@ams-team/field-editor",
+    "version": "0.2.5",
+    "main": "lib/field-editor.js",
+    "unpkg": "lib/field-editor.js",
+    "author": "edward.shao",
+    "description": "富文本编辑器",
+    "amsConfig": {
+        "externals": {
+            "vue-quill-editor": {
+                "commonjs": "vue-quill-editor",
+                "commonjs2": "vue-quill-editor",
+                "amd": "vue-quill-editor",
+                "root": "VueQuillEditor"
+            }
+        }
+    },
+    "dependencies": {
+        "vue-quill-editor": "^3.0.6"
+    }
+}

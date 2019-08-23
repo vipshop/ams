@@ -1,0 +1,8 @@
+{
+    "name": "@ams-team/field-tag",
+    "version": "1.2.3",
+    "description": "标签",
+    "author": "jun85.li",
+    "main": "lib/field-tag.js",
+    "unpkg": "lib/field-tag.js"
+}

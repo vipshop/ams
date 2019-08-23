@@ -6,14 +6,14 @@
 
 ```js
 ams.block('formView', {
-  type: 'form',
-  resource: 'demo',
-  ctx: 'view',
-  data: {},
-  events: {
+  type: 'form', // 区块类型：from代表表单
+  resource: 'demo', // 区块依赖的资源
+  ctx: 'view', // 区块形态，view代表纯展示
+  data: {}, // 区块使用到到数据
+  events: { // 区块事件
     init: '@read @console'
   },
-  actions: {
+  actions: { // 区块行为
     console() {
       console.log('@console action', this.block.data.id);
     }
@@ -21,11 +21,11 @@ ams.block('formView', {
 });
 ```
 
-以上声明了 `formView` block
+以上注册了 `formView` block
 
 ## 使用 block
 
-每个block本质都是[Vue插件](https://cn.vuejs.org/v2/guide/plugins.html)，可以通过区块名 name 来引用：`<ams-block name="formView" />`，完整示例如下：
+每个block本质都是[Vue组件](https://cn.vuejs.org/v2/guide/components-registration.html)，可以通过区块名 `name` 来引用：`<ams-block name="formView" />`，完整示例如下：
 
 ```html
 <template>
@@ -78,18 +78,18 @@ ams.block('formView', {
 
 ## 子 blocks
 
-可以通过子 blocks 配置实现 block 的多级嵌套，组合成目标页面
+可以通过子 blocks 配置实现 `block` 的多级嵌套，组合成复杂的页面
 
 ```js {3,7}
 ams.block('dialog', {
-  type: 'dialog',
+  type: 'dialog', // 弹窗类型区块
   blocks: {
     form: {
-      type: 'form',
+      type: 'form', // 嵌套一个表单区块
       resource: 'resource',
       blocks: {
         div: {
-          type: 'component',
+          type: 'component', // 表单区块再嵌套一个万能区块
           options: {
             is: 'div'
           }
@@ -104,14 +104,14 @@ ams.block('dialog', {
 
 子 blocks 可以通过配置 `slot` 指定插入位置，不指定则插入到其内部主内容之后。
 
-如 router block 支持配置 slot 为 `menuTop`、`menuBottom`、`nav` 来使 block 插入到菜单头部，菜单底部，导航的位置（具体和对应 block 开放的插槽位置有关）
+如 router 的 block 支持配置 slot 为 `menuTop`、`menuBottom`、`nav` 来使 block 插入到菜单头部，菜单底部，导航的位置（具体和对应 block 开放的插槽位置有关）
 
 ```js {5}
 {
-    type: 'router',
+    type: 'router', // 路由区块
     blocks: {
         menuBottom: {
-            slot: 'menuBottom',
+            slot: 'menuBottom', // 指定插槽位置
             type: 'component',
             options: {
                 is: 'img'
@@ -131,7 +131,7 @@ ams.block('dialog', {
 
 ## 异步 block
 
-block 支持返回 Promise 的函数，会在对应 block 就绪（resolve）后渲染指定 block，支持嵌套
+block 支持返回 `Promise` 的函数，会在对应 block 就绪（`resolve`）后渲染指定 block，支持嵌套
 
 ```js
 ams.block('formViewAll', function() {

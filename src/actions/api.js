@@ -179,7 +179,7 @@ export const list = ams.createApiAction({
         if (this.data.searchs) {
             Object.keys(this.data.searchs).forEach(name => {
                 const search = this.data.searchs[name];
-                if (search) {
+                if (search || search === 0) {
                     arg[name] = search;
                 }
             });
@@ -196,10 +196,9 @@ export const list = ams.createApiAction({
         const successCode = this.getConfig('resource.api.successCode');
         if (
             res.data.code === successCode &&
-            res.data.data &&
-            res.data.data.list
+            res.data.data
         ) {
-            this.data.list = res.data.data.list;
+            this.data.list = res.data.data.list || [];
             this.data.total = res.data.data.total;
         } else {
             this.$message.error(`${res.data.msg}(${res.data.code})`);

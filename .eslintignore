@@ -1,6 +1,7 @@
 build
 node_modules
+examples/router/node_modules
+packages/*/node_modules
 lib
-examples
 dist
 test

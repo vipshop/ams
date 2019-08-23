@@ -1,5 +1,5 @@
 <template>
-    <div class="ams-operations el-form--inline">
+    <div v-if="Object.keys(operations).length" class="ams-operations el-form--inline">
         <template v-for="(operation, operationKey) in operations">
             <div class="el-form-item"
                  v-if="getShowState(operation, context)"

@@ -574,5 +574,156 @@ export default {
 				this.$message('这是”重置“按钮事件响应Demo效果，可在区块配置的“actions”里修改～')
 			}
 		}
+	},
+	editList: {
+		type: 'list',
+		ctx: 'edit',
+		props: {
+			type: 'index'
+		},
+		resource: {
+			fields: {
+				'a': {
+					'type': 'text',
+					'label': '指标',
+					props: {
+						width: '170px'
+					}
+				},
+				'b': {
+					'type': 'text',
+					'label': '连续次数'
+				},
+				'c1': {
+					'type': 'unitselect',
+					'label': '时间段',
+					'units': ['分钟', '小时'],
+					'defaultUnit': '分钟'
+				},
+				'e': {
+					'type': 'select',
+					'label': '对比',
+					'props': {
+						'multiple': false,
+						'options': {
+							'0': '昨天',
+							'5': '不对比'
+						}
+					}
+				},
+				'f': {
+					'type': 'select',
+					'label': '条件',
+					'props': {
+						'multiple': false,
+						'options': {
+							'0': '同比下降',
+							'1': '同比上升'
+						}
+					},
+					changeConfig(field, context) {
+						if (context && context.e === '5') {
+							field.props.options = {
+								'>': '>',
+								'>=': '>=',
+								'<': '<',
+								'<=': '<=',
+								'==': '=='
+							};
+						}
+						!field.props.options[context.f] && (context.f = '');
+						// console.log(context);
+						return field;
+					}
+				}
+			}
+		},
+		data: {
+			list: [{
+				a: '大促指标',
+				b: '12',
+				c1: '12',
+				e: '0',
+				f: '0'
+			}]
+		},
+		operations: {
+			removeItem: {
+				type: 'button',
+				label: '删除',
+				props: {
+					type: 'danger',
+					icon: 'el-icon-delete'
+				}
+			},
+			addItem1: {
+				type: 'button',
+				label: '新增规则',
+				props: {
+					type: 'primary'
+				},
+				slot: 'searchs',
+				event: 'addItem'
+			},
+			addItem2: {
+				type: 'button',
+				label: '右上',
+				props: {
+					type: 'primary'
+				},
+				slot: 'rightTop',
+				event: 'addItem'
+			},
+			addItem3: {
+				type: 'button',
+				label: '左下',
+				props: {
+					type: 'primary'
+				},
+				slot: 'leftBottom',
+				event: 'addItem'
+			},
+			addItem4: {
+				type: 'button',
+				label: '右下1',
+				props: {
+					type: 'primary'
+				},
+				slot: 'rightBottom',
+				event: 'addItem'
+			},
+			addItem5: {
+				type: 'button',
+				label: '右下2',
+				props: {
+					type: 'primary'
+				},
+				slot: 'rightBottom',
+				event: 'addItem'
+			},
+			saveItem: {
+				type: 'button',
+				label: '保存',
+				props: {
+					type: 'primary'
+				},
+				slot: 'searchs'
+			}
+		},
+		actions: {
+			addItem: function() {
+				// this.showLoading();
+				this.data.list.push({
+					'a': '',
+					'b': '',
+					'c1': '',
+					'e': '',
+					'f': ''
+				});
+			},
+			saveItem: function() {
+				alert('你点击了保存按钮');
+			}
+		}
 	}
 };

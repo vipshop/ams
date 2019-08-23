@@ -7,6 +7,7 @@ import fieldViewOptionsMixin from './field-view-options-mixin';
 import fieldViewMixin from './field-view-mixin';
 import operationMixin from './operation-mixin';
 import getShowState from './get-show-state';
+import getField from './get-field';
 
 export default {
     blockMixin,
@@ -17,5 +18,6 @@ export default {
     fieldViewOptionsMixin,
     fieldViewMixin,
     operationMixin,
-    getShowState
+    getShowState,
+    getField
 };
