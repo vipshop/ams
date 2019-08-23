@@ -8,7 +8,7 @@ const { getDirName } = require('../src/config/initQuestion');
 const { copyAction } = require('../src/utlis/copyAction');
 const { exists } = require('../src/utlis/fileHander');
 const checkWorkspace = require('../src/utlis/checkWorkspace');
-const { getLatestVersion } = require('../src/utlis/getVersions');
+// const { getLatestVersion } = require('../src/utlis/getVersions');
 
 checkWorkspace(() => {
     program
@@ -16,7 +16,6 @@ checkWorkspace(() => {
         .name('ams block')
         .usage('[name]')
         .action(async (dirName, options) => {
-            let spinner;
             let answers = {};
             let isExist = false;
 

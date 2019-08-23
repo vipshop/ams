@@ -1,9 +1,9 @@
 const Metalsmith = require('metalsmith');
 const inquirer = require('inquirer');
 const ora = require('ora');
-const fs = require('fs');
+// const fs = require('fs');
 const util = require('util');
-const { exec, execSync } = require('child_process');
+const { exec } = require('child_process');
 const path = require('path');
 const execAsync = util.promisify(exec);
 const { initQuestion, initMetadata } = require('../config/initQuestion');
@@ -85,7 +85,7 @@ async function copyAction(dirName, dirType, meta = {}) {
 
         let distDir = `./${dirName}`;
         // field 和 block 放到packages目录，更新components.json
-        if(dirType === 'field' || dirType === 'block'){
+        if (dirType === 'field' || dirType === 'block') {
             distDir = `./packages/${dirType}-${dirName}`;
             // const confPath = path.join(process.cwd(), './components.json');
             // const components = require(confPath);

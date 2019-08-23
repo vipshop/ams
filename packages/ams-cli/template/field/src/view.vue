@@ -9,5 +9,5 @@ import ams from '@ams-team/ams';
 
 export default {
     mixins: [ams.mixins.fieldViewMixin]
-}
+};
 </script>

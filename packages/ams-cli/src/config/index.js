@@ -16,7 +16,7 @@ const dirs = {
  * 配置文件
  */
 
-const versions = {}
+const versions = {};
 
 const renders = {
     npmFull: /package\.json$|index\.html$/,
@@ -24,6 +24,6 @@ const renders = {
     npm: /package\.json$|index\.html$/,
     field: /^README\.md$|^package\.json$|index\.js$|\.example\.js$|\.config\.js$/,
     block: /^README\.md$|^package\.json$|index\.js$|block\.vue$|\.example\.js$|\.config\.js$/
-}
+};
 
 module.exports = { dirs, versions, renders };

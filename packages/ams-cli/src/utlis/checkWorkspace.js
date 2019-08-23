@@ -13,4 +13,4 @@ module.exports = function checkWorkspace(success) {
             'packages'
         )}${chalk.red(' folder')}`
     );
-}
+};

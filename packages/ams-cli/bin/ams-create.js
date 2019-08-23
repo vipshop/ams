@@ -20,7 +20,6 @@ program
     .option('-n, --npm')
     .option('-f, --full-npm')
     .action(async (dirName, options) => {
-        let spinner;
         let answers = {};
         let isExist = false;
 

@@ -45,12 +45,12 @@ export default {
     computed: {
         collapseLimit() {
             if (
-                !this.value || 
-                !this.value.length || 
-                !this.field.props || 
+                !this.value ||
+                !this.value.length ||
+                !this.field.props ||
                 !this.field.props.collapseLimit ||
                 this.value && Number(this.field.props.collapseLimit) >= this.value.length
-            ) return undefined;
+            ) return null;
             return this.field.props.collapseLimit;
         },
         fields() {

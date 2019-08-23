@@ -1,8 +1,8 @@
-const path = require('path')
-function resolve (dir) {
-    return path.join(__dirname,dir)
+const path = require('path');
+function resolve(dir) {
+    return path.join(__dirname, dir);
 }
-   
+
 module.exports = {
     configureWebpack: config => {
         config.resolve = {
@@ -11,6 +11,6 @@ module.exports = {
                 '@': resolve('src'),
                 'vue': resolve('node_modules/vue')
             }
-        }
+        };
     },
-}
+};

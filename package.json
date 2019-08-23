@@ -8,7 +8,9 @@
         "url": "git+https://github.com/vipshop/ams.git"
     },
     "keywords": [
-        "ams", "vue", "element-ui"
+        "ams",
+        "vue",
+        "element-ui"
     ],
     "version": "0.13.0",
     "main": "lib/ams.common.js",

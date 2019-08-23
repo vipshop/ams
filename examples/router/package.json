@@ -9,7 +9,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@ams-team/ams": "latest",
+    "@ams-team/ams": "file:../../",
     "@ams-team/block-chart": "latest",
     "@ams-team/field-arraylist": "latest",
     "@ams-team/field-editor": "latest",

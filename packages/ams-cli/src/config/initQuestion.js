@@ -85,7 +85,7 @@ exports.initMetadata = function(dirName, dirType) {
     };
 
     meta.render = renders[dirType] || false;
-    
+
     if (dirType === 'script') {
         meta.npm = false;
     }
