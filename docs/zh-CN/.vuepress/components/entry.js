@@ -22,7 +22,7 @@ import 'highlight.js/styles/tomorrow-night-eighties.css';
 
 // 定制block
 // import tag from '@ams/field-tag';
-import calendar from '@ams/block-calendar';
+// import calendar from '@ams/block-calendar';
 // import card from '@ams/block-card';
 import chart from '@ams/block-chart';
 import amsConfig from '@ams/block-ams-config';
@@ -38,7 +38,7 @@ console.log('ams init config');
 
 // 定制block
 // Vue.use(tag);
-Vue.use(calendar);
+// Vue.use(calendar);
 // Vue.use(card);
 Vue.use(chart);
 Vue.use(amsConfig);

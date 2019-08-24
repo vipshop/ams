@@ -7,10 +7,9 @@
   "private": true,
   "dependencies": {
     "@ams-team/ams": "latest",
-    "@ams/block-ams-config": "latest",
-    "@ams/block-calendar": "latest",
-    "@ams/block-chart": "latest",
-    "@ams/json-stringify": "latest",
+    "@ams-team/block-ams-config": "latest",
+    "@ams-team/block-chart": "latest",
+    "@ams-team/json-stringify": "latest",
     "element-ui": "^2.11.1",
     "highlight.js": "^9.15.9",
     "js-beautify": "^1.10.0",
