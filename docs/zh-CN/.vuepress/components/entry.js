@@ -17,15 +17,15 @@ import javascript from 'highlight.js/lib/languages/javascript';
 import 'highlight.js/styles/tomorrow-night-eighties.css';
 
 // 定制field
-// import editor from '@ams/field-editor';
-// import markdown from '@ams/field-markdown';
+// import editor from '@ams-team/field-editor';
+// import markdown from '@ams-team/field-markdown';
 
 // 定制block
-// import tag from '@ams/field-tag';
-import calendar from '@ams/block-calendar';
-// import card from '@ams/block-card';
-import chart from '@ams/block-chart';
-import amsConfig from '@ams/block-ams-config';
+// import tag from '@ams-team/field-tag';
+// import calendar from '@ams-team/block-calendar';
+// import card from '@ams-team/block-card';
+import chart from '@ams-team/block-chart';
+import amsConfig from '@ams-team/block-ams-config';
 
 Vue.use(ElementUI);
 Vue.use(ams);
@@ -38,7 +38,7 @@ console.log('ams init config');
 
 // 定制block
 // Vue.use(tag);
-Vue.use(calendar);
+// Vue.use(calendar);
 // Vue.use(card);
 Vue.use(chart);
 Vue.use(amsConfig);

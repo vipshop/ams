@@ -70,6 +70,22 @@ ams.block('remote-select', {
                             params: {
                                 a: 2
                             }
+                        },
+                        isCache: false,
+                        transform($field, data) {
+                            const field = $field.field;
+                            const remoteConfig = field.remoteConfig;
+                            const options = [];
+                            data.forEach(item => {
+                                const value = item[remoteConfig.valueKey];
+                                const label = item[remoteConfig.labelKey];
+                                options.push({
+                                    value,
+                                    label,
+                                    html: `<span style="float: left">${label}</span><span style="float: right; color: #8492a6; font-size: 13px">${value}</span>`
+                                });
+                            });
+                            return options;
                         }
                     }
                 },
@@ -128,26 +144,27 @@ ams.block('remote-select', {
             }
         }
     },
-    data: {
-        selectView: 2003,
-        selectEdit: 2003,
-        singleSelectEdit: '2003',
-        singleSelectView: '2003',
-        normalSelectEdit: 0
-    },
+    ctx: 'edit',
     type: 'form',
     resource: 'select',
-    ctx: 'edit',
     props: {
         'label-width': '180px'
-    },
-    events: {
-        submit: '@create'
     },
     operations: {
         submit: {
             type: 'button',
             label: '提交'
         }
+    },
+    data: {
+        selectView: 2003,
+        selectEdit: 2003,
+        singleSelectEdit: 2003,
+        singleSelectView: 2003,
+        normalSelectEdit: 0,
+        remoteCheckbox: 2003
+    },
+    events: {
+        submit: '@create'
     }
 });

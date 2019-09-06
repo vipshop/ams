@@ -9,8 +9,8 @@
 <script>
 /* eslint-disable max-depth,no-undefined */
 import ams from '@ams-team/ams';
-import beautify from 'js-beautify';
-import stringify from '@ams-team/json-stringify';
+// import beautify from 'js-beautify';
+// import stringify from '@ams-team/json-stringify';
 import mixin from './mixin';
 import args from './args';
 
@@ -34,40 +34,7 @@ export default {
             // 常用配置
             const previewBlock = {
                 blocks: {
-                    normalTitle: null,
-                    codeTitle: {
-                        type: 'title',
-                        options: {
-                            title: '配置'
-                        }
-                    },
-                    codeForm: {
-                        type: 'form',
-                        ctx: 'edit',
-                        resource: {
-                            fields: {
-                                code: {
-                                    labelWidth: '0',
-                                    type: 'ams-code',
-                                    on: {
-                                        change(code) {
-                                            // console.log('change code', code);
-                                            try {
-                                                // eslint-disable-next-line no-new-func
-                                                let data = (new Function(`return ${code}`))();
-                                                ams.$blocks['$ams-config-edit'].data = data;
-                                                // console.log(data);
-                                                _this.updatePreview(data);
-                                            } catch (error) {
-                                                console.dir(error);
-                                                _this.$message.error('配置数据格式有误，请检查');
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
+                    // normalTitle: null,
                     editTitle: {
                         type: 'title',
                         options: {
@@ -131,42 +98,75 @@ export default {
                                 { id: 2, view: undefined }
                             ]
                         }
+                    },
+                    codeTitle: {
+                        type: 'title',
+                        options: {
+                            title: '最终配置'
+                        }
+                    },
+                    codeForm: {
+                        type: 'form',
+                        ctx: 'edit',
+                        resource: {
+                            fields: {
+                                code: {
+                                    labelWidth: '0',
+                                    type: 'ams-code',
+                                    on: {
+                                        change(code) {
+                                            // console.log('change code', code);
+                                            try {
+                                                // eslint-disable-next-line no-new-func
+                                                let data = (new Function(`return ${code}`))();
+                                                ams.$blocks['$ams-config-edit'].data = data;
+                                                // console.log(data);
+                                                _this.updatePreview(data);
+                                            } catch (error) {
+                                                console.dir(error);
+                                                _this.$message.error('配置数据格式有误，请检查');
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             };
-            const keys = this.defaults ? Object.keys(this.defaults) : [];
-            const normalTitle = {
-                type: 'title',
-                options: {
-                    title: '常用配置'
-                },
-                operations: {},
-                events: {
-                    reset: '@$ams-config-edit.resetData'
-                },
-                actions: {
-                    select({ $arg }) {
-                        // console.log('_this.defaults[$args]', _this.defaults, $arg);
-                        ams.$blocks.codeForm.data.code = beautify(stringify(_this.defaults[$arg]), { indent_size: 2, space_in_empty_paren: true });
-                    }
-                },
-            };
-            keys.forEach(key => {
-                normalTitle.operations[key] = {
-                    type: 'button',
-                    label: key,
-                    props: {
-                        type: 'primary',
-                        plain: true
-                    },
-                    event: `select:${key}`
-                };
-            });
-            normalTitle.operations.reset = {
-                type: 'button',
-                label: '重置'
-            };
-            previewBlock.blocks.normalTitle = normalTitle;
+            // const keys = this.defaults ? Object.keys(this.defaults) : [];
+            // const normalTitle = {
+            //     type: 'title',
+            //     options: {
+            //         title: '常用配置'
+            //     },
+            //     operations: {},
+            //     events: {
+            //         reset: '@$ams-config-edit.resetData'
+            //     },
+            //     actions: {
+            //         select({ $arg }) {
+            //             // console.log('_this.defaults[$args]', _this.defaults, $arg);
+            //             ams.$blocks.codeForm.data.code = beautify(stringify(_this.defaults[$arg]), { indent_size: 2, space_in_empty_paren: true });
+            //         }
+            //     },
+            // };
+            // keys.forEach(key => {
+            //     normalTitle.operations[key] = {
+            //         type: 'button',
+            //         label: key,
+            //         props: {
+            //             type: 'primary',
+            //             plain: true
+            //         },
+            //         event: `select:${key}`
+            //     };
+            // });
+            // normalTitle.operations.reset = {
+            //     type: 'button',
+            //     label: '重置'
+            // };
+            // previewBlock.blocks.normalTitle = normalTitle;
 
             ams.block('$ams-config-preview', previewBlock);
             this.previewCodeReady = true;

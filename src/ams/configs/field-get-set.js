@@ -88,16 +88,20 @@ export const viewFile = function(value) {
 
 // 常规的多值类型get、set
 // string,string => [string, string]
-export const getArray = function(val) {
+export const getArray = function(val, field) {
     if (isEmptyString(val)) {
         return [];
     } else {
-        return String(val).split(',');
+        const props = field && field.props && field.props.props || {};
+        const splitBy = props.multiple && props.splitBy;
+        return String(val).split(splitBy || ',');
     }
 };
 
-export const setArray = function(arr) {
-    return Array.isArray(arr) ? arr.join(',') : '';
+export const setArray = function(arr, field) {
+    const props = field && field.props && field.props.props || {};
+    const splitBy = props.multiple && props.splitBy;
+    return Array.isArray(arr) ? arr.join(splitBy || ',') : '';
 };
 
 // 需要getter函数和setter函数的get、set
@@ -105,7 +109,7 @@ export const setArray = function(arr) {
 export const getterArray = function(getter) {
     return function(val, field) {
         if (isEmptyString(val)) {
-            return;
+            return [];
         } else {
             return String(val).split(',').map(item => getter(item, field));
         }
@@ -123,6 +127,28 @@ export const viewerArray = function(viewer, spliter = ',') {
         const spliter = field.props.type === 'dates' ? ', ' : ' 至 ';
         const arr = isEmptyString(val) ? [] : String(val).split(',').map(item => viewer(item, field));
         return arr.join(spliter);
+    };
+};
+
+// 单选的时候得到的一维数组，多选的时候得到二维数组
+export const getterCascader = function(getter) {
+    return function(val, field) {
+        if (isEmptyString(val)) {
+            return [];
+        } else if (field && field.props && field.props.props && field.props.props.multiple) {
+            return String(val).split(',').map(item => getter(item, field));
+        }
+        return String(val).split(',');
+    };
+};
+
+// 单选的时候得到 a,b,c; 多选的时候得到的是 a1/a2/a3,b1/b2/b3
+export const setterCascader = function(setter) {
+    return function(arr, field) {
+        if (field && field.props && field.props.props && field.props.props.multiple) {
+            return arr ? arr.map(item => setter(item, field)).join(',') : '';
+        }
+        return arr ? arr.join(',') : '';
     };
 };
 

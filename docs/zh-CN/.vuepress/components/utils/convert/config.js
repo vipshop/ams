@@ -169,7 +169,7 @@ export default {
               })
             })
             const res = await this.$ams.request({
-              url: 'http://w3cmark.com/getBayes',
+              url: 'http://vip.com/getBayes',
               method: 'post',
               data: { data: JSON.stringify(arr) },
               withCredentials: false

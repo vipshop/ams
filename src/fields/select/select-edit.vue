@@ -11,6 +11,12 @@
                     :label="item.label"
                     v-bind="item"
                     :value="item.value">
+
+                    <!-- 使用slot定制自定义html -->
+                    <template v-if="item.html">
+                        <div v-html="item.html"></div>
+                    </template>
+
             </el-option>
         </el-select>
         <el-checkbox class="select-all" v-if="isShowSelectAllCheck" v-model="isSelectAll">全选</el-checkbox>

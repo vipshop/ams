@@ -33,6 +33,14 @@ Image: Image 图片
 <field-image-demo blockName="imageField4"/>
 </ClientOnly>
 
+### 大图预览
+
+在 `ctx:view` 展示状态，点击图片可以预览本图的大图，如果通过 `field.props['preview-src-list']` 配置了预览列表，则预览该列表的所有大图。
+
+<ClientOnly>
+<field-image-demo blockName="imageField5"/>
+</ClientOnly>
+
 ### 在线实验室
 <ClientOnly>
 <ams-config name="image" type="field"/>

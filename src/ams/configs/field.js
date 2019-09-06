@@ -21,6 +21,9 @@ import {
     setUnits,
     viewUnits,
 
+    getterCascader,
+    setterCascader,
+
     getterArray,
     setterArray,
     viewerArray,
@@ -54,10 +57,11 @@ export const defaultFieldConfig = {
             filterable: true,
             props: {
                 expandTrigger: 'hover',
+                splitBy: '/',
             }
         },
-        get: getArray,
-        set: setArray,
+        get: getterCascader(getArray),
+        set: setterCascader(setArray),
         view,
         equals
     },
@@ -123,7 +127,8 @@ export const defaultFieldConfig = {
     image: {
         props: {
             accept: 'image/*',
-            action: ''
+            action: '',
+            fit: 'cover'
         },
         get,
         set,

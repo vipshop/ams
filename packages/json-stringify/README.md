@@ -18,7 +18,7 @@ output:
 # methods
 
 ``` js
-var stringify = require('@ams/json-stringify')
+var stringify = require('@ams-team/json-stringify')
 ```
 
 ## var str = stringify(obj, opts)

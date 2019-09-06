@@ -11,6 +11,7 @@ import './form/list';
 import './form/list-operations';
 import './form/list-layout';
 import './form/list-edit';
+import './form/list-pagination';
 import './form/table';
 import './login';
 
@@ -37,6 +38,7 @@ import './cases-field/image';
 import './cases-field/arraylist';
 import './cases-field/tree';
 import './cases-field/link';
+// import './cases-field/plan-date';
 // block
 import './cases-block/calendar';
 import './cases-block/collapse';

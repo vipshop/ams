@@ -1,8 +1,8 @@
-<p align="center"><img width="140" src="https://h5rsc.vipstatic.com/ams/ams-logo.png" alt="AMS logo"></p>
+<p align="center"><a href="https://vipshop.github.io/ams/" target="_blank" rel="noopener noreferrer"><img width="140" src="https://h5rsc.vipstatic.com/ams/ams-logo.png" alt="AMS logo"></a></p>
 
 ## AMS
 
-> AMS (Admin Materials System)，管理后台物料系统。
+> AMS (admin materiel system)，管理后台物料系统。
 
 AMS是基于 [Vue.js](https://github.com/vuejs/vue) 和 [Element组件库](https://github.com/ElemeFE/element)、通过JSON配置来快速搭建管理后台的一整套解决方案
 

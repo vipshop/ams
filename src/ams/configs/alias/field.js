@@ -43,15 +43,23 @@ export const SELECT_REMOTE = {
         isLock: true,
         // 最小化options回填，推荐select使用
         isMiniBackfill: true,
+        // transform($field, data) {
+        //     const field = $field.field;
+        //     const remoteConfig = field.remoteConfig;
+        //     // console.log('transform', $field, field, remoteConfig);
+        //     const options = {};
+        //     data.forEach(item => {
+        //         options[item[remoteConfig.valueKey]] = item[remoteConfig.labelKey];
+        //     });
+        //     return options;
+        // },
         transform($field, data) {
             const field = $field.field;
             const remoteConfig = field.remoteConfig;
-            // console.log('transform', $field, field, remoteConfig);
-            const options = {};
-            data.forEach(item => {
-                options[item[remoteConfig.valueKey]] = item[remoteConfig.labelKey];
-            });
-            return options;
+            return data.map(item => ({
+                label: item[remoteConfig.labelKey],
+                value: item[remoteConfig.valueKey]
+            }));
         },
         /**
          * @param {*} $field 当前field的实例引用
@@ -119,9 +127,6 @@ export const SELECT_REMOTE = {
                     }
                     lockQuery.isLocking = true;
                 }
-                // console.log(JSON.stringify(lockQuery));
-
-                // console.log('remoteMethod', $field, field, remoteConfig);
 
                 const cacheKey = remoteConfig.action;
                 // 当有缓存、是回填、缓存开启才会进入缓存获取
@@ -131,13 +136,23 @@ export const SELECT_REMOTE = {
                         // console.log('get options from cache success', remoteConfig.isInitEmpty, optionsCache, remoteConfig.isMiniBackfill, query);
                         // 最小化回填时使用当前值
                         if (remoteConfig.isMiniBackfill && query) {
-                            $field.$set($field.field.props, 'options', {
-                                [query]: optionsCache[cacheKey][query]
-                            });
+                            // $field.$set($field.field.props, 'options', {
+                            //     [query]: optionsCache[cacheKey][query]
+                            // });
+                            $field.$set($field.field.props, 'options', [{
+                                label: query,
+                                value: optionsCache[cacheKey][query]
+                            }]);
                             return nextLockQuery();
                         } else {
                             // console.log('no query, remoteConfig.isMiniBackfill');
-                            $field.$set($field.field.props, 'options', optionsCache[cacheKey]);
+                            // $field.$set($field.field.props, 'options', optionsCache[cacheKey]);
+                            $field.$set($field.field.props, 'options',
+                                Object.keys(optionsCache[cacheKey]).map(field => ({
+                                    label: field,
+                                    value: optionsCache[cacheKey][field]
+                                }))
+                            );
                             return nextLockQuery();
                         }
                     } else {
@@ -156,8 +171,9 @@ export const SELECT_REMOTE = {
                     data
                 ) {
                     const options = remoteConfig.transform.call(this, $field, data);
+                    const optionsEntity = options.reduce((obj, cur) => Object.assign(obj, { [cur.label]: cur.value }), {});
                     if (remoteConfig.isCache) {
-                        optionsCache[cacheKey] = deepExtend(optionsCache[cacheKey] || {}, options);
+                        optionsCache[cacheKey] = deepExtend(optionsCache[cacheKey] || {}, optionsEntity);
                     }
                     $field.$set($field.field.props, 'options', options);
                 }

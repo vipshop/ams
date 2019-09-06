@@ -62,7 +62,7 @@
                 meta: {
                     icon: 'star-off'
                 },
-                path: 'http://w3cmark.com'
+                path: 'https://vipshop.github.io/ams/'
             },
             {
                 name: '跳404',

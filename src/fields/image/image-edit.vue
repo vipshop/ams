@@ -20,7 +20,7 @@
 
         <template v-if="field.props['default-image-list']">
             可供选择的图片有：
-            <ul class="el-upload-list el-upload-list--picture-card el-default-list--picture-card">
+            <ul v-if="field.props['default-image-list'].length" class="el-upload-list el-upload-list--picture-card el-default-list--picture-card">
                 <li
                     :class="`el-upload-list__item ${imageUrl === item.url ? 'is-success' : ''}`"
                     v-for="(item, index) in field.props['default-image-list']"
@@ -32,6 +32,7 @@
                     <label class="el-upload-list__item-status-label"><i class="el-icon-upload-success el-icon-check"></i></label>
                 </li>
             </ul>
+            <div v-else class="red">暂无图片可选，请自行上传！</div>
         </template>
     </div>
 </template>
@@ -163,6 +164,7 @@ export default {
         cursor: pointer;
         width: 100px;
         height: 100px;
+        line-height: 100px;
         overflow: hidden;
         &:hover {
             border-color: #409eff;
@@ -171,22 +173,23 @@ export default {
             }
         }
         img {
-            max-width: 100%;
-            max-height: 100%;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         &.el-upload--picture-card{
             position: absolute;
             top: 0;
         }
     }
+    .el-upload-list__item{
+        img{
+            object-fit: cover;
+        }
+    }
     .el-upload-list--picture-card{
         display: block;
-        padding-top: 120px;
+        padding-top: 110px;
         line-height: 0;
         .el-upload-list__item{
             width: 100px;
@@ -194,6 +197,8 @@ export default {
         }
         &.el-default-list--picture-card{
             padding-top: 0;
+            max-height: 240px;
+            overflow-y: auto;
             .el-upload-list__item {
                 cursor: pointer;
                 &:hover {
@@ -239,6 +244,7 @@ export default {
         width: 100%;
         height: 24px;
         line-height: 24px;
+        font-size: 12px;
         color: #fff;
         background-color: rgba(0, 0, 0, 0.5);
         position: absolute;
@@ -246,6 +252,9 @@ export default {
         left: 0;
         margin: 0;
         display: none;
+    }
+    .red{
+        color: #c00;
     }
 }
 </style>

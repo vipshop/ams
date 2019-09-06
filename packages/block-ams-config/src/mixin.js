@@ -47,31 +47,24 @@ export default {
                     baseTitle: {
                         type: 'title',
                         options: {
-                            title: '基础配置'
+                            title: '基础设置'
                         },
                         slot: 'top'
                     },
                     fieldTitle: {
                         type: 'title',
                         options: {
-                            title: '特殊配置'
+                            title: '更多设置'
                         },
                         slot: 'field:rules'
                     },
                     blockTitle: {
                         type: 'title',
                         options: {
-                            title: '特殊配置'
+                            title: '更多设置'
                         },
                         slot: 'field:render'
-                    },
-                    moreTitle: {
-                        type: 'title',
-                        options: {
-                            title: '更多配置'
-                        },
-                        slot: 'field:config'
-                    },
+                    }
                 },
                 actions: {
                     fieldChange({ path, value }) {

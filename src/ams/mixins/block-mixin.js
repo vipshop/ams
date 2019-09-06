@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import ams from '../index';
-import { defaultFieldConfig } from '../configs';
 import { listStringHasValue, get, getByOrder, deepExtend } from '../../utils';
 import { getRouter } from './router';
 
@@ -52,7 +51,7 @@ export default {
             if (this.block && this.block.on) {
                 Object.keys(this.block.on).forEach(key => {
                     on[key] = (...args) => {
-                        this.block.on[key].call(this, ...args);
+                        return this.block.on[key].call(this, ...args);
                     };
                 });
             }
@@ -155,7 +154,7 @@ export default {
             } else if (baseFieldType === 'object' || baseFieldType === 'union') {
                 field.fields && Object.keys(field.fields).forEach(key => this.initDefaultField(field.fields[key]));
             } else {
-                let defaultField = defaultFieldConfig[field.type];
+                let defaultField = ams.configs.defaultFieldConfig[field.type];
                 if (defaultField) {
                     Object.keys(defaultField).forEach(key => {
                         // 只处理props，如果默认配置新增其它对象值需要在此补充
@@ -164,6 +163,11 @@ export default {
                                 Object.keys(defaultField.props).forEach(propKey => {
                                     if (!(propKey in field.props)) {
                                         field.props[propKey] = defaultField.props[propKey];
+                                    } else if (propKey === 'props') {
+                                        field.props[propKey] = Object.assign(
+                                            defaultField.props[propKey] || {},
+                                            field.props[propKey] || {}
+                                        );
                                     }
                                 });
                             } else {

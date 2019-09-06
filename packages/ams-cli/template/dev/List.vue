@@ -52,11 +52,11 @@ export default {
             // console.log(pkg);
             let isField;
             if (typeof pkg.isField === 'undefined') {
-                isField = /^@ams(?:-team)?\/field-/.test(pkg.name);
+                isField = /^@ams-team\/field-/.test(pkg.name);
                 pkg.isField = isField;
             }
-            pkg.name = pkg.name.replace(/^@ams(?:-team)?\/(?:block|field)\-/, '');
-            if (pkg.amsConfig && pkg.amsConfig.publish !== false) {
+            pkg.name = pkg.name.replace(/^@ams-team\/(?:block|field)\-/, '');
+            if (pkg.amsConfig.publish !== false) {
                 if (isField || pkg.isField) {
                     this.fields.push(pkg);
                 } else {

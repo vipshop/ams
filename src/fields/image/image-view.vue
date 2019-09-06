@@ -1,7 +1,11 @@
 <template>
-    <img :src="viewValue"
-         :style="field.style"
-         v-if="viewValue" />
+    <el-image
+        v-if="viewValue"
+        :src="viewValue"
+        :style="field.style"
+        :preview-src-list="srcList"
+        :fit="field.props && field.props.fit">
+    </el-image>
     <i class="el-icon-picture"
        v-else></i>
 </template>
@@ -11,7 +15,12 @@
 import mixins from '../../ams/mixins';
 
 export default {
-    mixins: [mixins.fieldViewMixin]
+    mixins: [mixins.fieldViewMixin],
+    computed: {
+        srcList() {
+            return (this.field.props && this.field.props['preview-src-list']) || [this.viewValue];
+        }
+    },
 };
 </script>
 
@@ -19,7 +28,8 @@ export default {
 .ams-field-image-view {
     font-size: 50px;
     display: block;
-    max-width: 100px;
+    width: 100px;
+    height: 100px;
 }
 </style>
 

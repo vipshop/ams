@@ -13,7 +13,7 @@ ams.block('component', {
             },
             style: {
                 padding: '100px',
-                backgroundColor: '#007'
+                backgroundColor: '#eee'
             },
             operations: {
                 test: {

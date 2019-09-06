@@ -19,6 +19,7 @@ export default {
                 if (valid) {
                     resolve();
                 } else {
+                    this.$message.error('表单校验失败，请检查！');
                     reject(new Error('validate fail:', result));
                 }
             });

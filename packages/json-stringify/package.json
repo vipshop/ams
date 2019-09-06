@@ -1,6 +1,6 @@
 {
   "name": "@ams-team/json-stringify",
-  "version": "0.9.0",
+  "version": "0.3.0",
   "description": "JSON.stringify with function",
   "main": "index.js",
   "dependencies": {},

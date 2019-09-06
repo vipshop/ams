@@ -7,6 +7,10 @@ ams.block('list', {
     props: {
         type: 'index'
     },
+    options: {
+        // 定义列表操作项的宽度
+        operationsWidth: 300
+    },
     // 过滤设置（列表特有）
     filters: {
         testCheckbox: {
@@ -90,9 +94,24 @@ ams.block('list', {
             }
         },
         id: {
-            slot: 'searchs',
+            slot: 'rightTop',
             type: 'field',
             label: '文本'
+        },
+        id2: {
+            slot: 'leftBottom',
+            type: 'field',
+            field: 'id',
+            label: '文本'
+        },
+        button: {
+            slot: 'rightTop',
+            type: 'button',
+            label: '搜索',
+            props: {
+                type: 'primary'
+            },
+            event: 'list:1'
         },
         testSelect: {
             slot: 'searchs',
@@ -100,15 +119,15 @@ ams.block('list', {
             // field: 'testSelect' // field可省略
             // label: '可省略'
         },
-        search: {
-            slot: 'searchs',
-            type: 'button',
-            props: {
-                type: 'primary'
-            },
-            label: '搜索',
-            event: 'list:1'
-        },
+        // search: {
+        //     slot: 'searchs',
+        //     type: 'button',
+        //     props: {
+        //         type: 'primary'
+        //     },
+        //     label: '搜索',
+        //     event: 'list:1'
+        // },
     },
 
     on: {
