@@ -134,7 +134,7 @@
 <script>
 import ams from '@ams-team/ams'
 import '../entry'
-import stringify from '@ams/json-stringify'
+import stringify from '@ams-team/json-stringify'
 import beautify from 'js-beautify'
 import _ from 'lodash'
 import templates from './config.js'

@@ -16,7 +16,7 @@
 <script>
 import demoMixins from '../../demo/demo-mixin'
 import block from './block'
-import stringify from '@ams/json-stringify'
+import stringify from '@ams-team/json-stringify'
 import beautify from 'js-beautify'
 
 export default {

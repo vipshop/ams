@@ -1,5 +1,5 @@
 <template>
-    <el-card shadow="hover" class="demo demo-card">
+    <el-card shadow="hover" class="demo demo-card demo-spa">
         <ams-block v-if="init" :name="blockName" class="demo-card-preview"/>
         <div :class="`demo-card-config ${showConfig ? 'open': ''}`">
             <highlight-code lang="javascript">
@@ -16,7 +16,7 @@
 <script>
 import demoMixins from '../../demo/demo-mixin'
 import block from './block'
-import stringify from '@ams/json-stringify'
+import stringify from '@ams-team/json-stringify'
 import beautify from 'js-beautify'
 
 export default {
@@ -41,10 +41,10 @@ export default {
 }
 </script>
 <style>
-div.demo:nth-last-of-type(1) {
+div.demo-spa:nth-last-of-type(1) {
     z-index: 1;
 }
-div.demo:nth-last-of-type(2) {
+div.demo-spa:nth-last-of-type(2) {
     z-index: 2;
 }
 .ams-block-router .sidebar-container {

@@ -79,7 +79,7 @@ ams.block('form-edit', {
 
     events: {
         init: '@read:2',
-        submit: '@update'
+        submit: '@validate @update'
     },
     actions: {
         test(arg) {

@@ -8,14 +8,17 @@ ams.block('collapse', {
         paddingTop: '5%'
     },
     props: {
-        accordion: false
+        accordion: true
     },
     options: {
-        collapseblock1: `一致性 <i class="header-icon el-icon-info"></i>`,
+        collapseblock1: {
+            title: `一致性 <i class="header-icon el-icon-info"></i>`,
+            lazy: true
+        },
         collapseblock2: '反馈'
     },
     data: {
-        active: 'collapseblock2'
+        active: ['collapseblock2']
     },
     blocks: {
         collapseblock1: {

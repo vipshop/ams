@@ -12,13 +12,6 @@ module.exports = {
   plugins: [
     'flowchart'
   ],
-  configureWebpack: {
-    resolve: {
-      alias: {
-        "@ams/ams": "@ams-team/ams"
-      }
-    }
-  }, //设置别名
   themeConfig: {
     // lastUpdated: '最后更新',
     nav: [
@@ -27,7 +20,7 @@ module.exports = {
       { text: '区块', link: '/block/' },
       { text: '市场', link: '/market/' },
       {
-        text: '0.13.0',
+        text: '0.14.0',
         items: [
           {
             text: '更新日志',

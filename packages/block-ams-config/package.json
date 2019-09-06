@@ -24,6 +24,7 @@
         }
     },
     "dependencies": {
+        "@ams-team/ams": "latest",
         "@ams-team/field-ams-code": "latest"
     }
 }

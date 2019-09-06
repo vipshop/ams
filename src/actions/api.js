@@ -184,6 +184,33 @@ export const list = ams.createApiAction({
                 }
             });
         }
+        // slot:rightTop
+        if (this.data.rightTop) {
+            Object.keys(this.data.rightTop).forEach(name => {
+                const value = this.data.rightTop[name];
+                if (value || value === 0) {
+                    arg[name] = value;
+                }
+            });
+        }
+        // slot:leftBottom
+        if (this.data.leftBottom) {
+            Object.keys(this.data.leftBottom).forEach(name => {
+                const value = this.data.leftBottom[name];
+                if (value || value === 0) {
+                    arg[name] = value;
+                }
+            });
+        }
+        // slot:rightBottom
+        if (this.data.rightBottom) {
+            Object.keys(this.data.rightBottom).forEach(name => {
+                const value = this.data.rightBottom[name];
+                if (value || value === 0) {
+                    arg[name] = value;
+                }
+            });
+        }
 
         return {
             url: `${this.resource.api.prefix}${this.resource.api.list}`,

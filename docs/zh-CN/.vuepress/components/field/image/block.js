@@ -54,13 +54,13 @@ export default {
 					type: 'image',
 					tip: '范围240-640',
 					successUrlKey: 'url',
-					// check: { maxSizeInKB, imgMaxWidth, imgMaxHeight, imgMinWidth, imgMinHeight, imgWidth, imgHeight },
 					check: {
 						imgMaxWidth: 640,
 						imgMaxHeight: 640,
 						imgMinWidth: 240,
 						imgMinHeight: 240,
 					},
+					default: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
 					props: {
 						action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image'
 					}
@@ -75,8 +75,7 @@ export default {
 						imgHeight: 640
 					},
 					props: {
-						action:
-							'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image'
+						action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image'
 					}
 				},
 				image5: {
@@ -86,8 +85,7 @@ export default {
 					successUrlKey: 'url',
 					props: {
 						accept: 'image/png',
-						action:
-							'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image'
+						action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image'
 					}
 				}
 			}
@@ -170,5 +168,31 @@ export default {
 			}
 		},
 		ctx: 'edit'
+	},
+	imageField5: {
+		type: 'form',
+		resource: {
+			fields: {
+				image1: {
+					label: '大图预览',
+					type: 'image'
+				},
+				image2: {
+					label: '预览列表',
+					type: 'image',
+					props: {
+						'preview-src-list': [
+                            'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
+                            'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
+                        ]
+					}
+				}
+			}
+		},
+		ctx: 'view',
+		data: {
+			image1: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
+			image2: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
+		}
 	}
 };

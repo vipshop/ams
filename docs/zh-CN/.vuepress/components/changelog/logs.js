@@ -1,6 +1,16 @@
 // 更新日志
 export default [
     {
+        version: '0.14.x',
+        date: '2019.08.29',
+        log: [
+            'feat: field-image 在 view 状态增加大图预览',
+            'feat: block-list 增加前端分页 pagination: "simulate"',
+            'fix: field-image 默认图片列表内容比较多时加上滚动条',
+            'fix: block-form 在校验失败时弹出失败信息'
+        ]
+    },
+    {
         version: '0.13.0',
         date: '2019.08.21',
         log: [

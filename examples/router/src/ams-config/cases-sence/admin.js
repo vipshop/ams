@@ -4,7 +4,7 @@ const resource = {
     api: {
         contentType: 'form',
         // api前缀
-        prefix: 'https://www.easy-mock.com/mock/5a0023effbbb09615044cb82/',
+        prefix: 'http://vip.com/AmsPage/',
         // 读取数据接口
         read: 'GetInfo',
         // 更新数据接口

@@ -55,6 +55,11 @@ ams.block('router', {
                     noRedirect: true
                 },
                 children: [
+                    // {
+                    //     name: '定制日期',
+                    //     path: 'plan-date',
+                    //     block: 'plan-date'
+                    // },
                     {
                         name: '输入框',
                         path: 'input',
@@ -118,38 +123,52 @@ ams.block('router', {
                     {
                         name: '列表',
                         path: 'list',
-                        block: 'list'
+                        children: [
+                            {
+                                name: '普通',
+                                path: 'list',
+                                block: 'list'
+                            },
+                            {
+                                name: '操作',
+                                path: 'list-operations',
+                                block: 'list-operations'
+                            },
+                            {
+                                name: '布局',
+                                path: 'list-layout',
+                                block: 'list-layout'
+                            },
+                            {
+                                name: '编辑状态',
+                                path: 'list-edit',
+                                block: 'list-edit'
+                            },
+                            {
+                                name: '假分页',
+                                path: 'list-pagination',
+                                block: 'list-pagination'
+                            }
+                        ]
                     },
                     {
-                        name: '列表操作',
-                        path: 'list-operations',
-                        block: 'list-operations'
-                    },
-                    {
-                        name: '列表布局',
-                        path: 'list-layout',
-                        block: 'list-layout'
-                    },
-                    {
-                        name: '列表编辑',
-                        path: 'list-edit',
-                        block: 'list-edit'
-                    },
-                    {
-                        name: '表单编辑',
-                        path: 'edit',
-                        block: 'form-edit',
+                        name: '表单',
+                        path: 'form',
                         meta: {
                             roles: ['admin', 'edit']
-                        }
-                    },
-                    {
-                        name: '表单查看',
-                        path: 'view',
-                        block: 'form-view',
-                        meta: {
-                            roles: ['admin', 'view']
-                        }
+                        },
+                        children: [
+                            {
+                                name: '编辑',
+                                path: 'edit',
+                                block: 'form-edit'
+                            },
+                            {
+                                name: '查看',
+                                path: 'view',
+                                block: 'form-view'
+                            }
+                        ]
                     },
                     {
                         name: '万能区块',

@@ -2,11 +2,11 @@
   "name": "ams-docs",
   "scripts": {
     "dev": "npm i && vuepress dev zh-CN",
-    "build": "npm i && vuepress build zh-CN"
+    "build": "npm i && npm update @ams-team/ams && vuepress build zh-CN"
   },
   "private": true,
   "dependencies": {
-    "@ams-team/ams": "latest",
+    "@ams-team/ams": "^0.15.6",
     "@ams-team/block-ams-config": "latest",
     "@ams-team/block-chart": "latest",
     "@ams-team/json-stringify": "latest",

@@ -15,14 +15,14 @@
                         @keyup.enter.native="handlerSearch"></ams-operations>
 
         <ams-blocks :blocks="block.slotBlocks.tableTop" />
-
+        <!-- 多选时的operations -->
         <ams-operations :name="name"
                         :context="batchSelected"
                         v-if="batchSelected.length > 0"
                         slot-name="multipleSelect"></ams-operations>
 
         <el-form :model="data" ref="amsForm">
-            <el-table :data="data.list"
+            <el-table :data="listData"
                       @sort-change="handleSortChange"
                       @filter-change="handleFilterChange"
                       @selection-change="handleSelectionChange"
@@ -64,6 +64,7 @@
                                  v-if="block.operationsCounts.operations"
                                  fixed="right"
                                  min-width="140px"
+                                 :width="operationsWidth"
                                  align="center">
                     <template slot-scope="scope">
                         <ams-operations :name="name"
@@ -88,8 +89,9 @@
                             @keyup.enter.native="handlerSearch"></ams-operations>
         </div>
 
+        <!-- 分页 -->
         <el-pagination ref="amsPagination"
-                       v-if="data.total"
+                       v-if="pageTotal"
                        @size-change="handleSizeChange"
                        @current-change="handleCurrentChange"
                        :current-page.sync="data.page"
@@ -97,7 +99,7 @@
                        layout="total, prev, sizes, pager, next, jumper"
                        background
                        align="right"
-                       :total="data.total">
+                       :total="pageTotal">
         </el-pagination>
 
         <ams-blocks :blocks="block.blocks" />
@@ -121,6 +123,28 @@ export default {
             batchSelected: [],
             height: null
         };
+    },
+    computed: {
+        isSimulatePagination() {
+            return this.block.props && this.block.props.pagination === 'simulate';
+        },
+        pageTotal() {
+            // 列表数据总数
+            if (this.isSimulatePagination) {
+                return this.data.list && this.data.list.length;
+            }
+            return this.data.total;
+        },
+        listData() {
+            // 列表数据
+            if (this.isSimulatePagination) {
+                return this.data.list && this.data.list.slice((this.data.page - 1) * this.data.pageSize, this.data.page * this.data.pageSize);
+            }
+            return this.data.list;
+        },
+        operationsWidth() {
+            return this.block.options && this.block.options.operationsWidth;
+        }
     },
     methods: {
         afterReady() {
@@ -164,6 +188,9 @@ export default {
         },
         handleCurrentChange(e) {
             console.log('handleCurrentChange');
+            if (this.isSimulatePagination) {
+                return;
+            }
             this.emitEvent('list');
         },
         handleSortChange({ prop, order }) {

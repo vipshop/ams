@@ -43,7 +43,6 @@ import blockConfig from './block';
 import operationConfig from './operation';
 
 import '@ams-team/ams/lib/AMS_CONFIG';
-// import '@ams-team/ams/src/AMS_CONFIG';
 
 // 初始化默认resource
 ams.resource('demo', {
@@ -81,30 +80,7 @@ export default {
             defaults: null,
             fields: [],
             blocks: [],
-            operations: [],
-            // CONFIG_FIELD: null, // ams.utils.deepExtend({ type: { default: 'text' }}, CONFIG_FIELD),
-            // CONFIG_BLOCK: null, // ams.utils.deepExtend({ type: { default: 'form' }}, CONFIG_BLOCK),
-            // CONFIG_OPERATION: null, // ams.utils.deepExtend({ type: { default: 'button' }}, CONFIG_OPERATION),
-            // defaults: {
-            //     哈哈: {
-            //         'type': 'text',
-            //         'label': '哈哈',
-            //         'ctx': 'edit',
-            //         'default': '2',
-            //         'hidden': 0,
-            //         'rules': [],
-            //         'props': {}
-            //     },
-            //     测试: {
-            //         'type': 'text',
-            //         'label': '测试',
-            //         'ctx': 'edit',
-            //         'default': '3',
-            //         'hidden': 0,
-            //         'rules': [],
-            //         'props': {}
-            //     }
-            // }
+            operations: []
         };
     },
     methods: {

@@ -140,6 +140,36 @@ export default {
 			init: '@list'
 		}
 	},
+	simulatePagesList: {
+		type: 'list',
+		resource: {
+            api: {
+				prefix: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/',
+				list: 'list-pagination'
+			},
+			fields: {
+				'id': {
+					'type': 'text',
+					'label': 'ID'
+				},
+				'title': {
+					'type': 'text',
+					'label': '标题'
+				},
+				'content': {
+					'type': 'textarea',
+					'label': '内容'
+				}
+			}
+		},
+		events: {
+			init: '@list'
+		},
+		pageSize: 10,
+		props: {
+			pagination: 'simulate' // 模拟分页
+		}
+	},
 	filtersList: {
 		type: 'list',
 		resource: {

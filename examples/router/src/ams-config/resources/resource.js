@@ -259,6 +259,9 @@ ams.resource('resource', {
             type: 'cascader',
             label: '级联选择',
             props: {
+                props: {
+                    multiple: false
+                },
                 options: [
                     {
                         value: 'zhinan',
@@ -555,6 +558,45 @@ ams.resource('resource', {
                         label: '北京烤鸭'
                     }
                 ]
+            },
+            slots: {
+                'left-footer': [{
+                    style: {
+                        float: 'left',
+                        marginTop: '6px'
+                    },
+                    props: {
+                        size: 'mini',
+                        type: 'success'
+                    },
+                    text: '操作',
+                    onClick() {
+                        console.log('操作');
+                    }
+                }, {
+                    style: {
+                        float: 'right',
+                        margin: '6px 8px 0 0'
+                    },
+                    props: {
+                        size: 'mini',
+                        type: 'success'
+                    },
+                    text: '编辑',
+                    onClick() {
+                        console.log('编辑');
+                    }
+                }],
+                'right-footer': [{
+                    props: {
+                        size: 'mini',
+                        type: 'primary'
+                    },
+                    text: '操作',
+                    onClick() {
+                        console.log('操作');
+                    }
+                }]
             }
         },
         testDatetimerange: {

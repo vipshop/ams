@@ -122,7 +122,8 @@ export default {
                             text: '子block示例'
                         },
                         style: {
-                            border: '1px solid #E4E7ED'
+                            border: '1px solid #E4E7ED',
+                            padding: '10px'
                         }
                     }
                 }

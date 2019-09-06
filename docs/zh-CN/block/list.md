@@ -21,12 +21,20 @@ List: List 列表
 
 ### 带分页的列表
 
-是否显示分页由[列表接口](/api/api.html#常用的接口)返回的`total`字段决定，当接口没有返回该字段或者该字段返回0，则不显示分页。如果不需要分页的场景可以利用此特性。分页时默认是20条一页，可通过`pageSize`和接口配合来改变。
+默认是通过接口实现的分页：是否显示分页由[列表接口](/api/api.html#常用的接口)返回的`total`字段决定，当接口没有返回该字段或者该字段返回0，则不显示分页。如果不需要分页的场景可以利用此特性。分页时默认是20条一页，可通过`pageSize`和接口配合来改变。
 
 另外，数据如果是通过接口获取，记得主动在 [`events`](/api/block.html#events) 里的 `init` 调一下 `@list`
 
 <ClientOnly>
 <block-list-demo blockName="pagesList"/>
+</ClientOnly>
+
+### 纯前端分页
+
+通过前端实现的模拟分页：接口一次性返回所有数据，前端通过`pageSize`设置每页显示的条数，然后设置`props['pagination']: 'simulate'`。
+
+<ClientOnly>
+<block-list-demo blockName="simulatePagesList"/>
 </ClientOnly>
 
 ### 表头带排序和筛选的列表
