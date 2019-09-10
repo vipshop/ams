@@ -13,6 +13,10 @@ module.exports = {
     'flowchart'
   ],
   themeConfig: {
+    algolia: {
+      apiKey: '9120457b8cefe7956c453725782efd99',
+      indexName: 'ams'
+    },
     // lastUpdated: '最后更新',
     nav: [
       { text: '接入', link: '/api/' },
