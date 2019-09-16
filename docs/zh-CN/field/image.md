@@ -3,6 +3,8 @@ Image: Image 图片
 ---
 # Image 图片
 
+> 注意：`image` 类型默认是不显示已上传列表（Element的 `upload` 组件默认是显示的）
+
 ### 基础用法
 
 <ClientOnly>
@@ -17,9 +19,9 @@ Image: Image 图片
 <field-image-demo blockName="imageField2"/>
 </ClientOnly>
 
-### 带已上传列表
+### 显示已上传列表
 
-可以通过 `field.props['file-list']` 和 `field.props['list-type']`配置，而`list-type` 可取值`text/picture/picture-card`，默认为 `text`
+可以通过 `field.props['show-file-list']: true`、`field.props['file-list']` 和 `field.props['list-type']`配置，而`list-type` 可取值`text/picture/picture-card`，默认为 `text`
 
 <ClientOnly>
 <field-image-demo blockName="imageField3"/>

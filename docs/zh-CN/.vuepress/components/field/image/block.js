@@ -5,6 +5,10 @@ export default {
 				fields: {
 					image1: {
 						label: '图片上传',
+						type: 'image'
+					},
+					image3: {
+						label: '带校验',
 						type: 'image',
 						rules: [
 							{
@@ -12,7 +16,7 @@ export default {
 								message: '请上传图片',
 								trigger: 'change'
 							}
-						]
+						],
 					}
 				}
 			}
@@ -87,6 +91,15 @@ export default {
 						accept: 'image/png',
 						action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image'
 					}
+				},
+				image6: {
+					label: '图片大小',
+					type: 'image',
+					tip: '不能超过50kb',
+					successUrlKey: 'url',
+					check: {
+						maxSizeInKB: 50
+					}
 				}
 			}
 		},
@@ -99,9 +112,9 @@ export default {
 				image1: {
 					label: '默认',
 					type: 'image',
-					tip: '只能不超过50kb的图片',
 					props: {
 						action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image',
+						'show-file-list': true,
 						'file-list': [{
 							'name': 'food.jpeg',
 							'url': 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
@@ -118,6 +131,7 @@ export default {
 					props: {
 						action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image',
 						'list-type': 'picture',
+						'show-file-list': true,
 						'file-list': [{
 							'name': 'food.jpeg',
 							'url': 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
@@ -130,10 +144,10 @@ export default {
 				image3: {
 					label: 'picture-card',
 					type: 'image',
-					tip: '只能不超过50kb的图片',
 					props: {
 						action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image',
 						'list-type': 'picture-card',
+						'show-file-list': true,
 						'file-list': [{
 							'name': 'food.jpeg',
 							'url': 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
@@ -164,7 +178,40 @@ export default {
 							'url': 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
 						}]
 					}
+				},
+				image4: {
+					label: '默认列表图为空',
+					type: 'image',
+					props: {
+						action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image',
+						'default-image-list': []
+					}
+				},
+				image5: {
+					label: '加载默认列表图',
+					type: 'image',
+					default: 'http://demo.sc.chinaz.com/Files/pic/icons/7458/m1.png',
+					props: {
+						action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image',
+						'default-image-list': null
+					}
 				}
+			}
+		},
+		props: {
+			'label-width': '150px',
+		},
+		actions: {
+			init() {
+				setTimeout(() => {
+					this.fields.image5.props['default-image-list'] = [{
+						'name': 'food.jpeg',
+						'url': 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
+					}, {
+						'name': '精选美景图片精选美景图片',
+						'url': 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
+					}]
+				}, 2000)
 			}
 		},
 		ctx: 'edit'

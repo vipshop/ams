@@ -9,7 +9,8 @@ module.exports = {
             extensions: ['.js', '.vue', '.json'],
             alias: {
                 '@': resolve('src'),
-                'vue': resolve('node_modules/vue')
+                'vue': resolve('node_modules/vue'),
+                '@ams-team/ams': resolve('../../src')
             }
         };
     },

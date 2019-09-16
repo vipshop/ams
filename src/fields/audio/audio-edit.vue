@@ -2,6 +2,7 @@
 <div>
     <el-upload :on-remove="handleRemove"
                :on-success="handleUploadSuccess"
+               :before-upload="beforeUpload"
                :file-list="localValue"
                :style="field.style"
                v-on="on"
@@ -21,6 +22,20 @@ import mixins from '../../ams/mixins';
 export default {
     mixins: [mixins.fieldEditMixin],
     methods: {
+        beforeUpload(file) {
+            return new Promise((resolve, reject) => {
+                if (!this.field.check) {
+                    return resolve();
+                }
+
+                let { maxSizeInKB } = this.field.check;
+                if (maxSizeInKB && (file.size / 1024) > maxSizeInKB) {
+                    this.$message.error('上传音频大小不能超过 ' + (maxSizeInKB / 1024).toFixed(2) + 'MB!');
+                    return reject(); // eslint-disable-line prefer-promise-reject-errors
+                }
+                resolve();
+            });
+        },
         handleUploadSuccess(res, file) {
             console.log('handleUploadSuccess', res, file);
             // todo: 预览、上传进度

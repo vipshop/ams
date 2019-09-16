@@ -5,7 +5,7 @@
                     v-if="item.children && item.children.length"
                     :index="resolvePath(item).path">
             <template slot="title">
-                <i :class="`el-icon-${item.meta.icon}`"
+                <i :class="iconClassName(item.meta.icon)"
                    v-if="item.meta.icon"></i>
                 <span slot="title"
                       v-if="item.name">{{item.name}}</span>
@@ -22,7 +22,7 @@
                           :to="resolvePath(child)"
                           :key="child.name">
                     <el-menu-item :index="resolvePath(child).path">
-                        <i :class="`el-icon-${child.meta.icon}`"
+                        <i :class="iconClassName(child.meta.icon)"
                            v-if="child.meta.icon"></i>
                         <span slot="title"
                               v-if="child.name">{{child.name}}</span>
@@ -33,7 +33,7 @@
         <app-link :to="resolvePath(item)"
                   v-else>
             <el-menu-item :index="resolvePath(item).path">
-                <i :class="`el-icon-${item.meta.icon}`"
+                <i :class="iconClassName(item.meta.icon)"
                    v-if="item.meta.icon"></i>
                 <span slot="title"
                       v-if="item.name">{{item.name}}</span>
@@ -73,6 +73,14 @@ export default {
         },
         isExternalLink(routePath) {
             return isExternal(routePath);
+        },
+        iconClassName(icon) {
+            if (icon && !/^(el\-icon|ams-icon).+/.test(icon)) {
+                // !!!!! 废弃提示 !!!!!
+                console.warn('路由icon的简写已在ams@0.15.11+废弃，请使用 el-icon-iconName 的完整类名替代，如：  \nmeta: {icon: "el-icon-menu"}');
+                return `el-icon-${icon}`;
+            }
+            return icon;
         }
     }
 };

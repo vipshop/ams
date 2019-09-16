@@ -23,10 +23,14 @@ export default {
         };
     },
     props: {
-        blockName: String
+        blockName: String,
+        onlineDemo: String
     },
     methods: {
-        toggleDemoCofig(){
+        toggleDemoCofig(e){
+            if (e.target.className === 'el-link--inner') {
+                return
+            }
             this.showConfig = !this.showConfig
         }
     }

@@ -57,7 +57,7 @@ module.exports = {
                 loader: 'url-loader',
                 query: {
                     limit: 10000,
-                    name: path.posix.join('static', '[name].[hash:7].[ext]')
+                    name: path.posix.join('./lib/theme-default', '[name].[hash:7].[ext]')
                 }
             },
             {
@@ -65,7 +65,7 @@ module.exports = {
                 loader: 'url-loader',
                 query: {
                     limit: 10000,
-                    name: path.posix.join('static', '[name].[hash:7].[ext]')
+                    name: path.posix.join('./lib/theme-default', '[name].[hash:7].[ext]')
                 }
             },
             {
@@ -73,7 +73,7 @@ module.exports = {
                 loader: 'url-loader',
                 query: {
                     limit: 10000,
-                    name: path.posix.join('static', '[name].[hash:7].[ext]')
+                    name: path.posix.join('./lib/theme-default', '[name].[hash:7].[ext]')
                 }
             }
         ]
@@ -92,7 +92,19 @@ module.exports = {
                         './lib/ams.js'
                     ),
                     destination: './dist/ams@' + pkg.version + '.js'
-                }]
+                }, {
+                    source: path.join(
+                        process.cwd(),
+                        './lib/theme-default'
+                    ),
+                    destination: './dist/theme-default'
+                }],
+                archive: [ // 将dist文件夹打包成ams.zip并放在dist目录
+                    {
+                        source: './dist/',
+                        destination: './dist/ams.zip'
+                    }
+                ]
             }
         }),
         // new BundleAnalyzerPlugin()

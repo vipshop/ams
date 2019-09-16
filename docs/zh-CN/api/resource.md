@@ -58,9 +58,10 @@ ams.resource('demo-resource', {
 | ctx | string | 否 | field的状态，可取值：`eidt`、`view`。默认是当前field所在的`block`的`ctx`配置决定
 | label | string | 否 | 标签文本
 | hidden | boolean | 否 | 是否隐藏field，默认为false
-| show | string、object、function | 否 | 联动显示条件，string为目标field名、如`a.b`，object为`{name:'a.b', value:'2'}`，function返回`false`则隐藏
-| info | string | 否 | 提示信息tooltip，会显示在form的`label`旁
-| props | object | 否 | 补充属性，用于添加DOM属性或者透传至element组件，如`disabled`
+| show | string、object、function | 否 | 联动显示条件，string为目标field名、如'a.b'，object为{name:'a.b', value:'2'}，function返回false则隐藏
+| info | string | 否 | 提示信息tooltip，会显示的form的label旁
+| props | object | 否 | 补充属性，用于添加DOM属性或者透传至element组件，如disabled
+| on | object | 否 | 事件绑定，将会把事件透传至element组件，如click
 | rules | array | 否 | 校验规则，详见[async-validator](https://github.com/yiminghe/async-validator)
 | default | any | 否 | 默认值
 | get | function | 否 | get函数，编辑状态下生效（`ctx: 'eidt'`）

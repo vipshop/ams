@@ -34,7 +34,7 @@
             border-radius: 25px;
             height: 50px;
             line-height: 50px;
-            min-width: 130px;
+            min-width: 150px;
             box-sizing: border-box;
             color: $color;
             display: inline-block;
@@ -43,13 +43,31 @@
             text-decoration: none;
             transition: all 0.15s ease;
             margin:0 10px;
+            &.gray{
+                background-color: #f6f6f6;
+                color: #4f5959;
+                border-color: #f6f6f6;
+            }
+            &.has-icon{
+                position: relative;
+                text-indent: 1.4em;
+                svg {
+                    position: absolute;
+                    left: 0.4em;
+                    top: 0.4em;
+                    width: 2em;
+                }
+            }
             &:hover {
                 text-decoration: none !important;
                 border-color: $alpha-color;
                 color: $alpha-color;
             }
         }
-
+        iframe{
+            vertical-align: middle;
+            margin: 0 10px;
+        }
         .start {
             background-color: $color;
             color: #fff;

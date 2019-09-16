@@ -21,7 +21,7 @@ export const config = {
                             name: 'subBlock',
                             block: 'subBlock',
                             meta: {
-                                icon: 'menu'
+                                icon: 'el-icon-menu'
                             }
                         }
                     ]

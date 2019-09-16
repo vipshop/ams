@@ -117,6 +117,19 @@ export default {
                         successCode: 200,
                         options: ['唯品会', '天猫', '淘宝', '京东', '拼多多']
                     }
+                },
+                testTag7: {
+                    type: 'tag',
+                    label: '隐藏标签添加按钮',
+                    props: {
+                        button: false,
+                        closable: true
+                    },
+                    on: {
+                        close() {
+                            alert('点击了关闭');
+                        }
+                    }
                 }
             }
         }
@@ -131,6 +144,7 @@ export default {
                 testTag: [{ id: 2002, name: 'aaaa.ccc.name', subName: '分类一' }],
                 testTag2: [{ id: 2002, name: 'aaaa.ccc.name', subName: '分类一' }],
                 testTag3: ['前端'],
+                testTag7: ['前端', 'java', 'css']
             },
             operations: {
                 create: {

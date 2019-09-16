@@ -37,7 +37,6 @@ ams.block('list', {
         testInputnumber: true,
         testDatetime: true
     },
-
     fields: {
         // id: false,
         precent: false,
@@ -136,7 +135,11 @@ ams.block('list', {
             this.$refs.amsTable.clearFilter();
         }
     },
-
+    data: {
+        pageSize: 20,
+        // 定义分页数
+        pageSizes: [10, 20]
+    },
     events: {
         init: '@list',
         edit: '@routerPush:/list/edit',

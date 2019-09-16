@@ -117,7 +117,8 @@ export const defaultFieldConfig = {
     headimage: {
         props: {
             accept: 'image/*',
-            action: ''
+            action: '',
+            'show-file-list': false
         },
         get,
         set,
@@ -128,7 +129,8 @@ export const defaultFieldConfig = {
         props: {
             accept: 'image/*',
             action: '',
-            fit: 'cover'
+            fit: 'cover',
+            'show-file-list': false
         },
         get,
         set,

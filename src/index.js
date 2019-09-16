@@ -1,6 +1,7 @@
 // css reset
 import 'normalize.css/normalize.css';
 import './styles/index.scss';
+import './theme-default/index.scss';
 
 import ams from './ams';
 import mixins from './ams/mixins';
@@ -70,7 +71,7 @@ import field from './operations/field';
 import dropdown from './operations/dropdown';
 
 // 版本号
-ams.version = '0.15.6';
+ams.version = '0.15.11';
 // 挂载到ams上
 ams.mixins = mixins;
 ams.utils = utils;

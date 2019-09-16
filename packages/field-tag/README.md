@@ -159,6 +159,9 @@ testTag: {
 | hidden | boolean | 否 | 是否隐藏field | `false`|
 | rules | array | 否 | 校验规则，详见[async-validator](https://github.com/yiminghe/async-validator) | - |
 | collapseLimit | number | 否 | 展示状态下，最多显示的标签个数，超出隐藏 | - |
+| on | object | - | 事件绑定 | - |
+| on.click | function | 否 | 点击 Tag 时触发的事件 | - |
+| on.close | function | 否 | 关闭 Tag 时触发的事件 | - |
 | props | object | - | 补充属性 | - |
 | props.action | string | 否 | 标签数据接口地址（优先级高于`options`） | - |
 | props.options | array | 否 | 标签静态数据接口地址 | - |
@@ -166,7 +169,7 @@ testTag: {
 | props.successCode | number | 否 | 接口请求成功code | 和resource的全局配置里的`api` `successCode` 一致 |
 | props.withCredentials | boolean | 否 | 接口请求是否携带cookie | 和resource的全局配置里的`api` `withCredentials` 一致 |
 | props.placeholder | string | 否 | 输入框的`placeholder`配置 | `请输入...` |
-| props.button | string | 否 | 添加按钮的文案配置 | `+ 添加` |
+| props.button | string 或者 boolean | 否 | 如果是`string`类型，代表添加按钮的文案配置；如果是`boolean`类型，值为false代表隐藏该按钮 | `+ 添加` |
 | props.size | string | 否 | 尺寸，可取值：medium / small / mini | -  |
 | props.closable | boolean | 否 | 编辑状态下，标签是否可关闭 | `false` |
 | props.template | string | 否 | 标签显示的内容模板，语法和vue的模板语法类似，比如 `{{ name }} - {{ subName }} - {{ id }}` （其中`name`、`subName`和`id`是数据结构里的字段）| 默认只展示`name`字段 |

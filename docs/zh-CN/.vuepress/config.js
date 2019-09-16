@@ -24,7 +24,7 @@ module.exports = {
       { text: '区块', link: '/block/' },
       { text: '市场', link: '/market/' },
       {
-        text: '0.14.0',
+        text: '0.15.x',
         items: [
           {
             text: '更新日志',
@@ -35,7 +35,8 @@ module.exports = {
             link: '/version/VERSION'
           }
         ]
-      }
+      },
+      { text: '仓库', link: 'https://github.com/vipshop/ams' }
     ],
     sidebar: {
       '/api/': [
@@ -46,6 +47,7 @@ module.exports = {
             '',
             'resource',
             'block',
+            'icon',
             'demo'
           ]
         },

@@ -3,7 +3,7 @@
          class="ams-block-collapse"
          :style="block.style">
         <el-collapse v-model="data.active" v-on="on" :accordion="block.props.accordion || false">
-            <template v-for="(option, index) in options">
+            <template v-for="option in options">
                     <el-collapse-item :key="option.name" :name="option.name">
 
                         <template slot="title">

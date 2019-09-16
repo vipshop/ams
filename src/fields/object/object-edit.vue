@@ -6,6 +6,8 @@
                 <el-form-item v-if="typeof fieldLayout === 'string'"
                               :label="field.fields[key].label"
                               :key="key"
+                              :class="field.fields[key].props && field.fields[key].props.inline ? 'el-form-item-inline' : ''"
+                              :style="`width: ${field.fields[key].props && field.fields[key].props.formItemWidth}`"
                               :label-width="field.fields[key].labelWidth"
                               :rules="field.fields[key].rules"
                               class="ams-array-item"
@@ -21,12 +23,7 @@
                         </el-tooltip>
                         {{field.fields[key].label}}
                     </template>
-                    <component :is="`ams-field-${field.fields[key].type}-${field.fields[key].ctx}`"
-                               :field="getField(field.fields[key], value)"
-                               :value="value[key]"
-                               :name="name"
-                               :path="`${path}.${key}`"
-                               :class="`ams-field ams-field-${field.fields[key].type}-${field.fields[key].ctx}`" />
+                    <field :field="getField(field.fields[key], value)" :value="value[key]" :name="name" :path="`${path}.${key}`"/>
                     <div class="ams-form-item-desc"
             v-if="field.fields[key].desc && field.fields[key].ctx === 'edit'"
             v-html="field.fields[key].desc"></div>
@@ -53,12 +50,7 @@
                                   :label-width="field.fields[fieldName].labelWidth"
                                   :rules="field.fields[fieldName].rules"
                                   :prop="field.fields[fieldName].type !== 'array' && field.fields[fieldName].type !== 'object' ? `${path}.${fieldName}` : ''">
-                        <component :is="`ams-field-${field.fields[fieldName].type}-${field.fields[fieldName].ctx}`"
-                                   :field="getField(field.fields[fieldName], value)"
-                                   :value="value[fieldName]"
-                                   :name="name"
-                                   :path="`${path}.${fieldName}`"
-                                   :class="`ams-field ams-field-${field.fields[fieldName].type}-${field.fields[fieldName].ctx}`" />
+                        <field :field="getField(field.fields[fieldName], value)" :value="value[fieldName]" :name="name" :path="`${path}.${fieldName}`"/>
                     </el-form-item>
                     <div class="ams-form-item-desc"
             v-if="field.fields[key].desc && field.fields[key].ctx === 'edit'"
@@ -71,8 +63,12 @@
 
 <script>
 import mixins from '../../ams/mixins';
+import field from '../../components/field';
 
 export default {
+    components: {
+        field
+    },
     mixins: [mixins.fieldEditArrayMixin, mixins.getShowState, mixins.getField],
     data() {
         return {

@@ -19,5 +19,14 @@ module.exports = {
         'vue/html-closing-bracket-spacing': 'off',
         'vue/mustache-interpolation-spacing': 'off',
         'function-paren-newline': 'off',
+        'vue/attributes-order': 'off',
+        'vue/html-closing-bracket-newline': 'off',
+        'vue/multiline-html-element-content-newline': 'off',
+        'implicit-arrow-linebreak': 'off',
+        'function-call-argument-newline': 'off',
+        'vue/require-default-prop': 'off'
+    },
+    env: {
+        'jest': true
     }
 };

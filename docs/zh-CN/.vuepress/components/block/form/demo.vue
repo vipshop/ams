@@ -9,6 +9,7 @@
         <div class="demo-card-config-btn" @click="toggleDemoCofig">
             <i :class="`el-icon-caret-${showConfig ? 'top': 'bottom'}`"></i>
              {{ showConfig ? '隐藏' : '显示'}}配置
+            <el-link v-if="onlineDemo" :href="onlineDemo" target="_blank" type="success">在线运行</el-link>
         </div>
     </el-card>
 </template>

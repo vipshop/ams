@@ -52,12 +52,7 @@
                                  v-bind="field.props">
                     <template slot-scope="scope">
                         <!--fields-->
-                        <component :is="`ams-field-${field.type}-${field.ctx}`"
-                                   :field="getField(field, scope.row)"
-                                   :value="scope.row[fieldName]"
-                                   :name="name"
-                                   :path="`list[${scope.$index}].${fieldName}`"
-                                   :class="`ams-field ams-field-${field.type}-${field.ctx}`" />
+                        <field :field="getField(field, scope.row)" :value="scope.row[fieldName]" :name="name" :path="`list[${scope.$index}].${fieldName}`"/>
                     </template>
                 </el-table-column>
                 <el-table-column label="操作"
@@ -96,6 +91,7 @@
                        @current-change="handleCurrentChange"
                        :current-page.sync="data.page"
                        :page-size.sync="data.pageSize"
+                       :page-sizes="data.pageSizes"
                        layout="total, prev, sizes, pager, next, jumper"
                        background
                        align="right"
@@ -110,8 +106,12 @@
 import mixins from '../../ams/mixins';
 import { defaultListFieldWidth } from '../../ams/configs/field';
 import { addEvent, getDomPos, getDomStyle, debounce } from '../../utils/index';
+import field from '../../components/field';
 
 export default {
+    components: {
+        field
+    },
     mixins: [mixins.blockMixin, mixins.getField],
     data() {
         return {
