@@ -121,6 +121,7 @@ const ams = {
         // 初始化列表参数
         if (this.configs.baseBlockType[block.type] === 'list') {
             block.data.pageSize = block.data.pageSize || block.pageSize || 20;
+            block.data.pageSizes = block.data.pageSizes || [10, 20, 30, 40, 50, 100];
             block.data.page = block.data.page || 1;
             block.data.total = block.data.total || 0;
             block.data.list = block.data.list || [];

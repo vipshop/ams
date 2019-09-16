@@ -22,6 +22,7 @@ ams.block('image', {
                     props: {
                         action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image',
                         'list-type': 'picture-card',
+                        'show-file-list': true,
                         'file-list': [{
                             'name': 'food.jpeg',
                             'url': 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
@@ -49,6 +50,7 @@ ams.block('image', {
                     successUrlKey: 'url',
                     props: {
                         action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image',
+                        'show-file-list': true,
                         'file-list': [{
                             'name': 'food.jpeg',
                             'url': 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
@@ -66,6 +68,7 @@ ams.block('image', {
                     props: {
                         action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image',
                         'list-type': 'picture-card',
+                        'show-file-list': true,
                         'file-list': [{
                             'name': 'food.jpeg',
                             'url': 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
@@ -83,6 +86,7 @@ ams.block('image', {
                     props: {
                         action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image',
                         'list-type': 'picture',
+                        'show-file-list': true,
                         'file-list': [{
                             'name': 'food.jpeg',
                             'url': 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'

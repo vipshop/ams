@@ -41,8 +41,7 @@ a, p a, li a, td a { color: #3eaf7c; }
     }
 }
 .page .content:not(.custom),.page .content__default:not(.custom),.page .page-edit, .page .page-nav{
-    max-width: 1000px;
-    box-sizing: border-box;
+    max-width: 1200px;
 }
 .demo { 
     font-family: 'Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif';
@@ -99,6 +98,11 @@ a, p a, li a, td a { color: #3eaf7c; }
     >.el-card__body{
         padding: 0;
     }
+    a.el-link {
+        &:hover{
+            text-decoration: none;
+        }
+    }
 }
 .demo-card-preview{
     padding: 20px;
@@ -143,5 +147,12 @@ a, p a, li a, td a { color: #3eaf7c; }
     &:hover{
         color: #46bd87;
         background: #f9f9f9;
+    }
+    .el-link{
+        float: right;
+        padding-right: 15px;
+        &.el-link--success{
+            color: #ccc;
+        }
     }
 }

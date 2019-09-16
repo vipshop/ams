@@ -5,7 +5,7 @@ Form: Form 表单
 
 ### 基础用法
 
-> 默认的编辑状态的表单。可以通过配置 `props['label-width]` 来设置整个 `form` 表单的 `label` 宽度。
+> 默认的编辑状态的表单。可以通过配置 `props['label-width]` 来设置整个 `form` 表单的 `label` 宽度，比如 `props['label-width]: '100px'`。
 
 <ClientOnly>
 <block-form-demo blockName="formEditAll"/>
@@ -29,7 +29,7 @@ Form: Form 表单
 
 ### 把表单的某几项显示在同一行
 
-> 通过`layout`来配置某几个field显示在同一行
+> 通过 `field.props.inline: true` 来配置该field显示占位，如果两个相邻的field都配置 `inline: true`，那么这两个field就会在同一行显示。另外，还可以通过 `field.props.formItemWidth: '200px'` 配置来控制行内field的显示宽度。
 
 <ClientOnly>
 <block-form-demo blockName="formLayout"/>
@@ -37,7 +37,7 @@ Form: Form 表单
 
 ### 行内表单
 
-> 当垂直方向空间受限且表单较简单时，可以在一行内放置表单。这种是整个表单显示在同一行，直到一行放不下才会换行。
+> 当垂直方向空间受限且表单较简单时，可以在一行内放置表单。通过 `props.inline: true` 配置来实现。注意：这种是整个表单显示在同一行，直到一行放不下才会换行。
 
 <ClientOnly>
 <block-form-demo blockName="formInline"/>

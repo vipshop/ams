@@ -2,6 +2,7 @@
     <component v-if="ready"
                v-bind="block.props"
                v-on="on"
+               ref="amsComponent"
                :is="block.options.is || 'div'"
                class="ams-block-component"
                :style="block.style" >

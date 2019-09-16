@@ -25,7 +25,7 @@
                     :class="`el-upload-list__item ${imageUrl === item.url ? 'is-success' : ''}`"
                     v-for="(item, index) in field.props['default-image-list']"
                     :key="index"
-                    @click="previewUrl = item.url"
+                    @click="localValue ? localValue = item.url : previewUrl = item.url"
                     :title="item.name">
                     <img :src="item.url" :alt="item.name" class="el-upload-list__item-thumbnail">
                     <span class="el-upload-list__item-name">{{item.name}}</span>
@@ -61,7 +61,6 @@ export default {
                 }
 
                 let { maxSizeInKB, imgMaxWidth, imgMaxHeight, imgMinWidth, imgMinHeight, imgWidth, imgHeight } = this.field.check;
-
                 if (maxSizeInKB && (file.size / 1024) > maxSizeInKB) {
                     this.$message.error('上传图片大小不能超过 ' + (maxSizeInKB / 1024).toFixed(2) + 'MB!');
                     return reject(); // eslint-disable-line prefer-promise-reject-errors

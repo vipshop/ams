@@ -106,7 +106,7 @@ export default {
     .el-button {
         position: absolute;
         z-index: 1;
-        margin: 0;
+        // margin: 0;
         top: 6px;
         // margin-top: -14px;
         &:nth-child(1) {

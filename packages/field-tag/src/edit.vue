@@ -58,7 +58,7 @@ export default {
     },
     computed: {
         showAddButton: function() {
-            if (this.field.props['multiple-limit'] <= 0 || typeof this.field.props['multiple-limit'] !== 'number' || this.localValue && this.localValue.length < this.field.props['multiple-limit']) {
+            if (this.field.props.button && (this.field.props['multiple-limit'] <= 0 || typeof this.field.props['multiple-limit'] !== 'number' || this.localValue && this.localValue.length < this.field.props['multiple-limit'])) {
                 return true;
             }
             return false;

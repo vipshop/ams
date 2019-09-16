@@ -6,7 +6,7 @@ Router: Router 导航路由
 ### 基础用法
 
 <ClientOnly>
-<block-router-demo blockName="defaultRouter"/>
+<block-router-demo blockName="defaultRouter" onlineDemo="https://codepen.io/w3cmark/pen/mdbLaaw"/>
 </ClientOnly>
 
 ### slotBlocks 配置
@@ -16,7 +16,7 @@ Router: Router 导航路由
 配置子block的slot为`menuTop`，可以插入在菜单头部
 
 <ClientOnly>
-<block-router-demo blockName="menuTopRouter"/>
+<block-router-demo blockName="menuTopRouter" onlineDemo="https://codepen.io/w3cmark/pen/rNBvooE"/>
 </ClientOnly>
 
 #### 菜单底部slot block
@@ -24,7 +24,7 @@ Router: Router 导航路由
 配置子block的slot为`menuBottom`，可以插入在菜单底部
 
 <ClientOnly>
-<block-router-demo blockName="menuBottomRouter"/>
+<block-router-demo blockName="menuBottomRouter" onlineDemo="https://codepen.io/w3cmark/pen/mdbLavw"/>
 </ClientOnly>
 
 #### 导航的位置slot block
@@ -32,13 +32,7 @@ Router: Router 导航路由
 配置子block的slot为`nav`，可以插入在导航的位置。比如下面例子插入了两个操作按钮“反馈”和“帮助”。
 
 <ClientOnly>
-<block-router-demo blockName="navRouter"/>
-</ClientOnly>
-
-
-### 在线实验室
-<ClientOnly>
-<ams-config name="router" type="block"/>
+<block-router-demo blockName="navRouter" onlineDemo="https://codepen.io/w3cmark/pen/KKPRbJr"/>
 </ClientOnly>
 
 ### 结构

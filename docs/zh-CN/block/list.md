@@ -11,6 +11,14 @@ List: List 列表
 <block-list-demo blockName="defaultList"/>
 </ClientOnly>
 
+### 空数据时显示的文本
+
+默认显示 `暂无数据`，可以通过 `props['empty-text']` 配置
+
+<ClientOnly>
+<block-list-demo blockName="emptyList" onlineDemo="https://codepen.io/w3cmark/pen/PoYezzY"/>
+</ClientOnly>
+
 ### 索引行号<Badge text="0.9.1+"/>
 
 通过设置`props.type: 'index'` 可以实现在每行显示索引行号。
@@ -89,10 +97,18 @@ List: List 列表
 
 ### 编辑状态的列表
 
-+ 支持字段之间的联动：某个字段的状态根据另一个字段的取值发生变化（比如下面demo的`条件`字段会根据`对比`字段发生变化）
++ 支持字段之间的联动（设置`field.changeConfig`）：某个字段的状态根据另一个字段的取值发生变化（比如下面demo的`条件`字段会根据`对比`字段发生变化）
 
 <ClientOnly>
 <block-list-demo blockName="editList"/>
+</ClientOnly>
+
+### 在当前列表编辑某些字段
+
++ 可以`field.changeConfig`实现修改某个字段的 `编辑/展示` 状态，从而实现在当前列表编辑该字段的值
+
+<ClientOnly>
+<block-list-demo blockName="editList2"/>
 </ClientOnly>
 
 ### 在线实验室

@@ -52,5 +52,5 @@ iframeBlock: {
 
 ### 底层是否有支持React/Angular的计划？
 :::tip
-目前AMS底层以Vue为主，考虑到即将发布的`Vue3.0`提供的`Function-based API`跟`AMS`的action思维结合的更好，考虑会优先支持`Vue3.0` +`typescript`，其他框架如React和Augular看用户使用规模和市场需求再做计划
+目前AMS底层以Vue为主，考虑到即将发布的`Vue3.0`提供的`Function-based API`跟`AMS`的action思维结合的更好，考虑会优先支持Vue3.0+typescript，其他框架如React和Augular看用户使用规模和市场需求再做计划
 :::

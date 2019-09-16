@@ -17,7 +17,7 @@ ams.block('router', {
                 block: 'index',
                 // redirect: '/list',
                 meta: {
-                    icon: 'menu'
+                    icon: 'el-icon-menu'
                 }
             },
             {
@@ -51,7 +51,7 @@ ams.block('router', {
                 name: '字段示例',
                 path: 'cases-field',
                 meta: {
-                    icon: 'view',
+                    icon: 'el-icon-view',
                     noRedirect: true
                 },
                 children: [
@@ -116,7 +116,7 @@ ams.block('router', {
                 name: '区块示例',
                 path: 'cases-block',
                 meta: {
-                    icon: 'view',
+                    icon: 'el-icon-view',
                     noRedirect: true
                 },
                 children: [
@@ -236,7 +236,7 @@ ams.block('router', {
                 name: '场景示例',
                 path: 'cases-sence',
                 meta: {
-                    icon: 'video-camera-solid',
+                    icon: 'el-icon-video-camera-solid',
                     noRedirect: true
                 },
                 children: [
@@ -325,7 +325,7 @@ ams.block('router', {
             {
                 name: '外链',
                 meta: {
-                    icon: 'star-off'
+                    icon: 'el-icon-star-off'
                 },
                 path: 'https://vipshop.github.io/ams/',
                 target: '_self'
@@ -334,7 +334,7 @@ ams.block('router', {
                 name: '跳404',
                 redirect: '/404',
                 meta: {
-                    icon: 'error'
+                    icon: 'el-icon-error'
                 }
             },
             {

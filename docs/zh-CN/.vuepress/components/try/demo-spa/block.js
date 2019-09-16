@@ -417,7 +417,6 @@ export default {
                         path: '',
                         name: '首页',
                         meta: {
-                            icon: '',
                             hasMenu: true,
                             hidden: false,
                             noRedirect: false
@@ -425,25 +424,25 @@ export default {
                         block: 'demoBlockList4'
                     }]
                 },
-                "blocks": {
+                blocks: {
                     demoBlockList4: {
                         pageSize: 20,
-                        "type": "list",
-                        "ctx": "view",
-                        "resource": "demoResource",
-                        "events": {
-                            "init": "@list",
-                            "removeItem": "@confirm:确认删除吗? @deleteAction @delete init",
-                            "editItem": "@adminEditDialog.show",
-                            "addItem": "@adminAddDialog.show"
+                        type: "list",
+                        ctx: "view",
+                        resource: "demoResource",
+                        events: {
+                            init: "@list",
+                            removeItem: "@confirm:确认删除吗? @deleteAction @delete init",
+                            editItem: "@adminEditDialog.show",
+                            addItem: "@adminAddDialog.show"
                         },
-                        "actions": {
+                        actions: {
                             deleteAction({ id }) {
                                 console.log('删除id：', id)
                             }
                         },
-                        "sorts": {
-                            "id": true
+                        sorts: {
+                            id: true
                         },
                         "operations": {
                             "id": {
@@ -487,7 +486,7 @@ export default {
                             }
                         }
                     },
-                    "adminEditDialog": {
+                    adminEditDialog: {
                         "type": "dialog",
                         "data": {
                             "title": "编辑",

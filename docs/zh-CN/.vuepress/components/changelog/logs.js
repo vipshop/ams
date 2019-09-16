@@ -1,17 +1,41 @@
 // 更新日志
 export default [
     {
-        version: '0.14.x',
+        version: '0.15.11',
+        date: '2019.09.12',
+        log: [
+            'feat: 拓展图标icon',
+            'feat: field-file、field-video、field-audio支持限制文件大小',
+            'feat: block-list添加page-sizes分页数控制属性',
+            'feat：更改field使用的defaultFieldConfig路径，用于扩展自定义组件的默认配置',
+            'feat：transfer支持slots，配置项为left-footer | right-footer',
+            'feat：block和field的on支持异步函数',
+            'feat: select的options支持自定义&例子',
+            'feat: block-list接口添加rightTop/leftBottom/rightBottom的field数据',
+            'feat: block-list操作项支持宽度',
+            'feat: collapse添加lazy属性',
+            'fix: 去掉router配置icon的简写方式，统一使用icon完整样式名',
+            'fix: field的changeConfig无法修改ctx等属性的问题',
+            'fix: field-object配置的field不支持inline:true同一行展示',
+            'fix: field-image在设置了默认图后无法从默认列表里选择图片',
+            'fix：select-remote同类型能匹配赋值，value返回值支持string和number',
+            'fix：transfer的v-for时无配置key',
+            'fix：解决transfer无配置slots报错'
+        ]
+    },
+    {
+        version: '0.14.1',
         date: '2019.08.29',
         log: [
             'feat: field-image 在 view 状态增加大图预览',
             'feat: block-list 增加前端分页 pagination: "simulate"',
             'fix: field-image 默认图片列表内容比较多时加上滚动条',
-            'fix: block-form 在校验失败时弹出失败信息'
+            'fix: block-form 在校验失败时弹出失败信息',
+            'fix：修复cascader在单选时的格式处理问题'
         ]
     },
     {
-        version: '0.13.0',
+        version: '0.13.2',
         date: '2019.08.21',
         log: [
             'feat: field-image、field-headimage、field-file 增加默认上传地址；',
@@ -21,7 +45,7 @@ export default [
         ]
     },
     {
-        version: '0.12.x',
+        version: '0.12.1',
         date: '2019.08.16',
         log: [
             'feat: block-list新增三个位置的 operations-slot（rightTop、leftBottom、rightBottom）',
@@ -40,7 +64,7 @@ export default [
         ]
     },
     {
-        version: '0.10.x',
+        version: '0.10.6',
         date: '2019.08.08',
         log: [
             'feat: 增加 block-carousel 组件',
@@ -51,7 +75,7 @@ export default [
         ]
     },
     {
-        version: '0.9.x',
+        version: '0.9.1',
         date: '2019.08.01',
         log: [
             'feat: 增加支持指定某几个 field 变成行内表单，并且支持设置宽度',
@@ -63,7 +87,7 @@ export default [
         ]
     },
     {
-        version: '0.8.x',
+        version: '0.8.11',
         date: '2019.07.22',
         log: [
             'feat: 远程搜索添加 isInitRemoteOptions 配置参数，默认为 true',
@@ -79,7 +103,7 @@ export default [
         ]
     },
     {
-        version: '0.7.x',
+        version: '0.7.19',
         date: '2019.06.13',
         log: [
             'feat: 支持 Dropdown 下拉菜单区块',
@@ -118,7 +142,7 @@ export default [
         ]
     },
     {
-        version: '0.6.x',
+        version: '0.6.12',
         date: '2019.04.16',
         log: [
             'feat: 更新AMS_CONFIG可视化配置文件',
@@ -141,7 +165,7 @@ export default [
         ]
     },
     {
-        version: '0.5.x',
+        version: '0.5.33',
         date: '2019.04.02',
         log: [
             'feat: 多选类view状态统一改成纯文本方式',
@@ -163,7 +187,7 @@ export default [
         ]
     },
     {
-        version: '0.4.x',
+        version: '0.4.13',
         date: '2019.02.05',
         log: [
             'feat: router菜单外链增加target配置，支持在本页打开',
@@ -182,7 +206,7 @@ export default [
         ]
     },
     {
-        version: '0.3.x',
+        version: '0.3.5',
         date: '2018.12.08',
         log: [
             'feat: fields不使用computed实现，方便运行时修改',
@@ -208,7 +232,7 @@ export default [
         ]
     },
     {
-        version: '0.2.x',
+        version: '0.2.1',
         date: '2018.11.09',
         log: [
             'feat: 规范化mixin、导出提供给自定义filed、block使用',
@@ -223,7 +247,7 @@ export default [
         ]
     },
     {
-        version: '0.1.x',
+        version: '0.1.11',
         date: '2018.10.15-10.19',
         log: [
             'feat: 基础block支持',

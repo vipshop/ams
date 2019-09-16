@@ -3,38 +3,18 @@ Select: Select 选择器
 ---
 # Select 选择器
 
-## 在线实验室
-<ClientOnly>
-<ams-config name="select" type="field"/>
-</ClientOnly>
+> 默认是多选，可以通过 `props['multiple']: false` 配置实现单选。
 
-## 示例预览
+### 基础用法
 
 <ClientOnly>
-<demo-list :type="'select'"></demo-list>
+<field-select-demo blockName="selectField1"/>
 </ClientOnly>
 
-## 示例代码
-```js
-select: {
-    type: 'select',
-    label: 'select多选',
-    props: {
-        options: {
-            a: '黄金糕',
-            b: '双皮奶',
-            c: '蚵仔煎',
-            d: '龙须面',
-            e: '北京烤鸭'
-        }
-    }
-}
-```
-
-## 传值
+### 传值
 String，如`"a,b,c"`
 
-## 远程搜索 
+### 远程搜索 
 
 可以通过BASE: 'SELECT_REMOTE' 让select具有远程搜索的能力，需要配置 `remoteConfig`，用户输入关键字时会调用remoteConfig.action，并携带当前关键字作为参数（参数名为配置的remoteConfig.queryKey）
 
@@ -53,7 +33,7 @@ String，如`"a,b,c"`
 - remoteConfig.transform：transform函数，可以定制options数据的组装过程，参数为 $field（当前field的vue实例）、 data（接口数据），返回值为组装好的options
 - remoteConfig.request：request函数（promise或者async函数），可以定制请求、用于一些需要动态请求参数的场景，参数为 $field（当前field的vue实例）、 query（关键字或者值）、isBackfill（是否是回填），返回值通过ams.request请求的完整res
 
-### 场景一：远程select、关键字搜索、最小化回填、options缓存
+#### 场景一：远程select、关键字搜索、最小化回填、options缓存
 选项值：
 
 isInitEmpty: false,（默认）
@@ -64,7 +44,7 @@ isLock: true,（默认）
 
 isMiniBackfill: true,（默认）
 
-### 场景二：远程checkbox或者radio、通过接口请求options、无关键字搜索、完整列表回填
+#### 场景二：远程checkbox或者radio、通过接口请求options、无关键字搜索、完整列表回填
 选项值：
 
 isInitEmpty: true,
@@ -129,5 +109,11 @@ select: {
     }
 }
 ```
+
+
+### 在线实验室
+<ClientOnly>
+<ams-config name="select" type="field"/>
+</ClientOnly>
 
 组件更多配置可参考Element：[Select 选择器](http://element-cn.eleme.io/#/zh-CN/component/select)中的Select Attributes

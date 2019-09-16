@@ -27,7 +27,7 @@ export default {
                     name: '首页',
                     block: 'formEditAll',
                     meta: {
-                        icon: 'menu'
+                        icon: 'el-icon-menu'
                     }
                 },
                 {
@@ -82,7 +82,7 @@ export default {
                     name: '首页',
                     block: 'listComponent',
                     meta: {
-                        icon: 'menu'
+                        icon: 'el-icon-menu'
                     }
                 }
             ]
@@ -119,14 +119,14 @@ export default {
                     name: '首页',
                     block: 'listComponent',
                     meta: {
-                        icon: 'menu'
+                        icon: 'el-icon-menu'
                     }
                 },
                 {
                     path: '/menu1',
                     name: '菜单一',
                     meta: {
-                        icon: 'user-solid'
+                        icon: 'el-icon-user-solid'
                     },
                     children: [{
                         name: "子菜单",
@@ -139,7 +139,7 @@ export default {
                     name: '菜单二',
                     block: 'listComponent',
                     meta: {
-                        icon: 'star-on'
+                        icon: 'el-icon-star-on'
                     }
                 },
                 {
@@ -147,7 +147,7 @@ export default {
                     name: '菜单三',
                     block: 'listComponent',
                     meta: {
-                        icon: 's-help'
+                        icon: 'el-icon-s-help'
                     }
                 }
             ]
@@ -186,7 +186,7 @@ export default {
                     name: '首页',
                     block: 'listComponent',
                     meta: {
-                        icon: 'menu'
+                        icon: 'el-icon-menu'
                     }
                 }
             ]

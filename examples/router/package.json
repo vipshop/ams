@@ -14,7 +14,6 @@
     "@ams-team/field-arraylist": "latest",
     "@ams-team/field-editor": "latest",
     "@ams-team/field-markdown": "latest",
-    "@ams-team/field-plan-date": "^0.2.0",
     "core-js": "^2.6.5",
     "element-ui": "^2.12.0",
     "normalize.css": "^8.0.1",

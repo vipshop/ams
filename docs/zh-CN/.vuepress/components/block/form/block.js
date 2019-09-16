@@ -116,20 +116,41 @@ export default {
                 text: {
                     label: '新文本1',
                     type: 'text',
-                    default: '我是resource里定义的默认值'
+                    default: '我是resource里定义的默认值',
+                    props: {
+                        inline: true
+                    }
                 },
                 text2: {
                     label: '新文本2',
                     type: 'text',
-                    dafault: '我是resource里定义的默认值'
+                    dafault: '我是resource里定义的默认值',
+                    props: {
+                        inline: true
+                    }
                 },
                 date: {
                     type: 'date',
                     label: '日期'
                 },
+                select: {
+                    type: 'select',
+                    label: '选项',
+                    props: {
+                        inline: true,
+                        options: {
+                            vip: '唯品会',
+                            jd: '京东'
+                        }
+                    }
+                },
                 password: {
                     type: 'password',
-                    label: '密码'
+                    label: '密码',
+                    props: {
+                        inline: true,
+                        formItemWidth: '60%',
+                    }
                 }
             }
         },
@@ -137,11 +158,11 @@ export default {
         data: {
             text2: '我是data里定义的默认值',
             date: 1539792000000
-        },
-        layout: {
-            text: ['text', 'text2']
-            // testDatetime: 'testDatetime'
         }
+        // layout: {
+        //     text: ['text', 'text2']
+        //     // testDatetime: 'testDatetime'
+        // }
     },
     formInline: {
         type: 'form',
