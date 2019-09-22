@@ -8,12 +8,12 @@ Title: Title 标题组件
 ### 基础用法
 只有主标题。
 <ClientOnly>
-<block-title-demo blockName="defaultTitle"/>
+<block-title-demo blockName="defaultTitle" onlineDemo="https://codepen.io/w3cmark/pen/pozZxKY"/>
 </ClientOnly>
 
 ### 带副标题
 <ClientOnly>
-<block-title-demo blockName="subTitle"/>
+<block-title-demo blockName="subTitle" onlineDemo="https://codepen.io/w3cmark/pen/abojRjv"/>
 </ClientOnly>
 
 ### 在线实验室

@@ -8,7 +8,7 @@ Union: Union 联合
 ### 基础用法
 
 <ClientOnly>
-<field-union-demo blockName="unionField1"/>
+<field-union-demo blockName="unionField1" onlineDemo="https://codepen.io/w3cmark/pen/xxKJyRx"/>
 </ClientOnly>
 
 ### 在线实验室

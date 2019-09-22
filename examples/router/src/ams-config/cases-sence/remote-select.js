@@ -1,4 +1,5 @@
 import ams from '@ams-team/ams';
+import { prefix } from '@/utils';
 
 ams.block('remote-select', {
     resources: {
@@ -6,7 +7,7 @@ ams.block('remote-select', {
             api: {
                 successCode: 200,
                 // api前缀
-                prefix: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/',
+                prefix: prefix,
                 tags: 'tag'
             },
             key: 'id',
@@ -63,7 +64,7 @@ ams.block('remote-select', {
                     label: '远程selectEdit',
                     type: 'select',
                     remoteConfig: {
-                        action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/tag',
+                        action: `${prefix}tag`,
                         queryKey: 'requiredName',
                         labelKey: 'name',
                         params: {
@@ -95,7 +96,7 @@ ams.block('remote-select', {
                     label: '远程selectView',
                     type: 'select',
                     remoteConfig: {
-                        action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/tag',
+                        action: `${prefix}tag`,
                         queryKey: 'requiredName',
                         labelKey: 'name',
                     }
@@ -109,7 +110,7 @@ ams.block('remote-select', {
                         multiple: false
                     },
                     remoteConfig: {
-                        action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/tag',
+                        action: `${prefix}tag`,
                         queryKey: 'requiredName',
                         labelKey: 'name'
                     }
@@ -123,7 +124,7 @@ ams.block('remote-select', {
                         clearable: true
                     },
                     remoteConfig: {
-                        action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/tag',
+                        action: `${prefix}tag`,
                         queryKey: 'requiredName',
                         labelKey: 'name'
                     }
@@ -134,7 +135,7 @@ ams.block('remote-select', {
                     label: 'checkbox',
                     type: 'checkbox',
                     remoteConfig: {
-                        action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/tag',
+                        action: `${prefix}tag`,
                         queryKey: 'requiredName',
                         labelKey: 'name',
                         isInitEmpty: true,

@@ -1,11 +1,12 @@
 import ams from '@ams-team/ams';
+import { prefix } from '@/utils';
 
 ams.block('list-pagination', {
     type: 'list',
     ctx: 'view',
     resource: {
         api: {
-            prefix: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/',
+            prefix: prefix,
             list: 'list-pagination'
         },
         fields: {
@@ -46,6 +47,12 @@ ams.block('list-pagination', {
     pageSize: 10,
     props: {
         pagination: 'simulate' // 模拟分页
+    },
+    options: {
+        // 支持多选
+        multipleSelect: true,
+        // 列表高度自适应屏幕
+        // tableHeightFit: true
     },
     events: {
         init: '@list'

@@ -4,7 +4,7 @@
             <img class="logo"
                 src="https://h5rsc.vipstatic.com/ams/ams-logo.png">
             <div class="title">AMS</div>
-            <div class="sub-title">基于配置的管理后台解决方案</div>
+            <div class="sub-title">基于JSON配置来快速搭建管理后台前端页面的JavaScript框架</div>
             <div class="btns">
                 <a rel="noopener noreferrer"
                 class="start"

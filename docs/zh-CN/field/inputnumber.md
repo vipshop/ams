@@ -6,7 +6,7 @@ InputNumber: InputNumber 计数器
 ### 基础用法
 
 <ClientOnly>
-<field-inputnumber-demo blockName="inputnumberField1"/>
+<field-inputnumber-demo blockName="inputnumberField1" onlineDemo="https://codepen.io/w3cmark/pen/eYOjPzX"/>
 </ClientOnly>
 
 ### 在线实验室

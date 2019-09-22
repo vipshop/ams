@@ -9,4 +9,4 @@ Chart: Chart 图表
 </ClientOnly>
 
 ## 使用
-<<< @/fe/.vuepress/components/block/chart-bar/block.js
+<<< @/zh-CN/.vuepress/components/block/chart-bar/block.js

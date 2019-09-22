@@ -10,7 +10,7 @@ Grid: Grid 网格布局
 > 一行两列，列间距为0，是通过设置`style: {'grid-gap': '0'}`控制
 
 <ClientOnly>
-<block-grid-demo blockName="defaultGrid"/>
+<block-grid-demo blockName="defaultGrid" onlineDemo="https://codepen.io/w3cmark/pen/eYOjPWo"/>
 </ClientOnly>
 
 ### 指定列的内容为某种区块
@@ -18,7 +18,7 @@ Grid: Grid 网格布局
 > 一行两列，列间距20px，每一列是一个卡片类型的区块。
 
 <ClientOnly>
-<block-grid-demo blockName="cardCloumnGrid"/>
+<block-grid-demo blockName="cardCloumnGrid" onlineDemo="https://codepen.io/w3cmark/pen/JjPBmJd"/>
 </ClientOnly>
 
 ### 一行三列
@@ -26,7 +26,7 @@ Grid: Grid 网格布局
 > 这个三列默认是由它的子区块blocks个数
 
 <ClientOnly>
-<block-grid-demo blockName="grid3"/>
+<block-grid-demo blockName="grid3" onlineDemo="https://codepen.io/w3cmark/pen/RwbBegp"/>
 </ClientOnly>
 
 ### 一行两列，宽度不等分
@@ -34,7 +34,7 @@ Grid: Grid 网格布局
 > 第一列占三分之一，第二列占三分之二
 
 <ClientOnly>
-<block-grid-demo blockName="grid4"/>
+<block-grid-demo blockName="grid4" onlineDemo="https://codepen.io/w3cmark/pen/BaBPqZJ"/>
 </ClientOnly>
 
 ### 两行两列
@@ -42,11 +42,7 @@ Grid: Grid 网格布局
 > style配置里由两个参数可以设置行数（`grid-template-rows`）和列数(`grid-template-columns`)，然后每个网格里面继续使用更复杂的网格布局
 
 <ClientOnly>
-<block-grid-demo blockName="grid5"/>
+<block-grid-demo blockName="grid5" onlineDemo="https://codepen.io/w3cmark/pen/XWrBxgv"/>
 </ClientOnly>
 
-### 在线实验室
-<ClientOnly>
-<ams-config name="grid" type="block"/>
-</ClientOnly>
 

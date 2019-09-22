@@ -1,12 +1,13 @@
 import ams from '@ams-team/ams';
+import { prefix } from '@/utils';
 
 // http://localhost:9526/examples/router/mock/list.json
 
 ams.resource('table', {
     key: 'id',
     api: {
-        prefix: 'http://localhost:9526/examples/router/mock/',
-        list: 'table.json'
+        prefix: prefix,
+        list: 'table'
     },
     fields: {
         id: {

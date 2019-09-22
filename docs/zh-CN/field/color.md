@@ -8,7 +8,7 @@ Color: Color 颜色
 ### 基础用法
 
 <ClientOnly>
-<field-color-demo blockName="colorField1"/>
+<field-color-demo blockName="colorField1" onlineDemo="https://codepen.io/w3cmark/pen/oNvMPVv"/>
 </ClientOnly>
 
 ### 在线实验室

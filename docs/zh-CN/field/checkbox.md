@@ -7,7 +7,7 @@ title: Checkbox 多选框
 ### 基础用法
 
 <ClientOnly>
-<field-checkbox-demo blockName="checkboxField1"/>
+<field-checkbox-demo blockName="checkboxField1" onlineDemo="https://codepen.io/w3cmark/pen/bGbjmGo"/>
 </ClientOnly>
 
 ### 在线实验室

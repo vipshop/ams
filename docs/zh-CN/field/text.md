@@ -14,24 +14,24 @@ title: Text 文本
 ### 禁用状态
 
 <ClientOnly>
-<field-text-demo blockName="textField2"/>
+<field-text-demo blockName="textField2" onlineDemo="https://codepen.io/w3cmark/pen/ExYpeLO"/>
 </ClientOnly>
 
 ### 可清空
 
 <ClientOnly>
-<field-text-demo blockName="textField3"/>
+<field-text-demo blockName="textField3" onlineDemo="https://codepen.io/w3cmark/pen/ZEzjMqR"/>
 </ClientOnly>
 
 ### 带 icon 的输入框
 <ClientOnly>
-<field-text-demo blockName="textField4"/>
+<field-text-demo blockName="textField4" onlineDemo="https://codepen.io/w3cmark/pen/BaBPOGp"/>
 </ClientOnly>
 
 ### 带校验规则
 
 <ClientOnly>
-<field-text-demo blockName="textField5"/>
+<field-text-demo blockName="textField5" onlineDemo="https://codepen.io/w3cmark/pen/jONpvQa"/>
 </ClientOnly>
 
 ### 在线实验室

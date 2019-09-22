@@ -53,19 +53,20 @@ export interface Route {
   }
 }
 export interface RouterBlock {
-    type: 'router',
-    router: {
-      mode?: "hash" | "history" | "abstract",
-      base?: "string", // 更多选项参考：https://router.vuejs.org/zh/api/#linkexactactiveclass
-      showMenu?: true | false,   // 默认为true, false时隐藏所有路由菜单  0.8.6+支持
-      routes: Array<Route>,
-      defaultBreadcrumb: true // 默认为true，会把首个route作为默认首页加到所有面包屑，设置为false禁用此行为， 0.7.5+支持
-    },
-    data?: {
-      roles?: Array<string> // 当前用户权限角色，用户需要包含路由要求的roles权限才能看到对应菜单
-    },
-    on?: {
+  type: 'router',
+  router: {
+    mode?: 'hash' | 'history' | 'abstract',
+    base?: string, // 更多选项参考：https://router.vuejs.org/zh/api/#linkexactactiveclass
+    showMenu?: boolean,   // 默认为true, false时隐藏所有路由菜单  0.8.6+支持
+    routes: Array<Route>,
+    defaultBreadcrumb?: boolean, // 默认为true，会把首个route作为默认首页加到所有面包屑，设置为false禁用此行为， 0.7.5+支持
+    forcedRefresh?: boolean, // 默认为false，点击当前菜单（非外链）是否强制刷新渲染，0.15.12+支持
+  },
+  data?: {
+    roles?: Array<string> // 当前用户权限角色，用户需要包含路由要求的roles权限才能看到对应菜单
+  },
+  on?: {
     // 这里可以在生成router实例时注册事件，如beforeEach，详见 [ Router 实例方法 ](https://router.vuejs.org/zh/api/#router-%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95)
-    }
+  }
 }
 ```

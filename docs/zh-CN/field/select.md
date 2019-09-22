@@ -8,7 +8,7 @@ Select: Select 选择器
 ### 基础用法
 
 <ClientOnly>
-<field-select-demo blockName="selectField1"/>
+<field-select-demo blockName="selectField1" onlineDemo="https://codepen.io/w3cmark/pen/abojRbg"/>
 </ClientOnly>
 
 ### 传值

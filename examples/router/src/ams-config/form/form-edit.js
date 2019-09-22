@@ -63,7 +63,6 @@ ams.block('form-edit', {
             }
         },
     },
-
     layout: {
         testTime: ['testTime', 'testDatetime'],
         // testDatetime: 'testDatetime'
@@ -76,7 +75,14 @@ ams.block('form-edit', {
             }
         }
     },
-
+    on: {
+        'validate': function() {
+            console.log('validate');
+        },
+        'keyupEnter': function(args) {
+            console.log('keyup.enter.native', this, args);
+        }
+    },
     events: {
         init: '@read:2',
         submit: '@validate @update'
@@ -89,7 +95,6 @@ ams.block('form-edit', {
             console.log('fieldChange', arg);
         }
     },
-
     blocks: {
         title1: {
             type: 'title',

@@ -44,8 +44,7 @@
                                     align="center">
 
                         <!-- 自定义表头  S-->
-                        <template slot="header" slot-scope="scope">
-
+                        <template slot="header">
                             <SlotHeader :column="column" @handleCollapse="handleColumnCollapse" />
 
                         </template>
@@ -78,10 +77,8 @@
                                         align="center">
 
                                 <!-- 自定义表头  S-->
-                                <template slot="header" slot-scope="scope">
-
+                                <template slot="header">
                                     <SlotHeader :column="item" @handleCollapse="handleColumnCollapse" />
-
                                 </template>
 
                                 <!-- 表格内容 S-->

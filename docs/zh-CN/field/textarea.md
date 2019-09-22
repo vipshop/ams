@@ -8,13 +8,13 @@ Textarea: Textarea 文本框
 ### 基础用法
 
 <ClientOnly>
-<field-textarea-demo blockName="textareaField1"/>
+<field-textarea-demo blockName="textareaField1" onlineDemo="https://codepen.io/w3cmark/pen/mdbjGvP"/>
 </ClientOnly>
 
 ### 超出隐藏
 
 <ClientOnly>
-<field-textarea-demo blockName="textareaField2"/>
+<field-textarea-demo blockName="textareaField2" onlineDemo="https://codepen.io/w3cmark/pen/KKPBxJQ"/>
 </ClientOnly>
 
 ### 在线实验室

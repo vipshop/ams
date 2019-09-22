@@ -2,6 +2,7 @@ import Vue from 'vue';
 import ams from '../index';
 import { listStringHasValue, get, getByOrder, deepExtend } from '../../utils';
 import { getRouter } from './router';
+import Blank from '../../blocks/block/Blank';
 
 export default {
     data() {
@@ -110,6 +111,17 @@ export default {
         initRouter() {
             if (this.block.router) {
                 this.routerReady = false;
+                if (this.block.router && this.block.router.forcedRefresh) {
+                    // 增加一个空白且隐藏跳转路由用来开启点击当前菜单强制刷新，
+                    this.block.router.routes.unshift({
+                        path: 'amsblankpage',
+                        component: Blank,
+                        meta: {
+                            hidden: true
+                        }
+                    });
+                }
+
                 ams.$router = getRouter(
                     this.block.router
                 );

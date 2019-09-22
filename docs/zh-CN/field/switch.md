@@ -8,7 +8,7 @@ Switch: Switch 开关
 ### 基础用法
 
 <ClientOnly>
-<field-switch-demo blockName="switchField1"/>
+<field-switch-demo blockName="switchField1" onlineDemo="https://codepen.io/w3cmark/pen/rNBrZPq"/>
 </ClientOnly>
 
 ### 在线实验室

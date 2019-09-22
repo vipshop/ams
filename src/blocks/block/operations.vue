@@ -4,7 +4,7 @@
             <div class="el-form-item"
                  v-if="getShowState(operation, context)"
                  :key="operationKey">
-                <label v-if="operation.label && !/^(?:button|reset|icon)$/.test(operation.type)"
+                <label v-if="operation.label && !/^(?:button|reset|icon|text)$/.test(operation.type)"
                        class="el-form-item__label">{{operation.label}}</label>
                 <div class="el-form-item__content">
                     <component :is="'ams-operation-'+operation.type"

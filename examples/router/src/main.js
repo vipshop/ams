@@ -10,6 +10,7 @@ import locale from 'element-ui/lib/locale/lang/zh-CN'; // lang i18n
 import '@/styles/index.scss'; // global css
 
 // import calendar from '@ams-team/block-calendar';
+// import dragimage from '@ams-team/block-drag-image';
 import editor from '@ams-team/field-editor';
 import markdown from '@ams-team/field-markdown';
 import arraylist from '@ams-team/field-arraylist';

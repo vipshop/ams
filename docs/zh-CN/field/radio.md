@@ -6,7 +6,7 @@ Radio: Radio 单选框
 ### 基础用法
 
 <ClientOnly>
-<field-radio-demo blockName="radioField1"/>
+<field-radio-demo blockName="radioField1" onlineDemo="https://codepen.io/w3cmark/pen/xxKJyKo"/>
 </ClientOnly>
 
 ### 在线实验室

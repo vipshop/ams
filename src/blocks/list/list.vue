@@ -13,6 +13,7 @@
                         slot-name="rightTop"
                         class="right-operations"
                         @keyup.enter.native="handlerSearch"></ams-operations>
+        <div class="clearfix"></div>
 
         <ams-blocks :blocks="block.slotBlocks.tableTop" />
         <!-- 多选时的operations -->
@@ -35,7 +36,7 @@
                       highlight-current-row>
                 <el-table-column v-if="block.options.multipleSelect"
                                  type="selection"
-                                 width="40" />
+                                 width="45" />
                 <el-table-column v-if="block.props.type === 'index'"
                                  type="index"
                                  align="center" />

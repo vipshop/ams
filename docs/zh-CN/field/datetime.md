@@ -6,7 +6,7 @@ Datetime: Datetime 日期时间选择器
 ### 基础用法
 
 <ClientOnly>
-<field-datetime-demo blockName="datetimeField1"/>
+<field-datetime-demo blockName="datetimeField1" onlineDemo="https://codepen.io/w3cmark/pen/mdbjzbr"/>
 </ClientOnly>
 
 ### 在线实验室

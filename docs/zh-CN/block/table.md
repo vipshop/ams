@@ -7,7 +7,7 @@ Table: Table 表格
 
 ### 基础用法
 <ClientOnly>
-<block-table-demo blockName="defaultTable"/>
+<block-table-demo blockName="defaultTable" onlineDemo="https://codepen.io/w3cmark/pen/VwZBEQP"/>
 </ClientOnly>
 
 ### 结构

@@ -6,7 +6,7 @@ Progress: Progress 进度条
 ### 基础用法
 
 <ClientOnly>
-<field-progress-demo blockName="progressField1"/>
+<field-progress-demo blockName="progressField1" onlineDemo="https://codepen.io/w3cmark/pen/NWKBOry"/>
 </ClientOnly>
 
 ### 在线实验室

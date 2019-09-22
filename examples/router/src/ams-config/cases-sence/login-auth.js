@@ -1,4 +1,5 @@
 import ams from '@ams-team/ams';
+import { prefix } from '@/utils';
 
 ams.block('login-auth', {
     type: 'component',
@@ -8,12 +9,12 @@ ams.block('login-auth', {
     actions: {
         needlogin() {
             this.$ams.request({
-                url: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/needlogin'
+                url: `${prefix}needlogin`
             });
         },
         dosomething() {
             this.$ams.request({
-                url: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/dosomething'
+                url: `${prefix}noauthor`
             });
         },
         test() {

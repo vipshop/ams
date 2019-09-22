@@ -11,7 +11,7 @@ File: File 文件
 ### 基础用法
 
 <ClientOnly>
-<field-file-demo blockName="fileField1"/>
+<field-file-demo blockName="fileField1" onlineDemo="https://codepen.io/w3cmark/pen/BaBPqKw"/>
 </ClientOnly>
 
 ### 在线实验室

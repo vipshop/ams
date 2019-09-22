@@ -7,7 +7,7 @@
 在可以配置Icon的地方，直接通过设置类名为 `ams-icon-iconName` 来使用即可。为了避免和element-ui的icon冲突，AMS扩展的icon都会以 `ams-icon-` 前缀开头。例如：
 
 <ClientOnly>
-<api-icon-demo blockName="iconBlock1"/>
+<api-icon-demo blockName="iconBlock1" onlineDemo="https://codepen.io/w3cmark/pen/QWLBVag"/>
 </ClientOnly>
 
 ### 拓展图标集合

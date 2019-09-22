@@ -8,13 +8,13 @@ Component: Component 动态区块
 ### 基础用法
 一个 `img` 标签
 <ClientOnly>
-<block-component-demo blockName="defaultComponent"/>
+<block-component-demo blockName="defaultComponent" onlineDemo="https://codepen.io/w3cmark/pen/eYOjPrq"/>
 </ClientOnly>
 
 ### 插入TEXT和HTML
 注意：插入的 `HTML` 会在 `TEXT` 前面。
 <ClientOnly>
-<block-component-demo blockName="divComponent"/>
+<block-component-demo blockName="divComponent" onlineDemo="https://codepen.io/w3cmark/pen/abojRKv"/>
 </ClientOnly>
 
 ### HTML标签和elementUI组件标签组合
@@ -22,7 +22,7 @@ Component: Component 动态区块
 一个包含星星评分 `el-rate` 和操作按钮的 `div`。
 
 <ClientOnly>
-<block-component-demo blockName="divElComponent"/>
+<block-component-demo blockName="divElComponent" onlineDemo="https://codepen.io/w3cmark/pen/mdbjzKB"/>
 </ClientOnly>
 
 ### 在线实验室

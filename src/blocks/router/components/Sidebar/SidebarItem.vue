@@ -21,7 +21,7 @@
                 <app-link v-else
                           :to="resolvePath(child)"
                           :key="child.name">
-                    <el-menu-item :index="resolvePath(child).path">
+                    <el-menu-item :index="resolvePath(child).path" @click="clickItem(child)">
                         <i :class="iconClassName(child.meta.icon)"
                            v-if="child.meta.icon"></i>
                         <span slot="title"
@@ -32,7 +32,7 @@
         </el-submenu>
         <app-link :to="resolvePath(item)"
                   v-else>
-            <el-menu-item :index="resolvePath(item).path">
+            <el-menu-item :index="resolvePath(item).path" @click="clickItem(item)">
                 <i :class="iconClassName(item.meta.icon)"
                    v-if="item.meta.icon"></i>
                 <span slot="title"
@@ -59,6 +59,7 @@ export default {
             required: true
         }
     },
+    inject: ['$block'],
     methods: {
         resolvePath(item) {
             const to = {
@@ -69,6 +70,7 @@ export default {
                 return to;
             }
             to.path = item.redirect || item.meta.path;
+            to.replace = item.replace;
             return to;
         },
         isExternalLink(routePath) {
@@ -81,6 +83,17 @@ export default {
                 return `el-icon-${icon}`;
             }
             return icon;
+        },
+        clickItem(item) {
+            if (this.$block.block.router && !this.$block.block.router.forcedRefresh || item.meta.path !== this.$route.path || this.isExternalLink(item.path)) {
+                return;
+            }
+            this.$router.push({
+                path: '/amsblankpage',
+                query: {
+                    url: this.$route.fullPath
+                }
+            });
         }
     }
 };

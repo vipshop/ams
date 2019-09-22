@@ -53,11 +53,12 @@ export const defaultFieldConfig = {
 
     cascader: {
         props: {
-            checkStrictly: true,
             filterable: true,
+            clearable: true,
             props: {
                 expandTrigger: 'hover',
                 splitBy: '/',
+                checkStrictly: true
             }
         },
         get: getterCascader(getArray),
@@ -250,6 +251,7 @@ export const defaultFieldConfig = {
     },
     timerange: {
         props: {
+            type: 'timerange',
             'is-range': true,
             'start-placeholder': '开始时间',
             'end-placeholder': '结束时间'
