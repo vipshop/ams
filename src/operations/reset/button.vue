@@ -1,7 +1,7 @@
 <template>
     <el-tooltip :disabled="!tooltip"
                 v-bind="tooltip">
-        <el-button @click="reset"
+        <el-button @click.stop="reset"
                :style="operation.style"
                v-bind="operation.props"><template v-if="operation.label">{{operation.label}}</template></el-button>
     </el-tooltip>

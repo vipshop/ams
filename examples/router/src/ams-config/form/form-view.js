@@ -1,4 +1,5 @@
 import ams from '@ams-team/ams';
+import { prefix } from '@/utils';
 
 ams.block('form-view', {
     type: 'form',
@@ -35,7 +36,7 @@ ams.block('form-view', {
     actions: {
         loginAction() {
             this.$ams.request({
-                url: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/some-login-action'
+                url: `${prefix}some-login-action`
             });
         }
     }

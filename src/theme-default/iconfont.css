@@ -20,9 +20,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.el-button [class*=ams-icon-]+span, .el-link [class*=ams-icon-]+span {
-  margin-left: 5px;
-}
 
 .ams-icon-watcher:before {
   content: "\e60a";

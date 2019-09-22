@@ -1,0 +1,15 @@
+{
+    "name": "@ams-team/block-drag-image",
+    "version": "0.1.1",
+    "description": "",
+    "author": "eva.huang",
+    "main": "lib/block-drag-image.js",
+    "unpkg": "lib/block-drag-image.js",
+    "amsConfig": {
+        "externals": {},
+        "cdn": [],
+        "title": "drag-image",
+        "tags": "",
+        "publish": true
+    }
+}

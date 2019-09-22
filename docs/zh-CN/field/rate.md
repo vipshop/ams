@@ -8,7 +8,7 @@ Rate: Rate
 ### 基础用法
 
 <ClientOnly>
-<field-rate-demo blockName="rateField1"/>
+<field-rate-demo blockName="rateField1" onlineDemo="https://codepen.io/w3cmark/pen/QWLBVoO"/>
 </ClientOnly>
 
 ### 在线实验室

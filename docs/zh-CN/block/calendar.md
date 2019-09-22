@@ -17,7 +17,7 @@ npm i --save @ams-team/block-calendar
 
 
 ## 使用
-<<< @/fe/.vuepress/components/block/calendar/block.js
+<<< @/zh-CN/.vuepress/components/block/calendar/block.js
 
 
 ## 配置

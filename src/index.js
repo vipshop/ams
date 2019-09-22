@@ -18,6 +18,7 @@ import collapse from './blocks/collapse';
 import dialog from './blocks/dialog';
 import error from './blocks/error';
 import list from './blocks/list';
+import imagelist from './blocks/imagelist';
 import form from './blocks/form';
 import router from './blocks/router';
 import tabs from './blocks/tabs';
@@ -28,6 +29,7 @@ import dropdownBlock from './blocks/dropdown';
 import grid from './blocks/grid';
 import carousel from './blocks/carousel';
 import backtop from './blocks/backtop';
+import popover from './blocks/popover';
 
 // field 和文件夹一一对应
 import array from './fields/array';
@@ -65,13 +67,14 @@ import link from './fields/link';
 
 // operation
 import button from './operations/button';
+import operationsText from './operations/text';
 import reset from './operations/reset';
 import icon from './operations/icon';
 import field from './operations/field';
 import dropdown from './operations/dropdown';
 
 // 版本号
-ams.version = '0.15.11';
+ams.version = '0.17.4';
 // 挂载到ams上
 ams.mixins = mixins;
 ams.utils = utils;
@@ -106,6 +109,7 @@ ams.install = function(Vue) {
     ams.registerBlock(error);
     ams.registerBlock(form);
     ams.registerBlock(list);
+    ams.registerBlock(imagelist);
     ams.registerBlock(router);
     ams.registerBlock(tabs);
     ams.registerBlock(table);
@@ -115,6 +119,7 @@ ams.install = function(Vue) {
     ams.registerBlock(grid);
     ams.registerBlock(carousel);
     ams.registerBlock(backtop);
+    ams.registerBlock(popover);
 
     // fields
     ams.registerField(array);
@@ -151,6 +156,7 @@ ams.install = function(Vue) {
     ams.registerField(link);
     // operations
     ams.registerOperation(button);
+    ams.registerOperation(operationsText);
     ams.registerOperation(reset);
     ams.registerOperation(icon);
     ams.registerOperation(field);

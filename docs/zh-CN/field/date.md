@@ -6,7 +6,7 @@ Date: Date 日期选择器
 ### 基础用法
 
 <ClientOnly>
-<field-date-demo blockName="dateField1"/>
+<field-date-demo blockName="dateField1" onlineDemo="https://codepen.io/w3cmark/pen/ExYpeBJ"/>
 </ClientOnly>
 
 ### 在线实验室

@@ -15,7 +15,7 @@ Originfile: Originfile 原始文件上传
 ### 基础用法
 
 <ClientOnly>
-<field-originfile-demo blockName="originfileField1"/>
+<field-originfile-demo blockName="originfileField1" onlineDemo="https://codepen.io/w3cmark/pen/eYOjPZx"/>
 </ClientOnly>
 
 ### 在线实验室

@@ -5,8 +5,8 @@
         v-for="name in showBlocks"
         :key="name"
         :name="name"
-        :label="typeof block.options[name] === 'string' ? block.options[name] : block.options[name]['label']"
         v-bind="typeof block.options[name] !== 'string' && block.options[name]">
+        <span slot="label" v-html="typeof block.options[name] === 'string' ? block.options[name] : block.options[name]['label']"></span>
         <ams-block :name="name" />
       </el-tab-pane>
     </el-tabs>

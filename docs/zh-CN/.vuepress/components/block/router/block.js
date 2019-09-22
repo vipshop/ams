@@ -33,7 +33,10 @@ export default {
                 {
                     path: '/list',
                     name: '列表页',
-                    block: 'listComponent'
+                    block: 'listComponent',
+                    meta: {
+                        icon: 'ams-icon-watcher'
+                    }
                 }
             ]
         },

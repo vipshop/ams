@@ -6,7 +6,7 @@ Transfer: Transfer 穿梭框
 ### 基础用法
 
 <ClientOnly>
-<field-transfer-demo blockName="transferField1"/>
+<field-transfer-demo blockName="transferField1" onlineDemo="https://codepen.io/w3cmark/pen/pozZxvZ"/>
 </ClientOnly>
 
 ### 在线实验室

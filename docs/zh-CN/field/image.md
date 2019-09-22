@@ -8,7 +8,7 @@ Image: Image 图片
 ### 基础用法
 
 <ClientOnly>
-<field-image-demo blockName="imageField1"/>
+<field-image-demo blockName="imageField1" onlineDemo="https://codepen.io/w3cmark/pen/mdbjzJO"/>
 </ClientOnly>
 
 ### 大小、类型限制
@@ -16,7 +16,7 @@ Image: Image 图片
 可以通过 `field.check` 配置限制条件，支持 `maxSizeInKB`, `imgMaxWidth`, `imgMaxHeight`, `imgMinWidth`, `imgMinHeight`, `imgWidth`, `imgHeight`
 
 <ClientOnly>
-<field-image-demo blockName="imageField2"/>
+<field-image-demo blockName="imageField2" onlineDemo="https://codepen.io/w3cmark/pen/wvwxYar"/>
 </ClientOnly>
 
 ### 显示已上传列表
@@ -24,7 +24,7 @@ Image: Image 图片
 可以通过 `field.props['show-file-list']: true`、`field.props['file-list']` 和 `field.props['list-type']`配置，而`list-type` 可取值`text/picture/picture-card`，默认为 `text`
 
 <ClientOnly>
-<field-image-demo blockName="imageField3"/>
+<field-image-demo blockName="imageField3" onlineDemo="https://codepen.io/w3cmark/pen/MWgBPwP"/>
 </ClientOnly>
 
 ### 带默认图列表
@@ -32,7 +32,7 @@ Image: Image 图片
 可以通过 `field.props['default-image-list']` 配置，适用从默认列表里选择一张或者上传的场景。
 
 <ClientOnly>
-<field-image-demo blockName="imageField4"/>
+<field-image-demo blockName="imageField4" onlineDemo="https://codepen.io/w3cmark/pen/LYPBgpE"/>
 </ClientOnly>
 
 ### 大图预览
@@ -40,7 +40,7 @@ Image: Image 图片
 在 `ctx:view` 展示状态，点击图片可以预览本图的大图，如果通过 `field.props['preview-src-list']` 配置了预览列表，则预览该列表的所有大图。
 
 <ClientOnly>
-<field-image-demo blockName="imageField5"/>
+<field-image-demo blockName="imageField5" onlineDemo="https://codepen.io/w3cmark/pen/RwbBeWG"/>
 </ClientOnly>
 
 ### 在线实验室

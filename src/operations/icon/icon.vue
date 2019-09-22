@@ -3,7 +3,7 @@
                 :content="operation.label"
                 placement="bottom"
                 :disabled="!operation.label">
-        <i @click="emit"
+        <i @click.stop="emit"
            :class="`icon ${operation.icon}`"
            :style="operation.style"
            v-bind="operation.props"></i>

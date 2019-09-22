@@ -42,28 +42,28 @@ export interface ChartBlock {
 <block-chart-line-demo />
 </ClientOnly>
 
-<<< @/doc/.vuepress/components/block/chart-line/block.js
+<<< @/zh-CN/.vuepress/components/block/chart-line/block.js
 
 ## 柱状图表
 <ClientOnly>
 <block-chart-bar-demo />
 </ClientOnly>
 
-<<< @/doc/.vuepress/components/block/chart-bar/block.js
+<<< @/zh-CN/.vuepress/components/block/chart-bar/block.js
 
 ## 饼状图表
 <ClientOnly>
 <block-chart-pie-demo />
 </ClientOnly>
 
-<<< @/doc/.vuepress/components/block/chart-pie/block.js
+<<< @/zh-CN/.vuepress/components/block/chart-pie/block.js
 
 ## 漏斗图表
 <ClientOnly>
 <block-chart-funnel-demo />
 </ClientOnly>
 
-<<< @/doc/.vuepress/components/block/chart-funnel/block.js
+<<< @/zh-CN/.vuepress/components/block/chart-funnel/block.js
 
 ## 散点图表
 
@@ -71,14 +71,14 @@ export interface ChartBlock {
 <block-chart-scatter-demo />
 </ClientOnly>
 
-<<< @/doc/.vuepress/components/block/chart-scatter/block.js
+<<< @/zh-CN/.vuepress/components/block/chart-scatter/block.js
 
 ## 雷达图表
 <ClientOnly>
 <block-chart-radar-demo />
 </ClientOnly>
 
-<<< @/doc/.vuepress/components/block/chart-radar/block.js
+<<< @/zh-CN/.vuepress/components/block/chart-radar/block.js
 
 
 ## 配置

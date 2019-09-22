@@ -9,13 +9,13 @@ Password: Password 密码
 ### 基础用法
 
 <ClientOnly>
-<field-password-demo blockName="passwordField1"/>
+<field-password-demo blockName="passwordField1" onlineDemo="https://codepen.io/w3cmark/pen/YzKjOdX"/>
 </ClientOnly>
 
 ### 纯展示
 
 <ClientOnly>
-<field-password-demo blockName="passwordField2"/>
+<field-password-demo blockName="passwordField2" onlineDemo="https://codepen.io/w3cmark/pen/OJLworW"/>
 </ClientOnly>
 
 ### 在线实验室

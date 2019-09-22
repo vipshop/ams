@@ -1,1 +1,12 @@
 @import "./iconfont.css";
+
+.el-button [class*=ams-icon-]+span, .el-link [class*=ams-icon-]+span {
+    margin-left: 5px;
+}
+.el-menu-item [class^=ams-icon-] {
+    margin-right: 5px;
+    width: 24px;
+    text-align: center;
+    font-size: 18px;
+    vertical-align: middle;
+}

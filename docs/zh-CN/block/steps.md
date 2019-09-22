@@ -6,7 +6,7 @@ Steps: Steps 步骤条
 ### 基础用法
 
 <ClientOnly>
-<block-steps-demo blockName="defaultSteps"/>
+<block-steps-demo blockName="defaultSteps" onlineDemo="https://codepen.io/w3cmark/pen/PoYByxR"/>
 </ClientOnly>
 
 ### 在线实验室

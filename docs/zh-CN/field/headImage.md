@@ -6,7 +6,7 @@ HeadImage: HeadImage 头图
 ### 基础用法
 
 <ClientOnly>
-<field-headimage-demo blockName="headimageField1"/>
+<field-headimage-demo blockName="headimageField1" onlineDemo="https://codepen.io/w3cmark/pen/NWKBOxy"/>
 </ClientOnly>
 
 ### 在线实验室

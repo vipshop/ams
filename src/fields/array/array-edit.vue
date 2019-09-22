@@ -62,6 +62,14 @@ export default {
         };
     },
     inject: ['fieldChange'],
+    computed: {
+        maxLimit() {
+            return this.field.props && this.field.props.max;
+        },
+        minLimit() {
+            return this.field.props && this.field.props.min;
+        }
+    },
     methods: {
         emitChangeEvent() {
             this.$block.emitEvent('fieldChange', {
@@ -71,13 +79,21 @@ export default {
             });
         },
         addArrayField() {
-            console.log(this.$block.setFieldData(undefined, this.field.field, `${this.path}[${this.value.length}]`));
-            this.value.push(this.$block.setFieldData(undefined, this.field.field, `${this.path}[${this.value.length}]`));
-            this.emitChangeEvent();
+            if (this.maxLimit && this.value.length >= this.maxLimit) {
+                this.$alert('已超过最大限制长度');
+            } else {
+                // console.log(this.$block.setFieldData(undefined, this.field.field, `${this.path}[${this.value.length}]`));
+                this.value.push(this.$block.setFieldData(undefined, this.field.field, `${this.path}[${this.value.length}]`));
+                this.emitChangeEvent();
+            }
         },
         removeArrayField(index) {
-            this.value.splice(index, 1);
-            this.emitChangeEvent();
+            if (this.minLimit && this.value.length <= this.minLimit) {
+                this.$alert('不能低于最小限制长度');
+            } else {
+                this.value.splice(index, 1);
+                this.emitChangeEvent();
+            }
         },
         toggleOperation(index) {
             this.showOperationIndex = index === this.showOperationIndex ? -1 : index;

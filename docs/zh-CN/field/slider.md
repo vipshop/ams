@@ -6,7 +6,7 @@ Slider: Slider 滑块
 ### 基础用法
 
 <ClientOnly>
-<field-slider-demo blockName="sliderField1"/>
+<field-slider-demo blockName="sliderField1" onlineDemo="https://codepen.io/w3cmark/pen/qBWyJNE"/>
 </ClientOnly>
 
 ### 在线实验室

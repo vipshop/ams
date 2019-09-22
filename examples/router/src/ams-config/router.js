@@ -9,7 +9,8 @@ ams.block('router', {
     router: {
         // mode: 'history',
         // base: '/app/', // 要在history下才会发挥作用
-        // showMenu: 'false',   // 隐藏所有菜单配置项，默认为true
+        // showMenu: false,   // 隐藏所有菜单配置项，默认为true
+        // forcedRefresh: true, // 点击当前菜单（非外链）是否强制刷新渲染
         routes: [
             {
                 name: '首页',
@@ -25,7 +26,7 @@ ams.block('router', {
                 path: '404',
                 block: '404',
                 meta: {
-                    hasMenu: false,
+                    hasMenu: false, // 该路由下是否显示左边栏菜单
                     hidden: true
                 }
             },
@@ -109,6 +110,11 @@ ams.block('router', {
                         name: '链接',
                         path: 'link',
                         block: 'link'
+                    },
+                    {
+                        name: '级联选择',
+                        path: 'cascader',
+                        block: 'cascader'
                     }
                 ]
             },
@@ -152,6 +158,22 @@ ams.block('router', {
                         ]
                     },
                     {
+                        name: '图片列表',
+                        path: 'imagelist',
+                        children: [
+                            {
+                                name: '带图片',
+                                path: 'imagelist-images',
+                                block: 'imagelist'
+                            },
+                            {
+                                name: '纯文案',
+                                path: 'imagelist-texts',
+                                block: 'imagelist2'
+                            }
+                        ]
+                    },
+                    {
                         name: '表单',
                         path: 'form',
                         meta: {
@@ -180,6 +202,11 @@ ams.block('router', {
                     //     path: 'calendar',
                     //     block: 'calendar'
                     // },
+                    {
+                        name: '拖拽图片框',
+                        path: 'dragimage',
+                        block: 'dragimage'
+                    },
                     {
                         name: '折叠面板',
                         path: 'collapse',
@@ -229,6 +256,16 @@ ams.block('router', {
                         name: '标签页',
                         path: 'tabs',
                         block: 'tabs'
+                    },
+                    {
+                        name: '弹出框',
+                        path: 'popover',
+                        block: 'popover'
+                    },
+                    {
+                        name: 'bct定制进度条',
+                        path: 'bct-progress',
+                        block: 'bct-progress'
                     }
                 ]
             },

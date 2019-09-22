@@ -8,7 +8,7 @@ Time: Time 时间选择器
 ### 基础用法
 
 <ClientOnly>
-<field-time-demo blockName="timeField1"/>
+<field-time-demo blockName="timeField1" onlineDemo="https://codepen.io/w3cmark/pen/mdbjGNr"/>
 </ClientOnly>
 
 ### 在线实验室

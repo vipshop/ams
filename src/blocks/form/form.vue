@@ -5,6 +5,7 @@
         <el-form :model="data"
                  v-loading="loading"
                  v-on="on"
+                 v-on:keyup.enter.native="keyEnter"
                  v-bind="block.props">
             <ams-blocks :blocks="block.slotBlocks.top" />
             <!--fields-->
@@ -13,7 +14,7 @@
                     <el-form-item v-if="typeof fieldLayout === 'string'"
                                   :key="key"
                                   :label-width="fields[key].labelWidth"
-                                  :class="fields[key].props && fields[key].props.inline ? 'el-form-item-inline' : ''"
+                                  :class="fields[key].props && (fields[key].props.class ? fields[key].props.class : '') + ( fields[key].props.inline ? ' el-form-item-inline' : '')"
                                   :style="`width: ${fields[key].props && fields[key].props.formItemWidth}`"
                                   :rules="fields[key].ctx === 'view' ? undefined : fields[key].rules"
                                   :prop="fields[key].type !== 'array' && fields[key].type !== 'object' ? key : ''">
@@ -77,9 +78,20 @@
 
 <script>
 import mixins from '../../ams/mixins';
+import { getType } from '../../utils';
 
 export default {
-    mixins: [mixins.blockMixin, mixins.getShowState]
+    mixins: [mixins.blockMixin, mixins.getShowState],
+    methods: {
+        keyEnter(...args) {
+            if (this.block.on
+                && this.block.on['keyupEnter']
+                && getType(this.block.on['keyupEnter']) === 'function'
+            ) {
+                this.block.on['keyupEnter'].call(this, ...args);
+            }
+        }
+    }
 };
 </script>
 

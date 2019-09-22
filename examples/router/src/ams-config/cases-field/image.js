@@ -1,4 +1,5 @@
 import ams from '@ams-team/ams';
+import { prefix } from '@/utils';
 
 const datas = {};
 
@@ -20,7 +21,7 @@ ams.block('image', {
                     },
                     default: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
                     props: {
-                        action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image',
+                        action: `${prefix}upload-image`,
                         'list-type': 'picture-card',
                         'show-file-list': true,
                         'file-list': [{
@@ -49,7 +50,7 @@ ams.block('image', {
                     tip: '640x640',
                     successUrlKey: 'url',
                     props: {
-                        action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image',
+                        action: `${prefix}upload-image`,
                         'show-file-list': true,
                         'file-list': [{
                             'name': 'food.jpeg',
@@ -66,7 +67,7 @@ ams.block('image', {
                     tip: '640x640',
                     successUrlKey: 'url',
                     props: {
-                        action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image',
+                        action: `${prefix}upload-image`,
                         'list-type': 'picture-card',
                         'show-file-list': true,
                         'file-list': [{
@@ -84,7 +85,7 @@ ams.block('image', {
                     tip: '640x640',
                     successUrlKey: 'url',
                     props: {
-                        action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image',
+                        action: `${prefix}upload-image`,
                         'list-type': 'picture',
                         'show-file-list': true,
                         'file-list': [{
@@ -102,7 +103,7 @@ ams.block('image', {
                     tip: '范围640-640',
                     successUrlKey: 'url',
                     props: {
-                        action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image',
+                        action: `${prefix}upload-image`,
                         'default-image-list': []
                     }
                 },
@@ -111,7 +112,7 @@ ams.block('image', {
                     type: 'image',
                     successUrlKey: 'url',
                     props: {
-                        action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image',
+                        action: `${prefix}upload-image`,
                         'default-image-list': [{
                             'name': '精选',
                             'url': 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
@@ -128,8 +129,7 @@ ams.block('image', {
                     successUrlKey: 'url',
                     props: {
                         accept: 'image/png',
-                        action:
-                            'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image'
+                        action: `${prefix}upload-image`
                     }
                 }
             }

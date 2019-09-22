@@ -1,4 +1,5 @@
 import ams from '@ams-team/ams';
+import { prefix } from '@/utils';
 
 ams.block('array-object', {
     resources: {
@@ -6,7 +7,7 @@ ams.block('array-object', {
             api: {
                 successCode: 200,
                 // api前缀
-                prefix: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/',
+                prefix: prefix,
                 read: 'array-object-read',
                 list: 'array-object-list'
             },
@@ -62,6 +63,10 @@ ams.block('array-object', {
                         ArrayArray: {
                             type: 'array',
                             label: 'ArrayArray',
+                            props: {
+                                max: 5,
+                                min: 1
+                            },
                             field: {
                                 type: 'array',
                                 label: 'array',
@@ -142,6 +147,9 @@ ams.block('array-object', {
                     type: 'array',
                     desc: `只能上传jpg/png文件，且不超过500kb`,
                     label: 'simpleArray',
+                    props: {
+                        max: 5
+                    },
                     field: {
                         type: 'text',
                         label: 'text'
@@ -153,6 +161,10 @@ ams.block('array-object', {
                     field: {
                         type: 'array',
                         label: 'array',
+                        props: {
+                            max: 3,
+                            min: 2
+                        },
                         field: {
                             type: 'text',
                             label: 'text'

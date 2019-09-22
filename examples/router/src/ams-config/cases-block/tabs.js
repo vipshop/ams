@@ -3,9 +3,9 @@ import ams from '@ams-team/ams';
 ams.block('tabs', {
     'type': 'tabs',
     'options': {
-        'tabs-tab1': 'tab1标题',
+        'tabs-tab1': '<i class="el-icon-date"></i> tab1标题',
         'tabs-tab2': {
-            label: 'tab2延迟加载',
+            label: '<i class="el-icon-date"></i> tab2延迟加载',
             lazy: true,
             closable: true
         },

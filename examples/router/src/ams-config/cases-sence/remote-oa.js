@@ -1,4 +1,5 @@
 import ams from '@ams-team/ams';
+import { prefix } from '@/utils';
 
 ams.block('remote-oa', {
     resources: {
@@ -22,7 +23,7 @@ ams.block('remote-oa', {
                         trigger: 'change'
                     },
                     remoteConfig: {
-                        action: 'https://easy-mock.com/mock/5c76c559086fe75d555c7744/templates/demo/searchOA',
+                        action: `${prefix}searchOA`,
                         queryKey: 'name',
                         labelKey: 'name',
                         valueKey: 'avatar'

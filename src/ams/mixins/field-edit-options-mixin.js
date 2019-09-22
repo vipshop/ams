@@ -21,7 +21,14 @@ export default {
             }
         },
         isShowSelectAllCheck() {
-            return this.field.props.multiple && this.field.props['select-all'];
+            const field = this.field;
+            if (field.type === 'checkbox') {
+                return field.props['select-all'];
+            }
+            return field.props.multiple && field.props['select-all'];
+        },
+        indeterminate() {
+            return Boolean(this.localValue.length && this.localValue.length < this.options.filter(item => !item.disabled).length);
         },
         options() {
             let options = [];

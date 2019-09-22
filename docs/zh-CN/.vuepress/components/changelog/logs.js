@@ -1,15 +1,40 @@
 // 更新日志
 export default [
     {
-        version: '0.15.11',
-        date: '2019.09.12',
+        version: '0.17.4',
+        date: '2019.09.22',
         log: [
+            'feat: 新增block-imagelist类型，可以支持有图或者无图的列表矩阵',
+            'feat: operation新增text纯文本类型',
+            'feat: field支持通过props.class配置该field的样式名，比如只想通过样式添加一个红色星号',
+            'feat: 新增block-popover区块组件',
+            'feat: field-checkbox字段配置select-all属性实现全选',
+            'fix: operation的点击阻止事件冒泡',
+            'fix: 迁移demo页面mock接口到RAP2平台',
+            'fix: block-list在多选时多选框出现省略号的问题'
+        ]
+    },
+    {
+        version: '0.16.0',
+        date: '2019.09.18',
+        log: [
+            'feat: block-form表单增加键盘enter事件',
+            'feat: block-router支持forcedRefresh和replace',
+            'feat: 新增block-bct-progress组件',
+            'fix: field-timerange纯展示时结果不对'
+        ]
+    },
+    {
+        version: '0.15.12',
+        date: '2019.09.16',
+        log: [
+            'feat: field-array 增加最大最小长度限制',
             'feat: 拓展图标icon',
-            'feat: field-file、field-video、field-audio支持限制文件大小',
-            'feat: block-list添加page-sizes分页数控制属性',
-            'feat：更改field使用的defaultFieldConfig路径，用于扩展自定义组件的默认配置',
-            'feat：transfer支持slots，配置项为left-footer | right-footer',
-            'feat：block和field的on支持异步函数',
+            'feat: field-file、field-video、field-audio 支持限制文件大小',
+            'feat: block-list 添加page-sizes分页数控制属性',
+            'feat: 更改field使用的defaultFieldConfig路径，用于扩展自定义组件的默认配置',
+            'feat: transfer支持slots，配置项为left-footer | right-footer',
+            'feat: block和field的on支持异步函数',
             'feat: select的options支持自定义&例子',
             'feat: block-list接口添加rightTop/leftBottom/rightBottom的field数据',
             'feat: block-list操作项支持宽度',
@@ -18,9 +43,9 @@ export default [
             'fix: field的changeConfig无法修改ctx等属性的问题',
             'fix: field-object配置的field不支持inline:true同一行展示',
             'fix: field-image在设置了默认图后无法从默认列表里选择图片',
-            'fix：select-remote同类型能匹配赋值，value返回值支持string和number',
-            'fix：transfer的v-for时无配置key',
-            'fix：解决transfer无配置slots报错'
+            'fix: select-remote同类型能匹配赋值，value返回值支持string和number',
+            'fix: transfer的v-for时无配置key',
+            'fix: 解决transfer无配置slots报错'
         ]
     },
     {
@@ -31,7 +56,7 @@ export default [
             'feat: block-list 增加前端分页 pagination: "simulate"',
             'fix: field-image 默认图片列表内容比较多时加上滚动条',
             'fix: block-form 在校验失败时弹出失败信息',
-            'fix：修复cascader在单选时的格式处理问题'
+            'fix: 修复cascader在单选时的格式处理问题'
         ]
     },
     {
@@ -60,7 +85,7 @@ export default [
         version: '0.11.0',
         date: '2019.08.13',
         log: [
-            'feat：router 支持 component 配置'
+            'feat: router 支持 component 配置'
         ]
     },
     {
@@ -70,8 +95,8 @@ export default [
             'feat: 增加 block-carousel 组件',
             'fix: 远程搜索当 ctx=view 时增加 isInitRemoteOptions 判断 ',
             'fix: block-tabs 支持更多属性配置',
-            'fix：list 的搜索传值需要兼容零',
-            'fix：block-list 的 search 传值需要兼容0'
+            'fix: list 的搜索传值需要兼容零',
+            'fix: block-list 的 search 传值需要兼容0'
         ]
     },
     {
@@ -92,14 +117,14 @@ export default [
         log: [
             'feat: 远程搜索添加 isInitRemoteOptions 配置参数，默认为 true',
             'feat: 增加文字链接类型 field-link',
-            'feat：block-collapse 绑定外部传入的on方法',
+            'feat: block-collapse 绑定外部传入的on方法',
             'feat: field-file、field-video、field-audio 增加对按钮的文案 button-label 和 size 配置支持',
             'feat: block-list 增加对 align 配置支持',
             'feat: 更新 element-ui 至 2.9.1',
             'fix: element 时间格式化代码引用已兼容处理部分',
             'fix: 调整 field-array 类型在表格里的行高',
             'fix: 卡片区块如果 header 是通过 slotBlock 配置到，去掉 header 自带的 padding 和 border',
-            'fix：列表的操作按钮在不同 size 时上下间距问题'
+            'fix: 列表的操作按钮在不同 size 时上下间距问题'
         ]
     },
     {
@@ -111,7 +136,7 @@ export default [
             'feat: 列表区块的搜索条支持按回车触发搜索',
             'feat: field-color 在 view 状态下优化成纯展示，不可点',
             'feat: operation 加入 tooltip 配置，支持 string 和 object 两种格式',
-            'feat：新增树形控件 field-tree 及 demo',
+            'feat: 新增树形控件 field-tree 及 demo',
             'feat: 增加 arraylist 的 collapseLimit 参数',
             'feat: form block 增加 field 实例的 ref 引用',
             'feat: SELECT_REMOTE远程select搜索重构优化',
@@ -160,7 +185,7 @@ export default [
             'fix: 更新tabs样式',
             'fix：steps增加block.style，tabs去除内置visible，增加绑定element内置方法',
             'fix: radio如果有0值无法首先选中',
-            'fix：tab block去除默认全部展开',
+            'fix: tab block去除默认全部展开',
             'fix: 去除navbar的scoped限制'
         ]
     },

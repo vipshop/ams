@@ -58,3 +58,35 @@ a:hover {
 .el-image-viewer__close{
     color: #fff;
 }
+
+// 处理label文案过长时行高和居中的问题
+// .el-form-item__label{
+//     word-break: break-all;
+//     display: flex;
+//     justify-content: center;
+//     flex-direction: column;
+// }
+// .el-form-item {
+//     .el-form-item__label{
+//         height: 40px;
+//         line-height: initial;
+//     }
+//     &.el-form-item--mini{
+//         .el-form-item__label{
+//             height: 28px;
+//             line-height: initial;
+//         }
+//     }
+//     &.el-form-item--small{
+//         .el-form-item__label{
+//             height: 32px;
+//             line-height: initial;
+//         }
+//     }
+//     &.el-form-item--medium{
+//         .el-form-item__label{
+//             height: 36px;
+//             line-height: initial;
+//         }
+//     }
+// }

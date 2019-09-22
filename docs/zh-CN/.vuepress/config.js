@@ -4,7 +4,7 @@ const dest = 'dist'
 module.exports = {
   title: 'AMS',
   base: '/ams/',
-  description: '后台自动化平台',
+  description: '基于JSON配置来快速搭建管理后台前端页面的JavaScript框架',
   dest: dest, // 指定 vuepress build 的输出目录, 默认值: .vuepress/dist
   head: [
     ['link', { rel: 'icon', href: 'https://h5rsc.vipstatic.com/ams/favicon64.ico' }]
@@ -124,6 +124,7 @@ module.exports = {
               'api',
               'form',
               'list',
+              'imagelist',
               'table',
               'dialog',
               'error',

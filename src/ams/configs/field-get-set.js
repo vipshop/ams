@@ -204,6 +204,7 @@ export const viewDate = function(value, field) {
                 format = 'yyyy-MM-dd HH:mm:ss';
                 break;
             case 'timepicker':
+            case 'timerange':
                 format = 'HH:mm:ss';
                 break;
             default:

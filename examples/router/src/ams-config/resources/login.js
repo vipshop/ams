@@ -1,8 +1,9 @@
 import ams from '@ams-team/ams';
+import { prefix } from '@/utils';
 
 ams.resource('login', {
     api: {
-        prefix: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/',
+        prefix: prefix,
         create: 'login'
     },
     fields: {

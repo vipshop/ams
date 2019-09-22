@@ -2,7 +2,7 @@
 
 ## AMS 是什么
 
-AMS 是 `Admin Materials System` 的首字母缩写，意为管理后台物料系统，是通过类JSON配置的形式来快速搭建管理后台的一整套解决方案。
+AMS 是 `Admin Materials System` 的首字母缩写，意为管理后台物料系统，是基于JSON配置来快速搭建管理后台前端页面的JavaScript框架。
 
 AMS 目前提供以下能力：
 

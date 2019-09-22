@@ -1,11 +1,13 @@
 import ams from '@ams-team/ams';
+import { prefix } from '@/utils';
 
 // http://localhost:9526/examples/router/mock/list.json
 
 ams.resource('resource', {
     key: 'id',
     api: {
-        prefix: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/',
+        // prefix: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/',
+        prefix: prefix,
         create: 'create',
         update: 'update',
         read: 'read',
@@ -202,7 +204,8 @@ ams.resource('resource', {
                     e: '北京烤鸭',
                     222: '哈哈哈',
                     0: '000'
-                }
+                },
+                'select-all': true
             },
             rules: [
                 { required: true, message: '请输入活动名称', trigger: 'change' }
@@ -249,7 +252,7 @@ ams.resource('resource', {
             label: '远程selectView',
             type: 'select',
             remoteConfig: {
-                action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/tag',
+                action: `${prefix}tag`,
                 queryKey: 'requiredName',
                 labelKey: 'name'
             }
@@ -622,7 +625,7 @@ ams.resource('resource', {
             tip: '只能上传jpg/png文件，且不超过500kb',
             successUrlKey: 'url',
             props: {
-                action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image'
+                action: `${prefix}upload-image`
             }
         },
         testHeadImage: {
@@ -631,7 +634,7 @@ ams.resource('resource', {
             tip: '只能上传jpg/png文件，且不超过500kb',
             successUrlKey: 'url',
             props: {
-                action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image'
+                action: `${prefix}upload-image`
             }
         },
         testFile: {
@@ -645,7 +648,7 @@ ams.resource('resource', {
                 'button-label': '导入',
                 // multiple: true,
                 // drag: true,
-                action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image'
+                action: `${prefix}upload-image`
             }
         },
         testVideo: {
@@ -654,7 +657,7 @@ ams.resource('resource', {
             tip: '只能上传视频文件',
             successUrlKey: 'url',
             props: {
-                action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image',
+                action: `${prefix}upload-image`,
                 'button-label': '选择视频'
             }
         },
@@ -664,7 +667,7 @@ ams.resource('resource', {
             tip: '只能上传音频文件',
             successUrlKey: 'url',
             props: {
-                action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image'
+                action: `${prefix}upload-image`
             }
         },
         testTree: {

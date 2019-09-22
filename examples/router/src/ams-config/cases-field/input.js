@@ -5,7 +5,7 @@ ams.block('input', {
         input: {
             fields: {
                 text1: {
-                    label: 'text1',
+                    label: 'text1text1text1text1text1',
                     type: 'text'
                 },
                 text2: {
@@ -13,6 +13,9 @@ ams.block('input', {
                     type: 'text',
                     slots: {
                         prefix: '输入'
+                    },
+                    props: {
+                        class: 'is-required' // 样式名
                     }
                 },
                 text3: {
@@ -20,7 +23,10 @@ ams.block('input', {
                     type: 'text',
                     slots: {
                         suffix: '输入框尾部内容'
-                    }
+                    },
+                    // props: {
+                    //     inline: true
+                    // }
                 },
                 text4: {
                     label: 'text3',

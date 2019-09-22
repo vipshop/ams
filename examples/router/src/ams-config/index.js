@@ -38,9 +38,11 @@ import './cases-field/image';
 import './cases-field/arraylist';
 import './cases-field/tree';
 import './cases-field/link';
-// import './cases-field/plan-date';
+import './cases-field/plan-date';
+import './cases-field/cascader';
 // block
 import './cases-block/calendar';
+import './cases-block/dragimage';
 import './cases-block/collapse';
 import './cases-block/steps';
 import './cases-block/card';
@@ -51,6 +53,10 @@ import './cases-block/carousel';
 import './cases-block/backtop';
 import './cases-block/tabs';
 import './cases-block/component';
+import './cases-block/popover';
+import './cases-block/bct-progress';
+import './cases-block/imagelist';
+import './cases-block/imagelist2';
 
 // chart-demo
 import './cases-chart/demo1';

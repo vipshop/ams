@@ -1,4 +1,5 @@
 import ams from '@ams-team/ams';
+import { prefix } from '@/utils';
 
 ams.block('xlsx', {
     resources: {
@@ -142,7 +143,7 @@ ams.block('xlsx', {
                         { from: 'warehouse_id', to: 'to_warehouse_ids', value: '分仓信息', bg: '#cccccc' }
                     ],
                     request: {
-                        url: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/xlsx-export/getList',
+                        url: `${prefix}export`,
                         methods: 'get'
                     },
                     idField: 'basic_id',
@@ -171,7 +172,7 @@ ams.block('xlsx', {
                         { field: 'department_id', wch: 18, multirow: true }
                     ],
                     request: {
-                        url: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/xlsx-export/getList',
+                        url: `${prefix}export`,
                         methods: 'get'
                     },
                     rowStartAt: 2, // 从第2行开始读取

@@ -8,7 +8,7 @@ List: List 列表
 纯列表，数据是通过`data`静态配置的
 
 <ClientOnly>
-<block-list-demo blockName="defaultList"/>
+<block-list-demo blockName="defaultList" onlineDemo="https://codepen.io/w3cmark/pen/YzKjJxN"/>
 </ClientOnly>
 
 ### 空数据时显示的文本
@@ -24,7 +24,7 @@ List: List 列表
 通过设置`props.type: 'index'` 可以实现在每行显示索引行号。
 
 <ClientOnly>
-<block-list-demo blockName="indexList"/>
+<block-list-demo blockName="indexList" onlineDemo="https://codepen.io/w3cmark/pen/xxKJyXG"/>
 </ClientOnly>
 
 ### 带分页的列表
@@ -34,7 +34,7 @@ List: List 列表
 另外，数据如果是通过接口获取，记得主动在 [`events`](/api/block.html#events) 里的 `init` 调一下 `@list`
 
 <ClientOnly>
-<block-list-demo blockName="pagesList"/>
+<block-list-demo blockName="pagesList" onlineDemo="https://codepen.io/w3cmark/pen/OJLwBxz"/>
 </ClientOnly>
 
 ### 纯前端分页
@@ -42,7 +42,7 @@ List: List 列表
 通过前端实现的模拟分页：接口一次性返回所有数据，前端通过`pageSize`设置每页显示的条数，然后设置`props['pagination']: 'simulate'`。
 
 <ClientOnly>
-<block-list-demo blockName="simulatePagesList"/>
+<block-list-demo blockName="simulatePagesList" onlineDemo="https://codepen.io/w3cmark/pen/ZEzjqXZ"/>
 </ClientOnly>
 
 ### 表头带排序和筛选的列表
@@ -56,7 +56,7 @@ List: List 列表
 如果没有配置会使用同名 `field` 的 `props.options` 配置，如果都没有filter配置会失效
 
 <ClientOnly>
-<block-list-demo blockName="filtersList"/>
+<block-list-demo blockName="filtersList" onlineDemo="https://codepen.io/w3cmark/pen/zYOLmPO"/>
 </ClientOnly>
 
 ### 搜索配置 <Badge text="0.5.0+"/>
@@ -68,7 +68,7 @@ List: List 列表
 通过配置`slot`为`searchs`可以配置搜索条件，`operations` 配置参考：[operations配置](../api/operation.md)
 
 <ClientOnly>
-<block-list-demo blockName="searchsList"/>
+<block-list-demo blockName="searchsList" onlineDemo="https://codepen.io/w3cmark/pen/YzKjJEN"/>
 </ClientOnly>
 
 ### 多选操作配置 <Badge text="0.5.0+"/>
@@ -76,7 +76,7 @@ List: List 列表
 通过配置list 的 `options.multipleSelect` 为 `true` 时可让列表出现多选按钮，配置 `slot` 为 `multipleSelect` 可以配置多选后出现的操作（多选操作只有在选择了至少一行后才会出现），`operations` 配置参考：[operations配置](../api/operation.md)
 
 <ClientOnly>
-<block-list-demo blockName="multipleSelectList"/>
+<block-list-demo blockName="multipleSelectList" onlineDemo="https://codepen.io/w3cmark/pen/wvwxYPm"/>
 </ClientOnly>
 
 ### slotBlocks 插槽配置
@@ -86,13 +86,13 @@ List: List 列表
 + 搜索条和表格之间：配置子block的slot为`tableTop`，可以插入到搜索条和表格之间
 
 <ClientOnly>
-<block-list-demo blockName="slotBlocksList"/>
+<block-list-demo blockName="slotBlocksList" onlineDemo="https://codepen.io/w3cmark/pen/pozZxdq"/>
 </ClientOnly>
 
 ### 列表每行操作项
 
 <ClientOnly>
-<block-list-demo blockName="operationsList"/>
+<block-list-demo blockName="operationsList" onlineDemo="https://codepen.io/w3cmark/pen/JjPBmMG"/>
 </ClientOnly>
 
 ### 编辑状态的列表
@@ -100,7 +100,7 @@ List: List 列表
 + 支持字段之间的联动（设置`field.changeConfig`）：某个字段的状态根据另一个字段的取值发生变化（比如下面demo的`条件`字段会根据`对比`字段发生变化）
 
 <ClientOnly>
-<block-list-demo blockName="editList"/>
+<block-list-demo blockName="editList" onlineDemo="https://codepen.io/w3cmark/pen/VwZBEyP"/>
 </ClientOnly>
 
 ### 在当前列表编辑某些字段
@@ -108,10 +108,5 @@ List: List 列表
 + 可以`field.changeConfig`实现修改某个字段的 `编辑/展示` 状态，从而实现在当前列表编辑该字段的值
 
 <ClientOnly>
-<block-list-demo blockName="editList2"/>
-</ClientOnly>
-
-### 在线实验室
-<ClientOnly>
-<ams-config name="list" type="block"/>
+<block-list-demo blockName="editList2" onlineDemo="https://codepen.io/w3cmark/pen/BaBPqJr"/>
 </ClientOnly>
