@@ -1,33 +1,10 @@
-const fields = {
-	text: {
-		label: '文本',
-		type: 'text'
-	},
-	inputnumber: {
-		type: 'inputnumber',
-		label: '数字输入'
-	},
-	select: {
-		type: 'select',
-		label: 'select多选',
-		props: {
-			options: {
-				a: '黄金糕',
-				b: '双皮奶',
-				c: '蚵仔煎',
-				d: '龙须面',
-				e: '北京烤鸭'
-			}
-		}
-	}
-}
 export default {
 	imagelist1: {
 		type: 'imagelist',
 		ctx: 'view',
 		resource: {
 			api: {
-				prefix: 'http://rap2api.taobao.org/app/mock/231578/ams/mock/',
+				prefix: '//rap2api.taobao.org/app/mock/231578/ams/mock/',
 				list: 'imagelist'
 			},
 			fields: {
@@ -139,7 +116,7 @@ export default {
 		ctx: 'view',
 		resource: {
 			api: {
-				prefix: 'http://rap2api.taobao.org/app/mock/231578/ams/mock/',
+				prefix: '//rap2api.taobao.org/app/mock/231578/ams/mock/',
 				list: 'imagelist2'
 			},
 			fields: {

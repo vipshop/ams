@@ -24,7 +24,7 @@ module.exports = {
       { text: '区块', link: '/block/' },
       { text: '市场', link: '/market/' },
       {
-        text: '0.15.x',
+        text: '0.17.x',
         items: [
           {
             text: '更新日志',

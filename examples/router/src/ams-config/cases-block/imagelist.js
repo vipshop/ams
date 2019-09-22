@@ -5,7 +5,7 @@ ams.block('imagelist', {
     ctx: 'view',
     resource: {
         api: {
-            prefix: 'http://rap2api.taobao.org/app/mock/231578/ams/mock/',
+            prefix: '//rap2api.taobao.org/app/mock/231578/ams/mock/',
             list: 'imagelist'
         },
         fields: {
