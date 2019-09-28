@@ -1,9 +1,11 @@
+import {prefix} from '../../utils/common'
+
 export default {
     defaultTable: {
         type: 'table',
         resource: {
             api: {
-                prefix: 'https://easy-mock.com/mock/5bf25b2b34392218c898a5fd/',
+                prefix,
                 list: 'list'
             },
             fields: {
@@ -97,7 +99,7 @@ export default {
                 valueKey: 'rowchildren',
                 // 展开子表/展开行的动态请求接口配置
                 remoteConfig: {
-                    action: 'https://easy-mock.com/mock/5bf25b2b34392218c898a5fd/table-expand',
+                    action: `${prefix}table-expand`,
                     queryName: 'chidTableId',
                     queryValue: 'id'
                 }

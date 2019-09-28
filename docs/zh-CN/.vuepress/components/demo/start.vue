@@ -18,6 +18,7 @@
 import demoMixins from './demo-mixin'
 import stringify from '@ams-team/json-stringify'
 import beautify from 'js-beautify'
+import {prefix} from '../utils/common'
 
 export default {
     mixins: [demoMixins],
@@ -28,7 +29,7 @@ export default {
                     resources: { // ”demoRes“为资源名
                         demoRes: {
                             api: {
-                                prefix: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/', // 接口前缀
+                                prefix, // 接口前缀
                                 update: 'update', // 更新表单数据，值为更新接口的path，和接口前缀组成最终请求的url
                                 read: 'read', // 读取表单数据，值为读取接口的path
                             },

@@ -4,7 +4,7 @@ export default {
 		ctx: 'view',
 		resource: {
 			api: {
-				prefix: '//rap2api.taobao.org/app/mock/231578/ams/mock/',
+				prefix: 'https://nei.netease.com/api/apimock/b7c10125b452d3142d8375cf634f0b47/ams/mock/',
 				list: 'imagelist'
 			},
 			fields: {
@@ -53,8 +53,8 @@ export default {
 			deleteItem: {
 				type: 'button',
 				props: {
-					type: 'text',
 					size: 'mini',
+					type: 'text',
 					icon: 'el-icon-delete'
 				}
 			},
@@ -116,7 +116,7 @@ export default {
 		ctx: 'view',
 		resource: {
 			api: {
-				prefix: '//rap2api.taobao.org/app/mock/231578/ams/mock/',
+				prefix: 'https://nei.netease.com/api/apimock/b7c10125b452d3142d8375cf634f0b47/ams/mock/',
 				list: 'imagelist2'
 			},
 			fields: {
@@ -165,8 +165,8 @@ export default {
 			deleteItem: {
 				type: 'button',
 				props: {
-					type: 'text',
 					size: 'mini',
+					type: 'text',
 					icon: 'el-icon-delete'
 				}
 			},
@@ -176,10 +176,9 @@ export default {
 				icon: 'el-icon-edit'
 			}
 		},
-		pageSize: 10,
 		props: {
 			// shadow: 'always', // 阴影效果，可取值：hover（默认）| always | never
-			subtitle: 'always' // 子标题出现方式，可取值：hover（默认）| always
+			// subtitle: 'always' // 子标题出现方式，可取值：hover（默认）| always
 			// pagination: 'simulate' // 模拟分页
 		},
 		events: {
@@ -202,6 +201,114 @@ export default {
 			}
 		},
 		options: {
+			title: {
+				field: 'title',
+				// 'prefix-icon': 'el-icon-search'
+				'prefix-tag': {
+					type: 'info', // success | info | warning | danger
+					label(args) {
+						return args.status;
+					}
+				}
+			},
+			subtitle: {
+				field: 'content'
+			},
+			info: {
+				field: 'info'
+			}
+		}
+	},
+	imagelist3: {
+		type: 'imagelist',
+		ctx: 'view',
+		resource: {
+			api: {
+				prefix: 'https://nei.netease.com/api/apimock/b7c10125b452d3142d8375cf634f0b47/ams/mock/',
+				list: 'imagelist'
+			},
+			fields: {
+				id: {
+					type: 'text'
+				}
+			}
+		},
+		operations: {
+			showBatch: {
+				slot: 'multipleSelect',
+				type: 'button',
+				label: '批量操作',
+				show() {
+					return !this.showBatchOperations;
+				}
+			},
+			batchPassItems: {
+				slot: 'multipleSelect',
+				type: 'button',
+				label: '批量通过',
+				show() {
+					return this.showBatchOperations;
+				}
+			},
+			batchRejectedItems: {
+				slot: 'multipleSelect',
+				type: 'button',
+				label: '批量驳回',
+				show() {
+					return this.showBatchOperations;
+				}
+			},
+			hideBatch: {
+				slot: 'multipleSelect',
+				type: 'button',
+				label: '退出',
+				show() {
+					return this.showBatchOperations;
+				}
+			},
+			'buttonMulti': {
+				'type': 'button',
+				props: {
+					size: 'mini',
+					type: 'text',
+					icon: 'el-icon-delete'
+				}
+			}
+		},
+		pageSize: 10,
+		props: {
+			// shadow: 'always', // 阴影效果，可取值：hover（默认）| always | never
+			// subtitle: 'always' // 子标题出现方式，可取值：hover（默认）| always
+			// pagination: 'simulate' // 模拟分页,
+			// 'empty-text': '暂无数据'
+		},
+		events: {
+			init: '@list',
+		},
+		actions: {
+			batchPassItems() {
+				if (this.batchSelected.length) {
+					// 选中的结果
+					console.log(this.batchSelected);
+				} else {
+					this.$message.error('请先勾选数据');
+				}
+				console.log('批量通过');
+			},
+			batchRejectedItems() {
+				if (this.batchSelected.length) {
+					// 选中的结果
+					console.log(this.batchSelected);
+				} else {
+					this.$message.error('请先勾选数据');
+				}
+				console.log('批量驳回');
+			}
+		},
+		options: {
+			imageSrc: {
+			    field: 'image' // 字段名
+			},
 			title: {
 				field: 'title',
 				// 'prefix-icon': 'el-icon-search'

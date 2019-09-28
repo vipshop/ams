@@ -1,14 +1,21 @@
 // 更新日志
 export default [
     {
-        version: '0.17.4',
-        date: '2019.09.22',
+        version: '0.17.7',
+        date: '2019.09.24',
         log: [
+            'feat: 路由添加class类名控制',
+            'feat: 更新block-bct-progress排版',
+            'feat: field-checkbox添加button类型',
+            'feat: field-radio添加button类型',
+            'feat: block-bct-progress增加props和on',
             'feat: 新增block-imagelist类型，可以支持有图或者无图的列表矩阵',
             'feat: operation新增text纯文本类型',
             'feat: field支持通过props.class配置该field的样式名，比如只想通过样式添加一个红色星号',
             'feat: 新增block-popover区块组件',
             'feat: field-checkbox字段配置select-all属性实现全选',
+            'fix: checkbox-button样式优化',
+            'fix: field-image从默认列表里选择图片后还校验失败的问题',
             'fix: operation的点击阻止事件冒泡',
             'fix: 迁移demo页面mock接口到RAP2平台',
             'fix: block-list在多选时多选框出现省略号的问题'

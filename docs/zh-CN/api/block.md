@@ -37,7 +37,7 @@ ams.block('formView', {
     ams.resource('demo', {
         key: 'id',
         api: { // 数据接口相关
-            prefix: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/',
+            prefix: '//rap2api.taobao.org/app/mock/231578/ams/mock/',
             list: 'list'
         },
         fields: { // 字段

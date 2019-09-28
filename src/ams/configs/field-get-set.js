@@ -174,7 +174,7 @@ export const getDate = function(val, field) {
     // console.log('getDate', val);
 
     // element内部的date，如果传入是时间戳，会自动转换，不需要处理
-    return /^\d{13}/.test(val) ? Number(val) : val;
+    return /^\d{11,13}/.test(val) ? Number(val) : val;
 };
 
 export const setDate = function(val, field) {

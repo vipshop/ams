@@ -45,6 +45,7 @@ ams.block('array-object', {
                 mutiObject: {
                     type: 'object',
                     label: 'mutiObject',
+                    class: 'is-required',
                     fields: {
                         date: {
                             type: 'date',

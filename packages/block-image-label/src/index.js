@@ -1,7 +1,7 @@
 import ele from './block';
 
 const block = {
-    type: 'bct-progress',
+    type: 'image-label',
     install(Vue) {
         Vue.component(`ams-block-${this.type}`, ele);
     }

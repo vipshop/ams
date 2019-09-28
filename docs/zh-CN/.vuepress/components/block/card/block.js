@@ -1,3 +1,5 @@
+import {prefix} from '../../utils/common'
+
 export default {
     defaultCard: {
         type: 'card',
@@ -88,8 +90,7 @@ export default {
                 resource: {
                     api: {
                         // api前缀
-                        prefix:
-                            'https://www.easy-mock.com/mock/5bf25b2b34392218c898a5fd/',
+                        prefix,
                         // 读取数据接口
                         read: 'read',
                     }

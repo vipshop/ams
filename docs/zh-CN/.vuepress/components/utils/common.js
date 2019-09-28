@@ -21,3 +21,6 @@ export function downloadTemplate(target,name, config) {
     target.download = name
     target.href = `data:text/plain,${content}`
 }
+
+// mock接口前缀
+export const prefix = '//rap2api.taobao.org/app/mock/231578/ams/mock/';

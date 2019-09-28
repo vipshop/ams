@@ -1,3 +1,5 @@
+import {prefix} from '../../utils/common'
+
 export default {
 	imageField1: {
 		resources: {
@@ -66,7 +68,7 @@ export default {
 					},
 					default: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
 					props: {
-						action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image'
+						action: `${prefix}upload-image`
 					}
 				},
 				image4: {
@@ -79,7 +81,7 @@ export default {
 						imgHeight: 640
 					},
 					props: {
-						action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image'
+						action: `${prefix}upload-image`
 					}
 				},
 				image5: {
@@ -89,7 +91,7 @@ export default {
 					successUrlKey: 'url',
 					props: {
 						accept: 'image/png',
-						action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image'
+						action: `${prefix}upload-image`
 					}
 				},
 				image6: {
@@ -113,7 +115,7 @@ export default {
 					label: '默认',
 					type: 'image',
 					props: {
-						action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image',
+						action: `${prefix}upload-image`,
 						'show-file-list': true,
 						'file-list': [{
 							'name': 'food.jpeg',
@@ -129,7 +131,7 @@ export default {
 					type: 'image',
 					tip: '只能不超过50kb的图片',
 					props: {
-						action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image',
+						action: `${prefix}upload-image`,
 						'list-type': 'picture',
 						'show-file-list': true,
 						'file-list': [{
@@ -145,7 +147,7 @@ export default {
 					label: 'picture-card',
 					type: 'image',
 					props: {
-						action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image',
+						action: `${prefix}upload-image`,
 						'list-type': 'picture-card',
 						'show-file-list': true,
 						'file-list': [{
@@ -169,7 +171,7 @@ export default {
 					label: '默认图列表',
 					type: 'image',
 					props: {
-						action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image',
+						action: `${prefix}upload-image`,
 						'default-image-list': [{
 							'name': 'food.jpeg',
 							'url': 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
@@ -183,7 +185,7 @@ export default {
 					label: '默认列表图为空',
 					type: 'image',
 					props: {
-						action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image',
+						action: `${prefix}upload-image`,
 						'default-image-list': []
 					}
 				},
@@ -192,7 +194,7 @@ export default {
 					type: 'image',
 					default: 'http://demo.sc.chinaz.com/Files/pic/icons/7458/m1.png',
 					props: {
-						action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image',
+						action: `${prefix}upload-image`,
 						'default-image-list': null
 					}
 				}

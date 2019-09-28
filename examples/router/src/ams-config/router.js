@@ -11,11 +11,13 @@ ams.block('router', {
         // base: '/app/', // 要在history下才会发挥作用
         // showMenu: false,   // 隐藏所有菜单配置项，默认为true
         // forcedRefresh: true, // 点击当前菜单（非外链）是否强制刷新渲染
+        uniqueOpened: true, // 是否只保持一个子菜单的展开
         routes: [
             {
                 name: '首页',
                 path: '',
                 block: 'index',
+                class: 'ams-test-class',
                 // redirect: '/list',
                 meta: {
                     icon: 'el-icon-menu'
@@ -65,6 +67,16 @@ ams.block('router', {
                         name: '输入框',
                         path: 'input',
                         block: 'input'
+                    },
+                    {
+                        name: '单选',
+                        path: 'radio',
+                        block: 'radio'
+                    },
+                    {
+                        name: '多选',
+                        path: 'checkbox',
+                        block: 'checkbox'
                     },
                     {
                         name: '日期',

@@ -34,7 +34,7 @@ testTag: {
     label: '标签',
     props: {
         placeholder: '请输入标签',
-        action: 'https://www.easy-mock.com/mock/5a0023effbbb09615044cb82/tag',
+        action: '//rap2api.taobao.org/app/mock/231578/ams/mock/tag',
         successCode: 200
     }
 }

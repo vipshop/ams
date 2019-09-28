@@ -84,4 +84,18 @@ export default {
             }, $arg || 0);
         });
     },
+    // block-imagelist 全选 操作
+    // todo: 最好针对某个block设置它的内置action
+    // selectAll() {
+    //     this.selectAll();
+    // },
+    // block-imagelist 显示 批量操作的按钮
+    showBatch() {
+        // console.log('批量操作', this);
+        this.showBatchOperations = true;
+    },
+    // block-imagelist 退出批量操作
+    hideBatch() {
+        this.showBatchOperations = false;
+    },
 };

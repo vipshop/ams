@@ -60,11 +60,31 @@ export default {
             return {
                 hideSidebar: !this.sidebar.opened,
                 openSidebar: this.sidebar.opened,
-                withoutAnimation: this.sidebar.withoutAnimation
+                withoutAnimation: this.sidebar.withoutAnimation,
+                [this.currentRouter.class]: this.currentRouter.class ? true : false
             };
         },
         key() {
             return this.$route.fullPath;
+        },
+        currentRouter() {
+            // 计算当前路由
+            const router = this.$block.block.router;
+            const levelList = [];
+            if (this.$route.meta.index) {
+                const index = this.$route.meta.index.split('.');
+                let current = router.routes;
+                for (let i = 0; i < index.length; i++) {
+                    levelList.push(current[index[i]]);
+                    current = current[index[i]].children;
+                }
+            }
+            let current = {};
+            if (levelList.length) {
+                current = levelList[levelList.length - 1];
+            }
+
+            return current;
         },
         showMenu() {
             // 隐藏所以菜单配置项

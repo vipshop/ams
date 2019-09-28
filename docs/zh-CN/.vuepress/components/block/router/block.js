@@ -1,11 +1,12 @@
+import {prefix} from '../../utils/common'
+
 export default {
     defaultRouter: {
         type: 'router',
         resources: {
             routerRes: {
                 api: {
-                    prefix:
-                        'https://easy-mock.com/mock/5a0023effbbb09615044cb82/',
+                    prefix,
                     read: 'read'
                 },
                 fields: {

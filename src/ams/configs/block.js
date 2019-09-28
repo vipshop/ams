@@ -8,7 +8,8 @@ export const defaultBlockProps = {
     },
     imagelist: {
         shadow: 'hover',
-        subtitle: 'hover'
+        subtitle: 'hover',
+        'empty-text': '暂无数据'
     },
     dialog: {
         top: '5vh',

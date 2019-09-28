@@ -1,3 +1,4 @@
+import {prefix} from './utils/common'
 export const fieldDefaultValue = {
     id: 1,
     text: "双11活动",
@@ -630,7 +631,7 @@ export const fields = {
         label: '标签',
         props: {
             placeholder: '请输入标签',
-            action: 'https://www.easy-mock.com/mock/5a0023effbbb09615044cb82/tag',
+            action: `${prefix}tag`,
             successCode: 200,
             closable: true
         }

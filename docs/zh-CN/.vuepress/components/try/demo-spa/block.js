@@ -1,9 +1,11 @@
+import {prefix} from '../../utils/common'
+
 export default {
     demoResource: {
         resource: {
             api: { // 数据接口相关
                 contentType: 'form',
-                prefix: 'https://easy-mock.com/mock/5d4a8b0d51c7b6461eb9f898/ams-page-demo/',
+                prefix: `${prefix}ams-page-demo/`,
                 read: 'read',
                 update: 'update',
                 list: 'getList',
@@ -42,7 +44,7 @@ export default {
             demoResource: {
                 api: {
                     contentType: 'form',
-                    prefix: 'https://easy-mock.com/mock/5d4a8b0d51c7b6461eb9f898/ams-page-demo/',
+                    prefix: `${prefix}ams-page-demo/`,
                     read: 'read',
                     update: 'update',
                     list: 'getList',
@@ -93,7 +95,7 @@ export default {
             demoResource: {
                 api: {
                     contentType: 'form',
-                    prefix: 'https://easy-mock.com/mock/5d4a8b0d51c7b6461eb9f898/ams-page-demo/',
+                    prefix: `${prefix}ams-page-demo/`,
                     read: 'read',
                     update: 'update',
                     list: 'getList',
@@ -178,7 +180,7 @@ export default {
             demoResource: {
                 api: {
                     contentType: 'form',
-                    prefix: 'https://easy-mock.com/mock/5d4a8b0d51c7b6461eb9f898/ams-page-demo/',
+                    prefix: `${prefix}ams-page-demo/`,
                     read: 'read',
                     update: 'update',
                     list: 'getList',
@@ -370,7 +372,7 @@ export default {
             demoResource: {
                 api: {
                     contentType: 'form',
-                    prefix: 'https://easy-mock.com/mock/5d4a8b0d51c7b6461eb9f898/ams-page-demo/',
+                    prefix: `${prefix}ams-page-demo/`,
                     read: 'read',
                     update: 'update',
                     list: 'getList',

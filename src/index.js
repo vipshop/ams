@@ -74,7 +74,7 @@ import field from './operations/field';
 import dropdown from './operations/dropdown';
 
 // 版本号
-ams.version = '0.17.4';
+ams.version = '0.17.11';
 // 挂载到ams上
 ams.mixins = mixins;
 ams.utils = utils;
