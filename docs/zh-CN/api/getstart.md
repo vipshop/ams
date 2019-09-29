@@ -42,7 +42,7 @@ var config = {
             api: {
                 // api前缀
                 prefix:
-                    'https://easy-mock.com/mock/5a0023effbbb09615044cb82/',
+                    '//rap2api.taobao.org/app/mock/231578/ams/mock/',
                 // 读取数据接口
                 read: 'read',
                 // 更新数据接口

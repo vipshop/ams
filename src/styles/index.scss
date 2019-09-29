@@ -59,6 +59,33 @@ a:hover {
     color: #fff;
 }
 
+
+.ams-field-radio-edit{
+    // 去除button-radio背景和radio间距
+    .el-radio-group {
+        -webkit-appearance: none;
+        line-height: 40px;
+        font-size: 14px;
+    }
+    // 去除带边框radio右边距
+    .el-radio.is-bordered{
+        margin-right: 0px;
+    }
+}
+.ams-field-checkbox-edit{
+    // 去除button-radio背景和radio间距
+    .el-checkbox-group {
+        -webkit-appearance: none;
+        line-height: 40px;
+        font-size: 14px;
+    }
+    // 去除带边框radio右边距
+    .el-checkbox.is-bordered{
+        margin-right: 0px;
+    }
+}
+
+
 // 处理label文案过长时行高和居中的问题
 // .el-form-item__label{
 //     word-break: break-all;

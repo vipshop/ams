@@ -1,0 +1,15 @@
+{
+    "name": "@ams-team/block-image-label",
+    "version": "0.1.0",
+    "description": "for isa",
+    "author": "edward.shao",
+    "main": "lib/block-image-label.js",
+    "unpkg": "lib/block-image-label.js",
+    "amsConfig": {
+        "externals": {},
+        "cdn": [],
+        "title": "image-label",
+        "tags": "",
+        "publish": true
+    }
+}

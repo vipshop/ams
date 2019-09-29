@@ -3,6 +3,7 @@
         <el-menu :show-timeout="200"
                  :default-active="$route.path"
                  :collapse="isCollapse"
+                 :unique-opened="uniqueOpened"
                  mode="vertical"
                  background-color="#304156"
                  text-color="#bfcbd9"
@@ -37,6 +38,13 @@ export default {
     },
     inject: ['$block'],
     computed: {
+        uniqueOpened() {
+            if (this.$block.block.router && this.$block.block.router.uniqueOpened) {
+                return true;
+            } else {
+                return false;
+            }
+        },
         isCollapse() {
             return !this.sidebar.opened;
         },

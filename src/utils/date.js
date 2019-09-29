@@ -12,7 +12,7 @@ export function parseTime(time, cFormat) {
         const len = (String(time)).length;
         if (len === 10 && intTime == time) { // eslint-disable-line eqeqeq
             date = new Date(intTime * 1000);
-        } else if (len === 13 && intTime == time) {  // eslint-disable-line eqeqeq
+        } else if (len > 10 && len <= 13 && intTime == time) {  // eslint-disable-line eqeqeq
             date = new Date(intTime);
         } else {
             return time;

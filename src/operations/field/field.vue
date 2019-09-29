@@ -7,7 +7,7 @@
                    :value="$block.data[path][operationKey]"
                    :name="name"
                    :path="`${path}.${operationKey}`"
-                   :class="`ams-field ams-field-${field.type}-edit}`" />
+                   :class="`ams-field ams-field-${field.type}-edit`" />
     </div>
 </template>
 

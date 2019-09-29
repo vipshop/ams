@@ -5,7 +5,7 @@ ams.block('imagelist2', {
     ctx: 'view',
     resource: {
         api: {
-            prefix: 'http://rap2api.taobao.org/app/mock/231578/ams/mock/',
+            prefix: 'https://nei.netease.com/api/apimock/b7c10125b452d3142d8375cf634f0b47/ams/mock/',
             list: 'imagelist2'
         },
         fields: {
@@ -68,8 +68,9 @@ ams.block('imagelist2', {
     pageSize: 10,
     props: {
         // shadow: 'always', // 阴影效果，可取值：hover（默认）| always | never
-        subtitle: 'always' // 子标题出现方式，可取值：hover（默认）| always
+        // subtitle: 'always' // 子标题出现方式，可取值：hover（默认）| always
         // pagination: 'simulate' // 模拟分页
+        // 'empty-text': '暂无数据'
     },
     events: {
         init: '@list',
@@ -91,6 +92,9 @@ ams.block('imagelist2', {
         }
     },
     options: {
+        // imageText: {
+        //     field: 'image' // 字段名
+        // },
         title: {
             field: 'title',
             // 'prefix-icon': 'el-icon-search'

@@ -1,1 +1,0 @@
-# block-bct-progress

@@ -29,6 +29,8 @@ import './cases-sence/add-item-action';
 import './cases-sence/outside-website';
 // field
 import './cases-field/input';
+import './cases-field/radio';
+import './cases-field/checkbox';
 import './cases-field/date';
 import './cases-field/editor';
 import './cases-field/union';

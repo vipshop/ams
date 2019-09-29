@@ -25,7 +25,7 @@
                     :class="`el-upload-list__item ${imageUrl === item.url ? 'is-success' : ''}`"
                     v-for="(item, index) in field.props['default-image-list']"
                     :key="index"
-                    @click="localValue ? localValue = item.url : previewUrl = item.url"
+                    @click="handleChoseFromList(item.url)"
                     :title="item.name">
                     <img :src="item.url" :alt="item.name" class="el-upload-list__item-thumbnail">
                     <span class="el-upload-list__item-name">{{item.name}}</span>
@@ -147,6 +147,9 @@ export default {
                 }
                 // this.dispatch('ElFormItem', 'el.form.change', this.localValue);
             }
+        },
+        handleChoseFromList(url) {
+            this.localValue = this.previewUrl = url;
         }
     }
 };

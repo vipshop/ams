@@ -47,7 +47,8 @@ ams.block('cascader', {
                     label: '默认可搜索',
                     props: {
                         options: options,
-                        placeholder: '试试搜索：指南'
+                        placeholder: '试试搜索：指南',
+                        class: 'is-required'
                     }
                 },
                 cascader1FieldC: {

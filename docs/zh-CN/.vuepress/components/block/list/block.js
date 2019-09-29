@@ -1,3 +1,5 @@
+import {prefix} from '../../utils/common'
+
 const fields = {
 	text: {
 		label: '文本',
@@ -97,7 +99,7 @@ export default {
 		type: 'list',
 		resource: {
             api: {
-                prefix: "https://easy-mock.com/mock/5a0023effbbb09615044cb82/",
+                prefix,
                 list: "smallList",
                 successCode: 0
             },
@@ -135,7 +137,7 @@ export default {
 		type: 'list',
 		resource: {
             api: {
-				prefix: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/',
+				prefix,
 				list: 'list-pagination'
 			},
 			fields: {
@@ -165,7 +167,7 @@ export default {
 		type: 'list',
 		resource: {
             api: {
-                prefix: "https://easy-mock.com/mock/5a0023effbbb09615044cb82/",
+                prefix,
                 list: "smallList",
                 successCode: 0
             },
@@ -222,7 +224,7 @@ export default {
 		type: 'list',
 		resource: {
 			api: {
-                prefix: "https://easy-mock.com/mock/5a0023effbbb09615044cb82/",
+                prefix,
                 list: "smallList",
                 successCode: 0
             },

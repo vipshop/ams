@@ -1,7 +1,8 @@
 <template>
-    <figure :class="imageItemClass" @click="$emit('clickImageItem')">
+    <figure :class="imageItemClass" @click="$emit('clickImageItem', $event)">
         <div :class="`list-item-con ${imageSrc ? 'is-image' : ''}`">
             <img v-if="imageSrc" :src="imageSrc" class="el-image__inner">
+            <div v-else-if="imageText" class="list-item-con-text">{{imageText}}</div>
             <div class="list-item-topright-operations">
                  <ams-operations :name="name"
                         :context="image"></ams-operations>
@@ -9,7 +10,9 @@
             <div :class="subtitleClass" v-if="subtitle">{{subtitle}}</div>
         </div>
         <figcaption>
-            <div class="s-left">
+            <div class="s-left" :title="title">
+                <el-checkbox v-if="showCheckbox" v-model="isSelect" :key="index" @change="$emit('selectionChange')" ></el-checkbox>
+
                 <span class="s-left-prefix" v-if="titlePrefixIcon" v-html="titlePrefixIcon">
                 </span>
                 <el-tag size="small" v-else-if="titlePrefixTag" :type="titlePrefixTag.type">{{titlePrefixTag.label}}</el-tag>
@@ -36,10 +39,26 @@ export default {
             type: Object,
             default: {},
             required: true
+        },
+        index: {
+            type: Number,
+            default: null,
+            required: true
+        },
+        showCheckbox: {
+            type: Boolean,
+            default: false,
+            required: true
+        },
+        batchSelected: {
+            type: Array,
+            default: [],
+            required: true
         }
     },
     data() {
         return {
+            isSelect: false
         };
     },
     computed: {
@@ -62,6 +81,12 @@ export default {
                 return this.image[this.block.options.imageSrc.field];
             }
             return this.image['image'];
+        },
+        imageText() {
+            if (this.block.options && this.block.options.imageText && this.block.options.imageText.field) {
+                return this.image[this.block.options.imageText.field];
+            }
+            return this.image['imageText'];
         },
         title() {
             if (this.block.options && this.block.options.title) {
@@ -105,6 +130,15 @@ export default {
             }
             return this.image['info'];
         }
+    },
+    watch: {
+        batchSelected(n) {
+            if (JSON.stringify(n).indexOf(JSON.stringify(this.image)) > -1) {
+                this.isSelect = true;
+            } else {
+                this.isSelect = false;
+            }
+        }
     }
 };
 </script>
@@ -126,14 +160,48 @@ export default {
         position: relative;
         z-index: 1;
         height: 120px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        &-text{
+            padding: 10px;
+            line-height: 24px;
+            word-break: break-all;
+        }
         .list-item-subtitle {
             padding:5px 10px;
             line-height: 22px;
             box-sizing: border-box;
+            position: absolute;
+            z-index: 2;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            color: #fff;
+            font-size: 12px;
+            line-height: 18px;
+            max-height: 44px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-clamp: 2;
+            -webkit-line-clamp: 2;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            transition: ease 0.3s;
+            background-color: rgba(0, 0, 0, 0.5);
+            &.is-hover-subtitle{
+                transform: translateY(100%);
+            }
         }
         .list-item-topright-operations{
             padding-top: 8px;
             text-align: right;
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            right: 0;
+            transform: translateY(-100%);
+            transition: ease 0.3s;
             .el-form--inline .el-form-item{
                 margin-right: 5px;
             }
@@ -169,36 +237,6 @@ export default {
     }
     .is-image{
         height: 150px;
-        .list-item-subtitle {
-            position: absolute;
-            z-index: 2;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            color: #fff;
-            font-size: 12px;
-            line-height: 18px;
-            max-height: 44px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            line-clamp: 2;
-            -webkit-line-clamp: 2;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            transition: ease 0.3s;
-            background-color: rgba(0, 0, 0, 0.5);
-            &.is-hover-subtitle{
-                transform: translateY(100%);
-            }
-        }
-        .list-item-topright-operations{
-            position: absolute;
-            z-index: 2;
-            top: 0;
-            right: 0;
-            transform: translateY(-100%);
-            transition: ease 0.3s;
-        }
     }
     img{
         object-fit: cover;
@@ -210,13 +248,20 @@ export default {
         line-height: 24px;
         .s-left{
             flex: 1;
+            height: 25px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            .el-checkbox{
+                margin-right: 5px;
+            }
         }
         .s-right{
             padding-left: 10px;
         }
     }
     &:hover{
-        .is-image .is-hover-subtitle,.list-item-topright-operations{
+        .is-hover-subtitle,.list-item-topright-operations{
             transform: translateY(0);
         }
     }

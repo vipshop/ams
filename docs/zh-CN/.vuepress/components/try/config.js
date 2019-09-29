@@ -1,3 +1,5 @@
+import {prefix} from '../utils/common'
+
 export default [{
     image: "/ams/market/15585829532545.png",
     title: "管理后台场景",
@@ -5,7 +7,7 @@ export default [{
         "resources": {
             "demoResource": {
                 "api": {
-                    "prefix": "https://easy-mock.com/mock/5a0023effbbb09615044cb82/",
+                    prefix,
                     "read": "read",
                     "update": "update",
                     "list": "list",
@@ -171,7 +173,7 @@ export default [{
         "resources": {
             "demoResource": {
                 "api": {
-                    "prefix": "https://easy-mock.com/mock/5c76c559086fe75d555c7744/templates/demo/",
+                    "prefix": `${prefix}templates/demo/`,
                     "read": "chartData2",
                 }
             }
@@ -294,7 +296,7 @@ export default [{
         "resources": {
             "demoResource": {
                 "api": {
-                    "prefix": "https://easy-mock.com/mock/5a0023effbbb09615044cb82/"
+                    prefix,
                 }
             }
         },

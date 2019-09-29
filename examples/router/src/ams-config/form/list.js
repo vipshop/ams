@@ -103,6 +103,33 @@ ams.block('list', {
             field: 'id',
             label: '文本'
         },
+        radioButton: {
+            slot: 'searchs',
+            type: 'field',
+            label: '单选按钮',
+            field: {
+                type: 'checkbox',
+                label: '单选按钮',
+                props: {
+                    type: 'button',
+                    size: 'mini',
+                    options: [
+                        {
+                            label: '黄金糕',
+                            value: 'a'
+                        },
+                        {
+                            label: '双皮奶',
+                            value: 'b'
+                        },
+                        {
+                            label: '蚵仔煎',
+                            value: 'c'
+                        }
+                    ]
+                }
+            }
+        },
         button: {
             slot: 'rightTop',
             type: 'button',

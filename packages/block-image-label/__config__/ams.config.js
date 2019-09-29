@@ -1,7 +1,7 @@
 export const config = {
     BASE: 'CONFIG_BLOCK',
     type: {
-        default: 'bct-progress'
+        default: 'image-label'
     }
 };
 

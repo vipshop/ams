@@ -4,6 +4,7 @@
          :style="block.style">
         <ams-blocks :blocks="block.slotBlocks.top" />
         <!-- 搜索operations插槽 -->
+
         <ams-operations :name="name"
                         slot-name="searchs"
                         class="left-operations"
@@ -16,19 +17,27 @@
         <div class="clearfix"></div>
 
         <ams-blocks :blocks="block.slotBlocks.tableTop" />
+
         <!-- 多选时的operations -->
+        <el-checkbox v-if="showBatchOperations" :indeterminate="indeterminate" v-model="isSelectAll" class="select-all-operations">全选</el-checkbox>
         <ams-operations :name="name"
                         :context="batchSelected"
-                        v-if="batchSelected.length > 0"
                         slot-name="multipleSelect"></ams-operations>
-
-        <div class="clearfix">
+        <div v-if="listData && listData.length" class="clearfix">
             <listitem
                 :image="item"
                 :block="block"
                 :name="name"
                 v-for="(item, index) in listData"
-                :key="index" v-on:clickImageItem="clickImageItem(item)"/>
+                :key="index"
+                :index="index"
+                :batchSelected="batchSelected"
+                :showCheckbox="showBatchOperations"
+                v-on:clickImageItem="clickImageItem($event, item)"
+                v-on:selectionChange="handleSelectionChange(item)"/>
+        </div>
+        <div class="el-table__empty-block" v-else>
+            <span class="el-table__empty-text">{{block.props['empty-text']}}</span>
         </div>
 
         <div class="clearfix bottom-operations">
@@ -83,7 +92,9 @@ export default {
             sortField: null,
             sortOrder: null,
             batchSelected: [],
-            height: null
+            height: null,
+            isIndeterminate: false,
+            showBatchOperations: false // 是否显示批量操作按钮
         };
     },
     computed: {
@@ -106,29 +117,54 @@ export default {
         },
         operationsWidth() {
             return this.block.options && this.block.options.operationsWidth;
+        },
+        indeterminate() {
+            if (this.batchSelected.length > 0 && this.batchSelected.length < this.listData.length) {
+                return true;
+            }
+            return false;
+        },
+        isSelectAll: {
+            set(val) {
+                if (val) {
+                    this.batchSelected = this.listData;
+                } else {
+                    this.batchSelected = [];
+                }
+            },
+            get() {
+                return this.batchSelected.length === this.listData.length;
+            }
         }
     },
     methods: {
-        clickImageItem(item) {
+        // afterReady() {
+        //     this.block.data.showBatchOperations = false; // 是否显示批量操作按钮
+        // },
+        clickImageItem(e, item) {
+            if (e && e.target && (e.target.className === 'el-checkbox__original' || e.target.className === 'el-checkbox__inner')) {
+                return;
+            }
+            // console.log(e);
             // 点击图片时触发
             ams.$prevReturn = item;
             this.emitEvent('clickImageItem');
         },
-        afterReady() {
-            //
-        },
         handlerSearch() {
             // console.log('handlerSearch', this.searchs);
             this.data.page = 1;
+            this.batchSelected = [];
             this.emitEvent('list');
         },
         handleSizeChange() {
             console.log('handleSizeChange');
             this.data.page = 1;
+            this.batchSelected = [];
             this.emitEvent('list');
         },
         handleCurrentChange(e) {
             console.log('handleCurrentChange');
+            this.batchSelected = [];
             if (this.isSimulatePagination) {
                 return;
             }
@@ -139,6 +175,7 @@ export default {
             this.sortField = prop;
             this.sortOrder = order;
             this.data.page = 1;
+            this.batchSelected = [];
             this.emitEvent('list');
         },
         handleFilterChange(e) {
@@ -162,14 +199,24 @@ export default {
             });
             if (remoteFilterChange) {
                 this.data.page = 1;
+                this.batchSelected = [];
                 this.emitEvent('list');
             }
         },
         handleSelectionChange(selection) {
-            this.batchSelected = selection;
-        },
-        handleSelectAll(selection) {
-            this.batchSelected = selection;
+            if (selection) {
+                // 如果已经存在index字段
+                const ishas = this.batchSelected.some((element, i, array) => {
+                    if (JSON.stringify(element) === JSON.stringify(selection)) {
+                        array.splice(i, 1);
+                        return true;
+                    }
+                    return false;
+                });
+                if (!ishas) {
+                    this.batchSelected.push(selection);
+                }
+            }
         }
     }
 };
@@ -177,6 +224,12 @@ export default {
 
 <style lang="scss">
 .ams-block-imagelist {
+    .select-all-operations{
+        float: left;
+        padding-right: 10px;
+        height: 40px;
+        line-height: 40px;
+    }
     .el-pagination {
         margin-top: 20px;
     }

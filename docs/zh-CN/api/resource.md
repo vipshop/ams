@@ -15,7 +15,7 @@ ams.resource(name: String, config: Object)
 ams.resource('demo-resource', {
     key: 'id', // 【非必须】标识该resource的keyName
     api: { // 数据接口相关
-        prefix: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/',
+        prefix: '//rap2api.taobao.org/app/mock/231578/ams/mock/',
         create: 'create',
         update: 'update',
         read: 'read',
