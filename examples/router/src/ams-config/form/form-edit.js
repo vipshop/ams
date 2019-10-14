@@ -21,6 +21,17 @@ ams.block('form-edit', {
             // },
             props: {
                 type: 'primary'
+            },
+            badge: {
+                // 'is-dot': true,      // 原点显示
+                // hidden: true,        // 隐藏
+                // type: 'info',        // 类型：primary / success / warning / danger / info
+                max: 3,                 // 超过最大值会显示 '{max}+'
+                value: function(data) {
+                    console.log('form-badge', data);
+                    // return '' //同样不显示
+                    return data.id; // 需要为数字或字符串
+                }
             }
         },
         resetData: {

@@ -10,7 +10,7 @@ module.exports = {
             alias: {
                 '@': resolve('src'),
                 'vue': resolve('node_modules/vue'),
-                '@ams-team/ams': resolve('../../src')
+                '@ams-team/ams': resolve('../../')
             }
         };
     },

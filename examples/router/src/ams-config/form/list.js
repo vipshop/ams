@@ -5,14 +5,18 @@ ams.block('list', {
     resource: 'resource',
     ctx: 'view',
     props: {
+        // 自动加上索引
         type: 'index'
     },
     options: {
         // 定义列表操作项的宽度
-        operationsWidth: 300
+        operationsWidth: 300,
+        // 支持拖拽
+        drag: true
     },
     // 过滤设置（列表特有）
     filters: {
+        id: true,
         testCheckbox: {
             // 多选
             multiple: false,
@@ -58,6 +62,21 @@ ams.block('list', {
             },
             props: {
                 size: 'mini'
+            },
+            tooltip: {
+                effect: 'dark',
+                content: 'Top Left 提示文字',
+                placement: 'top-start'
+            },
+            badge: {
+                // 'is-dot': true,      // 原点显示
+                // hidden: true,        // 隐藏
+                // type: 'info',        // 类型：primary / success / warning / danger / info
+                max: 3,                 // 超过最大值会显示 '{max}+'
+                value: function(data) {
+                    // return '' //同样不显示
+                    return data.id;  // 需要为数字或字符串
+                }
             }
         },
         customEdit: {
@@ -137,7 +156,23 @@ ams.block('list', {
             props: {
                 type: 'primary'
             },
-            event: 'list:1'
+            event: 'list:1',
+            tooltip: {
+                effect: 'dark',
+                content: 'Top Left 提示文字',
+                placement: 'top-start'
+            },
+            badge: {
+                'is-dot': true,      // 原点显示
+                // hidden: true,        // 隐藏
+                // type: 'info',        // 类型：primary / success / warning / danger / info
+                max: 3,                 // 超过最大值会显示 '{max}+'
+                value: function(data) {
+                    console.log('search-badge', data);
+                    // return '' //同样不显示
+                    return false;
+                }
+            }
         },
         testSelect: {
             slot: 'searchs',

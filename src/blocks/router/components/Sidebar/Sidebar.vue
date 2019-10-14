@@ -5,17 +5,17 @@
                  :collapse="isCollapse"
                  :unique-opened="uniqueOpened"
                  mode="vertical"
-                 background-color="#304156"
-                 text-color="#bfcbd9"
-                 active-text-color="#409EFF">
+                 :background-color="router['backgroundColor']"
+                 :text-color="router['textColor']"
+                 :active-text-color="router['activeTextColor']">
 
-            <ams-blocks :blocks="$block.block.slotBlocks.menuTop" style="background-color: #304156"></ams-blocks>
+            <ams-blocks :blocks="$block.block.slotBlocks.menuTop"></ams-blocks>
 
             <sidebar-item v-for="route in routes"
                           :key="route.path"
                           :item="route" />
 
-            <ams-blocks :blocks="$block.block.slotBlocks.menuBottom" style="background-color: #304156"></ams-blocks>
+            <ams-blocks :blocks="$block.block.slotBlocks.menuBottom"></ams-blocks>
 
         </el-menu>
     </el-scrollbar>

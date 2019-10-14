@@ -79,6 +79,7 @@ List: List 列表
 <block-list-demo blockName="multipleSelectList" onlineDemo="https://codepen.io/w3cmark/pen/wvwxYPm"/>
 </ClientOnly>
 
+
 ### slotBlocks 插槽配置
 
 + 搜索条顶部：配置子block的slot为`top`，可以插入到搜索条顶部
@@ -93,6 +94,14 @@ List: List 列表
 
 <ClientOnly>
 <block-list-demo blockName="operationsList" onlineDemo="https://codepen.io/w3cmark/pen/JjPBmMG"/>
+</ClientOnly>
+
+### 字段后面追加提示icon
+
++ 结合`field.changeConfig`可以实现根据不同的数据改变追加的提示icon状态和提示文案
+
+<ClientOnly>
+<block-list-demo blockName="suffixInfoList" onlineDemo="https://codepen.io/w3cmark/pen/LYYEdoR"/>
 </ClientOnly>
 
 ### 编辑状态的列表

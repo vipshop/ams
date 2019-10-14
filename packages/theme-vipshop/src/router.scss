@@ -1,0 +1,44 @@
+$sidebarBg: #34374a; // 顶级菜单背景色
+$sidebarHoverBg: #26293a; // 顶级菜单hover背景色和子菜单背景色
+$sidebarSubmenuHoverBg: #212434; // 子菜单hover背景色
+$sidebarTextColor: #90939a; // 菜单字体颜色
+$sidebarActiveTextColor: #797ef4; // 当前菜单字体颜色
+
+.ams-block-router {
+    .sidebar-container {
+        .el-menu {
+            background-color: $sidebarBg;
+        }
+        .el-submenu__title,.el-menu-item{
+            color: $sidebarTextColor;
+            border-left: 4px solid transparent;
+            &.is-active, &:hover, &:focus{
+                color: $sidebarActiveTextColor;
+                border-color: $sidebarActiveTextColor;
+                background-color: $sidebarHoverBg;
+            }
+        }
+    }
+    .sidebar-container .nest-menu .el-submenu > .el-submenu__title,
+    .sidebar-container .el-submenu .el-menu-item {
+        background-color: $sidebarHoverBg;
+        &.is-active, &:hover, &:focus{
+            color: $sidebarActiveTextColor;
+            background-color: $sidebarSubmenuHoverBg;
+        }
+    }
+}
+
+.el-menu--vertical {
+    // background-color: $sidebarHoverBg;
+    .el-menu{
+        background-color: $sidebarHoverBg;
+    }
+    .el-submenu__title,.el-menu-item{
+        color: $sidebarTextColor;
+        &.is-active, &:hover, &:focus{
+            color: $sidebarActiveTextColor;
+            background-color: $sidebarHoverBg;
+        }
+    }
+}

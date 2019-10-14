@@ -1,5 +1,5 @@
 import ams from '@ams-team/ams';
-
+let id = 3;
 ams.block('collapse', {
     type: 'collapse',
     style: {
@@ -45,8 +45,13 @@ ams.block('collapse', {
                         }
                     },
                     events: {
-                        init: '@read',
+                        // init: '@read',
                         submit: '@update'
+                    },
+                    actions: {
+                        init() {
+                            console.log('collapseblock1-init');
+                        }
                     }
                 }
             }
@@ -80,6 +85,43 @@ ams.block('collapse', {
                     }
                 }
             }
+        }
+    },
+    operations: {
+        add: {
+            type: 'button',
+            label: '动态添加collapse',
+            props: {
+                type: 'primary'
+            },
+            style: {
+                marginTop: '10px'
+            }
+        }
+    },
+    actions: {
+        add() {
+            const blockId = `collapseblock${id++}`;
+
+            ams.block(blockId, {
+                type: 'component',
+                options: {
+                    text: blockId
+                },
+                actions: {
+                    init() {
+                        console.log(`${blockId}-init`);
+                    }
+                }
+            });
+            this.block.blocks.push(blockId);
+
+            this.block.options[blockId] = {
+                title: blockId,
+                lazy: true
+            };
+
+            this.data.active = blockId;
         }
     }
 });

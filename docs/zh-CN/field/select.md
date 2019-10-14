@@ -11,6 +11,14 @@ Select: Select 选择器
 <field-select-demo blockName="selectField1" onlineDemo="https://codepen.io/w3cmark/pen/abojRbg"/>
 </ClientOnly>
 
+### 增加全选
+
+设置props中的`select-all`为`true`
+
+<ClientOnly>
+<field-select-demo blockName="selectField2" onlineDemo="https://codepen.io/wuzebin/pen/RwwWEJZ"/>
+</ClientOnly>
+
 ### 传值
 String，如`"a,b,c"`
 

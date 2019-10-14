@@ -67,7 +67,6 @@ export default {
             const remoteConfig = this.field.remoteConfig;
             // 值为空时如果isInitEmpty为false则不请求
             if (!value && !remoteConfig.isInitEmpty || !remoteConfig.isInitRemoteOptions) {
-                this.isInitRemoteOptions = true;
                 return;
             }
             this.isInitRemoteOptions = true;

@@ -98,6 +98,18 @@ module.exports = {
                         './lib/theme-default'
                     ),
                     destination: './dist/theme-default'
+                }, {
+                    source: path.join(
+                        process.cwd(),
+                        './packages/theme-vipshop/lib'
+                    ),
+                    destination: './lib/theme-vipshop'
+                }, {
+                    source: path.join(
+                        process.cwd(),
+                        './packages/theme-vipshop/lib'
+                    ),
+                    destination: './dist/theme-vipshop@' + pkg.version
                 }],
                 archive: [ // 将dist文件夹打包成ams.zip并放在dist目录
                     {

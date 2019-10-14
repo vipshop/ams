@@ -5,6 +5,9 @@
 ```sh
 npm i -g @ams-team/cli
 ```
+
+安装成功后打印`ams`命令可以看到有以下几种使用方式
+
 ![install](../assets/cli-install.png)
 
 ## 创建一个ams项目
@@ -14,8 +17,11 @@ npm i -g @ams-team/cli
 ams create hello-ams
 ```
 
-你会被提示选取一个`模板`，`script` 的方式是通过`<script>`引用，不需要`node`环境
+::: warning
+`windows` 环境下如果有报错，请尝试使用 `ams-create hello-ams` 替代（ams init、ams field、 ams block等同理），同时手动安装依赖，`cd hello-ams && npm i` (下个版本会解决windows兼容问题)
+:::
 
+你会被提示选取一个`模板`，`（webpack）simple`的方式是集成了webapck的简单项目，`（webpack and router）full`的方式是集成了webpack和router的项目
 
 ![create](../assets/cli-create.png)
 

@@ -19,6 +19,7 @@ const dirs = {
 const versions = {};
 
 const renders = {
+    npmComplete: /package\.json$|index\.html$/,
     npmFull: /package\.json$|index\.html$/,
     script: /\.html$/,
     npm: /package\.json$|index\.html$/,

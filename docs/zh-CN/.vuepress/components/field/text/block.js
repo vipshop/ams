@@ -111,5 +111,44 @@ export default {
 				label: '提交'
 			}
 		}
+	},
+	textField6: {
+		type: 'form',
+		resource: {
+			fields: {
+				textFieldA: {
+					type: 'text',
+					label: '文本',
+					props: {
+						'suffix-info': '我是提示', // 后缀提示
+						// 'suffix-info-warning': '我是提示warning', // 后缀警告提示
+						// 'suffix-info-danger': '我是提示danger' // 后缀错误提示
+					},
+				},
+				textFieldB: {
+					type: 'text',
+					label: '文本',
+					props: {
+						'suffix-info-warning': '我是提示warning', // 后缀警告提示
+					},
+				},
+				textFieldC: {
+					type: 'text',
+					label: '文本',
+					props: {
+						'suffix-info-danger': '我是提示danger' // 后缀错误提示
+					},
+				}
+			}
+		},
+		ctx: 'view',
+		style: {
+			width: '50%'
+		},
+		data: {
+			textFieldA: '后面有普通提示',
+			textFieldB: '后面有警告提示',
+			textFieldC: '后面有错误提示',
+		}
 	}
 };

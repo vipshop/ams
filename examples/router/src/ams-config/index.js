@@ -12,6 +12,7 @@ import './form/list-operations';
 import './form/list-layout';
 import './form/list-edit';
 import './form/list-pagination';
+import './form/list-drag';
 import './form/table';
 import './login';
 

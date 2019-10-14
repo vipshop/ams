@@ -62,5 +62,23 @@ export default {
 			}
 		},
 		ctx: 'edit'
+	},
+	selectField2: {
+		type: 'form',
+		resource: {
+			fields: {
+				selectFieldA: {
+					type: 'select',
+					label: '下拉选择',
+					props: {
+						'select-all': true,
+						placeholder: '请选择',
+						clearable: true,
+						options: options
+					}
+				}
+			}
+		},
+		ctx: 'edit'
 	}
 };

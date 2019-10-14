@@ -48,12 +48,40 @@ export default {
     },
 
     inject: ['$block'],
+    data() {
+        return {
+            operations: {}
+        };
+    },
 
     computed: {
         path() {
             return this.slotName || this.slotFieldKey || 'defaultOperations';
         },
-        operations() {
+        // operations() {
+        //     let operations = ams.blocks[this.name] && ams.blocks[this.name].operations || {};
+        //     let currentOperations = {};
+
+        //     Object.keys(operations).forEach(key => {
+        //         let operation = operations[key];
+        //         let sName = this.slotName || '';
+        //         operation.slot = operation.slot || '';
+        //         // 只渲染对应slot的operation
+        //         if (sName === operation.slot) {
+        //             currentOperations[key] = operation;
+        //         }
+        //     });
+        //     this.getDefaultValue(currentOperations);
+
+        //     return currentOperations;
+        // }
+    },
+    mounted() {
+        this.getOperations();
+    },
+
+    methods: {
+        getOperations() {
             let operations = ams.blocks[this.name] && ams.blocks[this.name].operations || {};
             let currentOperations = {};
 
@@ -68,11 +96,8 @@ export default {
             });
             this.getDefaultValue(currentOperations);
 
-            return currentOperations;
-        }
-    },
-
-    methods: {
+            this.operations = currentOperations;
+        },
         setFieldDefaultValue(operationFields, slotName, data) {
             Object.keys(operationFields).forEach(key => {
                 let field;
@@ -106,7 +131,6 @@ export default {
             // console.log('slotName', slotName);
             Object.keys(operations).forEach(key => {
                 let operation = operations[key];
-
                 if (operation.type === 'field') {
                     isEmpty = false;
                     this.setFieldDefaultValue({ [key]: operation.field }, slotName, data);

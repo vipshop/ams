@@ -10,6 +10,13 @@ title: Checkbox 多选框
 <field-checkbox-demo blockName="checkboxField1" onlineDemo="https://codepen.io/w3cmark/pen/bGbjmGo"/>
 </ClientOnly>
 
+### 增加全选
+
+设置props中的`select-all`为`true`
+
+<field-checkbox-demo blockName="checkboxField2" onlineDemo="https://codepen.io/wuzebin/pen/zYYvyEO"/>
+</ClientOnly>
+
 ### 在线实验室
 <ClientOnly>
 <ams-config name="checkbox" type="field"/>

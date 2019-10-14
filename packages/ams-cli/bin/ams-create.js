@@ -19,6 +19,7 @@ program
     .usage('[name] [options]')
     .option('-n, --npm')
     .option('-f, --full-npm')
+    .option('-c, --complete-npm')
     .action(async (dirName, options) => {
         let answers = {};
         let isExist = false;
@@ -44,7 +45,7 @@ program
         }
 
         try {
-            if (!options.npm && !options.fullNpm) {
+            if (!options.npm && !options.fullNpm && !options.completeNpm) {
                 answers = await inquirer.prompt([
                     {
                         type: 'list',
@@ -64,6 +65,16 @@ program
                                     'router'
                                 )}) full`,
                                 value: 'npmFull'
+                            },
+                            {
+                                name: `use npm with (${chalk.magenta(
+                                    'webpack'
+                                )} and ${chalk.magenta(
+                                    'router'
+                                )} and ${chalk.magenta(
+                                    'vuex'
+                                )}) complete`,
+                                value: 'npmComplete'
                             }
                         ]
                     }
@@ -74,8 +85,10 @@ program
             let dirType = '';
             if (options.npm || answers.type === 'npm') {
                 dirType = 'npm';
-            } else {
+            } else if (options.fullNpm || answers.type === 'npmFull') {
                 dirType = 'npmFull';
+            } else {
+                dirType = 'npmComplete';
             }
 
             await copyAction(dirName, dirType);

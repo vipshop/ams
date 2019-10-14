@@ -1,0 +1,15 @@
+{
+    "name": "@ams-team/block-bct-progress",
+    "version": "0.2.3",
+    "description": "pmc/bct custom progress",
+    "author": "zebin.wu <zebin.wu@vipshop.com>",
+    "main": "lib/block-bct-progress.js",
+    "unpkg": "lib/block-bct-progress.js",
+    "amsConfig": {
+        "externals": {},
+        "cdn": [],
+        "title": "bct-progress",
+        "tags": "",
+        "publish": true
+    }
+}

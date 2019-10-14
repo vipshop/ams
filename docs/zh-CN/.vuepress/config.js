@@ -19,24 +19,53 @@ module.exports = {
     },
     // lastUpdated: '最后更新',
     nav: [
-      { text: '接入', link: '/api/' },
-      { text: '字段', link: '/field/' },
-      { text: '区块', link: '/block/' },
-      { text: '市场', link: '/market/' },
+      { text: '首页', link: '/' },
+      { text: '用户指南',
+        items: [
+          {
+            text: '指南',
+            link: '/api/'
+          },
+          {
+            text: '工具',
+            link: '/tools/'
+          },
+          {
+            text: '案例',
+            link: '/example/'
+          }
+        ]
+      },
+      { text: '物料市场',
+        items: [
+          {
+            text: '字段',
+            link: '/field/'
+          },
+          {
+            text: '区块',
+            link: '/block/'
+          },
+          {
+            text: '市场',
+            link: '/market/'
+          }
+        ]
+      },
+      { text: 'API', link: '/api/' },
       {
-        text: '0.17.x',
+        text: '版本更新',
         items: [
           {
             text: '更新日志',
             link: '/version/changelog'
           },
           {
-            text: '版本总览',
+            text: '规划总览',
             link: '/version/VERSION'
           }
         ]
-      },
-      { text: '仓库', link: 'https://github.com/vipshop/ams' }
+      }
     ],
     sidebar: {
       '/api/': [
@@ -62,8 +91,6 @@ module.exports = {
           title: '深入',
           collapsable: false,
           children: [
-            'operation',
-            'field',
             'cli',
             'custom',
             'ams-config',
@@ -113,6 +140,11 @@ module.exports = {
           title: '复合',
           collapsable: false,
           children: ['array', 'object', 'union']
+        },
+        {
+          title: '深入',
+          collapsable: false,
+          children: ['props-style-rules', 'get-set-view']
         }
       ],
       '/block/': [
@@ -137,6 +169,13 @@ module.exports = {
               'card',
               'dropdown'
             ]
+        },
+        {
+          title: '深入',
+          collapsable: false,
+          children: [
+            'deep-operation', 'deep-router'
+          ]
         },
         {
             title: '定制',
