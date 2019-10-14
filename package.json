@@ -12,7 +12,7 @@
         "vue",
         "element-ui"
     ],
-    "version": "0.17.11",
+    "version": "0.18.4",
     "main": "src/index.js",
     "unpkg": "lib/ams.js",
     "scripts": {
