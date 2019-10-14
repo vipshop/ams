@@ -1,6 +1,6 @@
 @import './material-card.styl'
 @import './material.styl'
-@import './ams-doc-index.styl'
+// @import './ams-doc-index.styl'
 
 a, p a, li a, td a { color: #3eaf7c; }
 
@@ -10,20 +10,72 @@ a, p a, li a, td a { color: #3eaf7c; }
     }
 }
 
-#app .no-sidebar {
-    .content,.content__default{
-        max-width: none
-        padding-left:0
-        padding-right: 0
-        padding-bottom 0
+#app {
+    .navbar{
+        height 70px;
+        padding: 0;
+        line-height 70px;
+        background:#3f3955;
+        color: #fff;
+        border-bottom: 0;
+        box-sizing: border-box;
+        .home-link{
+            vertical-align: top;
+        }
+        .links{
+            background-color: transparent;
+            top: 17px;
+            right: 48px;
+            height 36px;
+            line-height 36px;
+        }
+        .nav-links .nav-item{
+            margin-left: 40px;
+        }
+        .nav-links a:hover, .nav-links a.router-link-active{
+            color: inherit;
+            opacity: 0.8;
+        }
+        .site-name{
+            font-size: 0;
+            width: 104px;
+            height: 32px;
+            background-image: url('/index/ams-logo.png');
+            background-size: 100%;
+            margin: 17px 0 0 33px;
+        }
+        .nav-dropdown{
+            background:#3f3955;
+            border-color: #3f3955;
+            padding-top: 20px; 
+        }
     }
-    .page{
-        padding-bottom: 0
+    .search-box input {
+        color: #877FA3;
+        border:1px solid rgba(66,226,195,1);
+        background-color: transparent;
+        background-image: url('/index/search.png');
+        background-size: 20px;
     }
-    .page-edit{
-        display: none
+    .no-sidebar {
+        .content,.content__default{
+            max-width: none
+            padding-left:0
+            padding-right: 0
+            padding-bottom 0
+        }
+        .page{
+            padding-bottom: 0
+        }
+        .page-edit{
+            display: none
+        }
+    }
+    .icon.outbound{
+        color: #fff;
     }
 }
+
 .sidebar{
     border-right: 0;
     width: 15rem;

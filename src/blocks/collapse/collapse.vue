@@ -3,14 +3,14 @@
          class="ams-block-collapse"
          :style="block.style">
         <el-collapse v-model="data.active" v-on="on" :accordion="block.props.accordion || false">
-            <template v-for="option in options">
-                    <el-collapse-item :key="option.name" :name="option.name">
+            <template v-for="(option, key) in block.options">
+                    <el-collapse-item :key="key" :name="key">
 
                         <template slot="title">
-                            <span v-html="option['title']"></span>
+                            <span v-html="typeof option === 'string' ? option : option['title']"></span>
                         </template>
-
-                        <CollapsePane :name="option.name" :active="data.active" :option="option"/>
+                         <!-- <ams-block :name="key" v-if="(typeof data.active !== 'undefined') && (isAccordion ? data.active === key : data.active.indexOf(key) >= 0)"/> -->
+                        <CollapsePane :name="key" :active="data.active" :option="option"/>
 
                     </el-collapse-item>
             </template>
@@ -34,29 +34,6 @@ export default {
     computed: {
         isAccordion() {
             return this.block.props && this.block.props.accordion;
-        },
-        options() {
-            let options = [];
-            Object.keys(this.block.options).forEach(name => {
-                const option = this.block.options[name];
-                if (typeof option === 'string') {
-                    options.push({
-                        name: name,
-                        title: option,
-                        lazy: false,
-                        load: false
-                    });
-                } else {
-                    options.push({
-                        name: name,
-                        title: option.title,
-                        lazy: option.lazy,
-                        load: false
-                    });
-                }
-
-            });
-            return options;
         }
     }
 };

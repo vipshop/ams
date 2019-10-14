@@ -34,6 +34,12 @@ title: Text 文本
 <field-text-demo blockName="textField5" onlineDemo="https://codepen.io/w3cmark/pen/jONpvQa"/>
 </ClientOnly>
 
+### 展示状态下后面追加提示icon
+
+<ClientOnly>
+<field-text-demo blockName="textField6" onlineDemo="https://codepen.io/w3cmark/pen/yLLyKmW"/>
+</ClientOnly>
+
 ### 在线实验室
 <ClientOnly>
 <ams-config name="text" type="field"/>

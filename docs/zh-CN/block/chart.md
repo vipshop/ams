@@ -5,7 +5,7 @@ Chart: Chart 图表
 
 ## 安装
 
-### @ams-team/block-chart <Badge text="0.1.3"/>
+### @ams-team/block-chart <Badge text="0.2.0"/>
 
 > 依赖开源 `echarts`
 
@@ -14,11 +14,29 @@ npm i --save echarts
 npm i --save @ams-team/block-chart
 ```
 
+### 使用
+
+```js
+// 引入图表区块
+import chart from '@ams-team/block-chart';
+// 可以单独引入唯品会定制主题使用 v0.2.0+
+import '@ams-team/block-chart/lib/theme/vipshop.js';
+Vue.use(chart);
+
+// ams配置
+const amsConfig = {
+    type: 'chart',
+    options: {
+        theme: 'vipshop', // 配置使用唯品会定制主题，默认使用的主题是echart官方的macarons
+    }
+}
+```
+
 ### CDN
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/echarts@4.1.0/dist/echarts.min.js"></script>
-<script src="http://h5rsc.vipstatic.com/ams/block/block-chart@0.1.3.js"></script>
+<script src="http://h5rsc.vipstatic.com/ams/block/block-chart@0.2.0.js"></script>
 ```
 
 ## 结构

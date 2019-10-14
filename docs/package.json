@@ -6,7 +6,7 @@
   },
   "private": true,
   "dependencies": {
-    "@ams-team/ams": "latest",
+    "@ams-team/ams": "^0.15.11",
     "@ams-team/block-ams-config": "latest",
     "@ams-team/block-chart": "latest",
     "@ams-team/json-stringify": "latest",

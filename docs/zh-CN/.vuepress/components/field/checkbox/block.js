@@ -47,5 +47,21 @@ export default {
 			}
 		},
 		ctx: 'edit'
+	},
+	checkboxField2: {
+		type: 'form',
+		resource: {
+			fields: {
+				checkboxFieldA: {
+					type: 'checkbox',
+					label: '多选',
+					props: {
+						'select-all': true,
+						options: options
+					}
+				}
+			}
+		},
+		ctx: 'edit'
 	}
 };

@@ -598,6 +598,53 @@ export default {
 			}
 		}
 	},
+	suffixInfoList: {
+		type: 'list',
+		resource: {
+            api: {
+				prefix,
+				list: 'list-pagination'
+			},
+			fields: {
+				'id': {
+					'type': 'text',
+					'label': 'ID'
+				},
+				'title': {
+					'type': 'text',
+					'label': '标题',
+					props: {
+						// 'suffix-info': '我是提示', // 后缀提示
+						// 'suffix-info-warning': '我是提示warning', // 后缀警告提示
+						// 'suffix-info-danger': '我是提示danger' // 后缀错误提示
+					},
+					changeConfig(field, context) {
+						if (context) {
+							if (context.id === 2) {
+								field.props['suffix-info-warning'] = '我是提示warning';
+							} else if (context.id === 3) {
+								field.props['suffix-info-danger'] = '我是提示danger';
+							} else {
+								field.props['suffix-info'] = '我是提示';
+							}
+						}
+						return field;
+					}
+				},
+				'content': {
+					'type': 'textarea',
+					'label': '内容'
+				}
+			}
+		},
+		events: {
+			init: '@list'
+		},
+		pageSize: 10,
+		props: {
+			pagination: 'simulate' // 模拟分页
+		}
+	},
 	editList: {
 		type: 'list',
 		ctx: 'edit',

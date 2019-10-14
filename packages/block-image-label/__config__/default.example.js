@@ -1,10 +1,15 @@
 export default {
+    ctx: 'view',
     type: 'image-label',
     options: {
         title: '标题文本标题'
     },
     data: {
         imgList: [
+            'http://gd6-inner-vos.tools.vip.com/fcms/15526374516601.png',
+            'http://gd6-inner-vos.tools.vip.com/fcms/15526374516601.png',
+            'http://gd6-inner-vos.tools.vip.com/fcms/15526374516601.png',
+            'http://gd6-inner-vos.tools.vip.com/fcms/15526374516601.png',
         ],
         imgTipComList: [
             {
@@ -15,5 +20,11 @@ export default {
                 text: '你好'
             }
         ]
+    },
+    operations: {
+        button: {
+            type: 'button',
+            label: 'xx'
+        }
     }
 };

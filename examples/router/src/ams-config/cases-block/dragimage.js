@@ -35,13 +35,13 @@ ams.block('dragimage', {
             ctx: 'view',
             options: {
                 url: 'http://c.vpimg1.com/upcb/2019/09/17/172/ias_156871245334665.jpg',
-                width: 712, // 底图宽度
-                height: 340, // 底图高度
-                cutWidth: 300, // 需要裁剪的尺寸宽度
+                width: 384, // 底图宽度
+                height: 184, // 底图高度
+                cutWidth: 200, // 需要裁剪的尺寸宽度
                 imgWidth: '500px', // 图片展示宽度
                 left: 100, // 需要裁剪的区域离左边距离
                 ratio: 0.04, // 移动速度
-                showFrame: false // 是否展示裁剪框
+                showFrame: true // 是否展示裁剪框
             },
             on: {
                 getFrameLeft(arg) {

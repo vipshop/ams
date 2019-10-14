@@ -1,7 +1,7 @@
 export default {
     type: 'chart',
     style: {
-        width: '500px',
+        width: '700px',
         height: '500px'
     },
     resource: {
@@ -21,6 +21,10 @@ export default {
     // 图表配置
     options: {
         BASE: 'LINE',
+        theme: 'vipshop',
+        tooltip: {
+            trigger: 'axis'
+        },
         series: [
             {
                 name: '邮件营销',

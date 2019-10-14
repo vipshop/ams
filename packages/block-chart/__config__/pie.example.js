@@ -1,7 +1,7 @@
 export default {
     type: 'chart',
     style: {
-        width: '500px',
+        width: '700px',
         height: '500px'
     },
     resource: {
@@ -27,6 +27,7 @@ export default {
     // 图表配置
     options: {
         BASE: 'PIE',
+        theme: 'vipshop',
         series: [
             {
                 name: '访问来源',

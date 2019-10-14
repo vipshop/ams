@@ -1,5 +1,6 @@
 import ams from '@ams-team/ams';
 import outsideFile from './cases-sence/outside-file';
+import { prefix } from '@/utils';
 
 ams.block('router', {
     type: 'router',
@@ -12,6 +13,9 @@ ams.block('router', {
         // showMenu: false,   // 隐藏所有菜单配置项，默认为true
         // forcedRefresh: true, // 点击当前菜单（非外链）是否强制刷新渲染
         uniqueOpened: true, // 是否只保持一个子菜单的展开
+        // backgroundColor: '#304156', // 菜单的背景色（仅支持 hex 格式），默认值：#304156
+        // textColor: '#bfcbd9', // 菜单的文字颜色（仅支持 hex 格式），默认值：#bfcbd9
+        // activeTextColor: '#409EFF', // 菜单的文字颜色（仅支持 hex 格式），默认值：#409EFF
         routes: [
             {
                 name: '首页',
@@ -134,7 +138,7 @@ ams.block('router', {
                 name: '区块示例',
                 path: 'cases-block',
                 meta: {
-                    icon: 'el-icon-view',
+                    icon: 'ams-icon-account-sales',
                     noRedirect: true
                 },
                 children: [
@@ -166,6 +170,11 @@ ams.block('router', {
                                 name: '假分页',
                                 path: 'list-pagination',
                                 block: 'list-pagination'
+                            },
+                            {
+                                name: '列表拖拽',
+                                path: 'list-drag',
+                                block: 'list-drag'
                             }
                         ]
                     },

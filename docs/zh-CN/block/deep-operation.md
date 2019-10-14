@@ -102,7 +102,6 @@ actions: {
 }
 ```
 
-
 ### 默认值与reset operation
 
 默认值可以在block的初始data内指定，如

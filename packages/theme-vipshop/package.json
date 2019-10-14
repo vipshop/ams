@@ -1,0 +1,22 @@
+{
+    "name": "@ams-team/theme-vipshop",
+    "version": "0.1.0",
+    "description": "Vipshop theme.",
+    "author": "jun85.li",
+    "main": "lib/index.css",
+    "unpkg": "lib/index.css",
+    "style": "lib/index.css",
+    "files": [
+        "lib",
+        "src"
+    ],
+    "scripts": {
+        "build": "gulp build"
+    },
+    "devDependencies": {
+        "gulp": "^4.0.2",
+        "gulp-autoprefixer": "^4.0.0",
+        "gulp-cssmin": "^0.1.7",
+        "gulp-sass": "^3.1.0"
+    }
+}

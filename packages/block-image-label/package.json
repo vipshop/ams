@@ -1,8 +1,8 @@
 {
     "name": "@ams-team/block-image-label",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "for isa",
-    "author": "edward.shao",
+    "author": "edward.shao <edward.shao@vipshop.com>",
     "main": "lib/block-image-label.js",
     "unpkg": "lib/block-image-label.js",
     "amsConfig": {

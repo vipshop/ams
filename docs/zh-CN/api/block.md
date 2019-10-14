@@ -4,6 +4,8 @@
 
 ## 注册 block
 
+注册一个name为 `formView` 的block
+
 ```js
 ams.block('formView', {
   type: 'form', // 区块类型：from代表表单

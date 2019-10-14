@@ -12,25 +12,36 @@ export default {
             required: true
         },
         option: {
-            type: Object,
-            default: {},
+            type: [String, Object],
             required: true
         },
-        active: [String, Array]
+        active: {
+            type: [String, Array]
+        }
+    },
+    data() {
+        return {
+            load: false
+        };
     },
     computed: {
         computedLoad() {
-            if (this.option.load === true) {
+            if (this.load === true) { return true }
+
+            if (typeof this.option === 'string') {
+                this.load = true;
                 return true;
-            }
-            if (this.option.lazy === true) {
-                if (this.active.indexOf(name) !== -1) {
-                    this.option.load = true;
-                    return true;
-                } else {
-                    return false;
+            } else if (typeof this.option === 'object') {
+                if (this.option.lazy === true) {
+                    if (this.active.indexOf(this.name) !== -1) {
+                        this.load = true;
+                        return true;
+                    } else {
+                        return false;
+                    }
                 }
             }
+
             return true;
         }
     }

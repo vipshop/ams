@@ -30,13 +30,11 @@ export default {
     .main-container {
         min-height: 100%;
         transition: margin-left 0.28s;
-        margin-left: 180px;
         position: relative;
     }
     // 侧边栏
     .sidebar-container {
         transition: width 0.28s;
-        width: 180px !important;
         height: 100%;
         position: fixed;
         font-size: 0px;
@@ -72,23 +70,23 @@ export default {
         }
         .el-menu {
             border: none;
-            height: 100%;
+            min-height: 100%;
             width: 100% !important;
         }
-        .is-active > .el-submenu__title {
-            color: #f4f4f5 !important;
-        }
+        // .is-active > .el-submenu__title {
+        //     color: #f4f4f5 !important;
+        // }
         .ams-blocks{
             font-size: 16px;
         }
     }
     &.hideSidebar {
-        .sidebar-container {
-            width: 36px !important;
-        }
-        .main-container {
-            margin-left: 36px;
-        }
+        // .sidebar-container {
+        //     width: 80px !important;
+        // }
+        // .main-container {
+        //     margin-left: 80px;
+        // }
         .submenu-title-noDropdown {
             padding-left: 10px !important;
             position: relative;
@@ -99,7 +97,7 @@ export default {
         .el-submenu {
             overflow: hidden;
             & > .el-submenu__title {
-                padding-left: 6px !important;
+                // padding-left: 6px !important;
                 .el-submenu__icon-arrow {
                     display: none;
                 }
@@ -119,24 +117,13 @@ export default {
             }
         }
         .el-menu {
-            .el-menu-item{
-                padding-left: 6px !important;
-            }
-            .el-tooltip{
-                left: -14px !important;
-            }
+            // .el-menu-item{
+            //     padding-left: 6px !important;
+            // }
+            // .el-tooltip{
+            //     left: -14px !important;
+            // }
         }
-    }
-    .sidebar-container .nest-menu .el-submenu > .el-submenu__title,
-    .sidebar-container .el-submenu .el-menu-item {
-        min-width: 180px !important;
-        background-color: #1f2d3d !important;
-        &:hover {
-            background-color: #001528 !important;
-        }
-    }
-    .el-menu--collapse .el-menu .el-submenu {
-        min-width: 180px !important;
     }
     &.withoutAnimation {
         .main-container,

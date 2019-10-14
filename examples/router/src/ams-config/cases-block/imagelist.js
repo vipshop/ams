@@ -112,6 +112,7 @@ ams.block('imagelist', {
             type: 'text',
             props: {
                 size: 'mini',
+                disabled: true
             },
             label: '通过(协助)'
         },
@@ -120,7 +121,8 @@ ams.block('imagelist', {
             props: {
                 type: 'text',
                 size: 'mini',
-                icon: 'el-icon-delete'
+                icon: 'el-icon-delete',
+                disabled: true
             }
         },
         editItem: {
@@ -171,6 +173,9 @@ ams.block('imagelist', {
         },
         rejectedItem1() {
             alert('通过(设计)');
+        },
+        deleteItem() {
+            alert('点击了删除');
         },
         clickImageItem(args) {
             // 内置的action

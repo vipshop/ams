@@ -63,10 +63,22 @@ ams.block('imagelist2', {
             type: 'icon',
             label: '编辑',
             icon: 'el-icon-edit'
+        },
+        addPic: {
+            slot: 'searchs',
+            // slot: 'rightTop',
+            type: 'field',
+            field: {
+                type: 'file',
+                props: {
+                    'button-label': '上传图片'
+                }
+            }
         }
     },
     pageSize: 10,
     props: {
+        class: 'a234'
         // shadow: 'always', // 阴影效果，可取值：hover（默认）| always | never
         // subtitle: 'always' // 子标题出现方式，可取值：hover（默认）| always
         // pagination: 'simulate' // 模拟分页
@@ -76,6 +88,9 @@ ams.block('imagelist2', {
         init: '@list',
     },
     actions: {
+        fieldChange({ name, value, path }) {
+            console.log('fieldChange: ' + name, value, path);
+        },
         rejectedItem() {
             alert('点击了驳回');
         },

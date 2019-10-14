@@ -1,7 +1,7 @@
 export default {
     type: 'chart',
     style: {
-        width: '500px',
+        width: '700px',
         height: '500px'
     },
     resource: {
@@ -43,6 +43,7 @@ export default {
     // 图表配置
     options: {
         BASE: 'SCATTER',
+        theme: 'vipshop',
         series: [{
             type: 'scatter',
             name: '1990',
