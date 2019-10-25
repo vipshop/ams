@@ -6,7 +6,7 @@ export default {
         resource: {
             api: {
                 prefix,
-                list: 'list'
+                list: 'table'
             },
             fields: {
                 id: {

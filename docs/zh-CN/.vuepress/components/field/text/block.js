@@ -150,5 +150,44 @@ export default {
 			textFieldB: '后面有警告提示',
 			textFieldC: '后面有错误提示',
 		}
+	},
+	textField7: {
+		type: 'form',
+		resource: {
+			fields: {
+				textFieldA: {
+					type: 'text',
+					label: 'prefix',
+					slots: {
+						'prefix': 'prefix',
+					}
+				},
+				textFieldB: {
+					type: 'text',
+					label: 'suffix',
+					slots: {
+						'suffix': 'suffix',
+					},
+				},
+				textFieldC: {
+					type: 'text',
+					label: 'prepend',
+					slots: {
+						'prepend': 'prepend'
+					}
+				},
+				textFieldD: {
+					type: 'text',
+					label: 'append',
+					slots: {
+						'append': 'append'
+					}
+				}
+			}
+		},
+		ctx: 'edit',
+		style: {
+			width: '50%'
+		}
 	}
 };

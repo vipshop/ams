@@ -225,6 +225,7 @@ export const defaultFieldConfig = {
             clearable: true,
             type: 'textarea'
         },
+        default: '',
         get,
         set,
         view,

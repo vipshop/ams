@@ -11,5 +11,5 @@ export default {
         on
     },
     inject: ['fieldChange', '$block'],
-    props: ['field', 'path', 'value', 'name']
+    props: ['field', 'path', 'value', 'name', 'context']
 };

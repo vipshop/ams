@@ -39,7 +39,7 @@ ams.block('formView', {
     ams.resource('demo', {
         key: 'id',
         api: { // 数据接口相关
-            prefix: '//rap2api.taobao.org/app/mock/231578/ams/mock/',
+            prefix: 'https://www.yournana.club/vipshop/',
             list: 'list'
         },
         fields: { // 字段
@@ -414,3 +414,7 @@ block支持透传props、on和style 至 block 内部根元素（原生节点或�
 | operations | object、array | 否 | 配置operations
 | blocks | object、array | 否 | 子blocks配置，如为object则为具体的配置内容，如为array则是子blocks的key列表
 | render | string、boolean | 否 | 如果为true会自动渲染到body内，或者指定已有节点的querySelector
+
+我们已经学习了`字段`和`区块`，接下来，我们来学习如何用AMS配置一个完善的单页面案例
+
+[下一节：案例教程](/api/demo.html)

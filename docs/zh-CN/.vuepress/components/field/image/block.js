@@ -4,6 +4,10 @@ export default {
 	imageField1: {
 		resources: {
 			imageRes: {
+                api: {
+                    prefix: prefix,
+                    create: 'create'
+                },
 				fields: {
 					image1: {
 						label: '图片上传',

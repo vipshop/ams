@@ -45,10 +45,8 @@ ams.block('editor', {
         editorView: {
             type: 'form',
             ctx: 'view',
-
             // 指定block使用的资源为上面声明的demo-res
             resource: 'resource-editor',
-
             events: {
                 init: '@read'
             },

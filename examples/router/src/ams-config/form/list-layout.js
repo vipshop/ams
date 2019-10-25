@@ -24,6 +24,13 @@ ams.block('list-layout', {
                     props: {
                         height: 600
                     },
+                    expand: {
+                        id: true,
+                        testText: true,
+                        testArrays: true,
+                        testDatetime: true,
+                        testRate: true
+                    },
                     // 过滤设置（列表特有）
                     filters: {
                         testCheckbox: {
@@ -48,7 +55,7 @@ ams.block('list-layout', {
                         testAudio: false,
                         testUnits: false,
                         precent: false,
-                        testArrays: false,
+                        // testArrays: false,
                         testRadioArray: false,
                         testCheckboxArray: false
                     },

@@ -18,7 +18,7 @@
                                   :style="`width: ${fields[key].props && fields[key].props.formItemWidth}`"
                                   :rules="fields[key].ctx === 'view' ? undefined : fields[key].rules"
                                   :prop="fields[key].type !== 'array' && fields[key].type !== 'object' ? key : ''">
-                        <template v-if="fields[key].label" slot="label">
+                        <template v-if="fields[key].label && fields[key].labelWidth !== '0'" slot="label">
                             <el-tooltip effect="dark" placement="top" v-if="fields[key].info">
                                 <i class="el-icon-info ams-form-label-info"></i>
                                 <div slot="content" v-html="fields[key].info"></div>
@@ -31,6 +31,7 @@
                                    :ref="`$${key}`"
                                    :name="name"
                                    :path="key"
+                                   :context="data"
                                    :class="`ams-field ams-field-${fields[key].type}-${fields[key].ctx}`" />
                         <div class="ams-form-item-desc" v-if="fields[key].desc && fields[key].ctx === 'edit'" v-html="fields[key].desc"></div>
                     </el-form-item>
@@ -39,7 +40,7 @@
                                   :label-width="fields[key].labelWidth"
                                   class="ams-form-inline"
                                   :key="key">
-                        <template v-if="fields[key].label" slot="label">
+                        <template v-if="fields[key].label && fields[key].labelWidth !== '0'" slot="label">
                             <el-tooltip effect="dark" placement="top" v-if="fields[key].info">
                                 <i class="el-icon-info ams-form-label-info"></i>
                                 <div slot="content" v-html="fields[key].info"></div>
@@ -48,7 +49,7 @@
                         </template>
                         <el-form-item v-for="fieldName in fieldLayout"
                                       :key="fieldName"
-                                      :label="fieldName === key ? '' : fields[fieldName].label"
+                                      :label="fieldName === key && fields[fieldName].labelWidth !== '0' ? '' : fields[fieldName].label"
                                       :label-width="fields[fieldName].labelWidth"
                                       :rules="fields[fieldName].rules"
                                       :prop="fields[fieldName].type !== 'array' && fields[fieldName].type !== 'object' ? fieldName : ''">
@@ -58,6 +59,7 @@
                                        :ref="`$${fieldName}`"
                                        :name="name"
                                        :path="fieldName"
+                                       :context="data"
                                        :class="`ams-field ams-field-${fields[fieldName].type}-${fields[fieldName].ctx}`" />
                         </el-form-item>
                         <div class="ams-form-item-desc" v-if="fields[key].desc && fields[key].ctx === 'edit'" v-html="fields[key].desc"></div>

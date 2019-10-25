@@ -3,7 +3,6 @@ title: Checkbox 多选框
 ---
 # Checkbox 多选框
 
-
 ### 基础用法
 
 <ClientOnly>
@@ -14,6 +13,7 @@ title: Checkbox 多选框
 
 设置props中的`select-all`为`true`
 
+<ClientOnly>
 <field-checkbox-demo blockName="checkboxField2" onlineDemo="https://codepen.io/wuzebin/pen/zYYvyEO"/>
 </ClientOnly>
 

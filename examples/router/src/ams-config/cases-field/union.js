@@ -1,8 +1,13 @@
 import ams from '@ams-team/ams';
+import { prefix } from '@/utils';
 
 ams.block('union', {
     resources: {
         'union': {
+            api: {
+                prefix: prefix,
+                update: 'update'
+            },
             fields: {
                 union: {
                     type: 'union',

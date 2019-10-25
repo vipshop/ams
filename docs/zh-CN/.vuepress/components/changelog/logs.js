@@ -1,9 +1,28 @@
 // 更新日志
 export default [
     {
-        version: '0.17.7',
-        date: '2019.09.24',
+        version: '0.18.5',
+        date: '2019.10.15',
         log: [
+            'feat: 扩展列表行展开为表单展示',
+            'fix: 列表高度自适应',
+            'fix: 删除block-chart的base默认样式配置，解决主题无法生效问题',
+            'fix: field-select远程搜索isInitRemoteOptions的逻辑',
+            'fix: 恢复block的operations修改',
+            'fix: block-list和block-imagelist绑定block.props',
+            'fix: 动态添加collapse'
+        ]
+    },
+    {
+        version: '0.17.12',
+        date: '2019.09.30',
+        log: [
+            'feat: 列表支持拖拽',
+            'feat: 添加sortable@1.10.0cdn文件',
+            'feat: block-image-label添加eidt和view状态',
+            'feat: 按钮添加Badge标记',
+            'feat: 新增uniqueOpened菜单只保持一个子菜单展开',
+            'feat: 新增定制区块block-image-label',
             'feat: 路由添加class类名控制',
             'feat: 更新block-bct-progress排版',
             'feat: field-checkbox添加button类型',
@@ -14,6 +33,7 @@ export default [
             'feat: field支持通过props.class配置该field的样式名，比如只想通过样式添加一个红色星号',
             'feat: 新增block-popover区块组件',
             'feat: field-checkbox字段配置select-all属性实现全选',
+            'fix：解决11~12位的时间戳转为为日期异常',
             'fix: checkbox-button样式优化',
             'fix: field-image从默认列表里选择图片后还校验失败的问题',
             'fix: operation的点击阻止事件冒泡',

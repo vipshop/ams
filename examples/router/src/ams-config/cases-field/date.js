@@ -1,4 +1,5 @@
 import ams from '@ams-team/ams';
+import { prefix } from '@/utils';
 
 const datas = {
     time: '11:00',
@@ -27,6 +28,10 @@ ams.block('date', {
             // timerange
             // year/month/date/week/datetime
             // datetimerange/daterange/dates
+            api: {
+                prefix: prefix,
+                update: 'update'
+            },
             fields: {
                 time: {
                     label: 'time',
@@ -139,14 +144,14 @@ ams.block('date', {
             style: {
                 width: '50%'
             },
-            events: {
-                submit: '@create'
-            },
             operations: {
                 submit: {
                     type: 'button',
                     label: '提交'
                 }
+            },
+            events: {
+                submit: '@update'
             }
         },
         viewDate: {
@@ -156,9 +161,6 @@ ams.block('date', {
             ctx: 'view',
             style: {
                 width: '50%'
-            },
-            events: {
-                submit: '@create'
             }
         }
     }

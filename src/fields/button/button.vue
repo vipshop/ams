@@ -1,0 +1,24 @@
+<template>
+
+    <el-tooltip :disabled="!tooltip"
+                v-bind="tooltip">
+        <el-badge v-bind="badge">
+
+            <el-button @click.stop="emit"
+                :style="field.style"
+                v-on="on"
+                v-bind="field.props"><template v-if="field.label">{{field.label}}</template></el-button>
+
+        </el-badge>
+    </el-tooltip>
+
+</template>
+
+<script>
+
+import mixins from '../../ams/mixins';
+
+export default {
+    mixins: [mixins.fieldButtonMixin]
+};
+</script>

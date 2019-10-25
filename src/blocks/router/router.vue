@@ -73,20 +73,11 @@ export default {
             min-height: 100%;
             width: 100% !important;
         }
-        // .is-active > .el-submenu__title {
-        //     color: #f4f4f5 !important;
-        // }
         .ams-blocks{
             font-size: 16px;
         }
     }
     &.hideSidebar {
-        // .sidebar-container {
-        //     width: 80px !important;
-        // }
-        // .main-container {
-        //     margin-left: 80px;
-        // }
         .submenu-title-noDropdown {
             padding-left: 10px !important;
             position: relative;
@@ -115,14 +106,6 @@ export default {
                     }
                 }
             }
-        }
-        .el-menu {
-            // .el-menu-item{
-            //     padding-left: 6px !important;
-            // }
-            // .el-tooltip{
-            //     left: -14px !important;
-            // }
         }
     }
     &.withoutAnimation {

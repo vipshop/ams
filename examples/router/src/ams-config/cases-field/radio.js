@@ -1,4 +1,5 @@
 import ams from '@ams-team/ams';
+import { prefix } from '@/utils';
 
 const datas = {
     radio: 'a',
@@ -10,6 +11,11 @@ const datas = {
 ams.block('radio', {
     resources: {
         radio: {
+            api: {
+                prefix: prefix,
+                read: 'getRadio',
+                update: 'update'
+            },
             fields: {
                 radio: {
                     type: 'radio',
@@ -134,32 +140,31 @@ ams.block('radio', {
     blocks: {
         editRadio: {
             ctx: 'edit',
-            data: datas,
             type: 'form',
             resource: 'radio',
             style: {
                 width: '50%'
-            },
-            events: {
-                submit: '@create'
             },
             operations: {
                 submit: {
                     type: 'button',
                     label: '提交'
                 }
+            },
+            events: {
+                init: '@read',
+                submit: '@update'
             }
         },
         viewRadio: {
             ctx: 'view',
-            data: datas,
             type: 'form',
             resource: 'radio',
             style: {
                 width: '50%'
             },
             events: {
-                submit: '@create'
+                init: '@read'
             }
         }
     }

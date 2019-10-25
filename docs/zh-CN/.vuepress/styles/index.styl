@@ -33,16 +33,20 @@ a, p a, li a, td a { color: #3eaf7c; }
             margin-left: 40px;
         }
         .nav-links a:hover, .nav-links a.router-link-active{
-            color: inherit;
-            opacity: 0.8;
+            color: #46bd87;
+            border-bottom: 0;
+            // opacity: 0.8;
         }
         .site-name{
             font-size: 0;
             width: 104px;
             height: 32px;
-            background-image: url('/index/ams-logo.png');
+            background-image: url('/ams/index/ams-logo.png');
             background-size: 100%;
             margin: 17px 0 0 33px;
+        }
+        .dropdown-title{
+            color: inherit;    
         }
         .nav-dropdown{
             background:#3f3955;
@@ -54,7 +58,7 @@ a, p a, li a, td a { color: #3eaf7c; }
         color: #877FA3;
         border:1px solid rgba(66,226,195,1);
         background-color: transparent;
-        background-image: url('/index/search.png');
+        background-image: url('/ams/index/search.png');
         background-size: 20px;
     }
     .no-sidebar {
@@ -72,7 +76,7 @@ a, p a, li a, td a { color: #3eaf7c; }
         }
     }
     .icon.outbound{
-        color: #fff;
+        display: none;
     }
 }
 

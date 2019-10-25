@@ -74,7 +74,6 @@ ams.block('list', {
                 // type: 'info',        // 类型：primary / success / warning / danger / info
                 max: 3,                 // 超过最大值会显示 '{max}+'
                 value: function(data) {
-                    // return '' //同样不显示
                     return data.id;  // 需要为数字或字符串
                 }
             }
@@ -87,7 +86,8 @@ ams.block('list', {
             },
             props: {
                 size: 'mini'
-            }
+            },
+
         },
         replace: {
             type: 'button',
@@ -95,6 +95,17 @@ ams.block('list', {
             show: 'testSwitch',
             props: {
                 size: 'mini'
+            },
+            badge: {
+                'is-dot': true,      // 原点显示
+                type: 'warning',
+                value: function(data) {
+                    if (data.id <= 3) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
             }
         },
         back: {
@@ -168,9 +179,7 @@ ams.block('list', {
                 // type: 'info',        // 类型：primary / success / warning / danger / info
                 max: 3,                 // 超过最大值会显示 '{max}+'
                 value: function(data) {
-                    console.log('search-badge', data);
-                    // return '' //同样不显示
-                    return false;
+                    return true;
                 }
             }
         },
@@ -200,9 +209,11 @@ ams.block('list', {
     data: {
         pageSize: 20,
         // 定义分页数
-        pageSizes: [10, 20]
+        pageSizes: [10, 20],
+        layout: 'total, prev, pager, next'
     },
     events: {
+        submit: '@submit',
         init: '@list',
         edit: '@routerPush:/list/edit',
         replace: '@routerReplace:/list/edit',
@@ -210,6 +221,9 @@ ams.block('list', {
     },
 
     actions: {
+        submit({ $prevReturn }) {
+            console.log('list-submit', $prevReturn);
+        },
         addItem() {
             console.log('addItem action');
         },

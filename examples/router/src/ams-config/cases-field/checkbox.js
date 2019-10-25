@@ -1,4 +1,5 @@
 import ams from '@ams-team/ams';
+import { prefix } from '@/utils';
 
 const datas = {
     checkbox: 'a,b,c',
@@ -11,6 +12,11 @@ const datas = {
 ams.block('checkbox', {
     resources: {
         checkbox: {
+            api: {
+                prefix: prefix,
+                read: 'getCheckbox',
+                update: 'update'
+            },
             fields: {
                 checkbox: {
                     type: 'checkbox',
@@ -128,14 +134,14 @@ ams.block('checkbox', {
     blocks: {
         editCheckbox: {
             ctx: 'edit',
-            data: datas,
             type: 'form',
             resource: 'checkbox',
             style: {
                 width: '50%'
             },
             events: {
-                submit: '@create'
+                init: '@read',
+                submit: '@update'
             },
             operations: {
                 submit: {
@@ -162,7 +168,7 @@ ams.block('checkbox', {
                 width: '50%'
             },
             events: {
-                submit: '@create'
+                init: '@read'
             }
         }
     }

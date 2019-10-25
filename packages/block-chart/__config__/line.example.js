@@ -1,5 +1,7 @@
+import '../src/theme/vipshop.js';
 export default {
     type: 'chart',
+    theme: 'vipshop',
     style: {
         width: '700px',
         height: '500px'
@@ -21,9 +23,13 @@ export default {
     // 图表配置
     options: {
         BASE: 'LINE',
-        theme: 'vipshop',
-        tooltip: {
-            trigger: 'axis'
+        // 'xAxis': {
+        //     'axisLine': {
+        //         'show': false
+        //     }
+        // },
+        'xAxis': {
+            'boundaryGap': false
         },
         series: [
             {

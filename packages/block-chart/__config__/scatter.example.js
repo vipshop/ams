@@ -43,7 +43,6 @@ export default {
     // 图表配置
     options: {
         BASE: 'SCATTER',
-        theme: 'vipshop',
         series: [{
             type: 'scatter',
             name: '1990',

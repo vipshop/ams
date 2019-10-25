@@ -64,7 +64,7 @@ ams.block('table', {
             valueKey: 'rowchildren',
             // 展开子表/展开行的动态请求接口配置
             remoteConfig: {
-                // action: 'http://localhost:9526/examples/router/mock/table-expand.json',
+                // action: 'http://localhost:9526/examples/router/mock/table-expand',
                 action: 'https://easy-mock.com/mock/5bf25b2b34392218c898a5fd/table-expand',
                 queryName: 'chidTableId',
                 queryValue: 'id'

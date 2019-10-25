@@ -3,11 +3,15 @@
                  v-if="$route.meta.hasMenu === false || !showMenu" />
     <div :class="classObj"
          v-else>
+        <navbar :sidebar="sidebar" />
         <sidebar class="sidebar-container"
                  :router="$block.block.router"
                  :sidebar="sidebar" />
-        <div class="main-container">
-            <navbar :sidebar="sidebar" />
+
+        <!-- 面包屑 -->
+        <breadcrumb v-if="shwoBreadcrumb" class="breadcrumb-container" />
+        <!-- 主内容 -->
+        <div class="main-container" :class="shwoBreadcrumb ? '' : 'main-container-nobreadcrumb'">
             <!-- <tags-view /> -->
             <section class="ams-router-main">
                 <transition name="fade-transform"
@@ -24,12 +28,14 @@
 <script>
 import Navbar from './Navbar.vue';
 import Sidebar from './Sidebar/Sidebar';
+import Breadcrumb from './Breadcrumb.vue';
 // import ResizeMixin from './mixin/ResizeHandler'
 
 export default {
     components: {
         Navbar,
         Sidebar,
+        Breadcrumb,
         // TagsView
     },
     inject: ['$block'],
@@ -95,6 +101,12 @@ export default {
                 return true;
             }
 
+        },
+        shwoBreadcrumb() {
+            if (this.$block.block.router && typeof this.$block.block.router.shwoBreadcrumb === 'undefined') {
+                return true;
+            }
+            return this.$block.block.router.shwoBreadcrumb;
         }
     },
     methods: {

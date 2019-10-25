@@ -1,21 +1,58 @@
-# 介绍
+# AMS介绍
 
-## AMS 是什么
+## 产生背景
 
-AMS 是 `Admin Materials System` 的首字母缩写，意为管理后台物料系统，是基于JSON配置来快速搭建管理后台前端页面的JavaScript框架。
+每当新做一个后台管理系统，无论如何，前端开发同学都要干这些事：
 
-AMS 目前提供以下能力：
+* 框架选型
+* 初始化脚手架（比如使用vue-cli等）、也可能你选择了开源脚手架，克隆仓库
+* 四处找轮子
+* 安装各种依赖
+* 新建页面，写逻辑
+* 设计菜单、路由
+* 新建页面的时候复用之前的页面代码
+* 新的页面注册菜单、路由
+* 做完了这个页面做下个，新建页面，复制代码，注册菜单、路由......
+  
+**想要更简单、更高效吗？**
 
-- 通过 `@ams-team/ams` 基础库，提供通过配置生成整个后台的能力，包含数据读取、数据展示、数据编辑、数据列表、数据校验等基本功能
-- 通过 `@ams-team/cli` 工具，提供快速搭建项目脚手架、编写定制模块、发布管理定制模块等功能。可前往查看[编写定制物料>>](/api/custom.md)
+**请使用AMS！**
 
+## 是什么
+
+**AMS**是Admin Material System首字母的缩写，意为管理后台物料系统。它是基于JSON配置来快速搭建管理后台前端页面的前端框架。
+它的初衷：是帮助开发同学，快速构建后台管理系统页面。使用它，你可以不需要搭建复杂的前端开发环境，就能快速构建前端页面。
 ::: tip
-AMS假设你已经对其依赖的[Vue前端框架](https://cn.vuejs.org/v2/guide/)和[Element组件库](https://element.eleme.cn/#/zh-CN)有一定了解。如果还没，建议先去了解一下再来吧！
+AMS由唯品会大前端团队发起，底层基于 [vue2.x](https://cn.vuejs.org/v2/guide/) 和 [element2.x](https://element.eleme.cn/#/zh-CN) 开发，目前已在唯品会内部20+的系统中使用
 :::
 
-# 快速起步
+## 相关概念
 
-## 安装
+AMS体系中，有几个概念：**物料，字段，区块，模板**
+
+**物料**是组成一个前端项目的不同单位，根据抽象粒度的不同，将物料从小到大依次抽象为：字段 -> 区块 -> 模版
+
+* **字段**：页面的基本组成单元，例如：文本框、按钮等（tip：我们将描述接口的字段组成以及请求配置参数，叫做`资源`）[>> 详情](/api/resource.html)
+<!-- 红色的搜索按钮可以理解为字段； -->
+* **区块**：若干字段与交互组成的功能单元，例如：常用的Form表单、表格List列表等 [>> 详情](/api/block.html)
+<!-- 黄色的列表内容可以理解为区块； -->
+* **模板**：若干区块与交互组成、满足某些特定功能的页面及页面的集合，例如：满足某个特定功能场景的增删改查页面，整个页面可以理解为模板 [>> 详情](/market/)
+
+## 提供能力
+
+目前提供以下能力：
+
+* `@ams-team/ams` AMS核心库，提供通过配置生成整个后台的能力，包含数据读取、数据展示、数据编辑、数据列表、数据校验等基本功能
+* `@ams-team/field-*` AMS扩展字段库，在核心库提供的字段之外的扩展字段
+* `@ams-team/block-*` AMS扩展区块库，在核心库提供的区块之外的扩展区块
+* `@ams-team/cli` 工具，提供快速搭建项目脚手架、编写定制模块、发布管理定制模块等功能 [>> 详情](/api/cli.html)
+* `扩展图标` 在element-ui提供的[Icon 图标](https://element.eleme.cn/#/zh-CN/component/icon)之外，我们还提供了UED出品的[扩展图标](/api/icon.html)满足不同需求
+
+:::tip
+所有AMS开发的组件可以通过 [npm @ams-team](https://www.npmjs.com/search?q=%40ams-team) 查看
+:::
+
+## 使用方式
 
 ### 方式一：通过npm安装（依赖node环境）
 
@@ -50,73 +87,12 @@ Vue.use(ams);
 <script src="https://unpkg.com/@ams-team/ams/lib/ams.js"></script>
 ```
 
-尝试AMS的最简单的方式是使用[JSRUN上的官方入门Demo](http://jsrun.net/sehKp/edit?utm_source=website)。你可以在浏览器新标签页中打开它，跟着例子学习一些基础用法。
+## 接入说明
 
-## 使用
+为了规范与后端接口的对接工作，AMS拟定了一套[接口api规范](/api/api.html)，建议后端接口尽量按照此规范来对接
 
-AMS的核心思想是通过[规范数据接口](/api/api.html#read：读取单条数据)的数据结构，再用类JSON的格式配置对应的 `区块` 和 `资源`，即可渲染成有UI和数据交互的前端界面。
+系统需要对接AMS时，我们提供了多种的[接入方式](/api/access.html#已有项目嵌入ams)
 
-<ClientOnly>
-<scrimba href="https://scrimba.com/c/cmkya6Tp" />
-</ClientOnly>
+接下来，就让我们试一试，通过AMS提供的模板来快速生成页面吧
 
-### 第一步，注册资源
-
-```javascript
-ams.resource('demoRes', { // ”demoRes“为资源名
-    api: {
-        prefix: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/', // 接口前缀
-        update: 'update', // 更新表单数据，值为更新接口的path，和接口前缀组成最终请求的url
-        read: 'read', // 读取表单数据，值为读取接口的path
-    },
-    fields: { // 字段
-        id: { // “id”为字段名
-            type: 'text', // 字段类型
-            label: '文本' // 该字段显示在页面的文本标签
-        },
-        testRate: {
-            type: 'rate',
-            label: '评分'
-        },
-        testTextarea: {
-            type: 'textarea',
-            label: '评语'
-        }
-    }
-})
-```
-
-### 第二步，注册区块
-
-
-```javascript
-ams.block('demo', { // “demo”为区块名
-    type: 'form', // 区块类型，“form”代表表单类型
-    ctx: 'edit', // 状态，“edit”代表为可编辑
-    resource: 'demoRes', // 该区块挂载的资源
-    operations: { // 操作
-        submit: { // 操作触发的事件名
-            type: 'button', // 操作类型
-            label: '提交' // 操作按钮显示的文案
-        }
-    },
-    events: { // 事件流
-        init: '@read', // “read”是内置的读取数据操作
-        submit: '@update' // “update”是内置的更新数据操作
-    }
-});
-```
-
-### 第三步，渲染区块
-
-```javascript
-// 渲染名字为“demo”的区块
-ams.render('demo')
-```
-<ClientOnly>
-<demo-start blockName="quickStart" />
-</ClientOnly>
-
-我们已经成功完成了第一个AMS应用的配置了，通过简单的配置，不需要写UI和复杂的逻辑代码，就可以搭建出具备了数据读取、数据展示、数据编辑等基本功能的表单页面。
-
-点击查看 [案例教程](/api/demo.html)，带你搭建一个包含菜单的完整AMS系统应用。
+[下一节：试一试](/api/try.html)

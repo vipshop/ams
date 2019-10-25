@@ -32,6 +32,16 @@ options: {
 <block-imagelist-demo blockName="imagelist3" onlineDemo="https://codepen.io/w3cmark/pen/gOYEGjJ"/>
 </ClientOnly>
 
+### slotBlocks 插槽配置
+
++ 搜索条顶部：配置子block的slot为`top`，可以插入到搜索条顶部
+
++ 搜索条和表格之间：配置子block的slot为`tableTop`，可以插入到搜索条和表格之间
+
+<ClientOnly>
+<block-imagelist-demo blockName="imagelist4" onlineDemo="https://codepen.io/wuzebin/pen/ZEELqyr"/>
+</ClientOnly>
+
 #### 配置
 
 显示数据的字段配置：

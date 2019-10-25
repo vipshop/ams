@@ -1,5 +1,7 @@
+import '../src/theme/vipshop.js';
 export default {
     type: 'chart',
+    theme: 'vipshop',
     style: {
         width: '700px',
         height: '500px'
@@ -27,7 +29,6 @@ export default {
     // 图表配置
     options: {
         BASE: 'PIE',
-        theme: 'vipshop',
         series: [
             {
                 name: '访问来源',

@@ -42,6 +42,7 @@
                            :field="field.field"
                            :value="val"
                            :name="name"
+                           :context="context"
                            :path="`${path}[${index}]`"
                            :class="`ams-field ams-field-${field.field.type}-${field.field.ctx} ${!field.field.label ? 'ams-field-no-label': ''}`" />
             </el-form-item>

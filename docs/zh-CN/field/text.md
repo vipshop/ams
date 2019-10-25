@@ -40,6 +40,12 @@ title: Text 文本
 <field-text-demo blockName="textField6" onlineDemo="https://codepen.io/w3cmark/pen/yLLyKmW"/>
 </ClientOnly>
 
+### slots插槽
+
+<ClientOnly>
+<field-text-demo blockName="textField7"/>
+</ClientOnly>
+
 ### 在线实验室
 <ClientOnly>
 <ams-config name="text" type="field"/>

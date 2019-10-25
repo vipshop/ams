@@ -916,5 +916,188 @@ export default {
 				this.$message.success('保存成功');
 			}
 		}
-	}
+    },
+    expandList: {
+        type: 'list',
+		resource: {
+            api: {
+                prefix,
+                list: "smallList",
+                successCode: 0
+            },
+            fields: {
+                id: {
+                    type: "text",
+					label: "ID",
+					props: {
+						width: 50
+					}
+                },
+                testText: {
+                    type: "text",
+                    label: "名称"
+                },
+                testTextarea: {
+                    type: "textarea",
+                    label: "文本框"
+                },
+                testDate: {
+                    type: "datetime",
+                    label: "创建时间"
+                },
+                testSwitch: {
+                    type: "switch",
+					label: "开关"
+                }
+            }
+        },
+        expand: {
+            id: true,
+            testText: true,
+            testTextarea: true,
+            testDate: true,
+            testSwitch: true
+        },
+		events: {
+			init: '@list'
+		}
+    },
+    dragList: {
+        type: 'list',
+		resource: {
+            api: {
+                prefix,
+                list: "smallList",
+                successCode: 0
+            },
+            fields: {
+                id: {
+                    type: "text",
+					label: "ID",
+					props: {
+						width: 50
+					}
+                },
+                testText: {
+                    type: "text",
+                    label: "名称"
+                },
+                testTextarea: {
+                    type: "textarea",
+                    label: "文本框"
+                },
+                testDate: {
+                    type: "datetime",
+                    label: "创建时间"
+                },
+                testSwitch: {
+                    type: "switch",
+					label: "开关"
+                }
+            }
+        },
+        options: {
+            drag: true
+        },
+        on: {
+            'drag-start': function({ oldIndex }) {
+                console.log('drag-start', oldIndex)
+            },
+            'drag-end': function({ oldIndex,  newIndex}) {
+                console.log('drag-end', oldIndex, newIndex)
+            }
+        },
+		events: {
+			init: '@list'
+		}
+    },
+    opearationsList: {
+        type: 'list',
+		resource: {
+            api: {
+                prefix,
+                list: "smallList",
+                successCode: 0
+            },
+            fields: {
+                id: {
+                    type: "text",
+					label: "ID",
+					props: {
+						width: 50
+					}
+                },
+                testText: {
+                    type: "text",
+                    label: "名称"
+                },
+                testTextarea: {
+                    type: "textarea",
+                    label: "文本框"
+                },
+                testDate: {
+                    type: "datetime",
+                    label: "创建时间"
+                }
+            }
+        },
+        operations: {
+            edit: {
+                type: 'button',
+                label: '编辑',
+                props: {
+                    size: 'mini',
+                    type: 'primary'
+                },
+                badge: {
+                    // 'is-dot': true,      // 原点显示
+                    // hidden: true,        // 隐藏
+                    // type: 'info',        // 类型：primary / success / warning / danger / info
+                    max: 3,                 // 超过最大值会显示 '{max}+'
+                    value: function(data) {
+                        // return '' //同样不显示
+                        return data.id;  // 需要为数字或字符串
+                    }
+                }
+            },
+            add: {
+                type: 'button',
+                label: '添加',
+                props: {
+                    size: 'mini'
+                },
+                tooltip: {
+                    effect: 'dark',
+                    content: 'Top Left 提示文字',
+                    placement: 'top-start'
+                },
+                badge: {
+                    'is-dot': true,      // 原点显示
+                    type: 'primary',        // 类型：primary / success / warning / danger / info
+                    value: function(data) {
+                        if (data.testSwitch === true || data.testSwitch === 1) {
+                            return '1'
+                        } else {
+                            return false;
+                        }
+                    }
+                }
+            },
+            del: {
+                type: 'button',
+                label: '删除',
+                props: {
+                    size: 'mini',
+                    type: 'danger'
+                },
+                show: {
+                    name: 'testSwitch',
+                    value: '1'
+                }
+            }
+        },
+		events: {
+			init: '@list'
+		}
+    }
 };
