@@ -1,11 +1,17 @@
 import ams from '@ams-team/ams';
 import { prefix } from '@/utils';
 
+const upload = `${prefix}upload-image`;
 const datas = {};
 
 ams.block('image', {
     resources: {
         image: {
+            api: {
+                prefix: prefix,
+                create: 'create',
+                contentType: 'json'
+            },
             fields: {
                 image1: {
                     label: '默认图片上传',
@@ -21,7 +27,7 @@ ams.block('image', {
                     },
                     default: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
                     props: {
-                        action: `${prefix}upload-image`,
+                        action: upload,
                         'list-type': 'picture-card',
                         'show-file-list': true,
                         'file-list': [{
@@ -50,7 +56,7 @@ ams.block('image', {
                     tip: '640x640',
                     successUrlKey: 'url',
                     props: {
-                        action: `${prefix}upload-image`,
+                        action: upload,
                         'show-file-list': true,
                         'file-list': [{
                             'name': 'food.jpeg',
@@ -67,7 +73,7 @@ ams.block('image', {
                     tip: '640x640',
                     successUrlKey: 'url',
                     props: {
-                        action: `${prefix}upload-image`,
+                        action: upload,
                         'list-type': 'picture-card',
                         'show-file-list': true,
                         'file-list': [{
@@ -85,7 +91,7 @@ ams.block('image', {
                     tip: '640x640',
                     successUrlKey: 'url',
                     props: {
-                        action: `${prefix}upload-image`,
+                        action: upload,
                         'list-type': 'picture',
                         'show-file-list': true,
                         'file-list': [{
@@ -103,7 +109,7 @@ ams.block('image', {
                     tip: '范围640-640',
                     successUrlKey: 'url',
                     props: {
-                        action: `${prefix}upload-image`,
+                        action: upload,
                         'default-image-list': []
                     }
                 },
@@ -112,7 +118,7 @@ ams.block('image', {
                     type: 'image',
                     successUrlKey: 'url',
                     props: {
-                        action: `${prefix}upload-image`,
+                        action: upload,
                         'default-image-list': [{
                             'name': '精选',
                             'url': 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
@@ -136,7 +142,7 @@ ams.block('image', {
                     successUrlKey: 'url',
                     props: {
                         accept: 'image/png',
-                        action: `${prefix}upload-image`
+                        action: upload
                     }
                 }
             }

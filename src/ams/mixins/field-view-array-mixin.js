@@ -8,5 +8,5 @@ export default {
             );
         }
     },
-    props: ['field', 'path', 'value', 'name']
+    props: ['field', 'path', 'value', 'name', 'context']
 };

@@ -60,6 +60,7 @@ import './cases-block/popover';
 import './cases-block/bct-progress';
 import './cases-block/imagelist';
 import './cases-block/imagelist2';
+import './cases-block/title';
 
 // chart-demo
 import './cases-chart/demo1';

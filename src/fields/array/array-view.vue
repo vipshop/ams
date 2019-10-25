@@ -12,6 +12,7 @@
                        :value="val"
                        :name="name"
                        :path="`${path}[${index}]`"
+                       :context="context"
                        :class="`ams-field ams-field-${field.field.type}-${field.field.ctx}`" />
         </el-form-item>
     </div>

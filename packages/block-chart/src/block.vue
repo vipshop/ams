@@ -44,7 +44,7 @@ export default {
             // entire view has been re-rendered
             if (this.$refs.chart && !this.chartDom) {
                 // 初始化
-                const globalTheme = this.configs && this.configs.charts && this.configs.charts.theme;
+                const globalTheme = ams.configs && ams.configs['block_chart'] && ams.configs['block_chart'].theme;
                 const themeName = this.block.theme || globalTheme || 'macarons';
                 this.chartDom = echarts.init(this.$refs.chart, themeName);
                 this.chartDom.showLoading();

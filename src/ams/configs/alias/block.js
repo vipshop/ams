@@ -7,7 +7,7 @@ export const LIST = {
 export const LINE  = {
     // 图表的类型
     type: 'line',
-    toolbox: {
+    tooltip: {
         show: true,
         trigger: 'axis'
     },
@@ -40,8 +40,8 @@ export const PIE = {
         formatter: '{a} <br/>{b}: {c} ({d}%)'
     },
     legend: {
-        orient: 'vertical',
-        x: 'left',
+        // orient: 'vertical',
+        // x: 'left',
         data: 'data.legend'
     }
 };
@@ -51,13 +51,13 @@ export const FUNNEL = {
         trigger: 'item',
         formatter: '{a} <br/>{b} : {c}%'
     },
-    toolbox: {
-        feature: {
-            dataView: { readOnly: false },
-            restore: {},
-            saveAsImage: {}
-        }
-    },
+    // toolbox: {
+    //     feature: {
+    //         dataView: { readOnly: false },
+    //         restore: {},
+    //         saveAsImage: {}
+    //     }
+    // },
     legend: {
         data: 'data.legend'
     }
@@ -68,15 +68,15 @@ export const SCATTER = {
         trigger: 'item'
     },
     legend: {
-        right: 10,
+        // right: 10,
         data: 'data.legend'
     },
-    xAxis: {
-        scale: true
-    },
-    yAxis: {
-        scale: true     // y轴不会强制包含零刻度，在双数值轴的散点图中比较有用
-    }
+    // xAxis: {
+    //     scale: true
+    // },
+    // yAxis: {
+    //     scale: true     // y轴不会强制包含零刻度，在双数值轴的散点图中比较有用
+    // }
 };
 // 雷达图
 export const RADAR = {
@@ -85,17 +85,17 @@ export const RADAR = {
     },
     legend: {
         data: 'data.legend',
-        right: 0
+        // right: 0
     },
     // 雷达图坐标系, 每一个轴（indicator 指示器）都是一个单独的维度
-    radar: {
-        name: {
-            textStyle: {
-                color: '#fff',
-                backgroundColor: '#999',
-                borderRadius: 3,
-                padding: [3, 5]
-            }
-        }
-    }
+    // radar: {
+    //     name: {
+    //         textStyle: {
+    //             // color: '#fff',
+    //             // backgroundColor: '#999',
+    //             borderRadius: 3,
+    //             padding: [3, 5]
+    //         }
+    //     }
+    // }
 };

@@ -9,8 +9,7 @@ ams.block('card', {
         ecahrtRes: {
             api: {
                 // api前缀
-                prefix:
-                    'https://www.easy-mock.com/mock/5bf25b2b34392218c898a5fd/',
+                prefix: 'https://www.easy-mock.com/mock/5bf25b2b34392218c898a5fd/',
                 // 读取数据接口
                 read: 'read',
             }

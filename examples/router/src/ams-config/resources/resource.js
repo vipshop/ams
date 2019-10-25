@@ -1,7 +1,7 @@
 import ams from '@ams-team/ams';
 import { prefix } from '@/utils';
 
-// http://localhost:9526/examples/router/mock/list.json
+// http://localhost:9526/examples/router/mock/list
 
 ams.resource('resource', {
     key: 'id',
@@ -45,12 +45,13 @@ ams.resource('resource', {
         id: {
             type: 'text',
             label: 'id',
-            // hidden: true,
+            hidden: true,
             on: {
                 change: function(...args) {
                     console.log('text change', args, this);
                 }
-            }
+            },
+            info: '提示信息',
             // props: {
             //     align: 'left',
             //     'header-align': 'center'
@@ -76,17 +77,41 @@ ams.resource('resource', {
             type: 'array',
             info: '提示信息',
             label: 'testTexts',
+            // hidden: true,
             field: {
                 type: 'text',
-                label: 'testTexts',
+                // label: 'testTexts',
                 props: {
                     'suffix-icon': 'el-icon-service'
+                }
+            }
+        },
+        testButton: {
+            type: 'button',
+            label: '按钮',
+            labelWidth: '0',
+            props: {
+                size: 'mini',
+                type: 'primary'
+            },
+            tooltip: {
+                effect: 'dark',
+                content: '提示文字',
+                placement: 'top-start'
+            },
+            // 事件触发机制 on 或者 event
+            // event: 'submit',
+            on: {
+                'click': function() {
+                    console.log('click---', this);
+                    this.callAction('submit');
                 }
             }
         },
         testText: {
             type: 'text',
             label: '文本',
+            hidden: true,
             rules: [
                 { required: true, message: '请输入活动名称', trigger: 'blur' },
                 {
@@ -138,8 +163,10 @@ ams.resource('resource', {
         testColor: {
             type: 'color',
             label: '颜色',
+            input: true,
             props: {
-                inline: true,
+                // size: 'mini',
+                // inline: true,
                 formItemWidth: '40%'
             }
         },

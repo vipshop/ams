@@ -35,6 +35,39 @@
                       :height="height"
                       ref="amsTable"
                       highlight-current-row>
+
+                <template v-if="expandFields">
+                    <el-table-column type="expand">
+                        <template slot-scope="scope">
+                            <el-form class="ams-block-list-expand" label-width="100px" >
+                                <el-form-item v-for="(field, fieldName) in expandFields"
+                                            :key="fieldName"
+                                            :label="field.label"
+                                            :label-width="field.labelWidth"
+                                            :prop="field.type !== 'array' && field.type !== 'object' ? fieldName : ''">
+
+                                    <template v-if="field.label" slot="label">
+                                        <el-tooltip effect="dark" placement="top" v-if="field.info">
+                                            <i class="el-icon-info ams-form-label-info"></i>
+                                            <div slot="content" v-html="field.info"></div>
+                                        </el-tooltip>
+                                        {{field.label}}
+                                    </template>
+
+                                    <component :is="`ams-field-${field.type}-view`"
+                                            :field="field"
+                                            :value="scope.row[fieldName]"
+                                            :ref="`$${fieldName}`"
+                                            :name="name"
+                                            :path="fieldName"
+                                            :context="scope.row"
+                                            :class="`ams-field ams-field-${field.type}-view`" />
+                                </el-form-item>
+                            </el-form>
+                        </template>
+                    </el-table-column>
+                </template>
+
                 <el-table-column v-if="block.options.multipleSelect"
                                  type="selection"
                                  width="50" />
@@ -54,7 +87,7 @@
                                  v-bind="field.props">
                     <template slot-scope="scope">
                         <!--fields-->
-                        <field :field="getField(field, scope.row)" :value="scope.row[fieldName]" :name="name" :path="`list[${scope.$index}].${fieldName}`"/>
+                        <field :field="getField(field, scope.row)" :value="scope.row[fieldName]" :name="name" :context="scope.row" :path="`list[${scope.$index}].${fieldName}`"/>
                     </template>
                 </el-table-column>
                 <el-table-column label="操作"
@@ -95,7 +128,7 @@
                        :current-page.sync="data.page"
                        :page-size.sync="data.pageSize"
                        :page-sizes="data.pageSizes"
-                       layout="total, prev, sizes, pager, next, jumper"
+                       :layout="data.layout"
                        background
                        align="right"
                        :total="pageTotal">
@@ -120,7 +153,6 @@ export default {
         return {
             defaultListFieldWidth,
             filters: {},
-            // searchs: {'},
             sortField: null,
             sortOrder: null,
             batchSelected: [],
@@ -147,6 +179,21 @@ export default {
         },
         operationsWidth() {
             return this.block.options && this.block.options.operationsWidth;
+        },
+        expandFields() {
+            // 获取展开列表展开表单的fields
+            if (this.block.expand && Object.keys(this.block.expand).length > 0) {
+                const fields = {};
+                let fieldKeys = Object.keys(this.block.expand);
+                fieldKeys.forEach(name => {
+                    if (this.fields[name]) {
+                        fields[name] = this.fields[name];
+                    }
+                });
+                return fields;
+            } else {
+                return false;
+            }
         }
     },
     methods: {
@@ -217,11 +264,11 @@ export default {
             }
         },
         heightFit() {
-            if (this.$refs.amsForm) {
+            if (this.$refs.amsTable) {
                 // 屏幕高度
                 let clientH = document.documentElement.clientHeight || document.body.clientHeight;
                 // form离body顶部距离
-                let domOffsetTop = getDomPos(this.$refs.amsForm.$el).top;
+                let domOffsetTop = getDomPos(this.$refs.amsTable.$el).top;
 
                 // pagination组件height+padding+margin
                 let pagination = (this.$refs.amsPagination && this.$refs.amsPagination.$el) || null;
@@ -313,6 +360,23 @@ export default {
     .ams-list-row-operations {
         .cell {
             overflow: inherit;
+        }
+    }
+
+    // 列表展开表单样式调整
+    .ams-block-list-expand {
+        .el-form-item {
+            margin-bottom: 10px;
+            .el-form-item__content {
+                color: #000;
+            }
+        }
+        // array
+        .el-form-item.ams-array-item{
+            margin-bottom: 10px;
+            .el-form-item__content{
+                line-height: 40px;
+            }
         }
     }
 }

@@ -5,7 +5,36 @@ import { prefix } from '@/utils';
 ams.block('router', {
     type: 'router',
     data: {
-        roles: ['admin']
+        roles: ['admin'],
+        logo: '//h5rsc.vipstatic.com/ams/ams-logo2.png', // 系统logo（只有使用vipshop的UI主题才会显示）
+        title: '策略中心后台系统', // 系统标题（只有使用vipshop的UI主题才会显示）
+        userImg: '', // 用户头像（如果头像为空，则用默认头像）
+        userName: '' // 用户名字（如果名字为空则不展示用户信息模块）
+    },
+    events: {
+        init: '@getUsers'
+    },
+    actions: {
+        async getUsers() {
+            const res = await ams.request({
+                url: `${prefix}getUser`,
+                method: 'GET'
+            });
+            if (
+                res.data &&
+          res.data.code === 0
+            ) {
+                this.data.userImg = res.data.data.userImg;
+                this.data.userName = res.data.data.userName;
+            } else {
+                this.$message.error(`${res.data.msg}(${res.data.code})`);
+            }
+        },
+        // 退出登录函数
+        loginOut() {
+            alert('你点击了退出按钮');
+            location.href = '//vip.com/user/logout';
+        }
     },
     router: {
         // mode: 'history',
@@ -16,6 +45,8 @@ ams.block('router', {
         // backgroundColor: '#304156', // 菜单的背景色（仅支持 hex 格式），默认值：#304156
         // textColor: '#bfcbd9', // 菜单的文字颜色（仅支持 hex 格式），默认值：#bfcbd9
         // activeTextColor: '#409EFF', // 菜单的文字颜色（仅支持 hex 格式），默认值：#409EFF
+        // defaultBreadcrumb: false, // 默认为true，会把首个route作为默认首页加到所有面包屑，设置为false禁用此行为， 0.7.5+支持
+        // shwoBreadcrumb: false, // 默认为true，是否显示面包屑
         routes: [
             {
                 name: '首页',
@@ -239,6 +270,11 @@ ams.block('router', {
                         block: 'steps'
                     },
                     {
+                        name: '标题',
+                        path: 'title',
+                        block: 'title'
+                    },
+                    {
                         name: '卡片',
                         path: 'card',
                         block: 'card'
@@ -405,21 +441,6 @@ ams.block('router', {
         ]
     },
     blocks: {
-        menuTop: {
-            type: 'component',
-            options: {
-                is: 'img'
-            },
-            style: {
-                width: '80px',
-                height: '80px',
-                margin: '20px auto 0'
-            },
-            props: {
-                src: '//h5rsc.vipstatic.com/ams/ams-logo.png'
-            },
-            slot: 'menuTop'
-        },
         menuBottom: {
             type: 'component',
             options: {

@@ -48,40 +48,18 @@ export default {
     },
 
     inject: ['$block'],
-    data() {
-        return {
-            operations: {}
-        };
-    },
+    // data() {
+    //     return {
+    //         operations: {}
+    //     };
+    // },
 
     computed: {
         path() {
             return this.slotName || this.slotFieldKey || 'defaultOperations';
         },
-        // operations() {
-        //     let operations = ams.blocks[this.name] && ams.blocks[this.name].operations || {};
-        //     let currentOperations = {};
-
-        //     Object.keys(operations).forEach(key => {
-        //         let operation = operations[key];
-        //         let sName = this.slotName || '';
-        //         operation.slot = operation.slot || '';
-        //         // 只渲染对应slot的operation
-        //         if (sName === operation.slot) {
-        //             currentOperations[key] = operation;
-        //         }
-        //     });
-        //     this.getDefaultValue(currentOperations);
-
-        //     return currentOperations;
-        // }
-    },
-    mounted() {
-        this.getOperations();
-    },
-
-    methods: {
-        getOperations() {
+        operations() {
+            // console.log('2: ' + this.slotName);
             let operations = ams.blocks[this.name] && ams.blocks[this.name].operations || {};
             let currentOperations = {};
 
@@ -96,8 +74,11 @@ export default {
             });
             this.getDefaultValue(currentOperations);
 
-            this.operations = currentOperations;
-        },
+            return currentOperations;
+        }
+    },
+
+    methods: {
         setFieldDefaultValue(operationFields, slotName, data) {
             Object.keys(operationFields).forEach(key => {
                 let field;

@@ -14,4 +14,6 @@ module.exports = {
             }
         };
     },
+    publicPath: '/example/',
+    productionSourceMap: false
 };

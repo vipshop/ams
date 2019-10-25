@@ -64,6 +64,7 @@ import unitselect from './fields/unitselect';
 import video from './fields/video';
 import tree from './fields/tree';
 import link from './fields/link';
+import fbutton from './fields/button';
 
 // operation
 import button from './operations/button';
@@ -74,7 +75,7 @@ import field from './operations/field';
 import dropdown from './operations/dropdown';
 
 // 版本号
-ams.version = '0.18.4';
+ams.version = '0.19.3';
 // 挂载到ams上
 ams.mixins = mixins;
 ams.utils = utils;
@@ -154,6 +155,7 @@ ams.install = function(Vue) {
     ams.registerField(video);
     ams.registerField(tree);
     ams.registerField(link);
+    ams.registerField(fbutton);
     // operations
     ams.registerOperation(button);
     ams.registerOperation(operationsText);

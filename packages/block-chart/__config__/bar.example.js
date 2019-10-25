@@ -1,5 +1,7 @@
+import '../src/theme/vipshop.js';
 export default {
     type: 'chart',
+    theme: 'vipshop',
     style: {
         width: '700px',
         height: '500px'
@@ -22,18 +24,12 @@ export default {
     // 图表配置
     options: {
         BASE: 'BAR',
-        theme: 'vipshop',
         // 图例
         series: [
             {
                 name: '邮件营销',
                 stack: '总量',
                 data: 'data.series1'
-            },
-            {
-                name: '联盟广告',
-                stack: '总量',
-                data: 'data.series2'
             }
         ]
     },

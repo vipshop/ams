@@ -8,7 +8,13 @@ $sidebarTextColor: #bfcbd9; // 菜单字体颜色
 $sidebarActiveTextColor: #409EFF; // 当前菜单字体颜色
 
 .ams-block-router {
-    .main-container {
+    .ams-navbar {
+        padding-left: 15px;
+        .logo,h1{
+            display: none;
+        }
+    }
+    .main-container,.ams-navbar,.app-breadcrumb {
         margin-left: $sidebarWidth;
     }
     .sidebar-container {
@@ -43,7 +49,7 @@ $sidebarActiveTextColor: #409EFF; // 当前菜单字体颜色
         .sidebar-container {
             width: 80px !important;
         }
-        .main-container {
+        .main-container,.ams-navbar,.app-breadcrumb {
             margin-left: 80px;
         }
         .el-menu-item,.el-submenu__title{

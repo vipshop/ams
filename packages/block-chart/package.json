@@ -1,6 +1,6 @@
 {
     "name": "@ams-team/block-chart",
-    "version": "0.2.1",
+    "version": "0.2.4",
     "description": "图表",
     "author": "edward.shao",
     "main": "lib/block-chart.js",

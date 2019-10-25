@@ -15,11 +15,14 @@ ams.block('index', {
             },
             events: {
                 init: '@read',
-                submit: '@validate @alert:我是一个alert @getAlert @getPrompt @confirm:确认提交吗? @update',
+                submit: '@getData @validate @alert:我是一个alert @getAlert @getPrompt @confirm:确认提交吗? @update',
                 cancel: '@cancel',
                 dialog: '@demo-dialog.show'
             },
             actions: {
+                getData({ $prevReturn }) {
+                    console.log('getData--', $prevReturn);
+                },
                 getAlert() {
                     // @alert:确认提交吗?
                     // 自定义数据通过options配置

@@ -1,4 +1,5 @@
 import ams from '..';
+import { tooltip, badge } from './computed';
 
 export default {
     props: {
@@ -38,35 +39,7 @@ export default {
     },
 
     computed: {
-        tooltip() {
-            const tooltip = this.operation.tooltip;
-            if (tooltip) {
-                if (typeof tooltip === 'string') return { effect: 'dark', placement: 'bottom', content: tooltip };
-                if (typeof tooltip === 'object') return tooltip;
-                return null;
-            }
-            return null;
-        },
-        badge() {
-            const badge = this.operation.badge;
-            if (badge) {
-                if (typeof badge.value === 'function') {
-                    let hidden = false;
-                    let value =  badge.value.call(this.$block || this, this.context);
-                    if (value === false) {
-                        // 隐藏dot类型
-                        value = '';
-                        hidden = true;
-                    }
-                    return {
-                        ...badge,
-                        value,
-                        hidden
-                    };
-                } else {
-                    return badge;
-                }
-            }
-        }
+        tooltip,
+        badge
     }
 };

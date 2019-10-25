@@ -1,5 +1,7 @@
+import '../src/theme/vipshop.js';
 export default {
     type: 'chart',
+    theme: 'vipshop',
     style: {
         width: '700px',
         height: '500px'
@@ -26,7 +28,6 @@ export default {
     // 图表配置
     options: {
         BASE: 'FUNNEL',
-        theme: 'vipshop',
         series: [
             {
                 name: '漏斗图',

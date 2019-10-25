@@ -55,11 +55,15 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-.app-breadcrumb.el-breadcrumb {
-    display: inline-block;
+.app-breadcrumb {
     font-size: 14px;
     line-height: 50px;
-    margin-left: 10px;
+    padding-left: 15px;
+    transition: margin-left 0.28s;
+    position: absolute;
+    top: 0;
+    left: 50px;
+    z-index: 2;
     .no-redirect {
         color: #97a8be;
         cursor: text;

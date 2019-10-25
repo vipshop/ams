@@ -32,7 +32,7 @@
         'title': {
             'textStyle': {
                 'color': '#333333',
-                fontSize: 14
+                'fontSize': 14
             },
             'subtextStyle': {
                 'color': '#666666'
@@ -49,11 +49,22 @@
                     'width': '2'
                 }
             },
+            'xAxis': {
+                'boundaryGap': false
+            },
             'symbolSize': '6',
-            'symbol': 'emptyCircle',
+            // 'symbol': 'circle',
             'smooth': true
         },
         'radar': {
+            'name': {
+                'textStyle': {
+                    'color': '#666',
+                    'backgroundColor': 'transparent',
+                    'borderRadius': 3,
+                    'padding': [3, 5]
+                }
+            },
             'itemStyle': {
                 'normal': {
                     'borderWidth': '2'
@@ -66,7 +77,7 @@
             },
             'symbolSize': '6',
             'symbol': 'emptyCircle',
-            'smooth': true
+            'smooth': true,
         },
         'bar': {
             'itemStyle': {
@@ -81,6 +92,10 @@
             }
         },
         'pie': {
+            'legend': {
+                'orient': 'vertical',
+                'x': 'left'
+            },
             'itemStyle': {
                 'normal': {
                     'borderWidth': 0,
@@ -93,6 +108,15 @@
             }
         },
         'scatter': {
+            'legend': {
+                'right': 10
+            },
+            'xAxis': {
+                'scale': true
+            },
+            'yAxis': {
+                'scale': true     // y轴不会强制包含零刻度，在双数值轴的散点图中比较有用
+            },
             'itemStyle': {
                 'normal': {
                     'borderWidth': 0,
@@ -141,6 +165,16 @@
             }
         },
         'funnel': {
+            color: ['#684bc5', '#866fd1', '#a493dc', '#c3b7e8', '#e1dbf3'],
+            'toolbox': {
+                'feature': {
+                    'dataView': {
+                        'readOnly': false
+                    },
+                    'restore': {},
+                    'saveAsImage': {}
+                }
+            },
             'itemStyle': {
                 'normal': {
                     'borderWidth': 0,
@@ -417,15 +451,17 @@
             }
         },
         'legend': {
-            icon: 'circle',
+            'icon': 'circle',
             'textStyle': {
                 'color': '#999999'
             }
         },
         'tooltip': {
-            backgroundColor: 'rgba(0, 0, 0, 0.7)',
-            padding: 15,
-            textStyle: { color: '#eee' }
+            'backgroundColor': 'rgba(0, 0, 0, 0.7)',
+            'padding': 15,
+            'textStyle': {
+                'color': '#eee'
+            }
         },
         'timeline': {
             'lineStyle': {
@@ -501,63 +537,57 @@
                 }
             }
         },
-        xAxis: {
-            boundaryGap: false,
-            axisLine: {
-                show: false,
-                lineStyle: {
-                    color: '#eee'
+        'xAxis': {
+            'boundaryGap': false,
+            'axisLine': {
+                'show': false
+            },
+            'axisLabel': {
+                'color': '#999'
+            },
+            'axisTick': {
+                'show': false
+            },
+            'splitLine': {
+                'show': true,
+                'interval': 0,
+                'lineStyle': {
+                    'width': 1,
+                    'type': 'solid',
+                    'color': '#eee'
                 }
             },
-            axisLabel: {
-                color: '#999'
-            },
-            axisTick: {
-                show: false
-            },
-            splitLine: {
-                show: true,
-                interval: 0,
-                lineStyle: {
-                    width: 1,
-                    type: 'solid',
-                    color: '#eee'
-                }
-            },
-            splitArea: {
-                show: false
+            'splitArea': {
+                'show': false
             }
         },
-        yAxis: {
-            axisLine: {
-                show: false,
-                lineStyle: {
-                    color: '#eee'
+        'yAxis': {
+            'axisLine': {
+                'show': false
+            },
+            'axisLabel': {
+                'color': '#999'
+            },
+            'axisTick': {
+                'show': false
+            },
+            'splitLine': {
+                'show': true,
+                'lineStyle': {
+                    'width': 1,
+                    'type': 'solid',
+                    'color': '#eee'
                 }
             },
-            axisLabel: {
-                color: '#999'
-            },
-            axisTick: {
-                show: false
-            },
-            splitLine: {
-                show: true,
-                lineStyle: {
-                    width: 1,
-                    type: 'solid',
-                    color: '#eee'
-                }
-            },
-            splitArea: {
-                show: false
+            'splitArea': {
+                'show': false
             }
         },
-        axisPointer: {
-            lineStyle: {
-                color: '#684BC5',
-                width: 30,
-                opacity: 0.1
+        'axisPointer': {
+            'lineStyle': {
+                'color': '#684BC5',
+                'width': 30,
+                'opacity': 0.1
             }
         }
     });

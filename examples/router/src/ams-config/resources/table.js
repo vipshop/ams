@@ -1,7 +1,7 @@
 import ams from '@ams-team/ams';
 import { prefix } from '@/utils';
 
-// http://localhost:9526/examples/router/mock/list.json
+// http://localhost:9526/examples/router/mock/list
 
 ams.resource('table', {
     key: 'id',

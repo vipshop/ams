@@ -17,7 +17,7 @@ ams.block('demo', {
     type: 'form',
     ctx: 'view',
     data: {
-        logo: '//h5rsc.vipstatic.com/ams/ams-logo.png',
+        logo: '//h5rsc.vipstatic.com/ams/ams-logo2.png',
 		testText: '你好，欢迎来到AMS世界！',
 		github: 'https://github.com/vipshop/ams',
 		docs: 'https://vipshop.github.io/ams/'

@@ -57,6 +57,35 @@ ams.block('input', {
                         // 'suffix-info-warning': '我是提示warning', // 后缀提示
                         'suffix-info-danger': '我是提示danger' // 后缀提示
                     }
+                },
+                text9: {
+                    label: '尺寸',
+                    type: 'text',
+                    style: {
+                        width: '150px'
+                    },
+                    props: {
+                        inline: true
+                    },
+                    slots: {
+                        prefix: '高',
+                        suffix: 'px'
+                    }
+                },
+                text10: {
+                    label: '',
+                    labelWidth: '0',
+                    type: 'text',
+                    style: {
+                        width: '150px'
+                    },
+                    props: {
+                        inline: true
+                    },
+                    slots: {
+                        prefix: '宽',
+                        suffix: 'px'
+                    }
                 }
             }
         }
@@ -68,7 +97,7 @@ ams.block('input', {
             resource: 'input',
             ctx: 'edit',
             style: {
-                width: '50%'
+                // width: '50%'
             },
             data: {
                 text7: '测试文字'

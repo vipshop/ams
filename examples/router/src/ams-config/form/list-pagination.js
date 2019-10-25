@@ -50,16 +50,26 @@ ams.block('list-pagination', {
         id: {
             slot: 'searchs',
             type: 'field',
-            label: '文本'
+            label: 'id'
         },
         search: {
             slot: 'searchs',
             type: 'button',
             props: {
-                type: 'primary'
+                type: 'primary',
             },
             label: '搜索',
             event: 'list:1'
+        },
+        title: {
+            slot: 'rightTop',
+            type: 'field',
+            label: '文本'
+        },
+        content: {
+            slot: 'rightBottom',
+            type: 'field',
+            label: '内容'
         }
     },
     pageSize: 10,
@@ -74,5 +84,10 @@ ams.block('list-pagination', {
     },
     events: {
         init: '@list'
+    },
+    actions: {
+        fieldChange({ name, value, path }) {
+            console.log(name, value, path);
+        }
     }
 });
