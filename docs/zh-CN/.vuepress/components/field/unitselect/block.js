@@ -63,8 +63,8 @@ export default {
 					units: ["股份有限公司", "外商独资公司"],
 					default: "股份有限公司",
 					props: {
-                        unitWidth: '150px'
-                    }
+						unitWidth: '150px'
+					}
 				}
 			}
 		},
@@ -75,18 +75,31 @@ export default {
 		resource: {
 			fields: {
 				url: {
-                    type: 'unitselect',
-                    label: '网址',
-                    defaultUnit: 'http://',
-                    units: ['http://', 'https://'],
-                    style: {
-                        width: '50%'
-                    },
-                    props: {
-                        slot: 'prepend',
-                        unitWidth: '100px'
-                    }
-                }
+					type: 'unitselect',
+					label: '网址',
+					defaultUnit: 'http://',
+					units: ['http://', 'https://'],
+					style: {
+						width: '50%'
+					},
+					props: {
+						slot: 'prepend',
+						unitWidth: '100px'
+					}
+				},
+				url2: {
+					type: 'unitselect',
+					label: '网址',
+					defaultUnit: '.com',
+					units: ['.com', '.cn'],
+					style: {
+						width: '50%'
+					},
+					props: {
+						slot: 'append',
+						unitWidth: '100px'
+					}
+				}
 			}
 		},
 		ctx: 'edit'

@@ -43,7 +43,76 @@ export default {
 					},
 					collapseLimit: 2,
 					ctx: 'view'
-				}
+                },
+                checkboxDisable: {
+                    type: 'checkbox',
+                    label: '多选禁用',
+                    props: {
+                        // 全部禁用
+                        // disabled: true,
+                        options: [
+                            {
+                                label: '黄金糕',
+                                value: 'a',
+                                disabled: true
+                            },
+                            {
+                                label: '双皮奶',
+                                value: 'b',
+                                disabled: true
+                            },
+                            {
+                                label: '蚵仔煎',
+                                value: 'c'
+                            }
+                        ]
+                    }
+                },
+                checkboxBorder: {
+                    type: 'checkbox',
+                    label: '多选边框',
+                    props: {
+                        type: 'border',
+                        options: [
+                            {
+                                label: '黄金糕',
+                                value: 'a',
+                                disabled: true
+                            },
+                            {
+                                label: '双皮奶',
+                                value: 'b'
+                            },
+                            {
+                                label: '蚵仔煎',
+                                value: 'c'
+                            }
+                        ]
+                    }
+                },
+                checkboxButton: {
+                    type: 'checkbox',
+                    label: '多选按钮',
+                    props: {
+                        type: 'button',
+                        size: 'mini',
+                        'select-all': true,
+                        options: [
+                            {
+                                label: '黄金糕',
+                                value: 'a'
+                            },
+                            {
+                                label: '双皮奶',
+                                value: 'b'
+                            },
+                            {
+                                label: '蚵仔煎',
+                                value: 'c'
+                            }
+                        ]
+                    }
+                },
 			}
 		},
 		ctx: 'edit'

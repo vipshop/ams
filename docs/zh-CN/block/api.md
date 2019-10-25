@@ -95,7 +95,7 @@ data: {
 
 ## events
 
-详见[event 与 action](../api/action.md)
+详见[event 与 action](../block/action.md)
 
 - 类型：`object且{ [field: string]: string }`
 - 默认值：`undefined`
@@ -124,7 +124,7 @@ events: {
 
 ## actions
 
-详见[event 与 action](../api/action.md)
+详见[event 与 action](../block/action.md)
 
 - 类型：`{ function({ name: string, value: any }): void }`
 - 默认值：`undefined`
@@ -144,7 +144,7 @@ actions: {
 
 内置的action有详见：
 
-[event 与 action](../api/action.md)
+[event 与 action](../block/action.md)
 
 可以自定义actions，可被`events`中使用，如果定义跟内置action同名则会覆盖默认提供方法，异步操作需要返回 `Promise` 或者使用 `async 函数`
 

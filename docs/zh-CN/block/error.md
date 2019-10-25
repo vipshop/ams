@@ -14,6 +14,14 @@ Error: Error 错误页
 <block-error-demo blockName="buttonError" onlineDemo="https://codepen.io/w3cmark/pen/MWgBPVR"/>
 </ClientOnly>
 
+### slotBlocks 插槽配置
+
++ 顶部：配置子block的slot为`top`，可以插入到顶部
+
+<ClientOnly>
+<block-error-demo blockName="slotTopError" onlineDemo="https://codepen.io/wuzebin/pen/pooRxdd"/>
+</ClientOnly>
+
 ### 在线实验室
 <ClientOnly>
 <ams-config name="error" type="block"/>

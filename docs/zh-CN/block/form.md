@@ -67,6 +67,14 @@ Form: Form 表单
 <block-form-demo blockName="formSlotTop" onlineDemo="https://codepen.io/w3cmark/pen/wvwxYJy"/>
 </ClientOnly>
 
+### 表单键盘enter事件监听
+
+>通过 `on.keyupEnter` 可监听表单输入项中的键盘enter事件触发
+
+<ClientOnly>
+<block-form-demo blockName="enterForm" />
+</ClientOnly>
+
 ### 在线实验室
 <ClientOnly>
 <ams-config name="form" type="block"/>

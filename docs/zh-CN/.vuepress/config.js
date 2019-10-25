@@ -7,7 +7,7 @@ module.exports = {
   description: '基于JSON配置来快速搭建管理后台前端页面的JavaScript框架',
   dest: dest, // 指定 vuepress build 的输出目录, 默认值: .vuepress/dist
   head: [
-    ['link', { rel: 'icon', href: 'https://h5rsc.vipstatic.com/ams/favicon64.ico' }]
+    ['link', { rel: 'icon', href: 'https://h5rsc.vipstatic.com/ams/favicon64*2.ico' }]
   ],
   plugins: [
     'flowchart'
@@ -21,38 +21,20 @@ module.exports = {
     nav: [
       { text: '首页', link: '/' },
       { text: '用户指南',
-        items: [
-          {
-            text: '指南',
-            link: '/api/'
-          },
-          {
-            text: '工具',
-            link: '/tools/'
-          },
-          {
-            text: '案例',
-            link: '/example/'
-          }
-        ]
+        link: '/api/'
       },
-      { text: '物料市场',
-        items: [
-          {
-            text: '字段',
-            link: '/field/'
-          },
-          {
-            text: '区块',
-            link: '/block/'
-          },
-          {
-            text: '市场',
-            link: '/market/'
-          }
-        ]
+      {
+        text: '字段',
+        link: '/field/'
       },
-      { text: 'API', link: '/api/' },
+      {
+        text: '区块',
+        link: '/block/'
+      },
+      {
+        text: '市场',
+        link: '/market/'
+      },
       {
         text: '版本更新',
         items: [
@@ -76,7 +58,6 @@ module.exports = {
             '',
             'resource',
             'block',
-            'icon',
             'demo'
           ]
         },
@@ -95,8 +76,8 @@ module.exports = {
             'custom',
             'ams-config',
             'default-config',
-            'router',
-            'faq'
+            'access',
+            'icon'
           ]
         },
         {
@@ -174,7 +155,7 @@ module.exports = {
           title: '深入',
           collapsable: false,
           children: [
-            'deep-operation', 'deep-router'
+            'deep-operation', 'deep-router', 'action'
           ]
         },
         {

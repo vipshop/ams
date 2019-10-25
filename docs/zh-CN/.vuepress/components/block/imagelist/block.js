@@ -326,5 +326,135 @@ export default {
 				field: 'info'
 			}
 		}
+	},
+	imagelist4: {
+		type: 'imagelist',
+		ctx: 'view',
+		resource: {
+			api: {
+				prefix: 'https://nei.netease.com/api/apimock/b7c10125b452d3142d8375cf634f0b47/ams/mock/',
+				list: 'imagelist'
+			},
+			fields: {
+				id: {
+					type: 'text'
+				}
+			}
+		},
+		operations: {
+			id: {
+				slot: 'searchs',
+				type: 'field',
+				label: '文本'
+			},
+			search: {
+				slot: 'searchs',
+				type: 'button',
+				props: {
+					type: 'primary'
+				},
+				label: '搜索',
+				event: 'list:1'
+			},
+			rejectedItem: {
+				type: 'text',
+				props: {
+					type: 'danger',
+					size: 'mini',
+				},
+				label: '驳回'
+			},
+			rejectedItem1: {
+				type: 'text',
+				props: {
+					size: 'mini',
+				},
+				label: '通过(设计)'
+			},
+			rejectedItem2: {
+				type: 'text',
+				props: {
+					size: 'mini',
+				},
+				label: '通过(协助)'
+			},
+			deleteItem: {
+				type: 'button',
+				props: {
+					size: 'mini',
+					type: 'text',
+					icon: 'el-icon-delete'
+				}
+			},
+			editItem: {
+				type: 'icon',
+				label: '编辑',
+				icon: 'el-icon-edit'
+			}
+		},
+		pageSize: 10,
+		events: {
+			init: '@list',
+		},
+		actions: {
+			rejectedItem() {
+				alert('点击了驳回');
+			},
+			rejectedItem1() {
+				alert('通过(设计)');
+			},
+			clickImageItem(args) {
+				// 内置的action
+				console.log(args);
+				alert('点击图片');
+			},
+			editItem() {
+				alert('点击了编辑');
+			}
+		},
+		options: {
+			title: {
+				field: 'title',
+				'prefix-tag': {
+					type: 'info', // success | info | warning | danger
+					label(args) {
+						return args.status;
+					}
+				}
+			},
+			subtitle: {
+				field: 'content'
+			},
+			info: {
+				field: 'info'
+			}
+		},
+		blocks: {
+			listTop: {
+				type: 'component',
+				options: {
+					is: 'div',
+					text: '我是图片列表区块最顶部的插槽内容！！'
+				},
+				style: {
+					padding: '20px',
+					marginBottom: '20px',
+					border: '1px solid #3eaf7c'
+				},
+				slot: 'top'
+			},
+			listTableTop: {
+				type: 'component',
+				options: {
+					is: 'div',
+					text: '我是图片列表区块图片顶部的插槽内容！！'
+				},
+				style: {
+					padding: '20px',
+					border: '1px solid #f60'
+				},
+				slot: 'tableTop'
+			}
+		}
 	}
 };

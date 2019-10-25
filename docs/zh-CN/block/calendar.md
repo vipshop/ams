@@ -3,24 +3,21 @@ Calendar: Calendar 日历看板
 ---
 # Calendar 日历看板
 
-## 安装
+### 安装
 
-### @ams-team/block-calendar <Badge text="0.1.2"/>
+#### @ams-team/block-calendar <Badge text="0.1.2"/>
 ```
 npm i --save @ams-team/block-calendar
 ```
 
-## 预览
+### 预览
+
 <ClientOnly>
-<block-calendar-demo />
+<block-calendar-demo blockName="scheduleBlock"/>
 </ClientOnly>
 
 
-## 使用
-<<< @/zh-CN/.vuepress/components/block/calendar/block.js
-
-
-## 配置
+### 配置
 
 options配置
 | 参数 | 类型 | 是否必填 | 说明

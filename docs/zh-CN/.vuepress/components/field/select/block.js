@@ -42,6 +42,16 @@ export default {
 				},
 				selectFieldD: {
 					type: 'select',
+					label: '可搜索',
+					props: {
+						placeholder: '请输入关键字搜索',
+						clearable: true,
+						filterable: true,
+						options: options
+					}
+				},
+				selectFieldE: {
+					type: 'select',
 					label: '纯展示',
 					default: 'a,c',
 					props: {
@@ -49,7 +59,7 @@ export default {
 					},
 					ctx: 'view'
 				},
-				selectFieldE: {
+				selectFieldF: {
 					type: 'select',
 					label: '超出隐藏',
 					default: 'a,c,d,e',

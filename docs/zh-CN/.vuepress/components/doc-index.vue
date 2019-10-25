@@ -5,7 +5,7 @@
             <div class="banner-main">
                 <h1>AMS</h1>
                 <h2>面向管理后台的物料系统</h2>
-                <h3>ADMIN MATERIEL SYSTEM</h3>
+                <h3>ADMIN MATERIAL SYSTEM</h3>
                 <p>
                     AMS是一套企业级的通用后台前端页面解决方案；<br/>
                     使用它，可以零前端基础上手，可视化配置，生成后台页面。
@@ -13,7 +13,7 @@
                 <div class="banner-main-btns">
                     <a rel="noopener noreferrer"
                         class="start"
-                        href="/ams-doc/api/"></a>
+                        href="/ams/api/"></a>
                     <a rel="noopener noreferrer"
                         class="git"
                         target="_blank"
@@ -65,20 +65,29 @@
             <div class="figure figure-2" ref="figure2">
                 <div class="figure-title">海量物料</div>
                 <div class="config-list">
-                    <a href="/ams-doc/field/" class="item item1">
+                    <a href="/ams/field/" class="item item1">
                         <span class="s1"></span>
                         <span class="s2"></span>
                         <span class="s3"></span>
+                        <span class="s4">40</span>
+                        <span class="s5">基础字段</span>
+                        <P>页面的基本组成单元（例如：文本框、按钮等）</P>
                     </a>
-                    <a href="/ams-doc/block/" class="item item2">
+                    <a href="/ams/block/" class="item item2">
                         <span class="s1"></span>
                         <span class="s2"></span>
                         <span class="s3"></span>
+                        <span class="s4">30</span>
+                        <span class="s5">通用区块</span>
+                        <P>若干个字段加上交互组成的功能单元（例：Form表单、List列表）</P>
                     </a>
-                    <a href="/ams-doc/market/" class="item item3">
+                    <a href="/ams/market/" class="item item3">
                         <span class="s1"></span>
                         <span class="s2"></span>
                         <span class="s3"></span>
+                        <span class="s4">20</span>
+                        <span class="s5">精选模板</span>
+                        <P>若干区块与交互组成的页面集合（具有增删改查功能的页面）</P>
                     </a>
                 </div>
             </div>
@@ -89,20 +98,19 @@
                 <div class="footer-item">
                     <h4>链接</h4>
                     <a href="https://github.com/vipshop/ams" target="_blank">代码仓库</a>
-                    <a href="/ams-doc/market/">市场</a>
-                    <a href="http://fcms.vip.vip.com/ams/index.html" target="_blank">管理后台</a>
-                    <a href="/ams-doc/version/VERSION.html">更新日志</a>
+                    <a href="/ams/market/">市场</a>
+                    <a href="/ams/version/VERSION.html">更新日志</a>
                 </div>
                 <div class="footer-item">
                     <h4>工具</h4>
-                    <a href="/ams-doc/api/cli.html">脚手架</a>
+                    <a href="/ams/api/cli.html">脚手架</a>
                 </div>
                 <div class="footer-item">
                     <h4>社区</h4>
                     <a href="https://github.com/vipshop/ams/issues" target="_blank">反馈建议</a>
                 </div>
                 <div class="ewm">
-                    扫二维码加“唯技术”老师咨询<br/>
+                    加入技术支持群，请扫二维码加“唯技术”老师咨询<br/>
                     （添加时请备注“AMS”）
                 </div>
             </div>
@@ -110,6 +118,7 @@
     </div>
 </template>
 <script>
+// 页面上报
 export default {
     // 在页面刚加载好时注册此行为
     mounted() {
@@ -167,6 +176,33 @@ export default {
         transform: none;
     }
 }
+@keyframes moveToUp {
+    0% {
+        transform: translate3d(0, 15%, 0);
+    }
+
+    100% {
+        transform: none;
+    }
+}
+@keyframes moveToLeft {
+    0% {
+        transform: translate3d(15%, 0, 0);
+    }
+
+    100% {
+        transform: none;
+    }
+}
+@keyframes moveToRight {
+    0% {
+        transform: translate3d(-15%, 0, 0);
+    }
+
+    100% {
+        transform: none;
+    }
+}
 @keyframes upAndDown {
     0%,100% {
         transform: translate3d(0, 5%, 0);
@@ -196,7 +232,7 @@ export default {
     width: 1920px;
     left: 50%;
     transform: translateX(-50%);
-    background-image: url('/index/banner-bg.png');
+    background-image: url('/ams/index/banner-bg.png');
     background-position: center;
     position: relative;
     z-index: 1;
@@ -208,7 +244,7 @@ export default {
         position: absolute;
         top: 0;
         z-index: 1;
-        background-image: url('/index/banner-bg2.png');
+        background-image: url('/ams/index/banner-bg2.png');
         background-position: center;
     }
     &-left{
@@ -218,7 +254,7 @@ export default {
         top: 170px;
         left: 0;
         z-index: 1;
-        background-image: url('/index/banner-left.png');
+        background-image: url('/ams/index/banner-left.png');
         animation: fadeInUp ease-out 0.8s both;
     }
     &-right1{
@@ -229,7 +265,7 @@ export default {
         position: absolute;
         z-index: 2;
         background-size: 100%;
-        background-image: url('/index/banner-right01.png');
+        background-image: url('/ams/index/banner-right01.png');
         animation: fadeInUp ease-out 0.8s 0.6s both;
     }
     &-right2{
@@ -239,7 +275,7 @@ export default {
         top: 110px;
         right: 0;
         z-index: 3;
-        background-image: url('/index/banner-right02.png');
+        background-image: url('/ams/index/banner-right02.png');
         background-size: 100%;
         animation: fadeInUp ease-out 0.8s 0.3s both;
         span{
@@ -251,36 +287,37 @@ export default {
             height: 148px;
             top: 28px;
             left: 315px;
-            background-image: url('/index/banner-right02-04.png');
+            background-image: url('/ams/index/banner-right02-04.png');
         }
         .s2{
             width: 68px;
             height: 118px;
             top: 88px;
             left: 270px;
-            background-image: url('/index/banner-right02-02.png');
+            background-image: url('/ams/index/banner-right02-02.png');
         }
         .s3{
             width: 68px;
             height: 97px;
             top: 138px;
             left: 225px;
-            background-image: url('/index/banner-right02-03.png');
+            background-image: url('/ams/index/banner-right02-03.png');
         }
         .s4{
             width: 148px;
-            height: 173px;
+            height: 172px;
             top: -10px;
             left: 80px;
-            background-image: url('/index/banner-right02-05.png');
+            background-image: url('/ams/index/banner-right02-05.png');
+            background-repeat: no-repeat;
             animation: upAndDown ease-in-out 4.5s 1s infinite both;
         }
         .s5{
             width: 360px;
             height: 310px;
-            top: -16px;
+            top: -50px;
             left: 74px;
-            background-image: url('/index/banner-right02-01.png');
+            background-image: url('/ams/index/banner-right02-01.png');
             animation: showAndHide ease-in-out 4.5s 1s infinite both;
         }
     }
@@ -291,7 +328,7 @@ export default {
         top: 107px;
         right: 300px;
         z-index: 4;
-        background-image: url('/index/banner-right03.png');
+        background-image: url('/ams/index/banner-right03.png');
         background-size: 100%;
         animation: fadeInUp ease-out 0.8s both;
         span{
@@ -306,19 +343,19 @@ export default {
             opacity: 0;
         }
         .s1{
-            background-image: url('/index/banner-right03-03.png');
+            background-image: url('/ams/index/banner-right03-03.png');
             animation: showBanner 20s 0s infinite;
         }
         .s2{
-            background-image: url('/index/banner-right03-04.png');
+            background-image: url('/ams/index/banner-right03-04.png');
             animation: showBanner 20s 5s infinite;
         }
         .s3{
-            background-image: url('/index/banner-right03-05.png');
+            background-image: url('/ams/index/banner-right03-05.png');
             animation: showBanner 20s 10s infinite;
         }
         .s4{
-            background-image: url('/index/banner-right03-06.png');
+            background-image: url('/ams/index/banner-right03-06.png');
             animation: showBanner 20s 15s infinite;
         }
         .s5{
@@ -326,14 +363,14 @@ export default {
             height: 249px;
             top: 223px;
             left: 85px;
-            background-image: url('/index/banner-right03-01.png');
+            background-image: url('/ams/index/banner-right03-01.png');
         }
         .s6{
             width: 182px;
             height: 234px;
             top: 310px;
             left: 200px;
-            background-image: url('/index/banner-right03-02.png');
+            background-image: url('/ams/index/banner-right03-02.png');
         }
     }
 }
@@ -398,10 +435,10 @@ export default {
         }
     }
     .start{
-        background-image: url('/index/start.png');
+        background-image: url('/ams/index/start.png');
     }
     .git{
-        background-image: url('/index/git.png');
+        background-image: url('/ams/index/git.png');
     }
 }
 
@@ -412,7 +449,6 @@ export default {
     text-align: center;
     .figure {
         position: relative;
-        opacity: 0;
         .figure-title{
             font-size:48px;
             text-align: center;
@@ -429,15 +465,14 @@ export default {
     }
     .figure-1{
         .figure-title{
-            background-image: url('/index/figure-01.png');
+            background-image: url('/ams/index/figure-01.png');
         }
         &.show{
-            animation: fadeInUp ease-out 0.8s both;
             .item{
                 .img{
-                    animation: fadeInUp ease-out 0.8s 0.4s both;
+                    animation: moveToUp ease-out 0.6s 0s both;
                     &::after{
-                        animation: fadeInUp ease-out 0.8s 0.6s both;
+                        animation: moveToUp ease-out 0.6s 0.3s both;
                     }
                 }
             }
@@ -445,18 +480,35 @@ export default {
     }
     .figure-2{
         .figure-title{
-            background-image: url('/index/figure-02.png');
+            background-image: url('/ams/index/figure-02.png');
         }
         &.show{
-            animation: fadeInUp ease-out 0.8s both;
             .item1{
-                animation: fadeInUp ease-out 0.8s 0.4s both;
+                animation: moveToUp ease-out 0.6s 0s both;
+                .s2{
+                    animation: moveToRight ease-out 0.6s 0.4s both;
+                }
+                .s3{
+                    animation: moveToUp ease-out 0.6s 0.4s both;
+                }
             }
             .item2{
-                animation: fadeInUp ease-out 0.8s 0.8s both;
+                animation: moveToUp ease-out 0.6s 0.4s both;
+                .s2{
+                    animation: moveToLeft ease-out 0.6s 0.8s both;
+                }
+                .s3{
+                    animation: moveToUp ease-out 0.6s 0.8s both;
+                }
             }
             .item3{
-                animation: fadeInUp ease-out 0.8s 1.2s both;
+                animation: moveToUp ease-out 0.6s 1.2s both;
+                .s2{
+                    animation: moveToRight ease-out 0.6s 1.6s both;
+                }
+                .s3{
+                    animation: moveToUp ease-out 0.6s 1.6s both;
+                }
             }
         }
     }
@@ -474,6 +526,7 @@ export default {
             z-index: 1;
             position: relative;
             background-repeat: no-repeat;
+            transform: translate3d(0, 15%, 0);
             &::after{
                 content: '';
                 position: absolute;
@@ -483,6 +536,7 @@ export default {
                 bottom: 0;
                 right: -50px;
                 background-repeat: no-repeat;
+                transform: translate3d(0, 15%, 0);
             }
         }
         .name{
@@ -500,20 +554,20 @@ export default {
         }
         &.step1{
             .img{
-                background-image: url('/index/figure-01-1.png');
+                background-image: url('/ams/index/figure-01-1.png');
                 &::after{
-                    background-image: url('/index/figure-01-2.png');
+                    background-image: url('/ams/index/figure-01-2.png');
                 }
             }
         }
         &.step2{
             .img{
-                background-image: url('/index/figure-01-3.png');
+                background-image: url('/ams/index/figure-01-3.png');
                 background-position: 0 15px;
                 &::after{
                     height: 76px;
                     bottom: 10px;
-                    background-image: url('/index/figure-01-4.png');
+                    background-image: url('/ams/index/figure-01-4.png');
                 }
             }
         }
@@ -527,17 +581,17 @@ export default {
                 right: -10px;
                 top: 50%;
                 margin-top: -15px;
-                background-image: url('/index/figure-01-7.png');
+                background-image: url('/ams/index/figure-01-7.png');
             }
         }
         &.step3{
             .img{
-                background-image: url('/index/figure-01-5.png');
+                background-image: url('/ams/index/figure-01-5.png');
                 background-position: 0 15px;
                 &::after{
                     right: 20px;
                     bottom: -10px;
-                    background-image: url('/index/figure-01-6.png');
+                    background-image: url('/ams/index/figure-01-6.png');
                 }
             }
         }
@@ -561,82 +615,140 @@ export default {
                 width: 344px;
                 height: 316px;
             }
+            &.s4{
+                font-size: 116px;
+                color: #fff;
+                &::after{
+                    content: '+';
+                    position: absolute;
+                    top: 21px;
+                    right: -26px;
+                    color: #fff;
+                    font-size: 40px;
+                }
+            }
+            &.s5{
+                font-size: 50px;
+                color: #fff;
+            }
+        }
+        p{
+            color: #fff;
+            position: absolute;
+            z-index: 2;
+            font-size: 26px;
         }
         &.item1{
-            background-image: url('/index/figure-02-1.png');
+            background-image: url('/ams/index/figure-02-1.png');
             .s1{
                 right: 40px;
                 bottom: 12px;
-                background-image: url('/index/figure-02-2.png');
+                background-image: url('/ams/index/figure-02-2.png');
             }
             .s2{
                 width: 136px;
                 height: 136px;
                 right: 240px;
                 bottom: 100px;
-                background-image: url('/index/figure-02-3.png');
+                background-image: url('/ams/index/figure-02-3.png');
             }
             .s3{
                 width: 225px;
                 height: 87px;
                 right: 70px;
                 bottom: 55px;
-                background-image: url('/index/figure-02-4.png');
+                background-image: url('/ams/index/figure-02-4.png');
+            }
+            .s4{
+                left: 68px;
+                top: 42px;
+            }
+            .s5{
+                left: 210px;
+                top: 113px;
+            }
+            p{
+                top: 149px;
+                left: 72px;
             }
         }
         &.item2{
-            background-image: url('/index/figure-02-5.png');
+            background-image: url('/ams/index/figure-02-5.png');
             .s1{
                 left: 40px;
                 bottom: 5px;
-                background-image: url('/index/figure-02-6.png');
+                background-image: url('/ams/index/figure-02-6.png');
             }
             .s2{
                 width: 146px;
                 height: 152px;
                 left: 230px;
                 bottom: 80px;
-                background-image: url('/index/figure-02-7.png');
+                background-image: url('/ams/index/figure-02-7.png');
             }
             .s3{
                 width: 201px;
                 height: 70px;
                 left: 80px;
                 bottom: 60px;
-                background-image: url('/index/figure-02-8.png');
+                background-image: url('/ams/index/figure-02-8.png');
+            }
+            .s4{
+                right: 260px;
+                top: 35px;
+            }
+            .s5{
+                right: 58px;
+                top: 100px;
+            }
+            p{
+                top: 149px;
+                right: 45px;
             }
         }
         &.item3{
-            background-image: url('/index/figure-02-9.png');
+            background-image: url('/ams/index/figure-02-1.png');
             .s1{
                 right: 40px;
                 bottom: 12px;
-                background-image: url('/index/figure-02-10.png');
+                background-image: url('/ams/index/figure-02-10.png');
             }
             .s2{
                 width: 157px;
                 height: 146px;
                 right: 220px;
                 bottom: 100px;
-                background-image: url('/index/figure-02-11.png');
+                background-image: url('/ams/index/figure-02-11.png');
             }
             .s3{
                 width: 173px;
                 height: 168px;
                 right: 85px;
                 bottom: 55px;
-                background-image: url('/index/figure-02-12.png');
+                background-image: url('/ams/index/figure-02-12.png');
+            }
+            .s4{
+                left: 68px;
+                top: 42px;
+            }
+            .s5{
+                left: 210px;
+                top: 113px;
+            }
+            p{
+                top: 149px;
+                left: 72px;
             }
         }
     }
 }
 .footer {
-    background-image: url('/index/footer-01.png');
+    background-image: url('/ams/index/footer-01.png');
     background-position: center;
     background-color: #524970;
     width: 100%;
     box-sizing: border-box;
-    height: 528px;
+    height: 450px;
     &-main{
         width: 1150px;
         margin: 0 auto;
@@ -656,7 +768,7 @@ export default {
         a{
             display: block;
             margin: 0;
-            line-height: 3;
+            line-height: 2.5;
             font-size: 20px;
             color: #BDB8CE;
             font-weight:normal;
@@ -670,14 +782,15 @@ export default {
         position: absolute;
         right: 0;
         top: 80px;
+        width: 222px;
         z-index: 2;
         padding-top: 232px;
-        background-image: url('/index/footer-02.png');
+        background-image: url('/ams/index/footer-02.png');
         background-repeat: no-repeat;
         background-position: top center;
         text-align: center;
         color: #BDB8CE;
-        line-height: 30px;
+        line-height: 22px;
     }
 }
 </style>

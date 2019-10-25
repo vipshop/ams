@@ -344,5 +344,31 @@ export default {
                 slot: 'top'
             }
         }
+    },
+    enterForm: {
+        type: 'form',
+        resource: {
+            fields: {
+                text: {
+                    label: '新文本',
+                    type: 'text'
+                },
+                date: {
+                    type: 'date',
+                    label: '日期'
+                },
+                password: {
+                    type: 'password',
+                    label: '密码'
+                }
+            }
+        },
+        ctx: 'edit',
+        on: {
+            'keyupEnter': function(args) {
+                console.log('keyup.enter.native', this, args);
+                alert('你触发enter了')
+            }
+        },
     }
 }

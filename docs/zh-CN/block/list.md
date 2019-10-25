@@ -119,3 +119,27 @@ List: List 列表
 <ClientOnly>
 <block-list-demo blockName="editList2" onlineDemo="https://codepen.io/w3cmark/pen/BaBPqJr"/>
 </ClientOnly>
+
+### 列表展开表单详细
+
++ 可通过配置 block.expand 来控制需要展示的表单项(即内部field)，0.18.5+支持
+
+<ClientOnly>
+<block-list-demo blockName="expandList" />
+</ClientOnly>
+
+### 列表支持拖拽
+
++ 通过配置list 的 `options.drag` 为 `true` 让列表支持拖拽，可以在 `on.drag-start` 和 `on.drag-end` 事件中监听列表拖拽开始和拖拽结束回调，拖拽完成后会自动更新列表data.list数据顺序，0.17.12+支持
+
+<ClientOnly>
+<block-list-demo blockName="dragList" />
+</ClientOnly>
+
+### 列表操作项带标记
+
++ 通过配置opearations，该配置为operations提供，0.17.12+支持
+
+<ClientOnly>
+<block-list-demo blockName="opearationsList" />
+</ClientOnly>

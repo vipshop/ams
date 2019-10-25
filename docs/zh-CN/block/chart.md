@@ -3,9 +3,9 @@ Chart: Chart 图表
 ---
 # Chart 图表
 
-## 安装
+### 安装
 
-### @ams-team/block-chart <Badge text="0.2.0"/>
+#### @ams-team/block-chart <Badge text="0.2.0"/>
 
 > 依赖开源 `echarts`
 
@@ -14,7 +14,7 @@ npm i --save echarts
 npm i --save @ams-team/block-chart
 ```
 
-### 使用
+#### 使用
 
 ```js
 // 引入图表区块
@@ -32,14 +32,14 @@ const amsConfig = {
 }
 ```
 
-### CDN
+#### CDN
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/echarts@4.1.0/dist/echarts.min.js"></script>
 <script src="http://h5rsc.vipstatic.com/ams/block/block-chart@0.2.0.js"></script>
 ```
 
-## 结构
+### 结构
 
 ```js
 export interface Data { [field: string]: any }
@@ -55,51 +55,44 @@ export interface ChartBlock {
 }
 ```
 
-## 折线图表
-<ClientOnly>
-<block-chart-line-demo />
-</ClientOnly>
-
-<<< @/zh-CN/.vuepress/components/block/chart-line/block.js
-
-## 柱状图表
-<ClientOnly>
-<block-chart-bar-demo />
-</ClientOnly>
-
-<<< @/zh-CN/.vuepress/components/block/chart-bar/block.js
-
-## 饼状图表
-<ClientOnly>
-<block-chart-pie-demo />
-</ClientOnly>
-
-<<< @/zh-CN/.vuepress/components/block/chart-pie/block.js
-
-## 漏斗图表
-<ClientOnly>
-<block-chart-funnel-demo />
-</ClientOnly>
-
-<<< @/zh-CN/.vuepress/components/block/chart-funnel/block.js
-
-## 散点图表
+### 折线图表
 
 <ClientOnly>
-<block-chart-scatter-demo />
+<block-chart-demo blockName="chartLine" onlineDemo="https://codepen.io/w3cmark/pen/JjjEPGw"/>
 </ClientOnly>
 
-<<< @/zh-CN/.vuepress/components/block/chart-scatter/block.js
+### 柱状图表
 
-## 雷达图表
 <ClientOnly>
-<block-chart-radar-demo />
+<block-chart-demo blockName="chartBar" onlineDemo="https://codepen.io/w3cmark/pen/VwwPZao"/>
 </ClientOnly>
 
-<<< @/zh-CN/.vuepress/components/block/chart-radar/block.js
+### 饼状图表
+
+<ClientOnly>
+<block-chart-demo blockName="chartPie" onlineDemo="https://codepen.io/w3cmark/pen/xxxgKOm"/>
+</ClientOnly>
+
+### 漏斗图表
+
+<ClientOnly>
+<block-chart-demo blockName="chartFunnel" onlineDemo="https://codepen.io/w3cmark/pen/gOOgYwP"/>
+</ClientOnly>
+
+### 散点图表
+
+<ClientOnly>
+<block-chart-demo blockName="chartScatter" onlineDemo="https://codepen.io/w3cmark/pen/JjjEPRx"/>
+</ClientOnly>
+
+### 雷达图表
+
+<ClientOnly>
+<block-chart-demo blockName="chartRadar" onlineDemo="https://codepen.io/w3cmark/pen/xxxgKRM"/>
+</ClientOnly>
 
 
-## 配置
+### 参数列表
 
 options配置
 | 参数 | 类型 | 是否必填 | 说明

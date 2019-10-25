@@ -55,7 +55,7 @@ operations: {
 	reset: {
 		slot: 'searchs',
 		type: 'reset',
-		label: '重置'
+        label: '重置'
 	},
 
 	selectMulti: {
@@ -68,10 +68,42 @@ operations: {
 		slot: 'multipleSelect',
 		type: 'button',
 		label: '删除',
-		event: 'multi'
+        event: 'multi'
 	}
 }
 
+```
+
+## button operation添加tooltip和badge <Badge text="0.7.12+"/>
+```js
+operations: {
+    edit: {
+        type: 'button',
+        label: '编辑按钮',
+        show: {
+            name: 'testSwitch',
+            value: '1'
+        },
+        props: {
+            size: 'mini'
+        },
+        tooltip: {
+            effect: 'dark',
+            content: 'Top Left 提示文字',
+            placement: 'top-start'
+        },
+        badge: {
+            // 'is-dot': true,      // 原点显示
+            // hidden: true,        // 隐藏
+            // type: 'info',        // 类型：primary / success / warning / danger / info
+            max: 3,                 // 超过最大值会显示 '{max}+'
+            value: function(data) {
+                // return '' //同样不显示
+                return data.id;  // 需要为数字或字符串
+            }
+        }
+    }
+}
 ```
 
 ## field operation <Badge text="0.5.0+"/>
