@@ -1,8 +1,8 @@
-<p align="center"><a href="https://vipshop.github.io/ams/" target="_blank" rel="noopener noreferrer"><img width="140" src="https://h5rsc.vipstatic.com/ams/ams-logo.png" alt="AMS logo"></a></p>
+<p align="center"><a href="https://vipshop.github.io/ams/" target="_blank" rel="noopener noreferrer"><img width="140" src="https://h5rsc.vipstatic.com/ams/ams-logo2.png" alt="AMS logo"></a></p>
 
 ## AMS
 
-> AMS (admin materiel system)，管理后台物料系统。
+> AMS (admin material system)，管理后台物料系统。
 
 AMS是基于 [Vue.js](https://github.com/vuejs/vue) 和 [Element组件库](https://github.com/ElemeFE/element)、通过JSON配置来快速搭建管理后台的一整套解决方案
 
@@ -107,7 +107,9 @@ vip.com以外的开发者：
 
 ## 社区互助
 
-官方微信群： 请先搜索添加群主 `viptech128`（备注 `AMS`），欢迎加入讨论交流！
+<img src="https://vipshop.github.io/ams/index/footer-02.png">
+
+加入技术支持群，请扫二维码加“唯技术”老师咨询（添加时请备注“AMS”）
 
 ## LICENSE
 [Apache 2.0](LICENSE)
