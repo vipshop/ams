@@ -36,6 +36,10 @@ module.exports = {
         link: '/market/'
       },
       {
+        text: '示例',
+        link: '/example/'
+      },
+      {
         text: '版本更新',
         items: [
           {

@@ -9,11 +9,12 @@ module.exports = {
             extensions: ['.js', '.vue', '.json'],
             alias: {
                 '@': resolve('src'),
-                'vue': resolve('node_modules/vue')
+                'vue': resolve('node_modules/vue'),
+                '@ams-team/ams': resolve('../../src/')
             }
         };
     },
-    publicPath: '/example/',
+    publicPath: '/ams/example/',
     outputDir: '../../docs/dist/example',
     productionSourceMap: false,
     devServer: {
