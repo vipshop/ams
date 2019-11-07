@@ -113,7 +113,10 @@ const ams = {
             this._setBlocks(block);
         }
         // 初始化data
-        block.data = block.data || {};
+        block.data = {
+            ...ams.configs.defaultBlockDatas[block.type],
+            ...block.data
+        };
         // 初始化events
         block.events = block.events || {};
         // 初始化actions

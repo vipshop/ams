@@ -58,7 +58,7 @@ export const defaultFieldConfig = {
             props: {
                 expandTrigger: 'hover',
                 splitBy: '/',
-                checkStrictly: true
+                // checkStrictly: true
             }
         },
         get: getterCascader(getArray),
@@ -113,17 +113,6 @@ export const defaultFieldConfig = {
         get: getFile,
         set: setFile,
         view: viewFile,
-        equals
-    },
-    headimage: {
-        props: {
-            accept: 'image/*',
-            action: '',
-            'show-file-list': false
-        },
-        get,
-        set,
-        view,
         equals
     },
     image: {
@@ -312,7 +301,6 @@ export const defaultListFieldWidth = {
     datetimerange: '340px',
     cascader: '250px',
     image: '120px',
-    headimage: '130px',
     file: '160px',
     progress: '150px',
     video: '200px',

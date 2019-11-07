@@ -4,7 +4,7 @@
     "main": "lib/field-markdown.js",
     "unpkg": "lib/field-markdown.js",
     "description": "markdown编辑器",
-    "author": "edward.shao",
+    "author": "ams",
     "amsConfig": {
         "externals": {
             "mavon-editor": "mavon-editor"

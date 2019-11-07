@@ -7,8 +7,8 @@
                 <h2>面向管理后台的物料系统</h2>
                 <h3>ADMIN MATERIAL SYSTEM</h3>
                 <p>
-                    AMS是一套企业级的通用后台前端页面解决方案；<br/>
-                    使用它，可以零前端基础上手，可视化配置，生成后台页面。
+                    AMS是基于JSON配置来搭建后台管理系统页面的前端框架；<br/>
+                    使用它，能快速构建前端页面，提升页面开发效率。
                 </p>
                 <div class="banner-main-btns">
                     <a rel="noopener noreferrer"
@@ -79,7 +79,7 @@
                         <span class="s3"></span>
                         <span class="s4">30</span>
                         <span class="s5">通用区块</span>
-                        <P>若干个字段加上交互组成的功能单元（例：Form表单、List列表）</P>
+                        <P>若干字段与交互组成的功能单元（例如：Form表单、List列表）</P>
                     </a>
                     <a href="/ams/market/" class="item item3">
                         <span class="s1"></span>
@@ -87,7 +87,7 @@
                         <span class="s3"></span>
                         <span class="s4">20</span>
                         <span class="s5">精选模板</span>
-                        <P>若干区块与交互组成的页面集合（具有增删改查功能的页面）</P>
+                        <P>若干区块与交互组成的页面集合（例如：具有增删改查功能的页面）</P>
                     </a>
                 </div>
             </div>
@@ -118,11 +118,23 @@
     </div>
 </template>
 <script>
+import Vue from 'vue';
 // 页面上报
+import Sentry from 'sentry-pc';
 export default {
     // 在页面刚加载好时注册此行为
     mounted() {
         window.addEventListener("scroll", this.onWindowScroll);
+        // 监控上报
+        let sentry = new Sentry()
+
+        Vue.config.errorHandler = function(err, vm, info) {
+            try {
+                sentry.sendJsError(err);
+            } catch (e) {
+                // 无需出错处理
+            }
+        };
     },
 
     // 在页面卸载时删除此行为 （比如模板切换、路由切换等）

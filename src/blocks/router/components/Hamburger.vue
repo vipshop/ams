@@ -23,6 +23,7 @@ export default {
 <style scoped lang="scss">
 .hamburger {
     display: inline-block;
+    padding: 0 10px;
     cursor: pointer;
     font-size: 20px;
     transform: rotate(180deg);

@@ -34,6 +34,14 @@ ams.block('card', {
                         text: '只有自定义内容，没有标题'
                     }
                 }
+            },
+            actions: {
+                beforeDestroy: function() {
+                    console.log('beforeDestroy');
+                },
+                destroyed: function() {
+                    console.log('destroyed');
+                }
             }
         },
         headerTitle: {

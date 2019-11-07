@@ -22,7 +22,7 @@ export const fieldDefaultValue = {
     union: 'aaa',
     inputnumber: 1,
     image: "//b.appsimg.com/upload/vivaadmin/2018/11/07/69/1541579376290922128.png",
-    headimage: "//b.appsimg.com/upload/vivaadmin/2018/11/07/69/1541579376290922128.png",
+    // headimage: "//b.appsimg.com/upload/vivaadmin/2018/11/07/69/1541579376290922128.png",
     file: "http://b.appsimg.com/upload/vivaadmin/2018/11/07/69/1541579376290922128.png",
     video: "https://1251962819.vod2.myqcloud.com/54067453vodtransgzp125",
     audio: "https://a.vpimg2.com/upload/upimg2/i/9b0e909ed263b25c.mp3",

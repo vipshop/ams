@@ -1,8 +1,8 @@
 {
     "name": "@ams-team/block-chart",
-    "version": "0.2.4",
-    "description": "图表",
-    "author": "edward.shao",
+    "version": "0.2.8",
+    "description": "AMS图表",
+    "author": "ams",
     "main": "lib/block-chart.js",
     "unpkg": "lib/block-chart.js",
     "amsConfig": {

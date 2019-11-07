@@ -1,5 +1,5 @@
 <template>
-    <div class="ams-block-dialog" v-if="ready">
+    <div class="ams-block-dialog" v-if="ready" v-loading.fullscreen.lock="loading">
         <el-dialog :title="data.title"
                    :visible.sync="data.visible"
                    :style="block.style"

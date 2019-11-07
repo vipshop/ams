@@ -247,7 +247,134 @@ ams.block('chart-demo1', {
             events: {
                 init: '@read'
             }
-        }
+        },
+        analysisCustomerCharts2: {
+            type: 'chart',
+            style: {
+                width: '100%',
+                height: '302px',
+                float: 'left'
+            },
+            data: {
+                legendData: [],
+                xAxis: [],
+                yAxisMax: 500,
+                series: []
+            },
+            options: {
+                BASE: 'LINE',
+                scale: true,
+                grid: {
+                    show: true,
+                    left: '45px',
+                    right: '14px'
+                },
+                title: {
+                    text: '最近30日趋势图',
+                    left: '40px'
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                series: 'data.series',
+                legend: {
+                    top: '0',
+                    right: '7px',
+                    data: 'data.legendData'
+                },
+                xAxis: {
+                    boundaryGap: false
+                },
+                yAxis: {
+                    min: 0,
+                    max: 'data.yAxisMax'
+                },
+                emphasis: {
+                    smooth: true
+                }
+            },
+            events: {
+                init: '@analysisCustomerCharts2Change.setData',
+                refresh: '@refresh'
+            },
+            actions: {
+                refresh(data) {
+                    const chartData = data.data.detail || [];
+                    const xAxisData = {
+                        legendData: [],
+                        xAxis: [],
+                        yAxisMax: data.target === 'sellIndex' ? 500 : 100,
+                        series: []
+                    };
+                    const selfIndex = [];
+                    const avgIndex = [];
+                    chartData.forEach(v => {
+                        xAxisData.xAxis.push(v.date);
+                        selfIndex.push(v[data.target]);
+                        avgIndex.push(v[`${data.target}Avg`]);
+                    });
 
+                    xAxisData.legendData = ['自身指数'];
+                    xAxisData.series = [
+                        {
+                            name: '自身指数',
+                            stack: '总量1',
+                            data: selfIndex
+                        }
+                    ];
+                    this.setBlockData({
+                        ...xAxisData
+                    });
+                    console.log(JSON.parse(JSON.stringify(this.data)));
+                    // this.data = xAxisData;
+                }
+            },
+            blocks: {
+                analysisCustomerCharts2Change: {
+                    type: 'component',
+                    style: {
+                        position: 'absolute',
+                        width: '200px',
+                        left: '180px',
+                        top: '-5px',
+                        zIndex: 2
+                    },
+                    operations: {
+                        sellIndexType: {
+                            type: 'field',
+                            field: {
+                                type: 'select',
+                                lable: '指数维度',
+                                default: 'sellIndex',
+                                props: {
+                                    multiple: false,
+                                    options: {
+                                        'sellIndex': '整体指数',
+                                        'brightness': '发光度',
+                                        'heatness': '热览度',
+                                        'growth': '成长度',
+                                        'faithfulness': '忠诚度',
+                                        'fission': '裂变度'
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    actions: {
+                        fieldChange({ name, value, path }) {
+                            console.log('fieldChange', name, value, path, this.data);
+                            this.callAction('analysisCustomerCharts2.refresh', {
+                                target: value,
+                                data: this.data
+                            });
+                        },
+                        setData(data) {
+                            const result = { 'sellIndexYesterday': { 'brightness': 50, 'brightnessAvg': 35, 'heatness': 59, 'heatnessAvg': 60, 'growth': 65, 'growthAvg': 63, 'faithfulness': 67, 'faithfulnessAvg': 69, 'fission': 55, 'fissionAvg': 56, 'sellIndex': 296, 'sellIndexAvg': 284, 'date': '09/14' }, 'detail': [{ 'brightness': 56, 'brightnessAvg': 28, 'heatness': 62, 'heatnessAvg': 61, 'growth': 72, 'growthAvg': 64, 'faithfulness': 67, 'faithfulnessAvg': 69, 'fission': 60, 'fissionAvg': 58, 'sellIndex': 317, 'sellIndexAvg': 282, 'date': '09/09' }, { 'brightness': 51, 'brightnessAvg': 36, 'heatness': 59, 'heatnessAvg': 59, 'growth': 66, 'growthAvg': 61, 'faithfulness': 67, 'faithfulnessAvg': 69, 'fission': 56, 'fissionAvg': 57, 'sellIndex': 299, 'sellIndexAvg': 283, 'date': '09/10' }, { 'brightness': 50, 'brightnessAvg': 36, 'heatness': 57, 'heatnessAvg': 58, 'growth': 64, 'growthAvg': 60, 'faithfulness': 67, 'faithfulnessAvg': 69, 'fission': 54, 'fissionAvg': 56, 'sellIndex': 292, 'sellIndexAvg': 281, 'date': '09/11' }, { 'brightness': 50, 'brightnessAvg': 37, 'heatness': 56, 'heatnessAvg': 57, 'growth': 60, 'growthAvg': 58, 'faithfulness': 67, 'faithfulnessAvg': 69, 'fission': 53, 'fissionAvg': 55, 'sellIndex': 286, 'sellIndexAvg': 277, 'date': '09/12' }, { 'brightness': 50, 'brightnessAvg': 34, 'heatness': 57, 'heatnessAvg': 58, 'growth': 62, 'growthAvg': 59, 'faithfulness': 67, 'faithfulnessAvg': 69, 'fission': 54, 'fissionAvg': 55, 'sellIndex': 290, 'sellIndexAvg': 277, 'date': '09/13' }, { 'brightness': 50, 'brightnessAvg': 35, 'heatness': 59, 'heatnessAvg': 60, 'growth': 65, 'growthAvg': 63, 'faithfulness': 67, 'faithfulnessAvg': 69, 'fission': 55, 'fissionAvg': 56, 'sellIndex': 296, 'sellIndexAvg': 284, 'date': '09/14' }], 'defaultOperations': { 'sellIndexType': 'brightness' }};
+                            this.data = result;
+                        }
+                    }
+                }
+            }
+        }
     }
 });

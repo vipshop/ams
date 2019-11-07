@@ -205,6 +205,9 @@ export default {
             .el-form--inline .el-form-item{
                 margin-right: 5px;
             }
+            .ams-operations .el-form-item__content{
+                line-height: initial;
+            }
             .icon,.ams-operation-text {
                 border: 1px solid transparent;
             }
@@ -231,6 +234,10 @@ export default {
                 }
                 &.ams-operation-text--danger{
                     color: #f56c6c;
+                }
+                &.is-disabled{
+                    opacity: 0.6;
+                    background-color: rgba(0, 0, 0, 0.5);
                 }
             }
         }

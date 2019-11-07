@@ -1,8 +1,8 @@
 {
     "name": "@ams-team/block-ams-config",
     "version": "0.3.4",
-    "description": "ams可视化配置工具",
-    "author": "hodor.wang",
+    "description": "AMS可视化配置工具",
+    "author": "ams",
     "main": "lib/block-ams-config.js",
     "unpkg": "lib/block-ams-config.js",
     "amsConfig": {

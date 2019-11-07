@@ -1,5 +1,5 @@
 <template>
-  <div v-if="ready" :style="block.style" class="ams-block-tabs">
+  <div v-if="ready" :style="block.style" class="ams-block-tabs" v-loading.fullscreen.lock="loading">
     <el-tabs v-model="data.active" v-on="on" v-bind="block.props">
       <el-tab-pane
         v-for="name in showBlocks"

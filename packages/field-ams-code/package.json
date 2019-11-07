@@ -2,7 +2,7 @@
     "name": "@ams-team/field-ams-code",
     "version": "0.3.2",
     "description": "ams代码编辑器",
-    "author": "hodor.wang",
+    "author": "ams",
     "main": "lib/field-ams-code.js",
     "unpkg": "lib/field-ams-code.js",
     "dependencies": {

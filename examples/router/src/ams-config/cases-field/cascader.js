@@ -67,7 +67,7 @@ ams.block('cascader', {
                         options: options,
                         clearable: true,
                         props: {
-                            checkStrictly: true
+                            // checkStrictly: true
                         }
                     }
                 }
@@ -81,7 +81,7 @@ ams.block('cascader', {
                     props: {
                         options: options,
                         props: {
-                            multiple: true
+                            // multiple: true
                         }
                     }
                 },
@@ -92,7 +92,7 @@ ams.block('cascader', {
                         options: options,
                         'collapse-tags': true,
                         props: {
-                            multiple: true
+                            // multiple: true
                         }
                     }
                 },
@@ -102,8 +102,8 @@ ams.block('cascader', {
                     props: {
                         options: options,
                         props: {
-                            multiple: true,
-                            checkStrictly: true
+                            // multiple: true,
+                            // checkStrictly: true
                         }
                     }
                 }

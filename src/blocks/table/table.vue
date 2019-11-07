@@ -462,7 +462,6 @@ export default {
 <style lang="scss">
 .ams-block-table {
     .slot-header-icon {
-        color:#409eff;
         margin-left:5px;
         cursor: pointer;
     }
@@ -472,17 +471,8 @@ export default {
     .el-slider__button-wrapper {
         z-index: 1;
     }
-
-    // .el-table td .cell div {
-    //     display: inline-flex;
-
-    // }
-
     .row-expand-cover .el-table__expand-column .cell {
         display: none;
     }
-
 }
-
-
 </style>

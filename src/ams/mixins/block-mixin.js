@@ -60,6 +60,9 @@ export default {
             return on;
         }
     },
+    async beforeDestroy() {
+        await this.emitEvent('beforeDestroy');
+    },
 
     async destroyed() {
         await this.emitEvent('destroyed');

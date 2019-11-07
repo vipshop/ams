@@ -148,7 +148,7 @@ ams.resource('resource', {
             label: '开关',
             props: {
                 inline: true,
-                formItemWidth: '40%'
+                formItemWidth: '45%'
             }
         },
         testPassword: {
@@ -157,7 +157,7 @@ ams.resource('resource', {
             label: '密码',
             props: {
                 inline: true,
-                formItemWidth: '40%'
+                formItemWidth: '45%'
             }
         },
         testColor: {
@@ -167,16 +167,12 @@ ams.resource('resource', {
             props: {
                 // size: 'mini',
                 // inline: true,
-                formItemWidth: '40%'
+                width: '180px'
             }
         },
         testRate: {
             type: 'rate',
-            label: '评分',
-            props: {
-                inline: true,
-                formItemWidth: '40%'
-            }
+            label: '评分'
         },
         testRadio: {
             type: 'radio',
@@ -656,12 +652,13 @@ ams.resource('resource', {
             }
         },
         testHeadImage: {
-            type: 'headimage',
+            type: 'image',
             label: '头像',
             tip: '只能上传jpg/png文件，且不超过500kb',
             successUrlKey: 'url',
             props: {
-                action: `${prefix}upload-image`
+                action: `${prefix}upload-image`,
+                headimage: true
             }
         },
         testFile: {

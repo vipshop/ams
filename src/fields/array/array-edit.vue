@@ -149,6 +149,6 @@ export default {
 }
 // 没有label时
 .ams-field-no-label{
-    margin-left: 35px;
+    padding-left: 35px;
 }
 </style>

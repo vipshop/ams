@@ -1,5 +1,5 @@
 <template>
-    <div :style="field.style">
+    <div :style="field.style" :class="isHeadimage ? 'ams-field-headimage' : ''">
         <el-upload :on-success="handleUploadSuccess"
                    :before-upload="beforeUpload"
                    v-on="on"
@@ -51,6 +51,9 @@ export default {
     computed: {
         imageUrl() {
             return this.localValue || this.previewUrl;
+        },
+        isHeadimage() {
+            return this.field.props && this.field.props.headimage;
         }
     },
     methods: {
@@ -169,7 +172,6 @@ export default {
         line-height: 100px;
         overflow: hidden;
         &:hover {
-            border-color: #409eff;
             .edit-text {
                 display: block;
             }
@@ -257,6 +259,15 @@ export default {
     }
     .red{
         color: #c00;
+    }
+}
+.ams-field-headimage {
+    .el-upload {
+        border-radius: 50%;
+    }
+    .el-icon-error {
+        top: 15px;
+        left: 85px;
     }
 }
 </style>

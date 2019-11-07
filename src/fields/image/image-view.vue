@@ -3,8 +3,9 @@
         v-if="viewValue"
         :src="viewValue"
         :style="field.style"
-        :preview-src-list="srcList"
-        :fit="field.props && field.props.fit">
+        :preview-src-list="!isHeadimage ? srcList : []"
+        :fit="field.props && field.props.fit"
+        :class="isHeadimage ? 'ams-field-headimage' : ''">
     </el-image>
     <i class="el-icon-picture"
        v-else></i>
@@ -19,6 +20,9 @@ export default {
     computed: {
         srcList() {
             return (this.field.props && this.field.props['preview-src-list']) || [this.viewValue];
+        },
+        isHeadimage() {
+            return this.field.props && this.field.props.headimage;
         }
     },
 };
@@ -30,6 +34,9 @@ export default {
     display: block;
     width: 100px;
     height: 100px;
+    &.ams-field-headimage {
+        border-radius: 50%;
+    }
 }
 </style>
 

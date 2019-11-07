@@ -90,9 +90,12 @@ ams.block('list-operations', {
         },
         testSelect: {
             slot: 'searchs',
-            type: 'field'
+            type: 'field',
             // field: 'testSelect' // field可省略
             // label: '可省略'
+            props: {
+                inline: false
+            }
         },
         testSwitch: {
             slot: 'searchs',

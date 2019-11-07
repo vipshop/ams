@@ -1,4 +1,8 @@
-# Tag 标签
+# field-tag AMS标签
+
+## 预览图
+
+![field-tag](http://h5rsc.vipstatic.com/ams/packages/field-tag.png)
 
 ## 使用
 

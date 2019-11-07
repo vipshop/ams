@@ -140,9 +140,21 @@ ams.block('image', {
                     type: 'image',
                     tip: '只能上传png文件',
                     successUrlKey: 'url',
+                    default: 'http://static.699pic.com/best_album/25.jpg',
                     props: {
                         accept: 'image/png',
                         action: upload
+                    }
+                },
+                image9: {
+                    label: '头像',
+                    type: 'image',
+                    tip: '只能上传png文件',
+                    successUrlKey: 'url',
+                    props: {
+                        accept: 'image/png',
+                        // action: upload,
+                        headimage: true
                     }
                 }
             }

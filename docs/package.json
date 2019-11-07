@@ -16,6 +16,7 @@
     "lodash": "^4.17.14",
     "node-sass": "^4.12.0",
     "sass-loader": "^7.1.0",
+    "sentry-pc": "^1.1.4",
     "vue-highlight.js": "^3.1.0",
     "vuepress": "^1.0.4"
   },

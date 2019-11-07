@@ -2,6 +2,10 @@
 
 区块是AMS的基础组成单元，整个页面由多个 `block` 组合嵌套组成，每个 `block` 有自己的事件、行为、操作
 
+<ClientOnly>
+<scrimba href="https://scrimba.com/c/cV8vRKuR" title="字段和区块" />
+</ClientOnly>
+
 ## 注册 block
 
 注册一个name为 `formView` 的block

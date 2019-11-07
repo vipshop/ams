@@ -2,6 +2,7 @@
     <div v-if="ready"
          class="ams-block-imagelist"
          :style="block.style"
+         v-loading.fullscreen.lock="loading"
          v-bind="block.props">
         <ams-blocks :blocks="block.slotBlocks.top" />
         <!-- 搜索operations插槽 -->

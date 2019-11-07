@@ -27,6 +27,9 @@ import 'highlight.js/styles/tomorrow-night-eighties.css';
 import chart from '@ams-team/block-chart';
 import amsConfig from '@ams-team/block-ams-config';
 
+// 页面上报
+import Sentry from 'sentry-pc';
+
 Vue.use(ElementUI);
 Vue.use(ams);
 
@@ -61,3 +64,14 @@ ams.config({
         }
     }
 })
+
+// 监控上报
+let sentry = new Sentry()
+
+Vue.config.errorHandler = function(err, vm, info) {
+    try {
+        sentry.sendJsError(err);
+    } catch (e) {
+        // 无需出错处理
+    }
+};

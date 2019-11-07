@@ -52,6 +52,9 @@ export default {
             overflow-x: hidden !important;
             .el-scrollbar__view {
                 height: 100%;
+                > .el-menu {
+                    padding-top: 15px;
+                }
             }
         }
         .el-scrollbar__bar.is-vertical {

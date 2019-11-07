@@ -34,12 +34,13 @@
                       v-bind="block.props"
                       :height="height"
                       ref="amsTable"
+                      :class="[isDrag ? 'ams-block-list-drag' : '']"
                       highlight-current-row>
 
                 <template v-if="expandFields">
                     <el-table-column type="expand">
                         <template slot-scope="scope">
-                            <el-form class="ams-block-list-expand" label-width="100px" >
+                            <el-form class="ams-block-list-expand" :label-width="block.props && block.props['label-width'] || '100px'" >
                                 <el-form-item v-for="(field, fieldName) in expandFields"
                                             :key="fieldName"
                                             :label="field.label"
@@ -160,6 +161,9 @@ export default {
         };
     },
     computed: {
+        isDrag() {
+            return this.block.options && this.block.options.drag;
+        },
         isSimulatePagination() {
             return this.block.props && this.block.props.pagination === 'simulate';
         },
@@ -199,7 +203,7 @@ export default {
     methods: {
         afterReady() {
             // 表格拖拽
-            if (this.block.options && this.block.options.drag) {
+            if (this.isDrag) {
                 this.loadSortable();
             }
 
@@ -358,8 +362,21 @@ export default {
         }
     }
     .ams-list-row-operations {
+        padding-bottom: 0;
         .cell {
             overflow: inherit;
+        }
+        .ams-operations .el-form-item .el-form-item__content {
+            line-height: initial;
+        }
+    }
+    // 列表拖拽鼠标
+    .ams-block-list-drag{
+        tr{
+            cursor: move;
+        }
+        .ams-list-row-operations {
+            cursor: auto;
         }
     }
 

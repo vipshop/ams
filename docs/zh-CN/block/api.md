@@ -9,7 +9,7 @@ API: API 配置
 - 类型：`string`
 - 默认值：`undefined`
 
-定义表单类型的block，目前可用类型有`form` `list` `dialog`
+定义区块的类型，目前可用类型有表单`form`、列表`list`、弹窗`dialog`、网格布局`Grid`等等
 
 ## resource
 

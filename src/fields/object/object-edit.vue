@@ -47,7 +47,7 @@
                     </template>
                     <el-form-item v-for="fieldName in fieldLayout"
                                   :key="fieldName"
-                                  :label="(fieldName === key && field.fields[fieldName].labelWidth == 0) ? '' : field.fields[fieldName].label"
+                                  :label="(fieldName === key && field.fields[fieldName].labelWidth === '0') ? '' : field.fields[fieldName].label"
                                   :label-width="field.fields[fieldName].labelWidth"
                                   :rules="field.fields[fieldName].rules"
                                   :prop="field.fields[fieldName].type !== 'array' && field.fields[fieldName].type !== 'object' ? `${path}.${fieldName}` : ''">

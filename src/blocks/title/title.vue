@@ -45,7 +45,8 @@ export default {
 .ams-block-title {
     font-size: 20px;
     .ams-title{
-        border-left: 4px solid #409EFF;
+        border-left-width: 4px;
+        border-left-style:  solid;
         color: #333;
         vertical-align: baseline;
         margin: 20px 0;

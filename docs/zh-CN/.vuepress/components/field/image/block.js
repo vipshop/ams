@@ -247,5 +247,29 @@ export default {
 			image1: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
 			image2: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
 		}
+	},
+	imageFieldHeadimage: {
+		type: 'form',
+		resource: {
+			fields: {
+				image1: {
+					label: '头像上传',
+					type: 'image',
+					props: {
+						headimage: true
+					}
+				},
+				image2: {
+					label: '头像展示',
+					type: 'image',
+					ctx: 'view',
+					default: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
+					props: {
+						headimage: true
+					}
+				}
+			}
+		},
+		ctx: 'edit'
 	}
 };

@@ -86,7 +86,15 @@ ams.block('input', {
                         prefix: '宽',
                         suffix: 'px'
                     }
-                }
+                },
+                text11: {
+                    label: '样式名',
+                    type: 'text',
+                    ctx: 'view',
+                    props: {
+                        'class': 'el-icon-upload-success  el-icon-circle-check'
+                    }
+                },
             }
         }
     },
@@ -100,7 +108,8 @@ ams.block('input', {
                 // width: '50%'
             },
             data: {
-                text7: '测试文字'
+                text7: '测试文字',
+                text11: '上传成功',
             }
         }
     }

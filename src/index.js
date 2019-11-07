@@ -41,7 +41,6 @@ import date from './fields/date';
 import datetime from './fields/datetime';
 import datetimerange from './fields/datetimerange';
 import file from './fields/file';
-import headimage from './fields/headimage';
 import image from './fields/image';
 import inputnumber from './fields/inputnumber';
 import object from './fields/object';
@@ -75,7 +74,7 @@ import field from './operations/field';
 import dropdown from './operations/dropdown';
 
 // 版本号
-ams.version = '0.19.3';
+ams.version = '0.20.2';
 // 挂载到ams上
 ams.mixins = mixins;
 ams.utils = utils;
@@ -132,7 +131,6 @@ ams.install = function(Vue) {
     ams.registerField(datetime);
     ams.registerField(datetimerange);
     ams.registerField(file);
-    ams.registerField(headimage);
     ams.registerField(image);
     ams.registerField(inputnumber);
     ams.registerField(object);

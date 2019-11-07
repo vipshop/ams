@@ -243,10 +243,9 @@ ams.block('list', {
                 text: '我是列表区块最顶部的插槽内容！！'
             },
             style: {
-                height: '80px',
-                'line-height': '80px',
-                margin: '20px auto 0',
-                border: '1px solid #E4E7ED'
+                padding: '20px',
+                marginBottom: '20px',
+                border: '1px solid #3eaf7c'
             },
             slot: 'top'
         },
@@ -257,10 +256,8 @@ ams.block('list', {
                 text: '我是列表区块表格顶部的插槽内容！！'
             },
             style: {
-                height: '80px',
-                'line-height': '80px',
-                margin: '20px auto 0',
-                border: '1px solid #E4E7ED'
+                padding: '20px',
+                border: '1px solid #f60'
             },
             slot: 'tableTop'
         }

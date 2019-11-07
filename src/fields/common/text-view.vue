@@ -1,5 +1,5 @@
 <template>
-    <div :style="field.style">{{ actualViewText }}<el-popover v-if="showMoreIcon"
+    <div :style="field.style" v-bind="field.props">{{ actualViewText }}<el-popover v-if="showMoreIcon"
                     :placement="field.collapsePlacement || 'right'"
                     :title="field.collapseTitle || ''"
                     :width="field.collapseWidth || 200"

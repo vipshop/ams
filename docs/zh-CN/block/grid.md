@@ -7,7 +7,7 @@ Grid: Grid 网格布局
 
 ### 基础用法
 
-> 一行两列，列间距为0，是通过设置`style: {'grid-gap': '0'}`控制
+> 一行两列，列间距为0，是通过设置`style: {'grid-gap': '0px'}`控制
 
 <ClientOnly>
 <block-grid-demo blockName="defaultGrid" onlineDemo="https://codepen.io/w3cmark/pen/eYOjPWo"/>

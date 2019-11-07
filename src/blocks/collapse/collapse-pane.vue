@@ -16,7 +16,8 @@ export default {
             required: true
         },
         active: {
-            type: [String, Array]
+            type: [String, Array],
+            default: ''
         }
     },
     data() {

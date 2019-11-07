@@ -1,8 +1,8 @@
 {
     "name": "@ams-team/block-bct-progress",
-    "version": "0.2.3",
+    "version": "0.2.4",
     "description": "pmc/bct custom progress",
-    "author": "zebin.wu",
+    "author": "ams",
     "main": "lib/block-bct-progress.js",
     "unpkg": "lib/block-bct-progress.js",
     "amsConfig": {

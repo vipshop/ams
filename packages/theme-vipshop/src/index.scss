@@ -1,3 +1,20 @@
 @import "./base.scss";
 @import "./router.scss";
 
+$primaryColor: #797EF5; // 主色调
+
+.ams-block-title .ams-title{
+    border-left-color: $primaryColor;
+}
+// 表格展开
+.ams-block-table .slot-header-icon{
+    color: $primaryColor;
+}
+// 图片上传
+.ams-field-image-edit {
+    .el-upload {
+        &:hover {
+            border-color: $primaryColor;
+        }
+    }
+}

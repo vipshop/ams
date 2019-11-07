@@ -19,6 +19,14 @@ Image: Image 图片
 <field-image-demo blockName="imageField2" onlineDemo="https://codepen.io/w3cmark/pen/wvwxYar"/>
 </ClientOnly>
 
+### 圆角头像
+
+可以通过 `props.headimage` 为 `true` 时配置。
+
+<ClientOnly>
+<field-image-demo blockName="imageFieldHeadimage" onlineDemo="https://codepen.io/w3cmark/pen/VwwQOJj"/>
+</ClientOnly>
+
 ### 显示已上传列表
 
 可以通过 `field.props['show-file-list']: true`、`field.props['file-list']` 和 `field.props['list-type']`配置，而`list-type` 可取值`text/picture/picture-card`，默认为 `text`
