@@ -23,7 +23,7 @@
         "build": "node build/bin/prebuild.js && npm run lint && npm run clean &&  webpack --config build/webpack.conf.js && webpack --config build/webpack.common.js",
         "components": "webpack --config build/webpack.component.js",
         "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.js",
-        "update-doc": "cd ./docs && npm run build && cd ../ && node build/bin/update-doc.js"
+        "update-doc": "cd ./docs && npm run build && cd ../ && cd ./examples/router && npm run build && cd ../../  && node build/bin/update-doc.js"
     },
     "dependencies": {
         "@babel/runtime": "^7.4.4",
