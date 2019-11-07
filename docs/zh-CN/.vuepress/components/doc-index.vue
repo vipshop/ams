@@ -119,22 +119,11 @@
 </template>
 <script>
 import Vue from 'vue';
-// 页面上报
-import Sentry from 'sentry-pc';
+
 export default {
     // 在页面刚加载好时注册此行为
     mounted() {
         window.addEventListener("scroll", this.onWindowScroll);
-        // 监控上报
-        let sentry = new Sentry()
-
-        Vue.config.errorHandler = function(err, vm, info) {
-            try {
-                sentry.sendJsError(err);
-            } catch (e) {
-                // 无需出错处理
-            }
-        };
     },
 
     // 在页面卸载时删除此行为 （比如模板切换、路由切换等）
