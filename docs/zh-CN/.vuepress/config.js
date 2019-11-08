@@ -36,6 +36,10 @@ module.exports = {
         link: '/market/'
       },
       {
+        text: '示例',
+        link: '/example/'
+      },
+      {
         text: '版本更新',
         items: [
           {
@@ -95,7 +99,7 @@ module.exports = {
         {
           title: '基础',
           collapsable: false,
-          children: ['text','password', 'textarea', 'switch',  'color', 'rate', 'unitselect', 'link']
+          children: ['text','password', 'textarea', 'switch',  'color', 'rate', 'unitselect', 'link', 'button']
         },
         {
           title: '时间',
@@ -110,7 +114,7 @@ module.exports = {
         {
           title: '上传',
           collapsable: false,
-          children: ['image', 'headImage', 'audio', 'video', 'file', 'originfile']
+          children: ['image', 'audio', 'video', 'file', 'originfile']
         },
         {
           title: '数字',

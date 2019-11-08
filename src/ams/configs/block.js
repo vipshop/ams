@@ -22,6 +22,12 @@ export const defaultBlockProps = {
     }
 };
 
+export const defaultBlockDatas = {
+    router: {
+        title: '系统标题'
+    }
+};
+
 export const baseBlockType = {
     list: 'list',
     table: 'list',

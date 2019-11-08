@@ -91,7 +91,7 @@ ams.block('array-object', {
                                 field: {
                                     type: 'button',
                                     label: '按钮',
-                                    labelWidth: '0',
+                                    // labelWidth: '0',
                                     props: {
                                         size: 'medium',
                                         type: 'primary'

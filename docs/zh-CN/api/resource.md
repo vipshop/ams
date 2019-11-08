@@ -2,6 +2,10 @@
 
 资源（resource）主要是用于描述接口的字段（field）组成以及请求配置参数，同一个资源可以被多个 `block` 共享使用
 
+<ClientOnly>
+<scrimba href="https://scrimba.com/c/cV8vRKuR" title="字段和区块" />
+</ClientOnly>
+
 ## 注册资源
 
 ```js

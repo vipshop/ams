@@ -116,3 +116,12 @@ a:hover {
 //         }
 //     }
 // }
+
+// 处理operation按钮同时为el-badge是，无法和旁边元素上下对齐的bug
+.el-badge.ams-operation{
+    vertical-align: initial;
+    line-height: initial;
+}
+.el-badge.ams-field{
+    vertical-align: initial;
+}

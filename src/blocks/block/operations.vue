@@ -2,6 +2,7 @@
     <div v-if="Object.keys(operations).length" class="ams-operations el-form--inline">
         <template v-for="(operation, operationKey) in operations">
             <div class="el-form-item"
+                :class="operation.props && operation.props.inline === false ? 'el-form-item--block' : ''"
                  v-if="getShowState(operation, context)"
                  :key="operationKey">
                 <label v-if="operation.label && !/^(?:button|reset|icon|text)$/.test(operation.type)"
@@ -50,7 +51,7 @@ export default {
     inject: ['$block'],
     // data() {
     //     return {
-    //         operations: {}
+    //         isInit: true
     //     };
     // },
 
@@ -59,7 +60,7 @@ export default {
             return this.slotName || this.slotFieldKey || 'defaultOperations';
         },
         operations() {
-            // console.log('2: ' + this.slotName);
+            // console.log(this.name);
             let operations = ams.blocks[this.name] && ams.blocks[this.name].operations || {};
             let currentOperations = {};
 
@@ -77,14 +78,16 @@ export default {
             return currentOperations;
         }
     },
-
     methods: {
         setFieldDefaultValue(operationFields, slotName, data) {
             Object.keys(operationFields).forEach(key => {
                 let field;
                 let type = typeof operationFields[key];
                 if (type === 'object') {
-                    field = operationFields[key];
+                    field = {
+                        name: key,
+                        ...operationFields[key]
+                    };
                 } else if (type === 'string') {
                     field = this.$block.fields[operationFields[key]];
                 } else {
@@ -94,11 +97,15 @@ export default {
 
                 if (field) {
                     let defaultData;
-                    if (this.$block.block.data && this.$block.block.data[slotName] && typeof this.$block.block.data[slotName][key] !== 'undefined') {
+                    if (this.$block.data && this.$block.data[slotName] && typeof this.$block.data[slotName][key] !== 'undefined') {
                         // todo: copy object?
-                        defaultData = this.$block.block.data[slotName][key];
+                        defaultData = this.$block.data[slotName][key];
                     }
-                    data[key] = this.$block.setFieldData(defaultData, field, slotName);
+                    // if (this.$block.block.data && this.$block.block.data[slotName] && typeof this.$block.block.data[slotName][key] !== 'undefined') {
+                    //     // todo: copy object?
+                    //     defaultData = this.$block.block.data[slotName][key];
+                    // }
+                    data[key] = this.$block.setFieldData(defaultData, field, `${slotName}.${key}`);
                     // console.log(data);
                 }
             });
@@ -133,9 +140,18 @@ export default {
 
 <style lang="scss">
 .ams-block .ams-operations .el-form-item{
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     .el-form-item__content{
-        line-height: initial;
+        line-height: 40px;
+    }
+}
+// 可配置换行
+.ams-block>.ams-operations.el-form--inline {
+    .el-form-item{
+        float: left;
+        &.el-form-item--block{
+            clear: both;
+        }
     }
 }
 </style>

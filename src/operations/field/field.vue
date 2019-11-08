@@ -29,7 +29,10 @@ export default {
             } else {
                 // 获取field默认配置
                 this.$block.initDefaultField(this.operation.field);
-                return this.operation.field;
+                return {
+                    name: this.operationKey,
+                    ...this.operation.field
+                };
             }
         }
     }

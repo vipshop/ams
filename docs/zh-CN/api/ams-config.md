@@ -29,14 +29,12 @@ ams.config({
             return res;
         },
 
-        api: {
-            // 全局默认withCredentials，请求接口是否携带cookie
-            withCredentials: true,
-            // 全局默认contentType json | form
-            contentType: 'json',
-            // 全局成功code
-            successCode: 0
-        }
+        // 全局默认withCredentials，请求接口是否携带cookie
+        withCredentials: true,
+        // 全局默认contentType json | form
+        contentType: 'json',
+        // 全局成功code
+        successCode: 0
     }
 })
 ```

@@ -4,7 +4,8 @@ export default {
     theme: 'vipshop',
     style: {
         width: '700px',
-        height: '500px'
+        height: '600px',
+        position: 'relative'
     },
     resource: {
         api: {
@@ -35,5 +36,38 @@ export default {
     },
     events: {
         init: '@read'
+    },
+    blocks: {
+        divTop: {
+            type: 'component',
+            slot: 'top',
+            operations: {
+                change: {
+                    type: 'button',
+                    label: '改变数据',
+                    props: {
+                        size: 'mini',
+                        type: 'primary'
+                    }
+                }
+            },
+            style: {
+                position: 'absolute',
+                width: '100%',
+                height: '50px',
+                padding: '20px',
+                zIndex: 5,
+                backgroundColor: 'yellow'
+            },
+            actions: {
+                change() {
+                    // this.change
+                    ams.$blocks.bar.setBlockData({
+                        xAxis: [1,2,3,4,5,6,7]
+                    })
+                    // ams.$blocks.bar.data.xAxis = [1,2,3,4,5,6,7]
+                }
+            }
+        }
     }
 };

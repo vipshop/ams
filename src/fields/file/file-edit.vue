@@ -6,7 +6,7 @@
                :style="field.style"
                v-on="on"
                v-bind="field.props">
-        <el-button :size="field.props['size'] || 'small'"
+        <el-button :size="field.props['size']"
                    type="primary">{{ field.props && field.props['button-label'] || '点击上传'}}</el-button>
         <div slot="tip"
              class="el-upload__tip"
@@ -21,6 +21,10 @@ export default {
     mixins: [mixins.fieldEditMixin],
     methods: {
         beforeUpload(file) {
+            const props = this.field.props || {};
+            if (typeof props['before-upload'] === 'function') {
+                return props['before-upload'].call(this, file);
+            }
             return new Promise((resolve, reject) => {
                 if (!this.field.check) {
                     return resolve();

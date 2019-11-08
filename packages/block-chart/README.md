@@ -1,4 +1,4 @@
-# Chart 图表
+# blovk-chart AMS图表
 
 - 定制图表block基于echart插件实现
 - 与其他block区别在于新增options配置项，options配置规则同echart配置对应
@@ -72,3 +72,33 @@ options配置
 | events | object | 否 | 事件定义
 | actions | object | 否 | 自定义actions，可被events中使用
 | render | boolean | string | 指定渲染方式
+
+## 例子
+
+```json
+{
+  "type": "chart",
+  "style": {
+    "width": "100%",
+    "height": "500px"
+  },
+  "data": {
+    "title": "折线图表",
+    "legend": ["邮件营销", "联盟广告"],
+    "xAxis": ["周二", "周二", "周二", "周四", "周五", "周六", "周日"],
+    "series1": [120, 132, 101, 134, 90, 230, 210]
+  },
+  "options": {
+    "BASE": "LINE",
+    "series": [{
+      "name": "邮件营销",
+      "stack": "总量",
+      "data": "data.series1"
+    }, {
+      "name": "联盟广告",
+      "stack": "总量",
+      "data": [220, 182, 191, 234, 290, 330, 310]
+    }]
+  }
+}
+```

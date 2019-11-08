@@ -13,7 +13,7 @@ export default {
     mixins: [mixins.fieldViewMixin],
     computed: {
         href() {
-            return typeof this.field.props.href === 'function' ? this.field.props.href(this.value, this.field) : this.field.props.href || this.value;
+            return typeof this.field.props.href === 'function' ? this.field.props.href(this.value, this.field, this.context) : this.field.props.href || this.value;
         }
     },
 };

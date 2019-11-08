@@ -1,19 +1,8 @@
 <template>
     <ul class="icon-list">
-        <li><span><i class="ams-icon-watcher"></i><span class="icon-name">ams-icon-watcher</span></span></li>
-        <li><span><i class="ams-icon-advocate"></i><span class="icon-name">ams-icon-advocate</span></span></li>
-        <li><span><i class="ams-icon-fold"></i><span class="icon-name">ams-icon-fold</span></span></li>
-        <li><span><i class="ams-icon-crown"></i><span class="icon-name">ams-icon-crown</span></span></li>
-        <li><span><i class="ams-icon-heart"></i><span class="icon-name">ams-icon-heart</span></span></li>
-        <li><span><i class="ams-icon-brick"></i><span class="icon-name">ams-icon-brick</span></span></li>
-        <li><span><i class="ams-icon-dashboard"></i><span class="icon-name">ams-icon-dashboard</span></span></li>
-        <li><span><i class="ams-icon-portrait"></i><span class="icon-name">ams-icon-portrait</span></span></li>
-        <li><span><i class="ams-icon-brand-equity"></i><span class="icon-name">ams-icon-brand-equity</span></span></li>
-        <li><span><i class="ams-icon-crowd-manage"></i><span class="icon-name">ams-icon-crowd-manage</span></span></li>
-        <li><span><i class="ams-icon-account-sales"></i><span class="icon-name">ams-icon-account-sales</span></span></li>
-        <li><span><i class="ams-icon-help-center"></i><span class="icon-name">ams-icon-help-center</span></span></li>
-        <li><span><i class="ams-icon-data-report"></i><span class="icon-name">ams-icon-data-report</span></span></li>
-        <li><span><i class="ams-icon-customer-operation"></i><span class="icon-name">ams-icon-customer-operation</span></span></li>
+        <li v-for="icon in icons">
+            <span><i :class="['ams-icon-' + icon]"></i><span class="icon-name">ams-icon-{{ icon }}</span></span>
+        </li>
     </ul>
 </template>
 
@@ -21,6 +10,14 @@
 import '../../entry'
 
 export default {
+    data() {
+        return {
+            icons: [
+                'user', 'woman', 'man', 'question', 'watcher', 'advocate', 'fold', 'crown', 'heart', 'brick', 'dashboard',
+                'portrait', 'brand-equity', 'crowd-manage', 'account-sales', 'help-center', 'data-report', 'customer-operation'
+            ]
+        }
+    },
     mounted(){
         
     }

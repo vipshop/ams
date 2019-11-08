@@ -1,8 +1,8 @@
 {
     "name": "@ams-team/block-drag-image",
-    "version": "0.1.6",
-    "description": "",
-    "author": "eva.huang",
+    "version": "0.1.7",
+    "description": "AMS拖拽图片框",
+    "author": "ams",
     "main": "lib/block-drag-image.js",
     "unpkg": "lib/block-drag-image.js",
     "amsConfig": {

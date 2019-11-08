@@ -1,13 +1,6 @@
 import ams from '@ams-team/ams';
 import { prefix } from '@/utils';
 
-const datas = {
-    radio: 'a',
-    radiobutton: 'a',
-    radioBorder: 'b',
-    radioButton: 'c'
-};
-
 ams.block('radio', {
     resources: {
         radio: {

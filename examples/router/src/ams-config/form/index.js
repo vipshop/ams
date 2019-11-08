@@ -2,12 +2,32 @@ import ams from '@ams-team/ams';
 
 ams.block('index', {
     blocks: {
+        indexTitle1: {
+            'type': 'title',
+            'options': {
+                'title': '表单编辑状态'
+            },
+            style: {
+                width: '50%',
+                paddingRight: '2%'
+            }
+        },
+        indexTitle2: {
+            'type': 'title',
+            'options': {
+                'title': '表单展示状态'
+            },
+            style: {
+                width: '49%'
+            }
+        },
         formEditAll: {
             type: 'form',
             resource: 'resource',
             ctx: 'edit',
             style: {
-                width: '50%'
+                width: '50%',
+                paddingRight: '2%'
             },
             data: {
                 testRadio: 'c'
@@ -17,7 +37,7 @@ ams.block('index', {
                 init: '@read',
                 submit: '@getData @validate @alert:我是一个alert @getAlert @getPrompt @confirm:确认提交吗? @update',
                 cancel: '@cancel',
-                dialog: '@demo-dialog.show'
+                dialog: 'demo-dialog.show'
             },
             actions: {
                 getData({ $prevReturn }) {
@@ -111,7 +131,7 @@ ams.block('index', {
                             testRadio: 'c'
                         },
                         style: {
-                            width: '50%'
+                            width: '49%'
                         },
                         events: {
                             init: '@read @console'
@@ -128,17 +148,24 @@ ams.block('index', {
         'demo-dialog': {
             type: 'dialog',
             data: {
-                title: 'dialog标题'
+                title: '弹窗标题'
                 // visible: false
             },
             events: {
                 submit: 'dialogFormEdit.submit @hide',
-                show: '@show @dialogFormEdit.test'
+                show: '@show @loading @dialogFormEdit.test'
             },
             props: {
                 // fullscreen: true
             },
-            actions: {},
+            actions: {
+                loading: function() {
+                    this.showLoading();
+                    setTimeout(() => {
+                        this.hideLoading();
+                    }, 2000);
+                }
+            },
             operations: {
                 submit: {
                     type: 'button',

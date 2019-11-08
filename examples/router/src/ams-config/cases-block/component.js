@@ -22,7 +22,9 @@ ams.block('component', {
                 }
             },
             actions: {
-                init() { console.log('init') },
+                init() {
+                    console.log('init');
+                },
                 test() { console.log('test') }
             },
             blocks: {

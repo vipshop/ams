@@ -5,5 +5,5 @@ export default {
         }
     },
     inject: ['$block'],
-    props: ['field', 'path', 'value', 'name']
+    props: ['field', 'path', 'value', 'name', 'context']
 };

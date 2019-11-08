@@ -1,8 +1,8 @@
 {
     "name": "@ams-team/theme-vipshop",
-    "version": "0.1.0",
-    "description": "Vipshop theme.",
-    "author": "jun85.li",
+    "version": "0.1.1",
+    "description": "AMS Vipshop theme.",
+    "author": "ams",
     "main": "lib/index.css",
     "unpkg": "lib/index.css",
     "style": "lib/index.css",

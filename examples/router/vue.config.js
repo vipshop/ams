@@ -10,10 +10,16 @@ module.exports = {
             alias: {
                 '@': resolve('src'),
                 'vue': resolve('node_modules/vue'),
-                '@ams-team/ams': resolve('../../')
+                '@ams-team/ams': resolve('../../src/')
             }
         };
     },
-    publicPath: '/example/',
-    productionSourceMap: false
+    publicPath: '/ams/example/',
+    outputDir: '../../docs/dist/example',
+    productionSourceMap: false,
+    devServer: {
+        host: '0.0.0.0',
+        port: 8080,
+        disableHostCheck: true
+    }
 };

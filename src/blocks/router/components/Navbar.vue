@@ -52,10 +52,9 @@ export default {
     }
     h1{
         display: inline-block;
-        padding: 0 10px;
         margin: 0;
         font-size: 20px;
-        margin-right: 30px;
+        margin-right: 20px;
     }
     .right-menu {
         float: right;

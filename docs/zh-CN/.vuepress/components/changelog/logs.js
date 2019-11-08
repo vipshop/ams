@@ -1,8 +1,24 @@
 // 更新日志
 export default [
     {
-        version: '0.18.5',
-        date: '2019.10.15',
+        version: '0.19.7',
+        date: '2019.10.16',
+        log: [
+            'feat: 列表分页组件布局支持自定义',
+            'feat: vipshop主题的带导航菜单支持顶部栏',
+            'feat: field添加button类型，提取operation的tooltip和badge',
+            'feat: array/object field补全上下文',
+            'feat: block-title的标题支持html',
+            'feat: field的labelWidth为0时，不显示label',
+            'feat: color添加文字框',
+            'feat: block-title支持suffix-info消息提示',
+            'feat：新增icon：ams-icon-xinxitishiwenhao，fixed设置size时operations的label错位',
+            'fix: 修复field-file的before-upload无法覆盖问题'
+        ]
+    },
+    {
+        version: '0.18.6',
+        date: '2019.10.16',
         log: [
             'feat: 扩展列表行展开为表单展示',
             'fix: 列表高度自适应',

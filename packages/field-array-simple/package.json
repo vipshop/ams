@@ -2,7 +2,7 @@
     "name": "@ams-team/field-array-simple",
     "version": "1.2.3",
     "description": "array-simple",
-    "author": "edward.shao",
+    "author": "ams",
     "main": "lib/field-array-simple.js",
     "unpkg": "lib/field-array-simple.js"
 }

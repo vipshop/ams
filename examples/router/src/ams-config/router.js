@@ -6,8 +6,8 @@ ams.block('router', {
     type: 'router',
     data: {
         roles: ['admin'],
-        logo: '//h5rsc.vipstatic.com/ams/ams-logo2.png', // 系统logo（只有使用vipshop的UI主题才会显示）
-        title: '策略中心后台系统', // 系统标题（只有使用vipshop的UI主题才会显示）
+        logo: '//h5rsc.vipstatic.com/ams/ams-logo2.png?20191105', // 系统logo（只有使用vipshop的UI主题才会显示）
+        title: 'AMS在线示例', // 系统标题（只有使用vipshop的UI主题才会显示）
         userImg: '', // 用户头像（如果头像为空，则用默认头像）
         userName: '' // 用户名字（如果名字为空则不展示用户信息模块）
     },
@@ -417,12 +417,20 @@ ams.block('router', {
                 ]
             },
             {
-                name: '外链',
+                name: 'Github',
                 meta: {
                     icon: 'el-icon-star-off'
                 },
+                path: 'https://github.com/vipshop/ams',
+                target: '_blank'
+            },
+            {
+                name: '文档',
+                meta: {
+                    icon: 'ams-icon-help-center'
+                },
                 path: 'https://vipshop.github.io/ams/',
-                target: '_self'
+                target: '_blank'
             },
             {
                 name: '跳404',
@@ -445,12 +453,13 @@ ams.block('router', {
             type: 'component',
             options: {
                 is: 'div',
-                text: 'www.vip.com'
+                text: '@2019 www.vip.com'
             },
             style: {
                 color: '#777',
-                padding: '30px 10px 15px',
-                'font-size': '12px'
+                padding: '50px 10px 15px',
+                'font-size': '12px',
+                'text-align': 'center'
             },
             slot: 'menuBottom'
         }

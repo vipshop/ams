@@ -1,13 +1,14 @@
 <template>
     <div class="scrimba">
-        <a :href="href" target="_blank" rel="noopener noreferrer">在 Scrimba 上尝试这节课</a>
+        <a :href="href" target="_blank" rel="noopener noreferrer">在 Scrimba 上尝试这节课{{ title ? '：' + title : '' }}</a>
     </div>
 </template>
 
 <script>
 export default {
     props: {
-        href: String
+        href: String,
+        title: String
     }
 }
 </script>
