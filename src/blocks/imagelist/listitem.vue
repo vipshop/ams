@@ -9,8 +9,8 @@
              </div>
             <div :class="subtitleClass" v-if="subtitle">{{subtitle}}</div>
         </div>
-        <figcaption>
-            <div class="s-left" :title="title">
+        <figcaption v-if="title || info">
+            <div class="s-left" v-if="title" :title="title">
                 <el-checkbox v-if="showCheckbox" v-model="isSelect" :key="index" @change="$emit('selectionChange')" ></el-checkbox>
 
                 <span class="s-left-prefix" v-if="titlePrefixIcon" v-html="titlePrefixIcon">
@@ -89,11 +89,13 @@ export default {
             return this.image['imageText'];
         },
         title() {
-            if (this.block.options && this.block.options.title) {
+            if (this.block.options && typeof this.block.options.title !== 'undefined') {
                 if (this.block.options.title.field) {
                     return this.image[this.block.options.title.field];
+                } else if (typeof this.block.options.title === 'function') {
+                    return this.block.options.title(this.image);
                 }
-                return this.block.options.title(this.image);
+                return this.block.options.title;
             }
             return this.image['title'];
         },
@@ -125,8 +127,11 @@ export default {
             return this.image['subtitle'];
         },
         info() {
-            if (this.block.options && this.block.options.info && this.block.options.info.field) {
-                return this.image[this.block.options.info.field];
+            if (this.block.options && typeof this.block.options.info !== 'undefined') {
+                if (this.block.options.info.field) {
+                    return this.image[this.block.options.info.field];
+                }
+                return this.block.options.info;
             }
             return this.image['info'];
         }
@@ -151,6 +156,12 @@ export default {
     max-width: 280px;
     border: 1px solid #EBEEF5;
     cursor: pointer;
+    // &:nth-child(4n) {
+    //     margin-right: 0;
+    // }
+    // &:last-child:nth-child(4n - 2) {
+    //     margin-right: calc(48% + 8% / 3);
+    // }
     &.is-always-shadow,&.is-hover-shadow:hover{
         box-shadow: 0 2px 12px 0 rgba(0,0,0,0.1);
     }
@@ -243,7 +254,7 @@ export default {
         }
     }
     .is-image{
-        height: 150px;
+        height: 155px;
     }
     img{
         object-fit: cover;

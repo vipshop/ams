@@ -24,12 +24,26 @@ options: {
 <block-imagelist-demo blockName="imagelist2" onlineDemo="https://codepen.io/w3cmark/pen/OJLrgGv"/>
 </ClientOnly>
 
+### 没有图片下面的标题信息
+接口直接不返回 `title` 和 `info` 字段，或者配置 `options.title` 和 `options.info` 同时为false。
+
+> 注意：不显示标题信息块，批量操作的多选框也无法显示。
+```js
+options: {
+    title: false,
+    info: false
+}
+```
+<ClientOnly>
+<block-imagelist-demo blockName="imagelist3" onlineDemo="https://codepen.io/w3cmark/pen/NWWLKjZ"/>
+</ClientOnly>
+
 ### 多选批量操作
 
 配置 `operations`，注意 `operations.showBatch`（显示所有批量操作按钮）、`operations.hideBatch`（隐藏所有批量操作按钮）这两个是内置了action
 
 <ClientOnly>
-<block-imagelist-demo blockName="imagelist3" onlineDemo="https://codepen.io/w3cmark/pen/gOYEGjJ"/>
+<block-imagelist-demo blockName="imagelist4" onlineDemo="https://codepen.io/w3cmark/pen/gOYEGjJ"/>
 </ClientOnly>
 
 ### slotBlocks 插槽配置
@@ -39,8 +53,30 @@ options: {
 + 搜索条和表格之间：配置子block的slot为`tableTop`，可以插入到搜索条和表格之间
 
 <ClientOnly>
-<block-imagelist-demo blockName="imagelist4" onlineDemo="https://codepen.io/wuzebin/pen/ZEELqyr"/>
+<block-imagelist-demo blockName="imagelist5" onlineDemo="https://codepen.io/wuzebin/pen/ZEELqyr"/>
 </ClientOnly>
+
+### 手动插入分类名称
+> 只实现了比较简单（和接口约定，知道在哪插入分类名）死板的插入分类方式。如果要求灵活的，建议分多个图片列表区块，每个区块根据分类查询条件从接口获取对应数据。
+```js
+options: {
+    categorys: [{ // 分类
+        title: '90后', // 分类名称
+        index: 0 // 插入分类的位置
+    }, {
+        title: '80后',
+        index: 3
+    }, {
+        title: '70后',
+        index: 4
+    }]
+}
+```
+
+<ClientOnly>
+<block-imagelist-demo blockName="imagelist6"/>
+</ClientOnly>
+
 
 #### 配置
 

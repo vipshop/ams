@@ -1,0 +1,273 @@
+{
+    "ams.form": {
+        "prefix": "ams.form",
+        "body": [
+            "{",
+            "    type: 'form',",
+            "    resource: '$1',",
+            "    ctx: '${2:edit}',",
+            "    events: {",
+            "        init: '$3'",
+            "    },",
+            "    actions: {",
+            "        fieldChange(args) { console.log(args) }",
+            "    },",
+            "    operations: {",
+            "        $4",
+            "    }",
+            "}$0"
+        ],
+        "description": "AMS区块-表单"
+    },
+    "ams.list": {
+        "prefix": "ams.list",
+        "body": [
+            "{",
+            "    type: 'list',",
+            "    resource: '$1',",
+            "    data: {$2},",
+            "    ctx: 'view',",
+            "    events: {",
+            "        init: '@list'",
+            "    },",
+            "    actions: {",
+            "        fieldChange(args) { console.log(args) }",
+            "    },",
+            "    operations: {",
+            "        $3",
+            "    }",
+            "}$0"
+        ],
+        "description": "AMS区块-列表"
+    },
+    "ams.dialog": {
+        "prefix": "ams.dialog",
+        "body": [
+            "{",
+            "    type: 'dialog',",
+            "    data: {",
+            "        title: '$1'",
+            "    },",
+            "    operations: {",
+            "        submit: {",
+            "            type: 'button',",
+            "            label: '提交',",
+            "            props: {",
+            "                type: 'primary'",
+            "            }",
+            "        },",
+            "        hide: {",
+            "            type: 'button',",
+            "            label: '关闭'",
+            "        }",
+            "    },",
+            "    actions: {",
+            "        submit: function() {",
+            "            this.$message('')",
+            "        }",
+            "    },",
+            "    blocks: {",
+            "        // 弹窗内容",
+            "    }",
+            "}$0"
+        ],
+        "description": "AMS区块-弹窗"
+    },
+    "ams.grid": {
+        "prefix": "ams.grid",
+        "body": [
+            "{",
+            "    type: 'grid',",
+            "    style: {",
+            "        'grid-gap': 0",
+            "    },",
+            "    blocks: {",
+            "        item1: {",
+            "            type: 'component',",
+            "            options: {",
+            "                text: ''",
+            "            }",
+            "        },",
+            "        item2: {",
+            "            type: 'component',",
+            "            options: {",
+            "                text: ''",
+            "            }",
+            "        }",
+            "    }",
+            "}$0"
+        ],
+        "description": "AMS区块-网格布局"
+    },
+    "ams.component": {
+        "prefix": "ams.component",
+        "body": [
+            "{",
+            "    type: 'component',",
+            "    options: {",
+            "        is: '$1',",
+            "        html: '$2',",
+            "        text: '$3'",
+            "    }",
+            "}$0"
+        ],
+        "description": "AMS区块-动态区块"
+    },
+    "ams.imagelist": {
+        "prefix": "ams.imagelist",
+        "body": [
+            "{",
+            "    type: 'imagelist',",
+            "    ctx: 'view',",
+            "    resource: '$1',",
+            "    operations: {$2},",
+            "    pageSize: 10,",
+            "    props: {$3},",
+            "    events: {",
+            "        init: '@list'",
+            "    },",
+            "    actions: {$4},",
+            "    options: {",
+            "        title: {",
+            "            field: '',",
+            "            'prefix-tag': {",
+            "                type: 'info',",
+            "                label: function(e) {",
+            "                    return e",
+            "                }",
+            "            }",
+            "        },",
+            "        subtitle: {",
+            "            field: 'content'",
+            "        },",
+            "        info: {",
+            "            field: 'info'",
+            "        }",
+            "    }",
+            "}$0"
+        ],
+        "description": "AMS区块-图片列表"
+    },
+    "ams.error": {
+        "prefix": "ams.error",
+        "body": [
+            "{",
+            "    type: 'error'",
+            "}$0"
+        ],
+        "description": "AMS区块-错误页"
+    },
+    "ams.router": {
+        "prefix": "ams.router",
+        "body": [
+            "{",
+            "    type: 'router',",
+            "    resources: '$1',",
+            "    router: {",
+            "        routes: [{",
+            "            path: '$2',",
+            "            name: '$3',",
+            "            block: '$4',",
+            "            meta: {",
+            "                icon: '$5'",
+            "            }",
+            "        }]",
+            "    },",
+            "    blocks: {$6}",
+            "}$0"
+        ],
+        "description": "AMS区块-导航路由"
+    },
+    "ams.collapse": {
+        "prefix": "ams.collapse",
+        "body": [
+            "{",
+            "    type: 'collapse',",
+            "    options: {",
+            "        blockName: '$1', // 支持html",
+            "    },",
+            "    data: {",
+            "        active: 'blockName'",
+            "    },",
+            "    props: {",
+            "        accordion: true",
+            "    },",
+            "    blocks: {$2}",
+            "}$0"
+        ],
+        "description": "AMS区块-折叠面板"
+    },
+    "ams.title": {
+        "prefix": "ams.title",
+        "body": [
+            "{",
+            "    type: 'title',",
+            "    options: {",
+            "        title: '$1',",
+            "        subTitle: '$2'",
+            "    }",
+            "}$0"
+        ],
+        "description": "AMS区块-标题组件"
+    },
+    "ams.tabs": {
+        "prefix": "ams.tabs",
+        "body": [
+            "{",
+            "    type: 'tabs',",
+            "    options: {",
+            "        tabBlockName: '$1'",
+            "    },",
+            "    blocks: {",
+            "        $2",
+            "    }",
+            "}$0"
+        ],
+        "description": "AMS区块-标签页"
+    },
+    "ams.steps": {
+        "prefix": "ams.steps",
+        "body": [
+            "{",
+            "    type: 'steps',",
+            "    data: {",
+            "        active: 0",
+            "    },",
+            "    options: {",
+            "        step1: '',",
+            "        step2: '',",
+            "        step3: ''",
+            "    }",
+            "}$0"
+        ],
+        "description": "AMS区块-步骤条"
+    },
+    "ams.card": {
+        "prefix": "ams.card",
+        "body": [
+            "{",
+            "    type: 'card',",
+            "    options: {",
+            "        headerTitle: '$1'",
+            "    },",
+            "    operations: {$2},",
+            "    actions: {$3},",
+            "    blocks: {$4}",
+            "}$0"
+        ],
+        "description": "AMS区块-卡片"
+    },
+    "ams.dropdown": {
+        "prefix": "ams.dropdown",
+        "body": [
+            "{",
+            "    type: 'dropdown',",
+            "    options: {",
+            "        menu: '$1',",
+            "        menuItems: [$2]",
+            "    }",
+            "}$0"
+        ],
+        "description": "AMS区块-下拉菜单"
+    }
+}

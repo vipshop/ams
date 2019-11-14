@@ -88,7 +88,7 @@
                                  v-bind="field.props">
                     <template slot-scope="scope">
                         <!--fields-->
-                        <field :field="getField(field, scope.row)" :value="scope.row[fieldName]" :name="name" :context="scope.row" :path="`list[${scope.$index}].${fieldName}`"/>
+                        <field v-if="getShowState(field, scope.row)" :field="getField(field, scope.row)" :value="scope.row[fieldName]" :name="name" :context="scope.row" :path="`list[${scope.$index}].${fieldName}`"/>
                     </template>
                 </el-table-column>
                 <el-table-column label="操作"
@@ -149,7 +149,7 @@ export default {
     components: {
         field
     },
-    mixins: [mixins.blockMixin, mixins.getField],
+    mixins: [mixins.blockMixin, mixins.getField, mixins.getShowState],
     data() {
         return {
             defaultListFieldWidth,

@@ -1,0 +1,63 @@
+{
+    "name": "ams-helper",
+    "displayName": "ams-helper",
+    "description": "ams的开发帮助插件",
+    "keywords": [
+        "vscode",
+        "plugin",
+        "demo"
+    ],
+    "version": "0.1.0",
+    "publisher": "wuzebin",
+    "engines": {
+        "vscode": "^1.27.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "icon": "images/favicon.ico",
+    "activationEvents": [
+        "*"
+    ],
+    "main": "./src/extension",
+    "contributes": {
+        "snippets": [
+            {
+                "language": "javascript",
+                "path": "./snippets/base.json"
+            },
+            {
+                "language": "javascript",
+                "path": "./snippets/block.json"
+            },
+            {
+                "language": "javascript",
+                "path": "./snippets/field.json"
+            },
+            {
+                "language": "html",
+                "path": "./snippets/simple.json"
+            },
+            {
+                "language": "html",
+                "path": "./snippets/curd.json"
+            }
+        ]
+    },
+    "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "vscode": "^1.1.6"
+    },
+    "license": "SEE LICENSE IN LICENSE.txt",
+    "bugs": {
+        "url": "https://github.com/vipshop/ams/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/vipshop/ams"
+    },
+    "homepage": "https://github.com/vipshop/ams/plugins/vscode/README.md"
+}

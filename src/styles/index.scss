@@ -125,3 +125,13 @@ a:hover {
 .el-badge.ams-field{
     vertical-align: initial;
 }
+
+// 搜索可配置换行
+.ams-block-list>.ams-operations.el-form--inline {
+    .el-form-item{
+        float: left;
+        &.el-form-item--block{
+            clear: both;
+        }
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "name": "@ams-team/field-radio-img",
+    "version": "0.1.0",
+    "description": "for LCP",
+    "author": "ams",
+    "main": "lib/field-radio-img.js",
+    "unpkg": "lib/field-radio-img.js",
+    "amsConfig": {
+        "externals": {},
+        "cdn": [],
+        "title": "radio-img",
+        "tags": "",
+        "publish": true
+    }
+}

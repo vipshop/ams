@@ -1,0 +1,51 @@
+{
+    "import ams": {
+        "prefix": "import ams",
+        "body": [
+            "import ams from '@ams-team/ams'"
+        ]
+    },
+    "ams.resource": {
+        "prefix": "ams.resource",
+        "body": [
+            "ams.resource('$1', {",
+            "    api: {",
+            "        contentType: 'form$2',",
+            "        prefix: '$3',",
+            "        read: '$4',",
+            "        create: '$5',",
+            "        update: '$6',",
+            "        list: '$7',",
+            "        delete: '$8'",
+            "    },",
+            "    fields: {",
+            "        $9",
+            "    }",
+            "})"
+        ],
+        "description": "AMS资源"
+    },
+    "ams.block": {
+        "prefix": "ams.block",
+        "body": [
+            "ams.block('$1', {",
+            "    type: '$2',",
+            "    ctx: '$3',",
+            "    resource: '$4',",
+            "    data: {$5},",
+            "    style: {$6},",
+            "    events: {",
+            "        init: ''",
+            "    },",
+            "    actions: {",
+            "        fieldChange(args) { console.log(args) }",
+            "    },",
+            "    operations: {",
+            "        $7",
+            "    },",
+            "    blocks: {$8}",
+            "})"
+        ],
+        "description": "AMS区块"
+    }
+}

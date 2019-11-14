@@ -1,12 +1,12 @@
 <template>
-    <div class="ams-block-dialog" v-if="ready" v-loading.fullscreen.lock="loading">
+    <div class="ams-block-dialog" v-if="ready">
         <el-dialog :title="data.title"
                    :visible.sync="data.visible"
                    :style="block.style"
                    v-on="on"
                    v-bind="block.props">
-            <ams-blocks :blocks="block.blocks"
-                        v-if="data.visible" />
+            <ams-blocks v-loading="loading" :blocks="block.blocks"
+                            v-if="data.visible" />
             <div slot="footer">
                 <ams-operations :name="name"></ams-operations>
             </div>

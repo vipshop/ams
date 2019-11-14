@@ -381,98 +381,6 @@ adminEditDialog: {
 
 若`render`值根据`document.querySelector(render)`能查询到，则创建一个在该DOM结构下的`ams-block`
 
-## filters (list) <Badge text="list独有"/>
-
-- 类型：`object`
-- 默认值：`{}`
-
-***block的type为`list`时独有字段***
-
-设置列表的过滤条件，如
-
-```js
-filters: {
-    testCheckbox: {
-        multiple: false,
-        remote: true
-    },
-    testSelect: {
-        multiple: true,
-        remote: false
-    }
-}
-
-// `multiple` 表示是否支持多选，boolean值
-// `remote`   表示是否支持远程过滤，boolean值
-```
-
-## sorts (list) <Badge text="list独有"/>
-
-- 类型：`object且{ [field: string]: boolean }`
-- 默认值：`{}`
-
-***block的type为`list`时独有字段***
-
-列表排序设置，如
-```js
-sorts: {
-    testInputnumber: true
-}
-```
-
-## searchs (list) <Badge text="list独有"/>
-
-- 类型：`object且{ [field: string]: boolean }`
-- 默认值：`undefined`
-
-***block的type为`list`时独有字段***
-
-列表搜索设置，如
-```js
-searchs: {
-    testText: true,
-    testTextarea: true
-}
-```
-
-## searchsOptions (list) <Badge text="list独有"/>
-
-- 类型：`object`
-- 默认值：`undefined`
-
-***block的type为`list`时独有字段***
-
-列表的搜索栏添加操作项，目前type只有`button`类型，如
-```js
-searchsOptions: {
-    addItem: {
-        type: 'button',
-        label: '添加',
-        props: {
-            type: 'primary'
-        }
-    }
-}
-```
-
-## pageSize (list) <Badge text="list独有"/>
-
-- 类型：`number`
-- 默认值：`20`
-
-***block的type为`list`时独有字段***
-
-设置分页时每页的条数，赋值优先级为`block.data.pageSize` -> `block.pageSize`
-
-
-## router (router) <Badge text="router独有"/>
-
-- 类型：`object`
-- 默认值：`undefined`
-
-***block的type为`router`时独有字段***
-
-
 ## options
 
 - 类型：`object`
@@ -528,3 +436,60 @@ options: {
 - 默认值：`undefined`
 
 主要是用来透传Element组件的方法配置，详见各种block的配置。
+
+
+## filters <Badge text="list独有"/>
+
+- 类型：`object`
+- 默认值：`{}`
+
+***block的type为`list`时独有字段***
+
+设置列表的过滤条件，如
+
+```js
+filters: {
+    testCheckbox: {
+        multiple: false,
+        remote: true
+    },
+    testSelect: {
+        multiple: true,
+        remote: false
+    }
+}
+
+// `multiple` 表示是否支持多选，boolean值
+// `remote`   表示是否支持远程过滤，boolean值
+```
+
+## sorts <Badge text="list独有"/>
+
+- 类型：`object且{ [field: string]: boolean }`
+- 默认值：`{}`
+
+***block的type为`list`时独有字段***
+
+列表排序设置，如
+```js
+sorts: {
+    testInputnumber: true
+}
+```
+
+## pageSize <Badge text="list独有"/>
+
+- 类型：`number`
+- 默认值：`20`
+
+***block的type为`list`时独有字段***
+
+设置分页时每页的条数，赋值优先级为`block.data.pageSize` -> `block.pageSize`
+
+
+## router <Badge text="router独有"/>
+
+- 类型：`object`
+- 默认值：`undefined`
+
+***block的type为`router`时独有字段***

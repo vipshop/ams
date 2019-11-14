@@ -10,6 +10,8 @@ material-list.json
 examples
 build
 packages
+docs
+plugins
 /.*
 /dist
 /test
@@ -22,3 +24,5 @@ packages
 *.ntvs*
 *.njsproj
 *.sln
+
+LICENSE

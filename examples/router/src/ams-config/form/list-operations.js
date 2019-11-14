@@ -30,11 +30,6 @@ ams.block('list-operations', {
     sorts: {
         testInputnumber: true
     },
-    // 列表搜索（列表特有）
-    // searchs: {
-    //     testText: true,
-    //     testTextarea: true
-    // },
 
     fields: {
         testVideo: false,
@@ -66,7 +61,7 @@ ams.block('list-operations', {
                 width: '300px'
             },
             fields: {
-                testText: true,
+                testTextarea: true,
                 testDate: true,
                 testTime: true,
                 testDatetime: true,
@@ -143,11 +138,11 @@ ams.block('list-operations', {
             // label: '可省略'
         },
 
-        testSelect1: {
-            type: 'field',
-            field: 'testSelect'
-            // label: '可省略'
-        },
+        // testSelect1: {
+        //     type: 'field',
+        //     field: 'testSelect'
+        //     // label: '可省略'
+        // },
 
         buttonMulti: {
             slot: 'multipleSelect',

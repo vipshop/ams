@@ -439,7 +439,7 @@ export default {
         background-image: url('/ams/index/start.png');
     }
     .git{
-        background-image: url('/ams/index/git.png');
+        background-image: url('/ams/index/github.png');
     }
 }
 

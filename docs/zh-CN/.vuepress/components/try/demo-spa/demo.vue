@@ -42,11 +42,20 @@ export default {
 }
 </script>
 <style>
-div.demo-spa:nth-last-of-type(1) {
+div.demo-spa:nth-of-type(1) {
     z-index: 1;
 }
-div.demo-spa:nth-last-of-type(2) {
+div.demo-spa:nth-of-type(2) {
     z-index: 2;
+}
+div.demo-spa:nth-of-type(3) {
+    z-index: 3;
+}
+div.demo-spa:nth-of-type(4) {
+    z-index: 6;
+}
+div.demo-spa:nth-of-type(5) {
+    z-index: 4;
 }
 .ams-block-router .sidebar-container {
     position: absolute !important;

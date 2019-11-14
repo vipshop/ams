@@ -157,13 +157,14 @@ ams.block('index', {
             },
             props: {
                 // fullscreen: true
+                // 'append-to-body': true
             },
             actions: {
                 loading: function() {
                     this.showLoading();
                     setTimeout(() => {
                         this.hideLoading();
-                    }, 2000);
+                    }, 5000);
                 }
             },
             operations: {

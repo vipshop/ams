@@ -1,6 +1,9 @@
 <template>
-    <div class="ams-block-drag-image" :style="block.style" v-if="block && block.options">
-        <div class="content" :style="{ width: block.options.width + 'px', height: block.options.height + 'px' }">
+    <div class="ams-block-drag-image" v-if="ready" :style="block.style">
+
+        <ams-blocks :blocks="block.slotBlocks.top" />
+
+        <div class="content" v-if="block && block.options" :style="{ width: block.options.width + 'px', height: block.options.height + 'px' }">
             <img :src="block.options.url" alt="底图" :style="{ width: block.options.imgWidth }" />
             <template v-if="block.options.showFrame">
                 <div class="mask"></div>
@@ -15,9 +18,13 @@
                     <div class="dot dot-left-bottom"></div>
                     <div class="dot dot-right-top"></div>
                     <div class="dot dot-right-bottom"></div>
+                    <div v-if="block.options.frameHtml" v-html="block.options.frameHtml"></div>
                 </div>
             </template>
         </div>
+
+        <ams-blocks :blocks="block.blocks" />
+
     </div>
 </template>
 <script>
@@ -78,6 +85,7 @@ export default {
         box-sizing: border-box;
         cursor: move;
         user-select: none;
+        color: #fff;
         .dot {
             position: absolute;
             width: 7px;

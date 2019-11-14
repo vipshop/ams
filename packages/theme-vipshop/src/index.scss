@@ -18,3 +18,8 @@ $primaryColor: #797EF5; // 主色调
         }
     }
 }
+
+// 修复表单层级和路由层级冲突问题
+.ams-block-form .el-form-item .el-form-item__content {
+    z-index: 1;
+}
