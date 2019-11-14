@@ -6,7 +6,7 @@
                :is="block.options.is || 'div'"
                class="ams-block-component"
                :style="block.style"
-               v-loading.fullscreen.lock="loading">
+               v-loading="loading">
         <div v-html="block.options.html"></div>
         {{block.options.text}}
         <ams-blocks v-if="block"

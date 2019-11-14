@@ -1,0 +1,394 @@
+{
+    "ams.text": {
+        "prefix": "ams.text",
+        "body": [
+            "{",
+            "    type: 'text',",
+            "    label: '${1:text}'",
+            "}$2"
+        ],
+        "description": "AMS字段-文本"
+    },
+    "ams.password": {
+        "prefix": "ams.password",
+        "body": [
+            "{",
+            "    type: 'password',",
+            "    label: '${1:password}'",
+            "}$2"
+        ],
+        "description": "AMS字段-密码"
+    },
+    "ams.textarea": {
+        "prefix": "ams.textarea",
+        "body": [
+            "{",
+            "    type: 'textarea',",
+            "    label: '${1:textarea}'",
+            "}$2"
+        ],
+        "description": "AMS字段-文本框"
+    },
+    "ams.switch": {
+        "prefix": "ams.switch",
+        "body": [
+            "{",
+            "    type: 'switch',",
+            "    label: '${1:switch}'",
+            "}$2"
+        ],
+        "description": "AMS字段-开关"
+    },
+    "ams.color": {
+        "prefix": "ams.color",
+        "body": [
+            "{",
+            "    type: 'color',",
+            "    label: '${1:color}'",
+            "}$2"
+        ],
+        "description": "AMS字段-颜色"
+    },
+    "ams.rate": {
+        "prefix": "ams.rate",
+        "body": [
+            "{",
+            "    type: 'rate',",
+            "    label: '${1:rate}'",
+            "}$2"
+        ],
+        "description": "AMS字段-评分"
+    },
+    "ams.unitselect": {
+        "prefix": "ams.unitselect",
+        "body": [
+            "{",
+            "    type: 'unitselect',",
+            "    label: '${1:unitselect}'",
+            "}$2"
+        ],
+        "description": "AMS字段-单位选择"
+    },
+    "ams.link": {
+        "prefix": "ams.link",
+        "body": [
+            "{",
+            "    type: 'link',",
+            "    label: '${1:link}'",
+            "}$2"
+        ],
+        "description": "AMS字段-文字链接"
+    },
+    "ams.button": {
+        "prefix": "ams.button",
+        "body": [
+            "{",
+            "    type: 'button',",
+            "    label: '${1:button}'",
+            "}$2"
+        ],
+        "description": "AMS字段-按钮"
+    },
+    "ams.date": {
+        "prefix": "ams.date",
+        "body": [
+            "{",
+            "    type: 'date',",
+            "    label: '${1:date},'",
+            "    props: {",
+            "        placeholder: '${2:请选择日期}'",
+            "    }",
+            "}$3"
+        ],
+        "description": "AMS字段-日期选择器"
+    },
+    "ams.time": {
+        "prefix": "ams.time",
+        "body": [
+            "{",
+            "    type: 'time',",
+            "    label: '${1:time},'",
+            "    props: {",
+            "        placeholder: '${2:请选择时间}'",
+            "    }",
+            "}$3"
+        ],
+        "description": "AMS字段-时间选择器"
+    },
+    "ams.timepicker": {
+        "prefix": "ams.timepicker",
+        "body": [
+            "{",
+            "    type: 'timepicker',",
+            "    label: '${1:timepicker},'",
+            "    props: {",
+            "        placeholder: '${2:请选择时间}'",
+            "    }",
+            "}$3"
+        ],
+        "description": "AMS字段-时间点选择器"
+    },
+    "ams.timerange": {
+        "prefix": "ams.timerange",
+        "body": [
+            "{",
+            "    type: 'timerange',",
+            "    label: '${1:timerange},'",
+            "    props: {",
+            "        placeholder: '${2:请选择时间}'",
+            "    }",
+            "}$3"
+        ],
+        "description": "AMS字段-时间点范围"
+    },
+    "ams.datetime": {
+        "prefix": "ams.datetime",
+        "body": [
+            "{",
+            "    type: 'datetime',",
+            "    label: '${1:datetime}',",
+            "    props: {",
+            "        placeholder: '${2:请选择日期时间}'",
+            "    }",
+            "}$3"
+        ],
+        "description": "AMS字段-日期时间选择器"
+    },
+    "ams.datetimerange": {
+        "prefix": "ams.datetimerange",
+        "body": [
+            "{",
+            "    type: 'datetimerange',",
+            "    label: '${1:datetimerange}',",
+            "    props: {",
+            "        placeholder: '${2:请选择日期时间}'",
+            "    }",
+            "}$3"
+        ],
+        "description": "AMS字段-日期时间范围"
+    },
+    "ams.radio": {
+        "prefix": "ams.radio",
+        "body": [
+            "{",
+            "    type: 'radio',",
+            "    label: '${1:radio}',",
+            "    props: {",
+            "        options: {$2}",
+            "    }",
+            "}$3"
+        ],
+        "description": "AMS字段-单选框"
+    },
+    "ams.checkbox": {
+        "prefix": "ams.checkbox",
+        "body": [
+            "{",
+            "    type: 'checkbox',",
+            "    label: '${1:checkbox}',",
+            "    props: {",
+            "        options: {$2}",
+            "    }",
+            "}$3"
+        ],
+        "description": "AMS字段-多选框"
+    },
+    "ams.select": {
+        "prefix": "ams.select",
+        "body": [
+            "{",
+            "    type: 'select',",
+            "    label: '${1:select}',",
+            "    props: {",
+            "        placeholder: '${2:请选择}',",
+            "        clearable: ${3:true},",
+            "        options: {$4}",
+            "    }",
+            "}$5"
+        ],
+        "description": "AMS字段-选择器"
+    },
+    "ams.cascader": {
+        "prefix": "ams.cascader",
+        "body": [
+            "{",
+            "    type: 'cascader',",
+            "    label: '${1:cascader}',",
+            "    props: {",
+            "        options: {$2}",
+            "    }",
+            "}$3"
+        ],
+        "description": "AMS字段-级联选择"
+    },
+    "ams.transfer": {
+        "prefix": "ams.transfer",
+        "body": [
+            "{",
+            "    type: 'transfer',",
+            "    label: '${1:transfer}',",
+            "    props: {",
+            "        options: {$2}",
+            "    }",
+            "    slots: {",
+            "        'left-footer': [$3],",
+            "        'right-footer': [$4]",
+            "    }",
+            "}$5"
+        ],
+        "description": "AMS字段-穿梭框"
+    },
+    "ams.image": {
+        "prefix": "ams.image",
+        "body": [
+            "{",
+            "    type: 'image',",
+            "    label: '${1:image}'",
+            "}$2"
+        ],
+        "description": "AMS字段-图片"
+    },
+    "ams.headimage": {
+        "prefix": "ams.headimage",
+        "body": [
+            "{",
+            "    type: 'headimage',",
+            "    label: '${1:headimage}'",
+            "    tip: '${2:只能上传jpg/png文件，且不超过500kb}',",
+            "    successUrlKey: '$3'",
+            "}$4"
+        ],
+        "description": "AMS字段-头图"
+    },
+    "ams.audio": {
+        "prefix": "ams.audio",
+        "body": [
+            "{",
+            "    type: 'audio',",
+            "    label: '${1:限制大小}',",
+            "    tip: '${2:不超过500kb}',",
+            "    successUrlKey: '${3:url}',",
+            "    check: {",
+            "        maxSizeInKB: ${4:500}",
+            "    }",
+            "}$5"
+        ],
+        "description": "AMS字段-音频"
+    },
+    "ams.video": {
+        "prefix": "ams.video",
+        "body": [
+            "{",
+            "    type: 'video',",
+            "    label: '${1:限制大小}',",
+            "    tip: '${2:不超过500kb}',",
+            "    successUrlKey: '${3:url}',",
+            "    check: {",
+            "        maxSizeInKB: ${4:500}",
+            "    }",
+            "}$5"
+        ],
+        "description": "AMS字段-视频"
+    },
+    "ams.file": {
+        "prefix": "ams.file",
+        "body": [
+            "{",
+            "    type: 'file',",
+            "    label: '${1:限制大小}',",
+            "    tip: '${2:不超过500kb}',",
+            "    successUrlKey: '${3:url}',",
+            "    check: {",
+            "        maxSizeInKB: ${4:500}",
+            "    }",
+            "}$5"
+        ],
+        "description": "AMS字段-文件"
+    },
+    "ams.originfile": {
+        "prefix": "ams.originfile",
+        "body": [
+            "{",
+            "    type: 'originfile',",
+            "    label: '${1:限制大小}',",
+            "    tip: '${2:不超过500kb}',",
+            "    successUrlKey: '${3:url}',",
+            "    check: {",
+            "        maxSizeInKB: ${4:500}",
+            "    }",
+            "}$5"
+        ],
+        "description": "AMS字段-Originfile文件"
+    },
+    "ams.slider": {
+        "prefix": "ams.slider",
+        "body": [
+            "{",
+            "    type: 'slider',",
+            "    label: '${1:slider}'",
+            "}$2"
+        ],
+        "description": "AMS字段-滑块"
+    },
+    "ams.progress": {
+        "prefix": "ams.progress",
+        "body": [
+            "{",
+            "    type: 'progress',",
+            "    label: '${1:progress}'",
+            "}$2"
+        ],
+        "description": "AMS字段-进度条"
+    },
+    "ams.inputnumber": {
+        "prefix": "ams.inputnumber",
+        "body": [
+            "{",
+            "    type: 'inputnumber',",
+            "    label: '${1:inputnumber}'",
+            "}$2"
+        ],
+        "description": "AMS字段-计数器"
+    },
+    "ams.array": {
+        "prefix": "ams.array",
+        "body": [
+            "{",
+            "    type: '${1:array}',",
+            "    label: '${2:array}',",
+            "    field: ${3:{}}",
+            "}$0"
+        ],
+        "description": "AMS字段-数组"
+    },
+    "ams.object": {
+        "prefix": "ams.object",
+        "body": [
+            "{",
+            "    type: '${1:object}',",
+            "    label: '${2:object}',",
+            "    fields: {",
+            "        $3",
+            "    }",
+            "}$0"
+        ],
+        "description": "AMS字段-对象"
+    },
+    "ams.union": {
+        "prefix": "ams.union",
+        "body": [
+            "{",
+            "    type: '${1:union}',",
+            "    label: '${2:union}',",
+            "    current: '${3:text}',",
+            "    fields: {",
+            "        text: {",
+            "            type: '${4:text}',",
+            "            label: '${5:text}'",
+            "        }",
+            "    }",
+            "}$0"
+        ],
+        "description": "AMS字段-联合"
+    }
+}

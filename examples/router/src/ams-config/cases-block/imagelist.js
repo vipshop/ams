@@ -170,6 +170,7 @@ ams.block('imagelist', {
         },
         rejectedItem() {
             alert('点击了驳回');
+            this.showLoading();
         },
         rejectedItem1() {
             alert('通过(设计)');
@@ -208,6 +209,16 @@ ams.block('imagelist', {
         },
         info: {
             field: 'info'
-        }
+        },
+        // categorys: [{ // 分类
+        //     title: '90后', // 分类名称
+        //     index: 0 // 插入分类的位置
+        // }, {
+        //     title: '80后',
+        //     index: 3
+        // }, {
+        //     title: '70后',
+        //     index: 4
+        // }]
     }
 });

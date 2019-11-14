@@ -2,7 +2,7 @@
     <div v-if="ready"
          class="ams-block-imagelist"
          :style="block.style"
-         v-loading.fullscreen.lock="loading"
+         v-loading="loading"
          v-bind="block.props">
         <ams-blocks :blocks="block.slotBlocks.top" />
         <!-- 搜索operations插槽 -->
@@ -24,19 +24,26 @@
         <el-checkbox v-if="showBatchOperations" :indeterminate="indeterminate" v-model="isSelectAll" class="select-all-operations">全选</el-checkbox>
         <ams-operations :name="name"
                         :context="batchSelected"
+                        class="clearfix"
                         slot-name="multipleSelect"></ams-operations>
-        <div v-if="listData && listData.length" class="clearfix">
-            <listitem
-                :image="item"
-                :block="block"
-                :name="name"
-                v-for="(item, index) in listData"
-                :key="index"
-                :index="index"
-                :batchSelected="batchSelected"
-                :showCheckbox="showBatchOperations"
-                v-on:clickImageItem="clickImageItem($event, item)"
-                v-on:selectionChange="handleSelectionChange(item)"/>
+        <div v-if="listData && listData.length" class="ams-block-imagelist-box clearfix">
+            <template v-for="(item, index) in listData">
+                <template v-if="block.options && block.options.categorys">
+                    <template v-for="(category, j) in block.options.categorys">
+                        <div class="categorys-title" v-if="index === category.index" :key="`${index}-${j}`">{{category.title}}</div>
+                    </template>
+                </template>
+                <listitem
+                    :image="item"
+                    :block="block"
+                    :name="name"
+                    :key="index"
+                    :index="index"
+                    :batchSelected="batchSelected"
+                    :showCheckbox="showBatchOperations"
+                    v-on:clickImageItem="clickImageItem($event, item, index)"
+                    v-on:selectionChange="handleSelectionChange(item)"/>
+            </template>
         </div>
         <div class="el-table__empty-block" v-else>
             <span class="el-table__empty-text">{{block.props['empty-text']}}</span>
@@ -143,13 +150,14 @@ export default {
         // afterReady() {
         //     this.block.data.showBatchOperations = false; // 是否显示批量操作按钮
         // },
-        clickImageItem(e, item) {
+        clickImageItem(e, item, index) {
             if (e && e.target && (e.target.className === 'el-checkbox__original' || e.target.className === 'el-checkbox__inner')) {
                 return;
             }
             // console.log(e);
             // 点击图片时触发
             ams.$prevReturn = item;
+            ams.$prevReturn['__index'] = index;
             this.emitEvent('clickImageItem');
         },
         handlerSearch() {
@@ -249,5 +257,16 @@ export default {
             margin-top: 20px;
         }
     }
+}
+.ams-block-imagelist-box{
+    .categorys-title{
+        clear: both;
+        font-weight: bold;
+        padding: 20px 12px 0;
+    }
+    // display: flex;
+    // flex-wrap: wrap;
+    // // align-content: flex-start;
+    // justify-content: space-between;
 }
 </style>

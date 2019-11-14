@@ -2,7 +2,7 @@
     <el-card v-if="ready"
              :class="`ams-block-card ${ block.slotBlocks.header ? 'ams-block-card-slot-header' : ''}`"
              v-on="on"
-             v-loading.fullscreen.lock="loading"
+             v-loading="loading"
              v-bind="block.props"
              :style="block.style">
         <template slot="header" v-if="block.slotBlocks.header || block.options.headerTitle">

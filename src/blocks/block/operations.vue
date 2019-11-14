@@ -145,14 +145,5 @@ export default {
         line-height: 40px;
     }
 }
-// 可配置换行
-.ams-block>.ams-operations.el-form--inline {
-    .el-form-item{
-        float: left;
-        &.el-form-item--block{
-            clear: both;
-        }
-    }
-}
 </style>
 

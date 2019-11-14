@@ -1,6 +1,6 @@
 {
     "name": "@ams-team/block-drag-image",
-    "version": "0.1.7",
+    "version": "0.1.8",
     "description": "AMS拖拽图片框",
     "author": "ams",
     "main": "lib/block-drag-image.js",

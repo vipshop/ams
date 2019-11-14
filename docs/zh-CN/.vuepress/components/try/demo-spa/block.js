@@ -214,9 +214,6 @@ export default {
                 }
             }
         },
-        style: {
-            'z-index': 2 // 解决注册同名弹窗block层级问题，实际使用若无同名block可以去除
-        },
         blocks: {
             demoBlockList3: {
                 pageSize: 20,
@@ -406,9 +403,6 @@ export default {
                 }
             }
         },
-        style: {
-            'z-index': 2 // 解决注册同名弹窗block层级问题，实际使用若无同名block可以去除
-        },
         blocks: {
             demoBlockRouter: {
                 type: 'router',
@@ -498,6 +492,7 @@ export default {
                             "submit": "editDialogForm.submit"
                         },
                         style: {
+                            zIndex: 10,
                             margin: '5% 5% 5% 15%' // 解决页面样式冲突，实际业务去掉
                         },
                         "actions": {},

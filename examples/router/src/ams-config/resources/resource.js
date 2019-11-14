@@ -99,6 +99,9 @@ ams.resource('resource', {
                 content: '提示文字',
                 placement: 'top-start'
             },
+            show: function(data) {
+                return data.id < 10;
+            },
             // 事件触发机制 on 或者 event
             // event: 'submit',
             on: {

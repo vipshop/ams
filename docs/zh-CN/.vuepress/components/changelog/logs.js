@@ -1,9 +1,26 @@
 // 更新日志
 export default [
     {
-        version: '0.19.7',
-        date: '2019.10.16',
+        version: '0.20.2',
+        date: '2019.11.7',
         log: [
+            'feat: operations支持配置换行展示',
+            'feat: 增加block默认data机制',
+            'feat: 把field-headimage整合到field-image，并删除field-headimage',
+            'feat: block-card、block-component、block-dialog、block-imagelist、block-tabs增加loading效果，可以在该区块的action通过this.showLoading和this.hideLoading来控制',
+            'feat：增加图标ams-icon-user',
+            'fix: 路由菜单样式',
+            'fix: fieldChange无法获取不在资源声明的field的name',
+            'fix: 修复列表在有操作按钮的时候，行距过高的问题'
+        ]
+    },
+    {
+        version: '0.19.8',
+        date: '2019.11.5',
+        log: [
+            'feat: link增加上下文数据',
+            'feat: block增加beforeDestroy声明周期',
+            'feat: 优化列表拖拽',
             'feat: 列表分页组件布局支持自定义',
             'feat: vipshop主题的带导航菜单支持顶部栏',
             'feat: field添加button类型，提取operation的tooltip和badge',
@@ -12,7 +29,8 @@ export default [
             'feat: field的labelWidth为0时，不显示label',
             'feat: color添加文字框',
             'feat: block-title支持suffix-info消息提示',
-            'feat：新增icon：ams-icon-xinxitishiwenhao，fixed设置size时operations的label错位',
+            'feat: 新增icon：ams-icon-xinxitishiwenhao，fixed设置size时operations的label错位',
+            'fix: 修复block-list展开无法配置label宽度',
             'fix: 修复field-file的before-upload无法覆盖问题'
         ]
     },

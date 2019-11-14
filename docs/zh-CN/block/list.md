@@ -64,8 +64,7 @@ List: List 列表
 ::: tip
 注意：在 `ams@0.5.0` 以前的版本是通过配置 `searchs` 和 `searchsOptions` 实现的搜索配置，`0.5.0+` 使用新的`operations` + `slot` 实现列表的搜索和多选配置（0.5.0-0.6.0 会兼容searchs和searchsOptions，将在0.6.0+移除兼容支持）
 :::
-
-通过配置`slot`为`searchs`可以配置搜索条件，`operations` 配置参考：[operations配置](../api/operation.md)
+通过配置`slot`为`searchs`可以配置搜索条件，`operations` 配置参考：[operations配置](./deep-operation.md)
 
 <ClientOnly>
 <block-list-demo blockName="searchsList" onlineDemo="https://codepen.io/w3cmark/pen/YzKjJEN"/>
@@ -73,7 +72,7 @@ List: List 列表
 
 ### 多选操作配置 <Badge text="0.5.0+"/>
 
-通过配置list 的 `options.multipleSelect` 为 `true` 时可让列表出现多选按钮，配置 `slot` 为 `multipleSelect` 可以配置多选后出现的操作（多选操作只有在选择了至少一行后才会出现），`operations` 配置参考：[operations配置](../api/operation.md)
+通过配置list 的 `options.multipleSelect` 为 `true` 时可让列表出现多选按钮，配置 `slot` 为 `multipleSelect` 可以配置多选后出现的操作（多选操作只有在选择了至少一行后才会出现），`operations` 配置参考：[operations配置](./deep-operation.md)
 
 <ClientOnly>
 <block-list-demo blockName="multipleSelectList" onlineDemo="https://codepen.io/w3cmark/pen/wvwxYPm"/>

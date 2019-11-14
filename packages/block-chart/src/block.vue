@@ -1,5 +1,6 @@
 <template>
         <div
+            v-loading = "loading"
             v-if="ready"
             :class="'ams-block-' + type" :style="block.style">
 
