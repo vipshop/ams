@@ -17,6 +17,7 @@
 </template>
 <script>
 import mixins from '../../ams/mixins';
+import { addEvent, debounce } from '../../utils/index';
 
 export default {
     mixins: [mixins.blockMixin],
@@ -35,6 +36,10 @@ export default {
             if (this.data.active === '0' && this.showBlocks.length) {
                 this.data.active = this.block.blocks[0];
             }
+            // 在窗口resize时，部分情况下tabs选中态的下标异常，需要重设数据解决
+            this.events.push(addEvent(window, 'resize', debounce(() => {
+                this.setBlockData({});
+            }, 100)));
         }
     }
 };

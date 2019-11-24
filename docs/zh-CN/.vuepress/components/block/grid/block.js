@@ -56,6 +56,46 @@ export default {
             }
         }
     },
+    unsupportGrid: {
+        type: 'grid',
+        style: {
+            height: '200px'
+        },
+        blocks: {
+            unsupportGridheaderTitle1: { // 第一列
+                type: 'card',
+                options: {
+                    headerTitle: '卡片类型自带的标题'
+                },
+                style: {
+                    width: 'calc(50% - 10px)',
+                    height: '100%',
+                    'margin-right': '10px'
+                },
+                blocks: {
+                    emptyCardText: {
+                        type: 'component',
+                        options: {
+                            is: 'div',
+                            text: '自定义内容'
+                        }
+                    }
+                }
+            },
+            unsupportGridheaderTitle2: { // 第二列
+                type: 'card',
+                options: {
+                    headerTitle: '卡片类型自带的标题'
+                },
+                style: {
+                    width: 'calc(50% - 10px)',
+                    height: '100%',
+                    'margin-left': '10px'
+                },
+                blocks: ['emptyCardText']
+            }
+        }
+    },
     grid3: {
         type: 'grid',
         style: {

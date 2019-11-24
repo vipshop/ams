@@ -160,6 +160,20 @@ ams.block('list', {
                 }
             }
         },
+        testSelect: {
+            slot: 'searchs',
+            type: 'field'
+            // field: 'testSelect' // field可省略
+            // label: '可省略'
+        },
+        addItem: {
+            slot: 'searchs',
+            type: 'button',
+            label: '新增',
+            props: {
+                type: 'primary'
+            }
+        },
         button: {
             slot: 'rightTop',
             type: 'button',
@@ -182,12 +196,6 @@ ams.block('list', {
                     return true;
                 }
             }
-        },
-        testSelect: {
-            slot: 'searchs',
-            type: 'field'
-            // field: 'testSelect' // field可省略
-            // label: '可省略'
         },
         // search: {
         //     slot: 'searchs',
@@ -226,6 +234,7 @@ ams.block('list', {
         },
         addItem() {
             console.log('addItem action');
+            // this.submit();
         },
         customEdit(params) {
             // console.log('customEdit', params)

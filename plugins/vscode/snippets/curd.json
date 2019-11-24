@@ -1,6 +1,6 @@
 {
-    "ams.demo.curd": {
-        "prefix": "ams.demo.curd",
+    "ams.curd": {
+        "prefix": "ams.curd",
         "body": [
             "<!DOCTYPE html>",
             "    <html>",
@@ -159,6 +159,6 @@
             "    </body>",
             "</html>"
         ],
-        "description": "AMS的CURD模板"
+        "description": "AMS的CURD片段"
   }
 }

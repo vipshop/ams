@@ -40,6 +40,7 @@ String，如`"a,b,c"`
 - remoteConfig.isMiniBackfill：最小化options回填，推荐select使用，回填时只会提供当前值对应的options（默认为true）
 - remoteConfig.transform：transform函数，可以定制options数据的组装过程，参数为 $field（当前field的vue实例）、 data（接口数据），返回值为组装好的options
 - remoteConfig.request：request函数（promise或者async函数），可以定制请求、用于一些需要动态请求参数的场景，参数为 $field（当前field的vue实例）、 query（关键字或者值）、isBackfill（是否是回填），返回值通过ams.request请求的完整res
+- remoteConfig.isInitRemoteOptions：是否初始化的时候触发远程搜索
 
 #### 场景一：远程select、关键字搜索、最小化回填、options缓存
 选项值：

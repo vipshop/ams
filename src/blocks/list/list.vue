@@ -212,9 +212,9 @@ export default {
                 this.heightFit();
 
                 // 监听滚动事件
-                addEvent(window, 'resize', debounce(() => {
+                this.events.push(addEvent(window, 'resize', debounce(() => {
                     this.heightFit();
-                }, 100));
+                }, 100)));
             } else if (this.block.props && this.block.props.height) {
                 this.height = this.block.props.height;
             }

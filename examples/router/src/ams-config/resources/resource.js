@@ -280,7 +280,8 @@ ams.resource('resource', {
             remoteConfig: {
                 action: `${prefix}tag`,
                 queryKey: 'requiredName',
-                labelKey: 'name'
+                labelKey: 'name',
+                isInitRemoteOptions: false
             }
         },
 

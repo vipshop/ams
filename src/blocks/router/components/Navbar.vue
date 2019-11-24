@@ -5,6 +5,7 @@
         <hamburger :toggle-click="toggleSideBar"
                    :is-active="sidebar.opened"/>
 
+        <ams-blocks :blocks="$block.block.slotBlocks['nav-left']" class="ams-navbar-slot-left"></ams-blocks>
         <!-- 左边 -->
         <div class="right-menu">
             <ams-blocks :blocks="$block.block.slotBlocks.nav"></ams-blocks>
@@ -52,9 +53,14 @@ export default {
     }
     h1{
         display: inline-block;
+        vertical-align: top;
         margin: 0;
         font-size: 20px;
         margin-right: 20px;
+    }
+    .ams-navbar-slot-left {
+        width: auto;
+        display: inline-block;
     }
     .right-menu {
         float: right;
