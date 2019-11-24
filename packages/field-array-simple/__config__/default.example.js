@@ -2,9 +2,10 @@ export default {
     resources: {
         arrayObject: {
             api: {
+                withCredentials: false,
                 successCode: 200,
                 // api前缀
-                prefix: 'https://easy-mock.com/mock/5c76c559086fe75d555c7744/templates/demo/',
+                prefix: 'https://www.yournana.club/vipshop/',
                 read: 'array-object-read',
                 list: 'array-object-list'
             },

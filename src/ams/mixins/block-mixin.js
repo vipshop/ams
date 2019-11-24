@@ -13,7 +13,8 @@ export default {
             layout: null,
             resource: null,
             ready: false,
-            loading: false
+            loading: false,
+            events: []
         };
     },
     provide: function() {
@@ -62,6 +63,9 @@ export default {
     },
     async beforeDestroy() {
         await this.emitEvent('beforeDestroy');
+        if (this.events && this.events.length) {
+            this.events.forEach(e => e.remove());
+        }
     },
 
     async destroyed() {

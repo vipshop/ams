@@ -1,14 +1,29 @@
 // 更新日志
 export default [
     {
-        version: '0.20.2',
-        date: '2019.11.7',
+        version: '0.21.1',
+        date: '2019.11.20',
         log: [
+            'feat: 添加nav-left插槽',
+            'feat: 新增drawer抽屉block',
+            'feat: array-simple数据更换',
+            'fix: 解决表格loading弹层 层级问题'
+        ]
+    },
+    {
+        version: '0.20.10',
+        date: '2019.11.18',
+        log: [
+            'feat：增加事件销毁机制，tabs增加监听resize事件',
             'feat: operations支持配置换行展示',
             'feat: 增加block默认data机制',
             'feat: 把field-headimage整合到field-image，并删除field-headimage',
             'feat: block-card、block-component、block-dialog、block-imagelist、block-tabs增加loading效果，可以在该区块的action通过this.showLoading和this.hideLoading来控制',
             'feat：增加图标ams-icon-user',
+            'fix: block-imagelist标题块高度不一致、删除title逻辑判断',
+            'fix: block-grid兼容低级浏览器',
+            'fix：block-chart的图例icon设置为默认图标',
+            'fix: 修复field-select在view状态下，无法匹配值为空的选项',
             'fix: 路由菜单样式',
             'fix: fieldChange无法获取不在资源声明的field的name',
             'fix: 修复列表在有操作按钮的时候，行距过高的问题'

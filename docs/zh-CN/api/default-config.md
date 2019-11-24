@@ -5,7 +5,7 @@ DefaultConfig: DefaultConfig 简化配置
 
 通过简化配置可以将一些常用的配置用`常量`标识，减少重复代码的编写。可以使用ams内部继承的配置，也可以在项目自行配置，在文末自定义有使用说明。
 
-在ams内部目前集成了以下几种简化配置，通过在`Console控制台`打印`ams.configs`也可以查看
+在ams内部目前集成了以下几种简化配置，通过在浏览器控制台`console面板`打印`ams.configs`也可以查看
 
 ## FORM_SUBMIT
 

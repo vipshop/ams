@@ -1,7 +1,7 @@
 <template>
     <div :style="field.style">
-        {{actualSelectOptionsText}}<!--
-     --><el-popover v-if="showMoreIcon"
+        {{actualSelectOptionsText}}
+        <el-popover v-if="showMoreIcon"
                     :placement="field.collapsePlacement || 'right'"
                     :title="field.collapseTitle || ''"
                     :width="field.collapseWidth || 200"

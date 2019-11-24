@@ -19,7 +19,9 @@ ams.block('grid', {
                 item1: {
                     type: 'component',
                     style: {
-                        background: '#f60'
+                        background: '#f60',
+                        width: '50%',
+                        height: '100%'
                     },
                     options: {
                         'text': 'item1'
@@ -28,7 +30,9 @@ ams.block('grid', {
                 item2: {
                     type: 'component',
                     style: {
-                        background: '#f50'
+                        background: '#f50',
+                        width: '50%',
+                        height: '100%'
                     },
                     options: {
                         'text': 'item2'
@@ -54,6 +58,11 @@ ams.block('grid', {
                     options: {
                         headerTitle: '卡片类型自带的标题'
                     },
+                    style: {
+                        width: 'calc(50% - 10px)',
+                        height: '100%',
+                        'margin-right': '10px'
+                    },
                     blocks: {
                         emptyCardTextGrid21: {
                             type: 'component',
@@ -68,6 +77,11 @@ ams.block('grid', {
                     type: 'card',
                     options: {
                         headerTitle: '卡片类型自带的标题'
+                    },
+                    style: {
+                        width: 'calc(50% - 10px)',
+                        height: '100%',
+                        'margin-left': '10px'
                     },
                     blocks: {
                         emptyCardTextGrid22: {

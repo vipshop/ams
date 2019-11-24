@@ -10,7 +10,7 @@
             <div :class="subtitleClass" v-if="subtitle">{{subtitle}}</div>
         </div>
         <figcaption v-if="title || info">
-            <div class="s-left" v-if="title" :title="title">
+            <div class="s-left">
                 <el-checkbox v-if="showCheckbox" v-model="isSelect" :key="index" @change="$emit('selectionChange')" ></el-checkbox>
 
                 <span class="s-left-prefix" v-if="titlePrefixIcon" v-html="titlePrefixIcon">
@@ -264,6 +264,7 @@ export default {
         font-size: 12px;
         display: flex;
         line-height: 24px;
+        height: 45px;
         .s-left{
             flex: 1;
             height: 25px;

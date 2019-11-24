@@ -16,6 +16,7 @@ import card from './blocks/card';
 import component from './blocks/component';
 import collapse from './blocks/collapse';
 import dialog from './blocks/dialog';
+import drawer from './blocks/drawer';
 import error from './blocks/error';
 import list from './blocks/list';
 import imagelist from './blocks/imagelist';
@@ -74,7 +75,7 @@ import field from './operations/field';
 import dropdown from './operations/dropdown';
 
 // 版本号
-ams.version = '0.20.5';
+ams.version = '0.21.1';
 // 挂载到ams上
 ams.mixins = mixins;
 ams.utils = utils;
@@ -106,6 +107,7 @@ ams.install = function(Vue) {
     ams.registerBlock(component);
     ams.registerBlock(collapse);
     ams.registerBlock(dialog);
+    ams.registerBlock(drawer);
     ams.registerBlock(error);
     ams.registerBlock(form);
     ams.registerBlock(list);

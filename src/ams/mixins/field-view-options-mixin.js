@@ -8,7 +8,8 @@ export default {
     computed: {
         selectOptions() {
             let arr = [];
-            if (this.value || this.value === 0) {
+            if (typeof this.value !== 'undefined') {
+                // 使用typeof判断是为了兼容当值为空或者0的情况
                 let val = this.field.view ? this.field.view(this.value, this.field) : this.value;
                 const vals = String(val).split(',');
                 // let options = this.field.props.options;

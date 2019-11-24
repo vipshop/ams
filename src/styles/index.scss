@@ -4,7 +4,6 @@ body {
     box-sizing: border-box;
 }
 body {
-    height: 100%;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -127,11 +126,18 @@ a:hover {
 }
 
 // 搜索可配置换行
-.ams-block-list>.ams-operations.el-form--inline {
-    .el-form-item{
-        float: left;
-        &.el-form-item--block{
-            clear: both;
+.ams-block-list, .ams-block-imagelist{
+    >.ams-operations.el-form--inline {
+        .el-form-item{
+            float: left;
+            &.el-form-item--block{
+                clear: both;
+            }
         }
     }
+}
+
+// 解决表格loading弹层 层级问题
+.el-table{
+    z-index: 1;
 }

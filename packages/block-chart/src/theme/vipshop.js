@@ -451,7 +451,7 @@
             }
         },
         'legend': {
-            'icon': 'circle',
+            // 'icon': 'circle',
             'textStyle': {
                 'color': '#999999'
             }
