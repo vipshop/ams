@@ -12,7 +12,7 @@
                  icon="el-icon-plus"
                  @click="add">添加意见</el-button>
 
-            <div class="tip-com" 
+            <div class="tip-com"
                 ref="tipCom"
                 v-for="(item, index) in data.imgTipComList"
                 :key="index"
@@ -21,8 +21,8 @@
                 <span v-if="isEidt" class="dot" @mousedown="move($event, index)"></span>
                 <span v-if="isEidt" class="dot-close" @click="close(index)">x</span>
 
-                <textarea class="text" 
-                        v-model="item.text" 
+                <textarea class="text"
+                        v-model="item.text"
                         :disabled="!isEidt"
                         :style="{width: `${item.width}px`, height: `${item.height}px`, resize: `${isEidt?'':'none'}`}"></textarea>
             </div>
@@ -43,7 +43,7 @@
 </template>
 <script>
 import ams from '@ams-team/ams';
-import { getStyle } from './utils'
+import { getStyle } from './utils';
 
 export default {
     mixins: [ams.mixins.blockMixin],
@@ -64,55 +64,55 @@ export default {
             //         text: '你好'
             //     }
             // ]
-        }
+        };
     },
     computed: {
         isEidt() {
             if (this.block.ctx === 'view') {
-                return false
+                return false;
             } else {
-                return true
+                return true;
             }
         }
     },
     methods: {
         move(e, index) {
             if (!this.isEidt) {
-                return  false
+                return false;
             }
 
-            //获取目标元素
-            const dom = e.target.parentElement;    
+            // 获取目标元素
+            const dom = e.target.parentElement;
             dom.style.zIndex = this.zIndex++;
 
-            //算出鼠标相对元素的位置
+            // 算出鼠标相对元素的位置
             let disX = e.clientX - dom.offsetLeft;
             let disY = e.clientY - dom.offsetTop;
-            const wrapperWidth = parseInt(getStyle(this.$refs.boxWrapper, 'width'), 10)
-            const wrapperHeight = parseInt(getStyle(this.$refs.boxWrapper, 'height'), 10)
-            const domWidth = parseInt(getStyle(dom, 'width'), 10)
-            const domHeight = parseInt(getStyle(dom, 'height'), 10)
+            const wrapperWidth = parseInt(getStyle(this.$refs.boxWrapper, 'width'), 10);
+            const wrapperHeight = parseInt(getStyle(this.$refs.boxWrapper, 'height'), 10);
+            const domWidth = parseInt(getStyle(dom, 'width'), 10);
+            const domHeight = parseInt(getStyle(dom, 'height'), 10);
 
-            document.onmousemove = (e) =>{
-                //鼠标按下并移动的事件, 用鼠标的位置减去鼠标相对元素的位置，得到元素的位置
-                let left = e.clientX - disX;  
+            document.onmousemove = (e) => {
+                // 鼠标按下并移动的事件, 用鼠标的位置减去鼠标相对元素的位置，得到元素的位置
+                let left = e.clientX - disX;
                 let top = e.clientY - disY;
 
-                //移动当前元素
+                // 移动当前元素
                 if (left <= 20) {
-                    left = 20
-                } else if (left >= wrapperWidth-domWidth) {
-                    left = wrapperWidth - domWidth
+                    left = 20;
+                } else if (left >= wrapperWidth - domWidth) {
+                    left = wrapperWidth - domWidth;
                 }
 
                 if (top <= 0) {
-                    top = 0
+                    top = 0;
                 } else if (top >= wrapperHeight - domHeight) {
-                    top = wrapperHeight - domHeight
+                    top = wrapperHeight - domHeight;
                 }
 
-                this.data.imgTipComList[index].top = top
-                this.data.imgTipComList[index].left = left
+                this.data.imgTipComList[index].top = top;
+                this.data.imgTipComList[index].left = left;
             };
             // 鼠标移除解绑事件
             document.onmouseup = (e) => {
@@ -120,8 +120,8 @@ export default {
                 document.onmouseup = null;
             };
 
-            //chrom，ff阻止默认事件文字选中
-            e.preventDefault&&e.preventDefault();
+            // chrom，ff阻止默认事件文字选中
+            e.preventDefault && e.preventDefault();
         },
         add() {
             this.data.imgTipComList.push({
@@ -130,18 +130,18 @@ export default {
                 width: 150,
                 height: 40,
                 text: ''
-            })
+            });
         },
         close(index) {
-            this.data.imgTipComList.splice(index, 1)
+            this.data.imgTipComList.splice(index, 1);
         },
         getTipComData() {
             this.$refs.tipCom.forEach((ele, index) => {
-                this.data.imgTipComList[index].width = parseInt(getStyle(ele, 'width'), 10)
-                this.data.imgTipComList[index].height = parseInt(getStyle(ele, 'height'), 10)
-            })
-            
-            return this.data.imgTipComList
+                this.data.imgTipComList[index].width = parseInt(getStyle(ele, 'width'), 10);
+                this.data.imgTipComList[index].height = parseInt(getStyle(ele, 'height'), 10);
+            });
+
+            return this.data.imgTipComList;
         }
     }
 };

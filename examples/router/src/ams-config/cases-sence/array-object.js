@@ -202,7 +202,12 @@ ams.block('array-object', {
                     },
                     field: {
                         type: 'text',
-                        label: 'text'
+                        label: 'text',
+                        on: {
+                            click: function(ev, $field) {
+                                console.log(this, ev, $field);
+                            }
+                        }
                     }
                 },
                 ArrayArray: {

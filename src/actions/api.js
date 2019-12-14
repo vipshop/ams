@@ -63,6 +63,7 @@ export const read = ams.createApiAction({
             this.$message.error(`${res.data.msg}(${res.data.code})`);
             throw '@read:' + res.data.code;
         }
+        return res;
     }
 });
 
@@ -90,6 +91,7 @@ export const update = ams.createApiAction({
             this.$message.error(`${res.data.msg}(${res.data.code})`);
             throw '@update:' + res.data.code;
         }
+        return res;
     }
 });
 
@@ -118,6 +120,7 @@ export const deleteAction = ams.createApiAction({
             this.$message.error(`${res.data.msg}(${res.data.code})`);
             throw '@delete:' + res.data.code;
         }
+        return res;
     }
 });
 
@@ -143,6 +146,7 @@ export const create = ams.createApiAction({
             this.$message.error(`${res.data.msg}(${res.data.code})`);
             throw '@create code:' + res.data.code;
         }
+        return res;
     }
 });
 
@@ -231,5 +235,7 @@ export const list = ams.createApiAction({
             this.$message.error(`${res.data.msg}(${res.data.code})`);
             throw '@list:' + res.data.code;
         }
+
+        return res;
     }
 });

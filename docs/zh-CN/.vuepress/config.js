@@ -2,7 +2,7 @@
 const dest = 'dist'
 
 module.exports = {
-  title: 'AMS',
+  title: 'AMS文档',
   base: '/ams/',
   description: '基于JSON配置来快速搭建管理后台前端页面的JavaScript框架',
   dest: dest, // 指定 vuepress build 的输出目录, 默认值: .vuepress/dist
@@ -144,6 +144,7 @@ module.exports = {
               'imagelist',
               'table',
               'dialog',
+              'drawer',
               'error',
               'router',
               'collapse',

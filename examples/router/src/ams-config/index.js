@@ -62,7 +62,7 @@ import './cases-block/bct-progress';
 import './cases-block/imagelist';
 import './cases-block/imagelist2';
 import './cases-block/title';
-import './cases-block/drawer'
+import './cases-block/drawer';
 
 // chart-demo
 import './cases-chart/demo1';

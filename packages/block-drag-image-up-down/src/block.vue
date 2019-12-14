@@ -9,7 +9,7 @@
                 <div class="mask"></div>
                 <img alt="裁剪图" class="cut-img"
                   :src="block.options.url"
-                  :style="{ clip: `rect(${block.options.top}px, ${block.options.width}px, ${block.options.top + block.options.cutHeight}px, 0px)`}">
+                  :style="{ clip: `rect(${block.options.top}px, ${block.options.width}px, ${block.options.top + block.options.cutHeight}px, 0px)` }">
                 <div class="frame" :style="{ top: block.options.top + 'px', width: block.options.width + 'px', height: block.options.cutHeight + 'px' }"
                     @mousedown="dragstart"
                     @mousemove="dragmove"
@@ -49,9 +49,9 @@ export default {
                 if (top < 0) {
                     this.block.options.top = 0;
                 } else if (top > this.block.options.height - this.block.options.cutHeight) {
-                    this.block.options.top = this.block.options.height - this.block.options.cutHeight
+                    this.block.options.top = this.block.options.height - this.block.options.cutHeight;
                 } else {
-                    this.block.options.top = top
+                    this.block.options.top = top;
                 }
             }
         },

@@ -172,7 +172,7 @@ ams.block('list-edit', {
         },
         addItem5: {
             type: 'button',
-            label: '右下2',
+            label: '添加',
             props: {
                 type: 'primary'
             },
@@ -205,6 +205,10 @@ ams.block('list-edit', {
         },
         saveItem: function() {
             alert('你点击了保存按钮');
+        },
+        removeItem: function(args) {
+            console.log(args);
+            this.data.list.splice(args.$prevReturn.__index, 1);
         }
     }
 });

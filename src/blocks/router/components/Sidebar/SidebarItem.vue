@@ -12,7 +12,7 @@
             </template>
 
             <template v-for="child in item.children">
-                <sidebar-item v-if="child.children && child.children.length>0"
+                <sidebar-item v-if="child.children && child.children.length > 0"
                               :is-nest="true"
                               :item="child"
                               :key="child.path"

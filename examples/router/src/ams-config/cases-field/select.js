@@ -16,7 +16,9 @@ ams.block('select', {
                 normalSelectEdit: {
                     type: 'select',
                     label: '本地select多选',
+                    // labelWidth: '0',
                     props: {
+                        inline: true,
                         options: {
                             a: '黄金糕',
                             b: '双皮奶',
@@ -32,10 +34,18 @@ ams.block('select', {
                     ctx: 'view',
                     label: '本地selectView',
                     props: {
+                        inline: true,
                         options: {
                             e: '北京烤鸭',
                             0: '哈哈哈'
                         }
+                    }
+                },
+                button: {
+                    type: 'button',
+                    label: '',
+                    props: {
+                        text: '按钮'
                     }
                 },
                 normalSingleSelectEdit: {
@@ -43,6 +53,7 @@ ams.block('select', {
                     label: '本地select单选',
                     useStringValue: false,
                     props: {
+                        inline: true,
                         multiple: false,
                         clearable: true,
                         options: [{
@@ -102,6 +113,7 @@ ams.block('select', {
                     BASE: 'SELECT_REMOTE',
                     label: '远程selectEdit',
                     type: 'select',
+                    labelWidth: '0',
                     remoteConfig: {
                         action: `${prefix}tag`,
                         queryKey: 'requiredName',
@@ -195,5 +207,17 @@ ams.block('select', {
     },
     events: {
         submit: '@create'
+    },
+    layout: {
+        normalSelectEdit: ['normalSelectEdit', 'normalSelectView', 'button']
+    },
+    blocks: {
+        // brBlock: {
+        //     type: 'component',
+        //     slot: 'field:normalSelectView',
+        //     options: {
+        //         is: 'br'
+        //     }
+        // }
     }
 });

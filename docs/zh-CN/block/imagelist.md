@@ -104,6 +104,9 @@ options: { // 可以通过options设置显示内容映射的字段名
     },
     info: { // 主标题右边的信息（默认：list的info）
         field: 'info' // 或在这指定其它字段
+    },
+    subscript: { // 右下角角标（默认：list的subscript）
+        field: 'info' // 或在这指定其它字段
     }
 }
 ```

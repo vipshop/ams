@@ -109,11 +109,12 @@ ams.block('radio', {
                         options: [
                             {
                                 label: '黄金糕',
-                                value: 'a',
+                                value: 'a'
                             },
                             {
                                 label: '双皮奶',
-                                value: 'b'
+                                value: 'b',
+                                disabled: true
                             },
                             {
                                 label: '蚵仔煎',

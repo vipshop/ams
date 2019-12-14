@@ -5,9 +5,11 @@
                    :style="block.style"
                    v-on="on"
                    v-bind="block.props">
-            <ams-blocks v-loading="loading" :blocks="block.blocks"
+            <div class="ams-block-drawer-body">
+                <ams-blocks v-loading="loading" :blocks="block.blocks"
                             v-if="data.visible" />
-            <div slot="footer">
+            </div>
+            <div class="ams-block-drawer-footer">
                 <ams-operations :name="name"></ams-operations>
             </div>
         </el-drawer>
@@ -21,4 +23,19 @@ export default {
     mixins: [mixins.blockMixin]
 };
 </script>
+
+<style lang="scss">
+.ams-block-drawer-body {
+    padding: 10px 20px;
+    word-break: break-all;
+}
+.ams-block-drawer-footer {
+    padding: 10px 20px 20px;
+    text-align: right;
+    box-sizing: border-box;
+}
+.el-drawer__body{
+    overflow-y: scroll;
+}
+</style>
 

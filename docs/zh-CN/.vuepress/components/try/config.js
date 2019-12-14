@@ -8,6 +8,7 @@ export default [{
             "demoResource": {
                 "api": {
                     prefix,
+                    "withCredentials": false,
                     "read": "read",
                     "update": "update",
                     "list": "list",
