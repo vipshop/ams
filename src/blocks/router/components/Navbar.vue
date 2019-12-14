@@ -1,9 +1,9 @@
 <template>
     <div class="ams-navbar">
-        <img class="logo" v-if="$block.data.logo" :src="$block.data.logo">
-        <h1>{{ $block.data.title }}</h1>
         <hamburger :toggle-click="toggleSideBar"
                    :is-active="sidebar.opened"/>
+        <img class="logo" v-if="$block.data.logo" :src="$block.data.logo">
+        <h1>{{ $block.data.title }}</h1>
 
         <ams-blocks :blocks="$block.block.slotBlocks['nav-left']" class="ams-navbar-slot-left"></ams-blocks>
         <!-- 左边 -->
@@ -11,9 +11,15 @@
             <ams-blocks :blocks="$block.block.slotBlocks.nav"></ams-blocks>
             <template v-if="$block.data.userName">
                 <img :src="$block.data.userImg || '//a.vpimg4.com/upload/upimg2/u/30ebcd58722a1fef7412f9e6431d6565.png'" class="avatar-img" >
-                <span class="avatar-name">{{ $block.data.userName }}</span>
-                <el-button class="login-out" size="mini" type="text" @click="loginOutClick">{{ $block.data.loginOutText || '退出' }}</el-button>
+
+                <el-dropdown trigger="hover" @command="handleCommand">
+                    <span class="avatar-name">{{ $block.data.userName }} <i class="el-icon-caret-bottom"></i></span>
+                    <el-dropdown-menu class="dropdown-menu-login-out" slot="dropdown">
+                        <el-dropdown-item class="dropdown-item-login-out" command="login-out">{{ $block.data.loginOutText || '退出' }}</el-dropdown-item>
+                    </el-dropdown-menu>
+                </el-dropdown>
             </template>
+
         </div>
     </div>
 </template>
@@ -32,8 +38,11 @@ export default {
         toggleSideBar() {
             this.$parent.toggleSideBar();
         },
-        loginOutClick() {
-            ams.callAction.call(this.$block, '@loginOut');
+        handleCommand(command) {
+            if (command === 'login-out') {
+                console.log('loginOutClick');
+                ams.callAction.call(this.$block, '@loginOut');
+            }
         }
     }
 };
@@ -75,6 +84,9 @@ export default {
                 opacity: 0.8;
             }
         }
+        .el-dropdown {
+            height: 40px;
+        }
     }
     .avatar-img {
         width: 30px;
@@ -89,17 +101,26 @@ export default {
         vertical-align: middle;
         position: relative;
         z-index: 1;
-        &::after {
-            content: '';
-            width: 1px;
-            height: 12px;
-            position: absolute;
-            z-index: 2;
-            right: -20px;
-            top: 50%;
-            margin-top: -6px;
-            background-color: #000;
-        }
+        font-size: 14px;
+        // &::after {
+        //     content: '';
+        //     width: 1px;
+        //     height: 12px;
+        //     position: absolute;
+        //     z-index: 2;
+        //     right: -20px;
+        //     top: 50%;
+        //     margin-top: -6px;
+        //     background-color: #000;
+        // }
+    }
+}
+// 下拉样式调整
+.el-dropdown-menu.dropdown-menu-login-out {
+    padding: 6px 0;
+    .dropdown-item-login-out{
+        width: 80px;
+        text-align: center;
     }
 }
 </style>

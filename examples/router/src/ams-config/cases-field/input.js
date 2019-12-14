@@ -6,11 +6,13 @@ ams.block('input', {
             fields: {
                 text1: {
                     label: 'text1text1text1text1text1',
-                    type: 'text'
+                    type: 'text',
+                    labelWidth: '80px'
                 },
                 text2: {
                     label: 'text2',
                     type: 'text',
+                    labelWidth: '50px',
                     slots: {
                         prefix: '输入'
                     },
@@ -21,6 +23,7 @@ ams.block('input', {
                 text3: {
                     label: 'text3',
                     type: 'text',
+                    labelWidth: '80px',
                     slots: {
                         suffix: '输入框尾部内容'
                     },
@@ -110,6 +113,9 @@ ams.block('input', {
             data: {
                 text7: '测试文字',
                 text11: '上传成功',
+            },
+            layout: {
+                text1: ['text1', 'text2']
             }
         }
     }

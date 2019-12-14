@@ -115,7 +115,7 @@ ams.block('list', {
                 size: 'mini'
             }
         },
-        delete: {
+        deleteAct: {
             type: 'button',
             label: '删除',
             props: {
@@ -174,6 +174,11 @@ ams.block('list', {
                 type: 'primary'
             }
         },
+        resetItem: {
+            slot: 'searchs',
+            type: 'reset',
+            label: '重置'
+        },
         button: {
             slot: 'rightTop',
             type: 'button',
@@ -222,19 +227,27 @@ ams.block('list', {
     },
     events: {
         submit: '@submit',
-        init: '@list',
+        init: '@list @afterRequest',
         edit: '@routerPush:/list/edit',
         replace: '@routerReplace:/list/edit',
         back: '@routerGo:-1'
     },
 
     actions: {
+        afterRequest({ $prevReturn }) {
+            console.log('beforeRequest', $prevReturn);
+        },
+        deleteAct() {
+            this.callAction('@delete').then(res => {
+                console.log('delete', res);
+            });
+        },
         submit({ $prevReturn }) {
             console.log('list-submit', $prevReturn);
         },
-        addItem() {
-            console.log('addItem action');
-            // this.submit();
+        async addItem() {
+            const res = await this.callAction('@create');
+            console.log('addItem action', res);
         },
         customEdit(params) {
             // console.log('customEdit', params)
@@ -242,6 +255,11 @@ ams.block('list', {
                 name: '编辑',
                 query: { id: params.$prevReturn.id }
             });
+        },
+        resetItem() {
+            this.data.rightTop.id = '';
+            this.data.leftBottom.id2 = '';
+            this.data.searchs.radioButton = '';
         }
     },
     blocks: {

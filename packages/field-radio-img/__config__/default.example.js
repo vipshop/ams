@@ -1,5 +1,3 @@
-const value = '#508ff2';
-
 export default {
     resources: {
         res: {
@@ -46,8 +44,8 @@ export default {
                 }
             },
             actions: {
-                fieldChange({ name,  path, value}) {
-                    console.log('fieldChange---', name, path, value)
+                fieldChange({ name, path, value }) {
+                    console.log('fieldChange---', name, path, value);
                 }
             }
         },

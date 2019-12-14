@@ -37,7 +37,6 @@ ams.block('form-edit', {
         resetData: {
             type: 'button',
             label: '重置',
-            event: 'resetData',
             show: 'testSwitch'
         },
         aa: {

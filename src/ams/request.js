@@ -228,13 +228,14 @@ export default function initRequest(ams) {
                 }
                 const res = await ams.request(requestOptions);
 
-                (params.success || options.success).call(
+                this.hideLoading();
+
+                return (params.success || options.success).call(
                     this,
                     res,
                     requestOptions
                 );
 
-                this.hideLoading();
             } catch (e) {
                 // 处理完继续抛出错误使aciton中断
 

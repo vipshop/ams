@@ -138,6 +138,7 @@ ams.block('imagelist', {
     },
     pageSize: 10,
     props: {
+        // class: 'aa',
         // shadow: 'always', // 阴影效果，可取值：hover（默认）| always | never
         // subtitle: 'always' // 子标题出现方式，可取值：hover（默认）| always
         // pagination: 'simulate' // 模拟分页,
@@ -191,10 +192,10 @@ ams.block('imagelist', {
         }
     },
     options: {
-        // imageSrc: {
+        // imageSrc: { // 图片地址
         //     field: 'image' // 字段名
         // },
-        title: {
+        title: { // 主标题
             field: 'title',
             // 'prefix-icon': 'el-icon-search'
             'prefix-tag': {
@@ -204,21 +205,24 @@ ams.block('imagelist', {
                 }
             }
         },
-        subtitle: {
+        subtitle: { // 子标题
             field: 'content'
         },
-        info: {
+        info: { // 标题右边信息
             field: 'info'
         },
-        // categorys: [{ // 分类
-        //     title: '90后', // 分类名称
-        //     index: 0 // 插入分类的位置
-        // }, {
-        //     title: '80后',
-        //     index: 3
-        // }, {
-        //     title: '70后',
-        //     index: 4
-        // }]
+        // subscript: { // 右下角角标
+        //     field: 'info'
+        // }
+        categorys: [{ // 分类
+            title: '<span style="color:#f60">90后</span>', // 分类名称
+            index: 0 // 插入分类的位置
+        }, {
+            title: '80后',
+            index: 3
+        }, {
+            title: '70后',
+            index: 4
+        }]
     }
 });

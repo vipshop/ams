@@ -477,7 +477,8 @@ ams.block('router', {
             slot: 'nav-left',
             type: 'dropdown',
             style: {
-                float: 'right'
+                float: 'right',
+                'padding-left': '15px'
             },
             props: {
                 trigger: 'click'
@@ -506,7 +507,7 @@ ams.block('router', {
             },
             on: {
                 command: function(e) {
-                    this.$message('click on item ' + e)
+                    this.$message('click on item ' + e);
                 }
             }
         }

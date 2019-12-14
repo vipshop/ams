@@ -30,7 +30,7 @@
             <template v-for="(item, index) in listData">
                 <template v-if="block.options && block.options.categorys">
                     <template v-for="(category, j) in block.options.categorys">
-                        <div class="categorys-title" v-if="index === category.index" :key="`${index}-${j}`">{{category.title}}</div>
+                        <div class="categorys-title" v-if="index === category.index" :key="`${index}-${j}`" v-html="category.title"></div>
                     </template>
                 </template>
                 <listitem
@@ -234,6 +234,7 @@ export default {
 
 <style lang="scss">
 .ams-block-imagelist {
+    z-index: 1;
     .select-all-operations{
         float: left;
         padding-right: 10px;

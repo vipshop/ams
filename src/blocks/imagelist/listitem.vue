@@ -8,6 +8,7 @@
                         :context="image"></ams-operations>
              </div>
             <div :class="subtitleClass" v-if="subtitle">{{subtitle}}</div>
+            <div class="list-item-subscript" v-if="subscript">{{subscript}}</div>
         </div>
         <figcaption v-if="title || info">
             <div class="s-left">
@@ -18,7 +19,7 @@
                 <el-tag size="small" v-else-if="titlePrefixTag" :type="titlePrefixTag.type">{{titlePrefixTag.label}}</el-tag>
                 {{title}}
             </div>
-            <div class="s-right" v-if="info">{{info}}</div>
+            <div class="s-right" v-if="info" v-html="info"></div>
         </figcaption>
     </figure>
 </template>
@@ -134,6 +135,15 @@ export default {
                 return this.block.options.info;
             }
             return this.image['info'];
+        },
+        subscript() {
+            if (this.block.options && typeof this.block.options.subscript !== 'undefined') {
+                if (this.block.options.subscript.field) {
+                    return this.image[this.block.options.subscript.field];
+                }
+                return this.block.options.subscript;
+            }
+            return this.image['subscript'];
         }
     },
     watch: {
@@ -181,7 +191,6 @@ export default {
         }
         .list-item-subtitle {
             padding:5px 10px;
-            line-height: 22px;
             box-sizing: border-box;
             position: absolute;
             z-index: 2;
@@ -283,6 +292,20 @@ export default {
         .is-hover-subtitle,.list-item-topright-operations{
             transform: translateY(0);
         }
+    }
+    &-subscript {
+        position: absolute;
+        z-index: 10;
+        right: 0;
+        bottom: 0;
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 5px 7px;
+        line-height: 18px;
+        font-size: 12px;
+        max-width: 50%;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
 </style>

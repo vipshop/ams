@@ -68,6 +68,7 @@ ams.block('list-operations', {
                 testSwitch: true
             }
         },
+
         edit: {
             type: 'button',
             label: '跳转'
@@ -156,7 +157,12 @@ ams.block('list-operations', {
         init: '@list',
         edit: '@routerPush:/list/edit'
     },
-
+    on: {
+        // 列表选择事件监听
+        'selection-change': function() {
+            console.log('selection-change', this.batchSelected);
+        }
+    },
     actions: {
         fieldChange(args) {
             console.log('fieldChange', args);
