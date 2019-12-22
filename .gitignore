@@ -18,5 +18,4 @@ package-lock.json
 /packages/*/lib
 /material-list.json
 /test/_coverage
-.scannerwork/
 /plugins/vscode/*.vsix

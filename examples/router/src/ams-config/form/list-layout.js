@@ -152,11 +152,11 @@ ams.block('list-layout', {
                             // label: '可省略'
                         },
 
-                        testSelect1: {
-                            type: 'field',
-                            field: 'testSelect'
-                            // label: '可省略'
-                        },
+                        // testSelect1: {
+                        //     type: 'field',
+                        //     field: 'testSelect'
+                        //     // label: '可省略'
+                        // },
 
                         buttonMulti: {
                             slot: 'multipleSelect',

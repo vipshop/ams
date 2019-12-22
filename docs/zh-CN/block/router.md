@@ -29,11 +29,14 @@ Router: Router 导航路由
 
 #### 导航的位置slot block
 
-配置子block的slot为`nav`，可以插入在导航的位置。比如下面例子插入了两个操作按钮“反馈”和“帮助”。
+配置子block的slot为`nav`，可以插入在导航的位置。比如下面例子插入了两个操作按钮“反馈”和“帮助”，
+配置子block的slot为`nav-left`，可以插入在导航左侧的位置。比如下面例子插入文本“左侧导航插槽”。
 
 <ClientOnly>
 <block-router-demo blockName="navRouter" onlineDemo="https://codepen.io/w3cmark/pen/KKPRbJr"/>
 </ClientOnly>
+
+
 
 ### 结构
 

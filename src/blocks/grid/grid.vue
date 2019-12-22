@@ -30,6 +30,18 @@ export default {
 
 <style lang="scss">
 .ams-block-grid{
-    display: grid;
+    > * {
+        display: inline-block;
+        vertical-align: top;
+    }
+}
+@supports (display: grid) {
+    .ams-block-grid {
+        display: grid;
+        > * {
+            width: auto!important;
+            margin: 0!important;
+        }
+    }
 }
 </style>

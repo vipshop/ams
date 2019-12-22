@@ -69,6 +69,10 @@
                     </el-table-column>
                 </template>
 
+                <el-table-column label="#拖拽" width="70" align="center" v-if="isDrag && block.options.showDragIcon !== false">
+                    <div class="drag-column"><i class="el-icon-thumb"></i></div>
+                </el-table-column>
+
                 <el-table-column v-if="block.options.multipleSelect"
                                  type="selection"
                                  width="50" />
@@ -101,7 +105,7 @@
                     <template slot-scope="scope">
                         <ams-operations :name="name"
                                         :slot-field-key="`defaultOperations${scope.$index}`"
-                                        :context="scope.row"></ams-operations>
+                                        :context="{ __index: scope.$index, ...scope.row }"></ams-operations>
                     </template>
                 </el-table-column>
             </el-table>
@@ -212,9 +216,9 @@ export default {
                 this.heightFit();
 
                 // 监听滚动事件
-                addEvent(window, 'resize', debounce(() => {
+                this.events.push(addEvent(window, 'resize', debounce(() => {
                     this.heightFit();
-                }, 100));
+                }, 100)));
             } else if (this.block.props && this.block.props.height) {
                 this.height = this.block.props.height;
             }
@@ -239,6 +243,7 @@ export default {
                 window.Sortable.create(el, {
                     sort: true,
                     disabled: false,
+                    handle: '.drag-column',
                     ghostClass: 'sortable-ghost',
                     onStart: (evt) => {
                         // 触发回调
@@ -361,7 +366,7 @@ export default {
             margin-top: 20px;
         }
     }
-    .ams-list-row-operations {
+    td.ams-list-row-operations {
         padding-bottom: 0;
         .cell {
             overflow: inherit;
@@ -372,9 +377,16 @@ export default {
     }
     // 列表拖拽鼠标
     .ams-block-list-drag{
-        tr{
-            cursor: move;
+        .el-table__body-wrapper {
+            .drag-column {
+                .el-icon-thumb {
+                    font-size: 18px;
+                }
+                text-align: center;
+                cursor: move;
+            }
         }
+
         .ams-list-row-operations {
             cursor: auto;
         }

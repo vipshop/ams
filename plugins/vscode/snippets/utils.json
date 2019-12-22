@@ -1,0 +1,72 @@
+{
+    "ams.utils.get": {
+        "prefix": "ams.utils.get",
+        "body": [
+            "ams.utils.get(${1:{}}, '${2:path}')$0"
+        ],
+        "description": "通过path读取object的值"
+    },
+    "ams.utils.set": {
+        "prefix": "ams.utils.set",
+        "body": [
+            "ams.utils.set(${1:{}}, '${2:path}')$0"
+        ],
+        "description": "通过path设置object的值"
+    },
+    "ams.utils.parseTime": {
+        "prefix": "ams.utils.parseTime",
+        "body": [
+            "ams.utils.parseTime('${1:time}', '{y}-{m}-{d} {h}:{i}:{s}')$0"
+        ],
+        "description": "格式化时间"
+    },
+    "ams.utils.parseString": {
+        "prefix": "ams.utils.parseString",
+        "body": [
+            "ams.utils.parseString('${1:str}', true)$0"
+        ],
+        "description": "将querystring解析为object形式"
+    },
+    "ams.utils.getQueryString": {
+        "prefix": "ams.utils.getQueryString",
+        "body": [
+            "ams.utils.getQueryString('${1:name}', 'url')$0"
+        ],
+        "description": "获取querystring对应key的值"
+    },
+    "ams.utils.listStringHasValue": {
+        "prefix": "ams.utils.listStringHasValue",
+        "body": [
+            "ams.utils.listStringHasValue('${1:list}', 'value')$0"
+        ],
+        "description": "查找逗号分隔的对象里是否有对应value"
+    },
+    "ams.utils.getType": {
+        "prefix": "ams.utils.getType",
+        "body": [
+            "ams.utils.getType('${1:obj}')$0"
+        ],
+        "description": "获取obj的真实类型"
+    },
+    "ams.utils.deepExtend": {
+        "prefix": "ams.utils.deepExtend",
+        "body": [
+            "ams.utils.deepExtend('${1:destination}', 'source')$0"
+        ],
+        "description": "对象深度合并"
+    },
+    "ams.utils.isExternal": {
+        "prefix": "ams.utils.isExternal",
+        "body": [
+            "ams.utils.isExternal('${1:path}')$0"
+        ],
+        "description": "判断path是否是外链"
+    },
+    "ams.utils.getByOrder": {
+        "prefix": "ams.utils.getByOrder",
+        "body": [
+            "ams.utils.getByOrder(${1:...args})$0"
+        ],
+        "description": "按传入顺序返回首个非undefined值"
+    }
+}

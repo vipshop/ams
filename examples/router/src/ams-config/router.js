@@ -162,6 +162,11 @@ ams.block('router', {
                         name: '级联选择',
                         path: 'cascader',
                         block: 'cascader'
+                    },
+                    {
+                        name: 'Select选择器',
+                        path: 'select',
+                        block: 'select'
                     }
                 ]
             },
@@ -260,6 +265,11 @@ ams.block('router', {
                         block: 'dragimage'
                     },
                     {
+                        name: '拖拽图片框（上下）',
+                        path: 'dragimage-updown',
+                        block: 'dragimage-updown'
+                    },
+                    {
                         name: '折叠面板',
                         path: 'collapse',
                         block: 'collapse'
@@ -320,6 +330,11 @@ ams.block('router', {
                         block: 'popover'
                     },
                     {
+                        name: '抽屉',
+                        path: 'drawer',
+                        block: 'drawer'
+                    },
+                    {
                         name: 'bct定制进度条',
                         path: 'bct-progress',
                         block: 'bct-progress'
@@ -334,11 +349,6 @@ ams.block('router', {
                     noRedirect: true
                 },
                 children: [
-                    {
-                        name: '远程select',
-                        path: 'select',
-                        block: 'remote-select'
-                    },
                     {
                         name: 'OA搜索示例',
                         path: 'select-oa',
@@ -462,6 +472,44 @@ ams.block('router', {
                 'text-align': 'center'
             },
             slot: 'menuBottom'
+        },
+        navRightNav: {
+            slot: 'nav-left',
+            type: 'dropdown',
+            style: {
+                float: 'right',
+                'padding-left': '15px'
+            },
+            props: {
+                trigger: 'click'
+            },
+            options: {
+                menu: '点击触发下拉',
+                menuItems: [{
+                    text: '黄金糕',
+                    props: {
+                        command: 'a',
+                        icon: 'el-icon-plus'
+                    }
+                }, {
+                    text: '狮子头',
+                    props: {
+                        command: 'b',
+                        icon: 'el-icon-circle-plus'
+                    }
+                }, {
+                    text: '螺蛳粉',
+                    props: {
+                        command: 'c',
+                        icon: 'el-icon-circle-plus-outline'
+                    }
+                }]
+            },
+            on: {
+                command: function(e) {
+                    this.$message('click on item ' + e);
+                }
+            }
         }
     }
 });

@@ -1,7 +1,7 @@
 import ams from '@ams-team/ams';
 import { prefix } from '@/utils';
 
-ams.block('remote-select', {
+ams.block('select', {
     resources: {
         select: {
             api: {
@@ -16,7 +16,9 @@ ams.block('remote-select', {
                 normalSelectEdit: {
                     type: 'select',
                     label: '本地select多选',
+                    // labelWidth: '0',
                     props: {
+                        inline: true,
                         options: {
                             a: '黄金糕',
                             b: '双皮奶',
@@ -27,17 +29,65 @@ ams.block('remote-select', {
                         }
                     }
                 },
+                normalSelectView: {
+                    type: 'select',
+                    ctx: 'view',
+                    label: '本地selectView',
+                    props: {
+                        inline: true,
+                        options: {
+                            e: '北京烤鸭',
+                            0: '哈哈哈'
+                        }
+                    }
+                },
+                button: {
+                    type: 'button',
+                    label: '',
+                    props: {
+                        text: '按钮'
+                    }
+                },
                 normalSingleSelectEdit: {
                     type: 'select',
                     label: '本地select单选',
                     useStringValue: false,
                     props: {
+                        inline: true,
                         multiple: false,
                         clearable: true,
                         options: [{
-                            label: '黄金糕',
-                            value: 'a',
-                            disabled: true
+                            label: '全部',
+                            value: ''
+                        }, {
+                            label: '双皮奶',
+                            value: 'b'
+                        }, {
+                            label: '蚵仔煎',
+                            value: 'c'
+                        }, {
+                            label: '龙须面',
+                            value: 'd',
+                            border: true
+                        }, {
+                            label: '北京烤鸭',
+                            value: 'e'
+                        }, {
+                            label: '哈哈哈1',
+                            value: 1
+                        }]
+                    },
+                    get(val) { return val },
+                    set(val) { return val },
+                },
+                normalSingleSelectView: {
+                    type: 'select',
+                    ctx: 'view',
+                    label: '本地selectView',
+                    props: {
+                        options: [{
+                            label: '全部',
+                            value: ''
                         }, {
                             label: '双皮奶',
                             value: 'b'
@@ -63,6 +113,7 @@ ams.block('remote-select', {
                     BASE: 'SELECT_REMOTE',
                     label: '远程selectEdit',
                     type: 'select',
+                    labelWidth: '0',
                     remoteConfig: {
                         action: `${prefix}tag`,
                         queryKey: 'requiredName',
@@ -128,19 +179,6 @@ ams.block('remote-select', {
                         queryKey: 'requiredName',
                         labelKey: 'name'
                     }
-                },
-                remoteCheckbox: {
-                    ctx: 'edit',
-                    BASE: 'SELECT_REMOTE',
-                    label: 'checkbox',
-                    type: 'checkbox',
-                    remoteConfig: {
-                        action: `${prefix}tag`,
-                        queryKey: 'requiredName',
-                        labelKey: 'name',
-                        isInitEmpty: true,
-                        isMiniBackfill: false,
-                    }
                 }
             }
         }
@@ -158,14 +196,28 @@ ams.block('remote-select', {
         }
     },
     data: {
-        selectView: 2003,
-        selectEdit: 2003,
-        singleSelectEdit: 2003,
+        selectView: 2002,
+        selectEdit: 1,
+        singleSelectEdit: 2,
         singleSelectView: 2003,
         normalSelectEdit: 0,
-        remoteCheckbox: 2003
+        normalSelectView: 0,
+        normalSingleSelectEdit: '',
+        normalSingleSelectView: ''
     },
     events: {
         submit: '@create'
+    },
+    layout: {
+        normalSelectEdit: ['normalSelectEdit', 'normalSelectView', 'button']
+    },
+    blocks: {
+        // brBlock: {
+        //     type: 'component',
+        //     slot: 'field:normalSelectView',
+        //     options: {
+        //         is: 'br'
+        //     }
+        // }
     }
 });

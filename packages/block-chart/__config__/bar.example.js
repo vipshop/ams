@@ -63,8 +63,8 @@ export default {
                 change() {
                     // this.change
                     ams.$blocks.bar.setBlockData({
-                        xAxis: [1,2,3,4,5,6,7]
-                    })
+                        xAxis: [1, 2, 3, 4, 5, 6, 7]
+                    });
                     // ams.$blocks.bar.data.xAxis = [1,2,3,4,5,6,7]
                 }
             }

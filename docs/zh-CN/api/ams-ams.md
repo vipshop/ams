@@ -140,7 +140,7 @@ action调用显式的返回值，会自动更新 `$prevReturn`，用于action参
 
 返回将post数据 data序列化为`x-www-form-urlencoded`格式
 
-## ams.createApiAction(params：)
+## ams.createApiAction(params)
 - 参数：
     - params： `object`
         - getOptions： `async Function` 请求参数获取回调
@@ -152,7 +152,7 @@ action调用显式的返回值，会自动更新 `$prevReturn`，用于action参
 
 ## ams.request(opt)
 - 参数：
-    - opt： `object
+    - opt： `object`
         - opt.method：'get' | 'post'
         - url：string
         - data：object

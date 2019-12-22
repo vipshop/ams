@@ -4,15 +4,15 @@
                    :before-upload="beforeUpload"
                    v-on="on"
                    v-bind="field.props">
-            <img v-if="imageUrl"
-                 :src="imageUrl">
+            <img v-if="localValue"
+                 :src="localValue">
             <i v-else
                class="el-icon-plus"></i>
             <p class="edit-text"
-               v-show="imageUrl">修改</p>
+               v-show="localValue">修改</p>
         </el-upload>
         <i class="el-icon-error"
-           v-show="imageUrl"
+           v-show="localValue"
            @click="handleRemove"></i>
         <div slot="tip"
              class="el-upload__tip"
@@ -22,7 +22,7 @@
             可供选择的图片有：
             <ul v-if="field.props['default-image-list'].length" class="el-upload-list el-upload-list--picture-card el-default-list--picture-card">
                 <li
-                    :class="`el-upload-list__item ${imageUrl === item.url ? 'is-success' : ''}`"
+                    :class="`el-upload-list__item ${localValue === item.url ? 'is-success' : ''}`"
                     v-for="(item, index) in field.props['default-image-list']"
                     :key="index"
                     @click="handleChoseFromList(item.url)"
@@ -43,15 +43,7 @@ import mixins from '../../ams/mixins';
 
 export default {
     mixins: [mixins.fieldEditMixin],
-    data() {
-        return {
-            previewUrl: ''
-        };
-    },
     computed: {
-        imageUrl() {
-            return this.localValue || this.previewUrl;
-        },
         isHeadimage() {
             return this.field.props && this.field.props.headimage;
         }
@@ -123,9 +115,9 @@ export default {
             const successCode = this.$block.getConfig('resource.api.successCode');
             if (res.code === successCode) {
                 const successUrlKey = this.field.successUrlKey || 'url';
-                if (res.data && res.data[successUrlKey]) {
-                    this.previewUrl = URL.createObjectURL(file.raw);
-                    this.localValue = res.data[successUrlKey];
+                if (res.data) {
+                    // this.previewUrl = URL.createObjectURL(file.raw);
+                    this.localValue = res.data[successUrlKey] || res.data;
                     window.test = this.$refs.upload;
 
                     this.emitFormItemChange();
@@ -135,12 +127,9 @@ export default {
             }
         },
         handleRemove() {
-            // 清空预览url
-            this.previewUrl = '';
             // 变更数据
             this.localValue = '';
             this.emitFormItemChange();
-
         },
         emitFormItemChange() {
             // todo：关注一下有可能element-ui会修复这个问题
@@ -152,7 +141,7 @@ export default {
             }
         },
         handleChoseFromList(url) {
-            this.localValue = this.previewUrl = url;
+            this.localValue = url;
         }
     }
 };

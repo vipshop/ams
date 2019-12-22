@@ -36,7 +36,7 @@ export default {
             },
             actions: {
                 change() {
-                    ams.$blocks.default.block.options.frameHtml = '<div style="width: 50px; height: 50px; margin: 50px auto; background: #000">hello</div>'
+                    ams.$blocks.default.block.options.frameHtml = '<div style="width: 50px; height: 50px; margin: 50px auto; background: #000">hello</div>';
                 }
             }
         }

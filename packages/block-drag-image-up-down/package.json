@@ -1,0 +1,15 @@
+{
+    "name": "@ams-team/block-drag-image-up-down",
+    "version": "0.1.0",
+    "description": "",
+    "author": "ams",
+    "main": "lib/block-drag-image-up-down.js",
+    "unpkg": "lib/block-drag-image-up-down.js",
+    "amsConfig": {
+        "externals": {},
+        "cdn": [],
+        "title": "drag-image-up-down",
+        "tags": "",
+        "publish": true
+    }
+}

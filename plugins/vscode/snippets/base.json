@@ -3,7 +3,8 @@
         "prefix": "import ams",
         "body": [
             "import ams from '@ams-team/ams'"
-        ]
+        ],
+        "description": "引入@ams-team/ams包"
     },
     "ams.resource": {
         "prefix": "ams.resource",
@@ -23,7 +24,7 @@
             "    }",
             "})"
         ],
-        "description": "AMS资源"
+        "description": "AMS内置方法：创建资源"
     },
     "ams.block": {
         "prefix": "ams.block",
@@ -46,6 +47,114 @@
             "    blocks: {$8}",
             "})"
         ],
-        "description": "AMS区块"
+        "description": "AMS内置方法-创建区块"
+    },
+    "ams.actions": {
+        "prefix": "ams.actions",
+        "body": ["ams.actions"],
+        "description": "AMS内置方法-action调用显示的返回值"
+    },
+    "ams.blocks": {
+        "prefix": "ams.blocks",
+        "body": ["ams.blocks"],
+        "description": "AMS内置方法-全局的block引用"
+    },
+    "ams.$blocks": {
+        "prefix": "ams.$blocks",
+        "body": ["ams.\\$blocks"],
+        "description": "AMS内置方法-全局的block vue对象引用"
+    },
+    "ams.action": {
+        "prefix": "ams.action",
+        "body": ["ams.action('${1:name}', '${2:action}')$0"],
+        "description": "AMS内置方法-注册一个全局action"
+    },
+    "ams.render": {
+        "prefix": "ams.render",
+        "body": ["ams.render('${1:name}', '${2:el}')$0"],
+        "description": "AMS内置方法-将区块渲染到el上面"
+    },
+    "ams.$on": {
+        "prefix": "ams.$on",
+        "body": ["ams.\\$on('${1:event}', () => {$2})$0"],
+        "description": "AMS内置方法-将区块渲染到el上面"
+    },
+    "ams.$once": {
+        "prefix": "ams.$once",
+        "body": ["ams.\\$once('${1:event}', () => {$2})$0"],
+        "description": "AMS内置方法-监听只触发一次的自定义事件"
+    },
+    "ams.$off": {
+        "prefix": "ams.$off",
+        "body": ["ams.\\$off('${1:event}', () => {$2})$0"],
+        "description": "AMS内置方法-移除自定义事件监听器"
+    },
+    "ams.$emit": {
+        "prefix": "ams.$emit",
+        "body": ["ams.\\$emit('${1:event}', () => {$2})$0"],
+        "description": "AMS内置方法-触发当前实例上的事件"
+    },
+    "ams.param": {
+        "prefix": "ams.param",
+        "body": ["ams.param('${1:data}')$0"],
+        "description": "AMS内置方法-返回将data序列化为x-www-form-urlencoded格式"
+    },
+    "ams.createApiAction": {
+        "prefix": "ams.createApiAction",
+        "body": [
+            "ams.createApiAction({",
+            "    getOptions: '$1',", 
+            "    beforeRequest: '$2',",
+            "    success: '$3'",
+            "})$0"
+        ],
+        "description": "AMS内置方法-创建API动作"
+    },
+    "ams.request": {
+        "prefix": "ams.request",
+        "body": [
+            "ams.request({",
+            "    method: '$1',", 
+            "    url: '$2',",
+            "    data: '$3',",
+            "    params: '$4',",
+            "    headers: '$5',",
+            "    withCredentials: '$6',",
+            "    contentType: '$7'",
+            "})$0"
+        ],
+        "description": "AMS内置方法-创建请求"
+    },
+    "ams.config": {
+        "prefix": "ams.config",
+        "body": [
+            "ams.config({",
+            "    $1",
+            "})$0"
+        ],
+        "description": "AMS内置方法-深度合并ams.configs的配置"
+    },
+    "ams.configs": {
+        "prefix": "ams.configs",
+        "body": [
+            "ams.configs$0"
+        ],
+        "description": "AMS内置方法-获取ams.configs的配置"
+    },
+    "ams.deepCloneConfig": {
+        "prefix": "ams.deepCloneConfig",
+        "body": [
+            "ams.deepCloneConfig({",
+            "    $1", 
+            "})$0"
+        ],
+        "description": "AMS内置方法-通过base简化配置"
+    },
+    "ams.callAction": {
+        "prefix": "ams.callAction",
+        "body": [
+            "ams.callAction('${1:actionName}', {$2})$0"
+        ],
+        "description": "AMS内置方法-通过base简化配置"
     }
 }

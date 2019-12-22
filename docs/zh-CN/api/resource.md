@@ -17,7 +17,8 @@ ams.resource(name: String, config: Object)
 
 ```js
 ams.resource('demo-resource', {
-    key: 'id', // 【非必须】标识该resource的keyName
+    key: 'id',
+    foreignKeys: ['testArrays'],
     api: { // 数据接口相关
         prefix: '//rap2api.taobao.org/app/mock/231578/ams/mock/',
         create: 'create',
@@ -49,6 +50,8 @@ ams.resource('demo-resource', {
 以上注册了名字为 `demo-resource` 的资源，而这个资源由三部分组成，分别时`key` `api` `fields`，其中这三部分的意义为：
 
 - `key`： 【非必须】标识该resource的`keyName`，有些场景需要通过 `queryString` 传入，通过解析 `key=value` 获取
+
+- `foreignKeys`： 发起resource里的api接口时，可以附带传的参数，接收数组的字段格式，同`key`一样会通过`queryString` 传入
 
 - `api`： 对resource的一些内置方法，`prefix`为接口地址，目前提供了`create` `update` `read` `delete` `list` 几个内置请求方法
 

@@ -50,7 +50,7 @@
                         <el-form-item v-for="fieldName in fieldLayout"
                                       :key="fieldName"
                                       :label="fieldName === key && fields[fieldName].labelWidth !== '0' ? '' : fields[fieldName].label"
-                                      :label-width="fields[fieldName].labelWidth"
+                                      :label-width="fieldName === key ? '0' : fields[fieldName].labelWidth"
                                       :rules="fields[fieldName].rules"
                                       :prop="fields[fieldName].type !== 'array' && fields[fieldName].type !== 'object' ? fieldName : ''">
                             <component :is="`ams-field-${fields[fieldName].type}-${fields[fieldName].ctx}`"
@@ -108,7 +108,8 @@ export default {
     color: #888;
 }
 .ams-form-item-desc{
-    line-height: 40px;
+    line-height: 20px;
+    padding-top: 7px;
     font-size: 12px;
     color: #999;
 }

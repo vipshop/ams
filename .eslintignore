@@ -2,6 +2,7 @@ build
 node_modules
 examples/router/node_modules
 packages/*/node_modules
+packages/cdn
 lib
 dist
 test

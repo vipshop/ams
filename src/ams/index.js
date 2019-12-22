@@ -134,9 +134,9 @@ const ams = {
             block.filters = block.filters || {};
             if (block.searchs || block.searchsOptions) {
                 // !!!!! 搜索配置兼容旧版本及废弃提示 !!!!!
-                console.warn('列表的searchs和searchsOptions已在ams@0.6.0+废弃，请使用 slot operations 替代，如：  \nsearchs:{testText:true} 修改为\noperations: { testText: {type: "field", field: "testText", slot: "searchs"} }\n详情请参考：https://vipshop.github.io/ams/api/operation.html');
+                console.warn('列表的searchs和searchsOptions已在ams@0.6.0+废弃，请使用 slot operations 替代，如：  \nsearchs:{testText:true} 修改为\noperations: { testText: {type: "field", field: "testText", slot: "searchs"} }');
             }
-        } else if (block.type === 'dialog') {
+        } else if (block.type === 'dialog' || block.type === 'drawer') {
             // 初始化dialog
             block.data.visible = !!block.data.visible;
         }

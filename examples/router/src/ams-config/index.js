@@ -20,7 +20,6 @@ import './404';
 import './router';
 // sence
 import './cases-sence/remote-oa';
-import './cases-sence/remote-select';
 import './cases-sence/array-object';
 import './cases-sence/admin';
 import './cases-sence/runtime-add-block';
@@ -43,9 +42,11 @@ import './cases-field/tree';
 import './cases-field/link';
 import './cases-field/plan-date';
 import './cases-field/cascader';
+import './cases-field/select';
 // block
 import './cases-block/calendar';
 import './cases-block/dragimage';
+import './cases-block/dragimage-updown';
 import './cases-block/collapse';
 import './cases-block/steps';
 import './cases-block/card';
@@ -61,6 +62,7 @@ import './cases-block/bct-progress';
 import './cases-block/imagelist';
 import './cases-block/imagelist2';
 import './cases-block/title';
+import './cases-block/drawer';
 
 // chart-demo
 import './cases-chart/demo1';

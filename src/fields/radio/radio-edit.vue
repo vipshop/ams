@@ -6,7 +6,8 @@
             <template v-if="field.props && field.props.type === 'button'">
                 <el-radio-button :key="item.value"
                     v-for="item in options"
-                    :label="item.value">{{item.label}}</el-radio-button>
+                    :label="item.value"
+                    v-bind="item">{{item.label}}</el-radio-button>
             </template>
 
             <template v-else>

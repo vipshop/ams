@@ -2,10 +2,10 @@
     <div class="ams-field-radio-img" :style="field.style">
 
         <ul class="radio-img-group">
-            <li 
-                v-for="item in options" 
+            <li
+                v-for="item in options"
                 :class="[localValue === item.value? 'active': '']"
-                :key="item.value" 
+                :key="item.value"
                 @click="handleChoose(item)"
             >
                 <img :src="item.image" alt="" />
@@ -23,7 +23,7 @@ export default {
     mixins: [ams.mixins.fieldEditMixin, ams.mixins.fieldEditOptionsMixin],
     methods: {
         handleChoose(item) {
-            this.localValue = item.value
+            this.localValue = item.value;
         }
     }
 };
@@ -46,7 +46,7 @@ export default {
             }
             p {
                 margin: 0;
-                
+
                 font-size: 12px;
                 text-align: center;
                 line-height: 20px;

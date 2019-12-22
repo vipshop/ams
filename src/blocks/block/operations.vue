@@ -8,7 +8,7 @@
                 <label v-if="operation.label && !/^(?:button|reset|icon|text)$/.test(operation.type)"
                        class="el-form-item__label">{{operation.label}}</label>
                 <div class="el-form-item__content">
-                    <component :is="'ams-operation-'+operation.type"
+                    <component :is="'ams-operation-' + operation.type"
                                :name="name"
                                :operation-key="operationKey"
                                :context="context"

@@ -1,6 +1,6 @@
 {
     "name": "@ams-team/block-bct-progress",
-    "version": "0.2.4",
+    "version": "0.2.5",
     "description": "pmc/bct custom progress",
     "author": "ams",
     "main": "lib/block-bct-progress.js",

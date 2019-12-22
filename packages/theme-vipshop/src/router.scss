@@ -16,16 +16,27 @@ $sidebarActiveTextColor: #797ef4; // 当前菜单字体颜色
         left: 0;
         width: 100%;
         z-index: 1002;
-        padding-left: 15px;
+        padding-left: 0;
+        .hamburger {
+            width: 68px;
+            text-align: center;
+            transition: 0s;
+            &:hover {
+                background: rgba(0,0,0,0.14);
+            }
+        }
         .logo,h1{
             display: inline-block;
         }
         .right-menu {
+            font-size: 14px;
             .login-out {
+                font-size: 14px;
                 color: #fff;
             }
         }
         .avatar-name {
+            color: #fff;
             &::after {
                 background-color: #fff;
                 opacity: 0.3;

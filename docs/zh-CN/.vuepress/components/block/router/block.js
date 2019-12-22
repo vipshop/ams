@@ -216,6 +216,14 @@ export default {
                 },
                 slot: 'menuTop'
             },
+            navRouterLeft: {
+                slot: 'nav-left',
+                type: 'component',
+                options: {
+                    is: 'div',
+                    text: '导航左侧插槽'
+                }
+            },
             navRouterTitle: {
                 "type": "component",
                 "options": {

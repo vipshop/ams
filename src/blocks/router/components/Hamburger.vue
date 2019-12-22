@@ -23,6 +23,7 @@ export default {
 <style scoped lang="scss">
 .hamburger {
     display: inline-block;
+    vertical-align: top;
     padding: 0 10px;
     cursor: pointer;
     font-size: 20px;

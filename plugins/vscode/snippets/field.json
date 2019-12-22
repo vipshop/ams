@@ -94,7 +94,7 @@
         "body": [
             "{",
             "    type: 'date',",
-            "    label: '${1:date},'",
+            "    label: '${1:date}',",
             "    props: {",
             "        placeholder: '${2:请选择日期}'",
             "    }",
@@ -107,7 +107,7 @@
         "body": [
             "{",
             "    type: 'time',",
-            "    label: '${1:time},'",
+            "    label: '${1:time}',",
             "    props: {",
             "        placeholder: '${2:请选择时间}'",
             "    }",
@@ -120,7 +120,7 @@
         "body": [
             "{",
             "    type: 'timepicker',",
-            "    label: '${1:timepicker},'",
+            "    label: '${1:timepicker}',",
             "    props: {",
             "        placeholder: '${2:请选择时间}'",
             "    }",
@@ -133,7 +133,7 @@
         "body": [
             "{",
             "    type: 'timerange',",
-            "    label: '${1:timerange},'",
+            "    label: '${1:timerange}',",
             "    props: {",
             "        placeholder: '${2:请选择时间}'",
             "    }",
@@ -229,7 +229,7 @@
             "    label: '${1:transfer}',",
             "    props: {",
             "        options: {$2}",
-            "    }",
+            "    },",
             "    slots: {",
             "        'left-footer': [$3],",
             "        'right-footer': [$4]",
@@ -253,7 +253,7 @@
         "body": [
             "{",
             "    type: 'headimage',",
-            "    label: '${1:headimage}'",
+            "    label: '${1:headimage}',",
             "    tip: '${2:只能上传jpg/png文件，且不超过500kb}',",
             "    successUrlKey: '$3'",
             "}$4"

@@ -7,7 +7,7 @@
             <el-button @click.stop="emit"
                 :style="field.style"
                 v-on="on"
-                v-bind="field.props"><template v-if="field.label">{{field.label}}</template></el-button>
+                v-bind="field.props">{{field.props.text || field.label}}</el-button>
 
         </el-badge>
     </el-tooltip>

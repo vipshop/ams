@@ -18,7 +18,13 @@ ams.block('collapse', {
         collapseblock2: '反馈'
     },
     data: {
+        // 可以在data配置一个或多个需要默认展开的折叠区块，数组内容为区块名
         active: ['collapseblock2']
+    },
+    on: {
+        change(activeNames) {
+            // 可以监听折叠目标的展开，activeNames为展开的面板的区块名，array / string
+        }
     },
     blocks: {
         collapseblock1: {

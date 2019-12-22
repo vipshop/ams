@@ -49,9 +49,9 @@ export default {
                 if (left < 0) {
                     this.block.options.left = 0;
                 } else if (left > this.block.options.width - this.block.options.cutWidth) {
-                    this.block.options.left = this.block.options.width - this.block.options.cutWidth
+                    this.block.options.left = this.block.options.width - this.block.options.cutWidth;
                 } else {
-                    this.block.options.left = left
+                    this.block.options.left = left;
                 }
             }
         },

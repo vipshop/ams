@@ -12,9 +12,9 @@ function provideHover(document, position) {
     if (/\.js$/.test(fileName)) {
         const type = line.text.match(/(?:\s{0,}type:\s+)(\'|\")(.*)(\'|\")/);
         if (new RegExp(/ams\.resource*./, 'gm').test(line.text)) {
-            return new vscode.Hover(`* **参考：** [AMS文档：](https://vipshop.github.io/ams/api/resource.html)`);
+            return new vscode.Hover(`* **参考：** [AMS-资源](https://vipshop.github.io/ams/api/resource.html)`);
         } else if (new RegExp(/ams\.block*./, 'gm').test(line.text)) {
-            return new vscode.Hover(`* **参考：** [AMS-资源](https://vipshop.github.io/ams/block)`);
+            return new vscode.Hover(`* **参考：** [AMS-区块](https://vipshop.github.io/ams/block)`);
         } else if (type && type[2]) {
             const name = type[2];
             const fields = [
@@ -30,7 +30,6 @@ function provideHover(document, position) {
                 'title', 'tabs', 'steps', 'card', 'dropdown'
             ];
             if (fields.indexOf(name) >= 0) {
-                console.log('success', name);
                 return new vscode.Hover(`* **参考：** [AMS字段-${name}](https://vipshop.github.io/ams/field/${name}.html)`);
             } else if (blocks.indexOf(name) >= 0) {
                 return new vscode.Hover(`* **参考：** [AMS区块-${name}](https://vipshop.github.io/ams/block/${name}.html)`);

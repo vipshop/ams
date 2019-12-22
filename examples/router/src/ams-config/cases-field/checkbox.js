@@ -6,7 +6,8 @@ const datas = {
     checkboxDisable: 'c',
     checkboxBorder: 'b,c',
     checkboxButton: 'a,c',
-    radioButton: 'a'
+    radioButton: 'a',
+    remoteCheckbox: 2003
 };
 
 ams.block('checkbox', {
@@ -126,6 +127,18 @@ ams.block('checkbox', {
                                 value: 'c'
                             }
                         ]
+                    }
+                },
+                remoteCheckbox: {
+                    BASE: 'SELECT_REMOTE',
+                    label: '远程选项',
+                    type: 'checkbox',
+                    remoteConfig: {
+                        action: `${prefix}tag`,
+                        queryKey: 'requiredName',
+                        labelKey: 'name',
+                        isInitEmpty: true,
+                        isMiniBackfill: false,
                     }
                 }
             }
