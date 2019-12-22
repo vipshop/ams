@@ -92,6 +92,10 @@ ams.render('demo')
 
 现代浏览器 及 Internet Explorer 10+。
 
+## 1.0版本规划
+
+> 通过 `1.0` 版本调整，希望把ams的配置的更加精简，希望解决一些设计不规范或者在实践中反馈不合理的地方，解决已知的痛点，敬请期待。[点击查看1.0版本规划详情>>](https://github.com/vipshop/ams/milestone/1)
+
 ## 开发团队
 
 来自vip.com的开发者：
