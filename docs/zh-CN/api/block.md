@@ -30,6 +30,12 @@ ams.block('formView', {
 以上注册了 `formView` block
 
 ## 使用 block
+> 注意：如果在 template 中使用 `<ams-block />`，需要先在 `main.js` 中安装 `ams`，引入 ams 中的区块和字段。文档参见[通过npm安装](https://vipshop.github.io/ams/api/#%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F)
+
+```js
+import ams from '@ams-team/ams';
+Vue.use(ams); // 类似 Vue.use(element-ui);
+```
 
 每个block本质都是[Vue组件](https://cn.vuejs.org/v2/guide/components-registration.html)，可以通过区块名 `name` 来引用：`<ams-block name="formView" />`，完整示例如下：
 
