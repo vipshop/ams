@@ -36,6 +36,7 @@ export interface FormBlock {
 ```
 
 ### 配置
+> 补充：如果需要实现固定列需求，请参见：[设置固定列](https://github.com/vipshop/ams/issues/101)
 
 可用配置项表
 | 参数 | 类型 | 是否必填 | 说明
