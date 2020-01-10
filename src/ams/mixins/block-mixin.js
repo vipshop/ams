@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import ams from '../index';
-import { listStringHasValue, get, getByOrder, deepExtend } from '../../utils';
+import { listStringHasValue, get, getByOrder, deepExtend, getType, watermark } from '../../utils';
 import { getRouter } from './router';
 import Blank from '../../blocks/block/Blank';
 
@@ -43,6 +43,15 @@ export default {
             await this.emitEvent('init');
 
             this.afterReady && this.afterReady();
+
+            let wmOptions = this.block.options && this.block.options.watermark;
+            if (wmOptions) {
+                wmOptions = getType(wmOptions) === 'object' ? wmOptions : {};
+                watermark(Object.assign({
+                    container: this.$el,
+                    uid: this._uid
+                }, wmOptions));
+            }
         });
     },
 

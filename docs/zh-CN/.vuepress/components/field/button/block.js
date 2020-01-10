@@ -13,20 +13,21 @@ export default {
                 },
                 buttonA: {
                     type: 'button',
-                    label: '按钮',
+                    // label: '按钮',
                     labelWidth: '0',
                     tooltip: '点击触发事件',
                     props: {
+                        text: '点击',
                         inline: true,
                         type: 'primary'
                     },
-                    event: 'pop'
+                    event: 'pop:xxx'
                 }
 			}
 		},
         actions: {
-            pop() {
-                this.$alert('你输入了：'+ this.data.text)
+            pop({ $arg }) {
+                this.$alert('你输入了：'+ $arg)
             }
         }
 	}

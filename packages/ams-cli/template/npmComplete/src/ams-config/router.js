@@ -3,7 +3,35 @@ import ams from '@ams-team/ams';
 ams.block('router', {
     type: 'router',
     data: {
-        roles: ['admin']
+        logo: '//h5rsc.vipstatic.com/ams/ams-logo2.png?20191105', // 系统logo（只有使用vipshop的UI主题才会显示）
+        title: 'AMS在线示例', // 系统标题（只有使用vipshop的UI主题才会显示）
+        userImg: '', // 用户头像（如果头像为空，则用默认头像）
+        userName: '' // 用户名字（如果名字为空则不展示用户信息模块）
+    },
+    events: {
+        init: '@getUsers'
+    },
+    actions: {
+        async getUsers() {
+            const res = await ams.request({
+                url: `https://www.yournana.club/vipshop/getUser`,
+                method: 'GET'
+            });
+            if (
+                res.data &&
+                res.data.code === 0
+            ) {
+                this.data.userImg = res.data.data.userImg;
+                this.data.userName = res.data.data.userName;
+            } else {
+                this.$message.error(`${res.data.msg}(${res.data.code})`);
+            }
+        },
+        // 退出登录函数
+        loginOut() {
+            alert('你点击了退出按钮');
+            location.href = '//vip.com/user/logout';
+        }
     },
     router: {
         // mode: 'history',
@@ -77,21 +105,6 @@ ams.block('router', {
         }
     },
     blocks: {
-        menuTop: {
-            type: 'component',
-            options: {
-                is: 'img'
-            },
-            style: {
-                width: '80px',
-                height: '80px',
-                margin: '20px auto 0'
-            },
-            props: {
-                src: '//h5rsc.vipstatic.com/ams/ams-logo.png'
-            },
-            slot: 'menuTop'
-        },
         menuBottom: {
             type: 'component',
             options: {
@@ -104,24 +117,6 @@ ams.block('router', {
                 'font-size': '12px'
             },
             slot: 'menuBottom'
-        },
-        navUser: {
-            type: 'nav-user',
-            data: {
-                userImg: '',
-                userName: ''
-            },
-            actions: {
-                async getUsers() {
-                    const userName = this.$store.state.base.userName;
-                    this.data.userName = userName;
-                },
-                // 退出登录函数
-                loginOut() {
-                    location.href = '//xxx.com/user/logout';
-                }
-            },
-            slot: 'nav'
         }
     }
 });

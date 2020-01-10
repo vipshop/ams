@@ -2,21 +2,21 @@ import ams from '@ams-team/ams';
 import { prefix } from '@/utils';
 
 ams.block('list-pagination', {
-    type: 'list',
     ctx: 'view',
+    type: 'list',
     resource: {
         api: {
             prefix: prefix,
             list: 'list-pagination'
         },
         fields: {
-            'id': {
-                'type': 'text',
-                'label': 'ID'
+            id: {
+                type: 'text',
+                label: 'ID'
             },
-            'title': {
-                'type': 'text',
-                'label': '标题',
+            title: {
+                type: 'text',
+                label: '标题',
                 // props: {
                 //     'suffix-info': '我是提示', // 后缀提示
                 //     // 'suffix-info-warning': '我是提示warning', // 后缀警告提示
@@ -33,9 +33,9 @@ ams.block('list-pagination', {
                     return field;
                 }
             },
-            'content': {
-                'type': 'textarea',
-                'label': '内容',
+            content: {
+                type: 'textarea',
+                label: '内容',
                 props: {
                     'suffix-info': '我是提示', // 后缀提示
                 }

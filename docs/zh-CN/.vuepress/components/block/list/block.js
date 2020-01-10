@@ -980,7 +980,11 @@ export default {
                 },
                 testText: {
                     type: "text",
-                    label: "名称"
+                    label: "名称",
+                    props: {
+                        // 实现名称字段拖拽
+                        'class-name': 'drag-column'
+                    }
                 },
                 testTextarea: {
                     type: "textarea",
@@ -997,7 +1001,9 @@ export default {
             }
         },
         options: {
-            drag: true
+            drag: true,
+            // 隐藏拖拽icon
+            // showDragIcon: false
         },
         on: {
             'drag-start': function({ oldIndex }) {

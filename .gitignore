@@ -14,6 +14,7 @@ package-lock.json
 *.sln
 
 /dist
+/lib
 /docs/dist
 /packages/*/lib
 /material-list.json

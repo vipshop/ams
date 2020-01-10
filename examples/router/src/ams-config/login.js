@@ -1,13 +1,19 @@
 import ams from '@ams-team/ams';
 
 ams.block('login', {
-    resource: 'login',
-    type: 'form',
     ctx: 'edit',
+    type: 'form',
+    resource: 'login',
     style: {
         width: '50%',
         marginLeft: '25%',
         paddingTop: '25%'
+    },
+    operations: {
+        login: {
+            type: 'button',
+            label: '登录'
+        }
     },
     data: {
         username: 'admin',
@@ -15,12 +21,6 @@ ams.block('login', {
     },
     events: {
         login: '@validate @goLogin @routerReplace:/'
-    },
-    operations: {
-        login: {
-            type: 'button',
-            label: '登录'
-        }
     },
     actions: {
         async goLogin() {

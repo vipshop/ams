@@ -32,12 +32,12 @@ ams.block('remote-oa', {
             }
         }
     },
-    data: {
-        'oaName': '劳志伟'
-    },
+    ctx: 'edit',
     type: 'form',
     resource: 'select-oa',
-    ctx: 'edit',
+    data: {
+        oaName: '劳志伟'
+    },
     operations: {
         submit: {
             type: 'button',

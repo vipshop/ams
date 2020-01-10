@@ -14,7 +14,7 @@ export default {
         return {
             icons: [
                 'user', 'woman', 'man', 'question', 'watcher', 'advocate', 'fold', 'crown', 'heart', 'brick', 'dashboard',
-                'portrait', 'brand-equity', 'crowd-manage', 'account-sales', 'help-center', 'data-report', 'customer-operation'
+                'portrait', 'brand-equity', 'crowd-manage', 'account-sales', 'help-center', 'data-report', 'customer-operation', 'code'
             ]
         }
     },

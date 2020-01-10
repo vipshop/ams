@@ -1,10 +1,10 @@
 import ams from '@ams-team/ams';
 
 ams.block('outside-website', {
+    type: 'component',
     style: {
         height: 'calc(100vh - 110px)'
     },
-    type: 'component',
     options: {
         is: 'iframe'
     },

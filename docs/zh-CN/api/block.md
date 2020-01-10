@@ -30,6 +30,12 @@ ams.block('formView', {
 以上注册了 `formView` block
 
 ## 使用 block
+> 注意：如果在 template 中使用 `<ams-block />`，需要先在 `main.js` 中安装 `ams`，引入 ams 中的区块和字段。文档参见[通过npm安装](https://vipshop.github.io/ams/api/#%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F)
+
+```js
+import ams from '@ams-team/ams';
+Vue.use(ams); // 类似 Vue.use(element-ui);
+```
 
 每个block本质都是[Vue组件](https://cn.vuejs.org/v2/guide/components-registration.html)，可以通过区块名 `name` 来引用：`<ams-block name="formView" />`，完整示例如下：
 
@@ -354,7 +360,7 @@ operations: {
 
 ```
 参数说明
-- `actionField`：对应blocks中的events名字，详细用法参考：[event 与 action](./action.md)
+- `actionField`：对应blocks中的events名字，详细用法参考：[event 与 action](/block/action.html)
 - `event`：指定调用event名，优先级大于 actionField
 - `slot`：指定operation所在插槽，如list支持 `searchs` 和 `multipleSelect` 定制搜索操作和多选操作
 - `field`：指定使用的field配置，使用String刚会使用本block内同名的field配置
@@ -362,7 +368,7 @@ operations: {
 - `style`：透传至operation根节点的style配置
 - `show`：满足show条件的才会显示，在list内是该行的值，在form内是data的值，如`show:{name:'test',value:2}` 当这一行的name字段的值为2时该operation会显示
 
-点击前往[更深入的了解operations](/api/operation.html)
+点击前往[更深入的了解operations](/block/deep-operation.html)
 
 ## props 属性、on 事件、style 样式的定制
 

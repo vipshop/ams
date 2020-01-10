@@ -4,17 +4,15 @@ const resource = {
     api: {
         contentType: 'form',
         // api前缀
-        prefix: 'http://vip.com/AmsPage/',
+        prefix: 'https://www.yournana.club/vipshop/',
         // 读取数据接口
-        read: 'GetInfo',
+        read: 'read',
         // 更新数据接口
-        update: 'Edit',
+        update: 'update',
         // 更新数据接口
-        list: 'GetList',
-
-        delete: 'Del',
-
-        create: 'add'
+        list: 'list-pagination',
+        delete: 'delete',
+        create: 'create'
     },
     fields: {
         id: {
@@ -36,7 +34,6 @@ const resource = {
             props: {
                 'value-format': 'yyyy-MM-dd HH:mm:ss'
             }
-            // ctx: 'view'
         },
         update_time: {
             type: 'datetime',
@@ -44,7 +41,6 @@ const resource = {
             props: {
                 'value-format': 'yyyy-MM-dd HH:mm:ss'
             }
-            // ctx: 'view'
         }
     }
 };
@@ -52,12 +48,10 @@ const resource = {
 ams.block('admin', {
     blocks: {
         adminListView: {
-            type: 'list',
             ctx: 'view',
-
+            type: 'list',
             // 指定block使用的资源为上面声明的demo-res
             resource,
-
             events: {
                 init: '@list @test',
                 removeItem: '@confirm:确认删除吗? @delete init',

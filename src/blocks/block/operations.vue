@@ -97,9 +97,9 @@ export default {
 
                 if (field) {
                     let defaultData;
-                    if (this.$block.data && this.$block.data[slotName] && typeof this.$block.data[slotName][key] !== 'undefined') {
+                    if (this.$block.block.data && this.$block.block.data[slotName] && typeof this.$block.block.data[slotName][key] !== 'undefined') {
                         // todo: copy object?
-                        defaultData = this.$block.data[slotName][key];
+                        defaultData = this.$block.block.data[slotName][key];
                     }
                     // if (this.$block.block.data && this.$block.block.data[slotName] && typeof this.$block.block.data[slotName][key] !== 'undefined') {
                     //     // todo: copy object?

@@ -84,9 +84,9 @@ ams.block('unitselect', {
     },
     blocks: {
         unitselectEdit: {
+            ctx: 'edit',
             type: 'form',
             resource: 'unitselect',
-            ctx: 'edit',
             data: {
                 money: 123918241234,
                 meter: '222毫米米',
@@ -103,8 +103,8 @@ ams.block('unitselect', {
             }
         },
         unitselectView: {
-            type: 'form',
             ctx: 'view',
+            type: 'form',
             resource: 'unitselect',
             data: {
                 money: 123918241234,

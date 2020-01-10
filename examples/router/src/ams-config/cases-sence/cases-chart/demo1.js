@@ -65,11 +65,11 @@ ams.block('chart-demo1', {
                 marginBottom: '100px'
             },
             data: {
-                'xAxis': ['大盘', '特卖会', '唯品仓', '云品仓', 'VIPSHOP', 'VIPMAXX'],
-                'legend': ['净收入', '毛利额', '毛利率'],
-                'series1': [680, 500, 50, 30, 65, 57],
-                'series2': [190, 155, 20, 25, 26, 16],
-                'series3': [28, 30, 28, 32, 25, 5]
+                xAxis: ['大盘', '特卖会', '唯品仓', '云品仓', 'VIPSHOP', 'VIPMAXX'],
+                legend: ['净收入', '毛利额', '毛利率'],
+                series1: [680, 500, 50, 30, 65, 57],
+                series2: [190, 155, 20, 25, 26, 16],
+                series3: [28, 30, 28, 32, 25, 5]
             },
             // 图表配置
             options: {
@@ -165,10 +165,10 @@ ams.block('chart-demo1', {
             },
             resource: 'chart2',
             data: {
-                'xAxis': ['大盘', '特卖会', '唯品仓', '云品仓', 'VIPSHOP', 'VIPMAXX'],
-                'legend': ['存货货值', '周转天数'],
-                'series1': [],
-                'series2': []
+                xAxis: ['大盘', '特卖会', '唯品仓', '云品仓', 'VIPSHOP', 'VIPMAXX'],
+                legend: ['存货货值', '周转天数'],
+                series1: [],
+                series2: []
             },
             // 图表配置
             options: {

@@ -3,18 +3,24 @@ import ams from '@ams-team/ams';
 ams.block('steps', {
     type: 'steps',
     options: {
-        'step1': `steps1`,
-        'step2': 'steps2',
-        'step3': 'steps3'
+        step1: `steps1`,
+        step2: 'steps2',
+        step3: {
+            title: 'steps3',
+            description: '这是一段很长很长很长的描述性文字'
+        }
+    },
+    props: {
+        'align-center': true
     },
     data: {
         active: 0
     },
     blocks: {
-        'step1': {
+        step1: {
+            ctx: 'edit',
             type: 'form',
             resource: 'resource',
-            ctx: 'edit',
             operations: {
                 submit: {
                     type: 'button',

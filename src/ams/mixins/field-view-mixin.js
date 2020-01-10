@@ -4,7 +4,7 @@ export default {
     computed: {
         on,
         viewValue() {
-            return this.field.view ? this.field.view(this.value, this.field) : this.value;
+            return this.field.view ? this.field.view(this.value, this.field, this.context) : this.value;
         }
     },
     inject: ['$block'],

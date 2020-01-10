@@ -1,9 +1,9 @@
 import ams from '@ams-team/ams';
 
 ams.block('form-edit', {
+    ctx: 'edit',
     type: 'form',
     resource: 'resource',
-    ctx: 'edit',
     data: {
         hahah: '21'
     },
@@ -43,7 +43,6 @@ ams.block('form-edit', {
             type: 'button',
             label: 'aa',
             show(context) {
-                // console.log(this, context);
                 if (!context.testSwitch) {
                     return true;
                 }
@@ -86,10 +85,10 @@ ams.block('form-edit', {
         }
     },
     on: {
-        'validate': function() {
+        validate: function() {
             console.log('validate');
         },
-        'keyupEnter': function(args) {
+        keyupEnter: function(args) {
             console.log('keyup.enter.native', this, args);
         }
     },
@@ -107,6 +106,7 @@ ams.block('form-edit', {
     },
     blocks: {
         title1: {
+            slot: 'field:testText',
             type: 'title',
             options: {
                 title: '主标题',
@@ -115,8 +115,7 @@ ams.block('form-edit', {
             style: {
                 marginLeft: '50px',
                 marginBottom: '40px'
-            },
-            slot: 'field:testText'
+            }
         }
     }
 });

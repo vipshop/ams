@@ -5,7 +5,7 @@ ams.block('carousel', {
         carousel1Title: {
             type: 'title',
             options: {
-                'title': '普通文案竖排'
+                title: '普通文案竖排'
             }
         },
         carousel1: {
@@ -25,7 +25,7 @@ ams.block('carousel', {
         carousel2Title: {
             type: 'title',
             options: {
-                'title': '普通文案横排（高度200px）'
+                title: '普通文案横排（高度200px）'
             }
         },
         carousel2: {
@@ -43,7 +43,7 @@ ams.block('carousel', {
         carousel3title: {
             type: 'title',
             options: {
-                'title': '带按钮横排'
+                title: '带按钮横排'
             }
         },
         carousel3: {
@@ -87,7 +87,7 @@ ams.block('carousel', {
         carousel4title: {
             type: 'title',
             options: {
-                'title': '嵌套blocks'
+                title: '嵌套blocks'
             }
         },
         carousel4: {
@@ -147,7 +147,7 @@ ams.block('carousel', {
         carousel5title: {
             type: 'title',
             options: {
-                'title': '卡片化'
+                title: '卡片化'
             }
         },
         carousel5: {

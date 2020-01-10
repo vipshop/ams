@@ -162,13 +162,13 @@ ams.block('image', {
     },
     blocks: {
         editImage: {
-            data: datas,
+            ctx: 'edit',
             type: 'form',
             resource: 'image',
-            ctx: 'edit',
             style: {
                 width: '50%'
             },
+            data: datas,
             events: {
                 submit: '@validate @create'
             },
@@ -180,10 +180,10 @@ ams.block('image', {
             }
         },
         viewImage: {
-            data: datas,
+            ctx: 'view',
             type: 'form',
             resource: 'image',
-            ctx: 'view',
+            data: datas,
             style: {
                 width: '50%'
             }

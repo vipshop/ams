@@ -61,42 +61,42 @@ ams.block('tabs', {
     },
     blocks: {
         'tabs-tab1': {
-            'type': 'component',
-            'options': {
-                'is': 'div',
-                'text': '我是tabs1的内容'
+            type: 'component',
+            style: {
+                padding: '100px'
             },
-            'style': {
-                'padding': '100px'
+            options: {
+                is: 'div',
+                text: '我是tabs1的内容'
             }
         },
         'tabs-tab2': {
-            'type': 'component',
-            'options': {
-                'is': 'div',
-                'text': '我是tabs2的内容'
+            type: 'component',
+            style: {
+                padding: '100px'
             },
-            'style': {
-                'padding': '100px'
+            options: {
+                is: 'div',
+                text: '我是tabs2的内容'
             }
         },
         'tabs-tab3': {
-            'type': 'component',
-            'options': {
-                'is': 'div',
-                'text': '我是tabs3的内容'
+            type: 'component',
+            style: {
+                padding: '100px'
             },
-            'style': {
-                'padding': '100px'
+            options: {
+                is: 'div',
+                text: '我是tabs3的内容'
             }
         }
     },
     operations: {
         hide: {
-            'type': 'icon',
-            'label': '关闭',
-            'props': {
-                'class': 'el-icon-close'
+            type: 'icon',
+            label: '关闭',
+            props: {
+                class: 'el-icon-close'
             }
         }
     }

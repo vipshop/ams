@@ -49,20 +49,20 @@ ams.block('popover', {
             blocks: {
                 popoverList: {
                     slot: 'content',
-                    'type': 'card',
-                    'style': {
-                        'width': '600px',
-                        'margin': '20px auto'
+                    type: 'card',
+                    style: {
+                        width: '600px',
+                        margin: '20px auto'
                     },
-                    'options': {
-                        'headerTitle': '卡片标题'
+                    options: {
+                        headerTitle: '卡片标题'
                     },
-                    'blocks': {
-                        'emptyCardText': {
-                            'type': 'component',
-                            'options': {
-                                'is': 'div',
-                                'text': '我是自定义内容！我是自定义内容！我是自定义内容'
+                    blocks: {
+                        emptyCardText: {
+                            type: 'component',
+                            options: {
+                                is: 'div',
+                                text: '我是自定义内容！我是自定义内容！我是自定义内容'
                             }
                         }
                     }

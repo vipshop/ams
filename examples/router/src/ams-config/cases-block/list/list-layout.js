@@ -19,10 +19,14 @@ ams.block('list-layout', {
                         // 支持多选
                         multipleSelect: true,
                         // 列表高度自适应屏幕
-                        tableHeightFit: true
+                        // tableHeightFit: true
                     },
                     props: {
-                        height: 600
+                        // height: 600,
+                        'row-key': function(row) {
+                            return row.id;
+                        },
+                        'expand-row-keys': []
                     },
                     expand: {
                         id: true,
@@ -166,10 +170,14 @@ ams.block('list-layout', {
                         }
                     },
                     events: {
-                        init: '@list',
+                        init: '@list @setExpandRow',
                         edit: '@routerPush:/list/edit'
                     },
                     actions: {
+                        setExpandRow() {
+                            // 设置默认展开行
+                            this.block.props['expand-row-keys'] = ['2'];
+                        },
                         fieldChange(args) {
                             console.log('fieldChange', args);
                             if (args.path === 'multipleSelect.testSelect') {

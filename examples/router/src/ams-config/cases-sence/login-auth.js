@@ -25,23 +25,14 @@ ams.block('login-auth', {
         needlogin: {
             type: 'button',
             label: '需登录的请求',
-            // props: {
-            //     type: 'primary'
-            // }
         },
         dosomething: {
             type: 'button',
             label: '无权限的请求',
-            // props: {
-            //     type: 'primary'
-            // }
         },
         test: {
             type: 'button',
             label: '修改operation',
-            // props: {
-            //     type: 'primary'
-            // }
         }
     }
 });
