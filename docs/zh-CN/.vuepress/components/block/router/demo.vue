@@ -1,5 +1,5 @@
 <template>
-    <el-card shadow="hover" class="demo demo-card">
+    <el-card shadow="hover" class="demo demo-card router-demo-card">
         <ams-block v-if="init" :name="blockName" class="demo-card-preview"/>
         <div :class="`demo-card-config ${showConfig ? 'open': ''}`">
             <highlight-code lang="javascript">
@@ -38,3 +38,8 @@ export default {
     }
 }
 </script>
+<style lang="scss" scoped>
+.router-demo-card .demo-card-preview{
+    padding: 0;
+}
+</style>

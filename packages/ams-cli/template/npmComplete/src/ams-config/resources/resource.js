@@ -584,11 +584,12 @@ ams.resource('resource', {
             }
         },
         testHeadImage: {
-            type: 'headimage',
+            type: 'image',
             label: '头像',
             tip: '只能上传jpg/png文件，且不超过500kb',
             successUrlKey: 'url',
             props: {
+                type: 'headimage',
                 action: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/upload-image'
             }
         },

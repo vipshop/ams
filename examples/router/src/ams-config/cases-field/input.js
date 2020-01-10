@@ -103,13 +103,9 @@ ams.block('input', {
     },
     blocks: {
         editInput: {
-            // data: datas,
+            ctx: 'edit',
             type: 'form',
             resource: 'input',
-            ctx: 'edit',
-            style: {
-                // width: '50%'
-            },
             data: {
                 text7: '测试文字',
                 text11: '上传成功',

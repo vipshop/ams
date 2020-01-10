@@ -199,7 +199,7 @@ action调用显式的返回值，会自动更新 `$prevReturn`，用于action参
     - args: `object`
 - 用法：
 
-调用 `action`或`event`，如全局action: `ams.callAction('routerPush:/login')` ，调用某个block的action：`ams.callAction('formEdit.init')`
+调用 `action`或`event`，如全局action: `ams.callAction('routerPush:/login')` ，调用某个block的action：`ams.callAction('formEdit.init')`；默认action`list`、`read`、`update`、`delect`、`create`可通过promise、async/await捕获到接口数据、也可以在下一个action通过$prevReturn拿到
 
 ```javascript
 // 例子：请求列表接口listaction，并且传page和type两个参数（如果是接口的get参数，记得不要少了外层的params）
@@ -209,4 +209,25 @@ ams.callAction('list', {
         type: 'Andriod'
     }
 })
+
+// action的promise
+ams.callAction('@list').then(res => {
+    // res
+})
+
+// action的async/await
+async getData() {
+    const res = await this.callAction('@read')
+}
+
+// 链式调用
+{
+    events: '@list @afterHandle',
+    actions: {
+        afterHandle({ $prevReturn }) {
+            console.log('---', $prevReturn)
+        }
+    }
+}
+
 ```

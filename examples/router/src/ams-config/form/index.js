@@ -3,9 +3,9 @@ import ams from '@ams-team/ams';
 ams.block('index', {
     blocks: {
         indexTitle1: {
-            'type': 'title',
-            'options': {
-                'title': '表单编辑状态'
+            type: 'title',
+            options: {
+                title: '表单编辑状态'
             },
             style: {
                 width: '50%',
@@ -13,18 +13,18 @@ ams.block('index', {
             }
         },
         indexTitle2: {
-            'type': 'title',
-            'options': {
-                'title': '表单展示状态'
+            type: 'title',
+            options: {
+                title: '表单展示状态'
             },
             style: {
                 width: '49%'
             }
         },
         formEditAll: {
+            ctx: 'edit',
             type: 'form',
             resource: 'resource',
-            ctx: 'edit',
             style: {
                 width: '50%',
                 paddingRight: '2%'
@@ -124,14 +124,14 @@ ams.block('index', {
                 setTimeout(() => {
                     console.log('resolve formViewAll');
                     resolve({
+                        ctx: 'view',
                         type: 'form',
                         resource: 'resource',
-                        ctx: 'view',
-                        data: {
-                            testRadio: 'c'
-                        },
                         style: {
                             width: '49%'
+                        },
+                        data: {
+                            testRadio: 'c'
                         },
                         events: {
                             init: '@read @console'
@@ -149,7 +149,6 @@ ams.block('index', {
             type: 'dialog',
             data: {
                 title: '弹窗标题'
-                // visible: false
             },
             events: {
                 submit: 'dialogFormEdit.submit @hide',
@@ -182,9 +181,9 @@ ams.block('index', {
             },
             blocks: {
                 dialogFormEdit: {
+                    ctx: 'edit',
                     type: 'form',
                     resource: 'resource',
-                    ctx: 'edit',
                     events: {
                         init: '@read',
                         submit: '@validate @update'

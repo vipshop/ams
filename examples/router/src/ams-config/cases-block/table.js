@@ -1,9 +1,9 @@
 import ams from '@ams-team/ams';
 
 ams.block('table', {
+    ctx: 'view',
     type: 'table',
     resource: 'table',
-    ctx: 'view',
 
     // 过滤设置（列表特有）
     filters: {

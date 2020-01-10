@@ -112,7 +112,12 @@ export default {
         handleUploadSuccess(res, file) {
             console.log('handleUploadSuccess', res, file);
             // todo: 预览、上传进度
-            const successCode = this.$block.getConfig('resource.api.successCode');
+            let successCode;
+            if (this.field.props && typeof this.field.props.successCode !== 'undefined') {
+                successCode = this.field.props.successCode;
+            } else {
+                successCode = this.$block.getConfig('resource.api.successCode');
+            }
             if (res.code === successCode) {
                 const successUrlKey = this.field.successUrlKey || 'url';
                 if (res.data) {

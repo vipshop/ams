@@ -1,9 +1,9 @@
 import ams from '@ams-team/ams';
 
 ams.block('list', {
+    ctx: 'view',
     type: 'list',
     resource: 'resource',
-    ctx: 'view',
     props: {
         // 自动加上索引
         type: 'index'
@@ -264,6 +264,7 @@ ams.block('list', {
     },
     blocks: {
         listTop: {
+            slot: 'top',
             type: 'component',
             options: {
                 is: 'div',
@@ -273,10 +274,10 @@ ams.block('list', {
                 padding: '20px',
                 marginBottom: '20px',
                 border: '1px solid #3eaf7c'
-            },
-            slot: 'top'
+            }
         },
         listTableTop: {
+            slot: 'tableTop',
             type: 'component',
             options: {
                 is: 'div',
@@ -285,8 +286,7 @@ ams.block('list', {
             style: {
                 padding: '20px',
                 border: '1px solid #f60'
-            },
-            slot: 'tableTop'
+            }
         }
     }
 });

@@ -46,6 +46,8 @@ AMS体系中，有几个概念：**物料，字段，区块，模板**
 * `@ams-team/field-*` AMS扩展字段库，在核心库提供的字段之外的扩展字段
 * `@ams-team/block-*` AMS扩展区块库，在核心库提供的区块之外的扩展区块
 * `@ams-team/cli` 工具，提供快速搭建项目脚手架、编写定制模块、发布管理定制模块等功能 [>> 详情](/api/cli.html)
+* `vscode/ams-helper` vscode编辑器用于AMS开发时的插件 [>> 详情](https://marketplace.visualstudio.com/items?itemName=wuzebin.ams-helper)
+* `主题风格` 提供多种主题风格，按公司UED部门的设计规范标准，统一了后台管理系统页面的各种UI组件样式 [点击预览](https://vipshop.github.io/ams/example/index.html)
 * `扩展图标` 在element-ui提供的[Icon 图标](https://element.eleme.cn/#/zh-CN/component/icon)之外，我们还提供了UED出品的[扩展图标](/api/icon.html)满足不同需求
 
 :::tip

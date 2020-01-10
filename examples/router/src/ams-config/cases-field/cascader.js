@@ -1,40 +1,40 @@
 import ams from '@ams-team/ams';
 const options = [{
-    'value': 'zhinan',
-    'label': '指南',
-    'children': [{
-        'value': 'shejiyuanze',
-        'label': '设计原则',
-        'children': [{
-            'value': 'yizhi',
-            'label': '一致'
+    value: 'zhinan',
+    label: '指南',
+    children: [{
+        value: 'shejiyuanze',
+        label: '设计原则',
+        children: [{
+            value: 'yizhi',
+            label: '一致'
         }, {
-            'value': 'fankui',
-            'label': '反馈'
+            value: 'fankui',
+            label: '反馈'
         }]
     }, {
-        'value': 'daohang',
-        'label': '导航',
-        'children': [{
-            'value': 'cexiangdaohang',
-            'label': '侧向导航'
+        value: 'daohang',
+        label: '导航',
+        children: [{
+            value: 'cexiangdaohang',
+            label: '侧向导航'
         }, {
-            'value': 'dingbudaohang',
-            'label': '顶部导航'
+            value: 'dingbudaohang',
+            label: '顶部导航'
         }]
     }]
 }, {
-    'value': 'ziyuan',
-    'label': '资源',
-    'children': [{
-        'value': 'axure',
-        'label': 'Axure Components'
+    value: 'ziyuan',
+    label: '资源',
+    children: [{
+        value: 'axure',
+        label: 'Axure Components'
     }, {
-        'value': 'sketch',
-        'label': 'Sketch Templates'
+        value: 'sketch',
+        label: 'Sketch Templates'
     }, {
-        'value': 'jiaohu',
-        'label': '组件交互文档'
+        value: 'jiaohu',
+        label: '组件交互文档'
     }]
 }];
 
@@ -112,15 +112,15 @@ ams.block('cascader', {
     },
     blocks: {
         cascaderFieldTitle1: {
-            'type': 'title',
-            'options': {
-                'title': '级联单选'
+            type: 'title',
+            options: {
+                title: '级联单选'
             }
         },
         cascaderField1: {
+            ctx: 'edit',
             type: 'form',
             resource: 'cascader1',
-            ctx: 'edit',
             style: {
                 width: '60%'
             },
@@ -129,15 +129,15 @@ ams.block('cascader', {
             }
         },
         cascaderFieldTitle2: {
-            'type': 'title',
-            'options': {
-                'title': '级联多选'
+            type: 'title',
+            options: {
+                title: '级联多选'
             }
         },
         cascaderField2: {
+            ctx: 'edit',
             type: 'form',
             resource: 'cascader2',
-            ctx: 'edit',
             style: {
                 width: '60%'
             },

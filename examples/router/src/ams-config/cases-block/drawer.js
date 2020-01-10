@@ -37,7 +37,7 @@ ams.block('drawer', {
                     resource: {
                         fields: {
                             text1: {
-                                label: 'text1text1text1text1text1',
+                                label: 'text1',
                                 type: 'text'
                             },
                             text2: {

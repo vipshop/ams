@@ -62,8 +62,14 @@ ams.block('arraylist', {
     },
     blocks: {
         arrayListView: {
+            ctx: 'view',
             type: 'form',
             resource: 'arrayList',
+            fields: {
+                ArrayList: {
+                    label: '预览'
+                }
+            },
             data: {
                 ArrayList: [
                     {
@@ -75,17 +81,17 @@ ams.block('arraylist', {
                         'date': 1545148800000
                     }
                 ]
-            },
-            fields: {
-                ArrayList: {
-                    label: '预览'
-                }
-            },
-            ctx: 'view'
+            }
         },
         arrayListEdit: {
+            ctx: 'edit',
             type: 'form',
             resource: 'arrayList',
+            fields: {
+                ArrayList: {
+                    label: '编辑'
+                }
+            },
             data: {
                 ArrayList: [
                     {
@@ -98,12 +104,6 @@ ams.block('arraylist', {
                     }
                 ]
             },
-            fields: {
-                ArrayList: {
-                    label: '编辑'
-                }
-            },
-            ctx: 'edit',
             actions: {
                 fieldChange: function({ value, path }) {
                     console.log('fieldChange', value, path);

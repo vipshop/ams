@@ -129,7 +129,7 @@ List: List 列表
 
 ### 列表支持拖拽
 
-+ 通过配置list 的 `options.drag` 为 `true` 让列表支持拖拽，可以在 `on.drag-start` 和 `on.drag-end` 事件中监听列表拖拽开始和拖拽结束回调，拖拽完成后会自动更新列表data.list数据顺序，0.17.12+支持
++ 通过配置list 的 `options.drag` 为 `true` 让列表支持拖拽，可以在 `on.drag-start` 和 `on.drag-end` 事件中监听列表拖拽开始和拖拽结束回调，拖拽完成后会自动更新列表data.list数据顺序，拖拽的位置为默认icon位置拖拽，可通过对指定字段field配置`props['class-name']` 为 `drag-column`实行指定字段(列)的拖拽, 也可配置`options.showDragIcon` 为 `false`隐藏拖拽icon
 
 <ClientOnly>
 <block-list-demo blockName="dragList" />

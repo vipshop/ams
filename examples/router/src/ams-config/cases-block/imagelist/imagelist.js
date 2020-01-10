@@ -130,10 +130,10 @@ ams.block('imagelist', {
             label: '编辑',
             icon: 'el-icon-edit'
         },
-        'buttonMulti': {
-            'type': 'button',
-            'label': '删除',
-            'event': 'multi'
+        buttonMulti: {
+            type: 'button',
+            label: '删除',
+            event: 'multi'
         }
     },
     pageSize: 10,

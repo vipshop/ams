@@ -101,13 +101,13 @@ ams.block('plan-date', {
     },
     blocks: {
         editPlanDate: {
-            data: datas,
+            ctx: 'edit',
             type: 'form',
             resource: 'plan-date',
-            ctx: 'edit',
             style: {
                 width: '50%'
             },
+            data: datas,
             actions: {
                 async changePanelContent({ date }) {
                     console.log('date', date);
@@ -133,13 +133,13 @@ ams.block('plan-date', {
             }
         },
         viewPlanDate: {
-            data: datas,
+            ctx: 'view',
             type: 'form',
             resource: 'plan-date',
-            ctx: 'view',
             style: {
                 width: '50%'
             },
+            data: datas,
             events: {
                 submit: '@create'
             }

@@ -291,8 +291,13 @@ export default {
         },
         handlerSearch() {
             // console.log('handlerSearch', this.searchs);
-            this.data.page = 1;
-            this.emitEvent('list');
+            // 阻止列表搜索栏的回车搜索事件
+            if (this.block.props && this.block.props['enterkey-search'] === false) {
+                return false;
+            } else {
+                this.data.page = 1;
+                this.emitEvent('list');
+            }
         },
         handleSizeChange() {
             console.log('handleSizeChange');

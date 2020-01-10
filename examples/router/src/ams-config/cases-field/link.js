@@ -69,6 +69,7 @@ ams.block('link', {
     },
     blocks: {
         linkView: {
+            ctx: 'view',
             type: 'form',
             resource: 'link',
             data: {
@@ -80,13 +81,12 @@ ams.block('link', {
                     link: 'http://w3cmark.com'
                 },
                 arrayLink: ['51853695-1', '51853695-2', '51853695-3']
-            },
-            ctx: 'view'
+            }
         },
         editView: {
+            ctx: 'edit',
             type: 'form',
             resource: 'link',
-            ctx: 'edit',
             data: {
                 link: '默认',
                 primaryLink: '51853695',

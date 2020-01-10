@@ -1,6 +1,6 @@
 import ams from '@ams-team/ams';
 import outsideFile from './cases-sence/outside-file';
-import { prefix } from '@/utils';
+import { prefix, configCodePrefix } from '@/utils';
 
 ams.block('router', {
     type: 'router',
@@ -22,7 +22,7 @@ ams.block('router', {
             });
             if (
                 res.data &&
-          res.data.code === 0
+                res.data.code === 0
             ) {
                 this.data.userImg = res.data.data.userImg;
                 this.data.userName = res.data.data.userName;
@@ -351,12 +351,12 @@ ams.block('router', {
                 children: [
                     {
                         name: 'OA搜索示例',
-                        path: 'select-oa',
+                        path: 'remote-oa',
                         block: 'remote-oa'
                     },
                     {
                         name: 'array & object',
-                        path: 'array',
+                        path: 'array-object',
                         block: 'array-object'
                     },
                     {
@@ -458,6 +458,26 @@ ams.block('router', {
             }
         ]
     },
+    on: {
+        beforeEach: function(to, from, next) {
+            console.log(to);
+            let href = '';
+            switch (to.meta.path) {
+                case '/':
+                    href = '/index.js';
+                    break;
+                default:
+                    href = to.meta.path + '.js';
+                    break;
+            }
+            if (ams.$blocks.configCodeBlock) {
+                ams.$blocks.configCodeBlock.block.props.href = configCodePrefix + href;
+            } else {
+                ams.blocks.configCodeBlock.props.href = configCodePrefix + href;
+            }
+            next();
+        }
+    },
     blocks: {
         menuBottom: {
             type: 'component',
@@ -509,6 +529,34 @@ ams.block('router', {
                 command: function(e) {
                     this.$message('click on item ' + e);
                 }
+            }
+        },
+        configCodeBlock: {
+            type: 'component',
+            options: {
+                is: 'a'
+            },
+            slot: 'nav-left',
+            style: {
+                position: 'fixed',
+                right: '0px',
+                top: '75px',
+                'z-index': 100,
+                width: '50px',
+                height: '32px',
+                'line-height': '32px',
+                border: '1px solid #eee',
+                'border-radius': '32px 0 0 32px',
+                'padding-left': '15px',
+                'box-shadow': '-2px 2px 5px 0 #eee',
+                color: '#333',
+                backgroundColor: '#fff'
+            },
+            props: {
+                title: '查看配置',
+                class: 'ams-icon-code',
+                target: '_blank',
+                href: ''
             }
         }
     }

@@ -2,6 +2,7 @@ export * from './uri';
 export * from './date';
 export * from './dom';
 export * from './function';
+export * from './tools';
 
 export function get(object, path) {
     path = path.split('.');

@@ -3,7 +3,8 @@ import ams from '@ams-team/ams';
 ams.block('router', {
     type: 'router',
     data: {
-        roles: ['admin']
+        logo: '//h5rsc.vipstatic.com/ams/ams-logo2.png?20191105', // 系统logo（只有使用vipshop的UI主题才会显示）
+        title: 'AMS在线示例', // 系统标题（只有使用vipshop的UI主题才会显示）
     },
     router: {
         // mode: 'history',
@@ -69,21 +70,6 @@ ams.block('router', {
         ]
     },
     blocks: {
-        menuTop: {
-            type: 'component',
-            options: {
-                is: 'img'
-            },
-            style: {
-                width: '80px',
-                height: '80px',
-                margin: '20px auto 0'
-            },
-            props: {
-                src: '//h5rsc.vipstatic.com/ams/ams-logo.png'
-            },
-            slot: 'menuTop'
-        },
         menuBottom: {
             type: 'component',
             options: {

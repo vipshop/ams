@@ -26,9 +26,9 @@ ams.block('editor', {
     },
     blocks: {
         editorEdit: {
+            ctx: 'edit',
             type: 'form',
             resource: 'resource-editor', // 此处的resource能否去掉？
-            ctx: 'edit',
             events: {
                 init: '@read'
             },
@@ -43,8 +43,8 @@ ams.block('editor', {
             }
         },
         editorView: {
-            type: 'form',
             ctx: 'view',
+            type: 'form',
             // 指定block使用的资源为上面声明的demo-res
             resource: 'resource-editor',
             events: {

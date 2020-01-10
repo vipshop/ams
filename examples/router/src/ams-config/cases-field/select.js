@@ -210,14 +210,5 @@ ams.block('select', {
     },
     layout: {
         normalSelectEdit: ['normalSelectEdit', 'normalSelectView', 'button']
-    },
-    blocks: {
-        // brBlock: {
-        //     type: 'component',
-        //     slot: 'field:normalSelectView',
-        //     options: {
-        //         is: 'br'
-        //     }
-        // }
     }
 });

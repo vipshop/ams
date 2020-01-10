@@ -3,7 +3,7 @@ import { prefix } from '@/utils';
 
 ams.block('union', {
     resources: {
-        'union': {
+        union: {
             api: {
                 prefix: prefix,
                 update: 'update'
@@ -30,9 +30,9 @@ ams.block('union', {
     },
     blocks: {
         unionEdit: {
+            ctx: 'edit',
             type: 'form',
             resource: 'union',
-            ctx: 'edit',
             data: {
                 union: '1548413724000,1548417324000',
             },
@@ -47,8 +47,8 @@ ams.block('union', {
             }
         },
         unionView: {
-            type: 'form',
             ctx: 'view',
+            type: 'form',
             resource: 'union',
             data: {
                 union: '1548413724000,1548417324000',

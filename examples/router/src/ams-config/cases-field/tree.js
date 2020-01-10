@@ -57,24 +57,22 @@ ams.block('tree', {
     },
     blocks: {
         treeView: {
+            ctx: 'view',
             type: 'form',
             resource: 'tree',
-            data: {
-                tree: '91,7'
-            },
             fields: {
                 tree: {
                     label: '树预览'
                 }
             },
-            ctx: 'view'
-        },
-        treeEdit: {
-            type: 'form',
-            resource: 'tree',
             data: {
                 tree: '91,7'
-            },
+            }
+        },
+        treeEdit: {
+            ctx: 'edit',
+            type: 'form',
+            resource: 'tree',
             fields: {
                 tree: {
                     props: {
@@ -89,7 +87,9 @@ ams.block('tree', {
                     label: '树编辑'
                 }
             },
-            ctx: 'edit',
+            data: {
+                tree: '91,7'
+            },
             actions: {
                 fieldChange: function({ value, path }) {
                     console.log('fieldChange', value, path);

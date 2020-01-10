@@ -51,6 +51,10 @@ module.exports = {
             link: '/version/VERSION'
           }
         ]
+      },
+      {
+        text: 'GITHUB',
+        link: 'https://github.com/vipshop/ams'
       }
     ],
     sidebar: {
@@ -99,7 +103,7 @@ module.exports = {
         {
           title: '基础',
           collapsable: false,
-          children: ['text','password', 'textarea', 'switch',  'color', 'rate', 'unitselect', 'link', 'button']
+          children: ['text','password', 'textarea', 'switch',  'color', 'rate', 'unitselect', 'link', 'button', 'html']
         },
         {
           title: '时间',
@@ -140,6 +144,7 @@ module.exports = {
             children: [
               'api',
               'form',
+              'grid',
               'list',
               'imagelist',
               'table',

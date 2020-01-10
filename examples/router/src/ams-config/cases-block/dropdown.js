@@ -2,14 +2,14 @@ import ams from '@ams-team/ams';
 
 ams.block('dropdown', {
     blocks: {
-        'dropdowntext1': {
+        dropdowntext1: {
             type: 'component',
             options: {
-                'is': 'h3',
-                'text': '普通示例：'
+                is: 'h3',
+                text: '普通示例：'
             }
         },
-        'dropdown1': {
+        dropdown1: {
             type: 'dropdown',
             options: {
                 menu: '下拉菜单一',
@@ -25,14 +25,14 @@ ams.block('dropdown', {
                 'margin-bottom': '50px'
             }
         },
-        'dropdowntext2': {
+        dropdowntext2: {
             type: 'component',
             options: {
-                'is': 'h3',
-                'text': 'button示例：'
+                is: 'h3',
+                text: 'button示例：'
             }
         },
-        'dropdown2': {
+        dropdown2: {
             type: 'dropdown',
             options: {
                 menu: '下拉菜单二',
@@ -62,14 +62,14 @@ ams.block('dropdown', {
                 'margin-bottom': '50px'
             }
         },
-        'dropdowntext3': {
+        dropdowntext3: {
             type: 'component',
             options: {
-                'is': 'h3',
-                'text': 'split-button示例：'
+                is: 'h3',
+                text: 'split-button示例：'
             }
         },
-        'dropdown3': {
+        dropdown3: {
             type: 'dropdown',
             options: {
                 menu: '下拉菜单三',
@@ -98,14 +98,14 @@ ams.block('dropdown', {
                 'margin-bottom': '50px'
             }
         },
-        'dropdowntext4': {
+        dropdowntext4: {
             type: 'component',
             options: {
-                'is': 'h3',
-                'text': '指令事件示例：'
+                is: 'h3',
+                text: '指令事件示例：'
             }
         },
-        'dropdown4': {
+        dropdown4: {
             type: 'dropdown',
             options: {
                 menu: '下拉菜单四',

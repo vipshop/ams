@@ -64,15 +64,15 @@ ams.block('get-set-view', {
     },
     blocks: {
         editGetSetView: {
+            ctx: 'edit',
+            type: 'form',
+            resource: 'getSetView',
+            style: {
+                width: '50%'
+            },
             data: {
                 datetime: '',
                 testSelect: []
-            },
-            type: 'form',
-            resource: 'getSetView',
-            ctx: 'edit',
-            style: {
-                width: '50%'
             },
             events: {
                 init: 'initFn',
@@ -94,13 +94,13 @@ ams.block('get-set-view', {
             }
         },
         viewGetSetView: {
-            data: datas,
+            ctx: 'view',
             type: 'form',
             resource: 'getSetView',
-            ctx: 'view',
             style: {
                 width: '50%'
             },
+            data: datas,
             events: {
                 submit: '@create'
             }

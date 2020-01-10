@@ -41,8 +41,8 @@ ams.block('originfile', {
             }
         }
     },
-    type: 'form',
     ctx: 'edit',
+    type: 'form',
     resource: 'res-originfile',
     data: {
         name: 'wei测试',

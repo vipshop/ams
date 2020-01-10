@@ -6,11 +6,6 @@ cd ./router
 npm i
 npm run dev
 ```
-- npm 集成
-    - router
-        - 完整示例
-    - dev
-        - 本地开发dev环境
 
 ## 移动端示例本地开发调试
 ```

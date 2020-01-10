@@ -5,15 +5,6 @@ import './resources/login';
 import './resources/table';
 
 import './form/index';
-import './form/form-edit';
-import './form/form-view';
-import './form/list';
-import './form/list-operations';
-import './form/list-layout';
-import './form/list-edit';
-import './form/list-pagination';
-import './form/list-drag';
-import './form/table';
 import './login';
 
 import './404';
@@ -27,6 +18,10 @@ import './cases-sence/get-set-view';
 import './cases-sence/login-auth';
 import './cases-sence/add-item-action';
 import './cases-sence/outside-website';
+// chart-demo
+import './cases-sence/cases-chart/demo1';
+import './cases-sence/cases-chart/demo2';
+
 // field
 import './cases-field/input';
 import './cases-field/radio';
@@ -43,7 +38,14 @@ import './cases-field/link';
 import './cases-field/plan-date';
 import './cases-field/cascader';
 import './cases-field/select';
+
 // block
+import './cases-block/list/list';
+import './cases-block/list/list-operations';
+import './cases-block/list/list-layout';
+import './cases-block/list/list-edit';
+import './cases-block/list/list-pagination';
+import './cases-block/list/list-drag';
 import './cases-block/calendar';
 import './cases-block/dragimage';
 import './cases-block/dragimage-updown';
@@ -59,14 +61,13 @@ import './cases-block/tabs';
 import './cases-block/component';
 import './cases-block/popover';
 import './cases-block/bct-progress';
-import './cases-block/imagelist';
-import './cases-block/imagelist2';
+import './cases-block/imagelist/imagelist';
+import './cases-block/imagelist/imagelist2';
 import './cases-block/title';
 import './cases-block/drawer';
-
-// chart-demo
-import './cases-chart/demo1';
-import './cases-chart/demo2';
+import './cases-block/table';
+import './cases-block/form/edit';
+import './cases-block/form/view';
 
 ams.config({
     resource: {

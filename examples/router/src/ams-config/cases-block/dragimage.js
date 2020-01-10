@@ -31,8 +31,8 @@ ams.block('dragimage', {
             }
         },
         dragImagePicBlock: {
-            type: 'drag-image',
             ctx: 'view',
+            type: 'drag-image',
             options: {
                 url: 'http://c.vpimg1.com/upcb/2019/09/17/172/ias_156871245334665.jpg',
                 width: 384, // 底图宽度

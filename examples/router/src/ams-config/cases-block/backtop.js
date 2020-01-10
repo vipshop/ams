@@ -43,9 +43,9 @@ ams.block('backtop', {
                         text: 'UP'
                     },
                     style: {
+                        color: '#1989fa',
                         'text-align': 'center',
-                        'line-height': '40px',
-                        'color': '#1989fa'
+                        'line-height': '40px'
                     }
                 }
             }

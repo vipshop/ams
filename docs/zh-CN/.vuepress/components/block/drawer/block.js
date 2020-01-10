@@ -15,6 +15,7 @@ export default {
                     title: '我是标题'
                 },
                 props: {
+                    'append-to-body': true,
                     'before-close': function(done){
                         this.$confirm('确认关闭？')
                         .then(_ => {
@@ -65,6 +66,9 @@ export default {
         blocks: {
             adminDrawer: {
                 type: 'drawer',
+                props: {
+                    'append-to-body': true
+                },
                 data: {
                     title: '添加'
                 },

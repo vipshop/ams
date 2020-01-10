@@ -119,6 +119,7 @@ export default {
 <style lang="scss">
 .ams-field-array-label {
     position: relative;
+    z-index: 2;
     padding-left: 30px;
     .el-button {
         position: absolute;

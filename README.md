@@ -82,6 +82,12 @@ ams.render('demo')
 
 尝试AMS的最简单的方式是使用[JSRUN上的官方入门Demo](http://jsrun.net/sehKp/edit?utm_source=website)。你可以在浏览器新标签页中打开它，跟着例子学习一些基础用法。
 
+### packages本地开发调试
+
+```
+npm run dev
+```
+
 ## 相关链接
 
 - [文档与教程](https://vipshop.github.io/ams/)
