@@ -360,7 +360,7 @@ operations: {
 
 ```
 参数说明
-- `actionField`：对应blocks中的events名字，详细用法参考：[event 与 action](./action.md)
+- `actionField`：对应blocks中的events名字，详细用法参考：[event 与 action](/block/action.html)
 - `event`：指定调用event名，优先级大于 actionField
 - `slot`：指定operation所在插槽，如list支持 `searchs` 和 `multipleSelect` 定制搜索操作和多选操作
 - `field`：指定使用的field配置，使用String刚会使用本block内同名的field配置
@@ -368,7 +368,7 @@ operations: {
 - `style`：透传至operation根节点的style配置
 - `show`：满足show条件的才会显示，在list内是该行的值，在form内是data的值，如`show:{name:'test',value:2}` 当这一行的name字段的值为2时该operation会显示
 
-点击前往[更深入的了解operations](/api/operation.html)
+点击前往[更深入的了解operations](/block/deep-operation.html)
 
 ## props 属性、on 事件、style 样式的定制
 

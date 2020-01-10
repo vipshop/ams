@@ -37,7 +37,7 @@ module.exports = {
       },
       {
         text: '示例',
-        link: '/example/'
+        link: '/example/#/'
       },
       {
         text: '版本更新',
