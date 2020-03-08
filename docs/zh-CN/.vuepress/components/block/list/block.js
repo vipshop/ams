@@ -476,28 +476,31 @@ export default {
 		type: 'list',
 		resource: {
 			fields: {
-			text: {
-				label: '文本',
-				type: 'text'
-			},
-			inputnumber: {
-				type: 'inputnumber',
-				label: '数字输入'
-			},
-			select: {
-				type: 'select',
-				label: 'select多选',
-				props: {
-					options: {
-						a: '黄金糕',
-						b: '双皮奶',
-						c: '蚵仔煎',
-						d: '龙须面',
-						e: '北京烤鸭'
+				text: {
+					label: '文本',
+					type: 'text'
+				},
+				inputnumber: {
+					type: 'inputnumber',
+					label: '数字输入'
+				},
+				select: {
+					type: 'select',
+					label: 'select多选',
+					props: {
+						options: {
+							a: '黄金糕',
+							b: '双皮奶',
+							c: '蚵仔煎',
+							d: '龙须面',
+							e: '北京烤鸭'
+						}
 					}
 				}
 			}
-		}
+		},
+		props: {
+			'operations-width': 200,
 		},
 		data: {
 			list: [{

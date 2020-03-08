@@ -111,10 +111,11 @@ export default {
         },
         handleUploadSuccess(res, file) {
             console.log('handleUploadSuccess', res, file);
+            const props = this.field.props || {};
             // todo: 预览、上传进度
             let successCode;
-            if (this.field.props && typeof this.field.props.successCode !== 'undefined') {
-                successCode = this.field.props.successCode;
+            if (props && typeof props.successCode !== 'undefined') {
+                successCode = props.successCode;
             } else {
                 successCode = this.$block.getConfig('resource.api.successCode');
             }
@@ -127,6 +128,11 @@ export default {
 
                     this.emitFormItemChange();
                 }
+                if (typeof props['on-success'] === 'function') {
+                    props['on-success'](res, file);
+                }
+            } else if (typeof props['on-error'] === 'function') {
+                props['on-error'](res, file);
             } else {
                 this.$message.error(`${res.msg}(${res.code})`);
             }

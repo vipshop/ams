@@ -75,7 +75,11 @@ ams.resource('resource', {
         },
         testArrays: {
             type: 'array',
-            info: '提示信息',
+            // info: '提示信息',
+            info: {
+                icon: 'el-icon-question',
+                content: '我是提示2'
+            },
             label: 'testTexts',
             // hidden: true,
             field: {

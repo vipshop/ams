@@ -105,6 +105,7 @@
                                  fit
                                  fixed="right"
                                  min-width="140px"
+                                 :width="operationsWidth"
                                  align="center">
                     <template slot-scope="scope">
                         <ams-operations :name="name"
@@ -180,6 +181,9 @@ export default {
             } else {
                 return false;
             }
+        },
+        operationsWidth() {
+            return this.block.options && this.block.options.operationsWidth;
         }
     },
     watch: {

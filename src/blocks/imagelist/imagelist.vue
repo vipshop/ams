@@ -3,6 +3,7 @@
          class="ams-block-imagelist"
          :style="block.style"
          v-loading="loading"
+         v-on="on"
          v-bind="block.props">
         <ams-blocks :blocks="block.slotBlocks.top" />
         <!-- 搜索operations插槽 -->

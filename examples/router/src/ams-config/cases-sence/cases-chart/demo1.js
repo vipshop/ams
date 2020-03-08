@@ -73,7 +73,18 @@ ams.block('chart-demo1', {
             },
             // 图表配置
             options: {
-                BASE: 'LINE',
+                // 方式二
+                watermark: {
+                    width: '200px', // 默认值300px
+                    height: '150px', // 默认值 200px
+                    textAlign: 'center', // 默认值center
+                    textBaseLine: 'middle', // 默认值middle
+                    font: '18px Microsoft Yahei', // 设置字体，默认为：18px Microsoft Yahei
+                    fillStyle: 'rgba(236, 234, 234, 0.8)', // 设置颜色，默认为：rgba(236, 234, 234, 0.8)
+                    content: 'zebin.wu', // 设置水印内容，默认为“请勿外传”
+                    rotate: '30', // 设置旋转角度，默认30
+                    zIndex: 0 // 设置z-index层级，默认
+                },
                 title: {
                     text: '销售与毛利',
                     bottom: 0,
@@ -262,6 +273,7 @@ ams.block('chart-demo1', {
                 series: []
             },
             options: {
+                watermark: true,
                 BASE: 'LINE',
                 scale: true,
                 grid: {

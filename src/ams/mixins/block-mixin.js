@@ -193,6 +193,7 @@ export default {
                                         field.props[propKey] = defaultField.props[propKey];
                                     } else if (propKey === 'props') {
                                         field.props[propKey] = Object.assign(
+                                            {},
                                             defaultField.props[propKey] || {},
                                             field.props[propKey] || {}
                                         );

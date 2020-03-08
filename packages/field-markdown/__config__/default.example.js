@@ -1,5 +1,5 @@
 const data = {
-    testMarkdown: '# dd'
+    testMarkdown: '# 标题'
 };
 export default {
     resources: {
@@ -7,7 +7,15 @@ export default {
             fields: {
                 testMarkdown: {
                     type: 'markdown',
-                    label: 'Markdown'
+                    label: 'Markdown',
+                    props: {
+                        action: '//xxx.vip.com/api/upload',
+                        xss: true,
+                        // html: false, // 是否支持html输入
+                        async imgAdd(pos, $file, editor) {
+                            console.log(pos, $file, editor);
+                        }
+                    }
                 }
             }
         }

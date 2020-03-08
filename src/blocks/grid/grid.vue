@@ -1,7 +1,9 @@
 <template>
     <div v-if="ready"
         class="ams-block-grid"
-        :style="gridStyle" >
+        :style="gridStyle"
+        v-on="on"
+        v-bind="block.props" >
         <ams-block class="ams-block-grid-item" v-for="n in block.blocks" :key="n" :name="n" />
     </div>
 </template>

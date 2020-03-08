@@ -1,6 +1,6 @@
 {
     "name": "@ams-team/cli",
-    "version": "0.8.2",
+    "version": "0.8.3",
     "description": "ams cli",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"

@@ -13,6 +13,9 @@ export default {
                 } else {
                     this.localValue = [];
                 }
+                this.$nextTick(() => {
+                    this.on && typeof this.on.change === 'function' && this.on.change(this.localValue);
+                });
             },
             get() {
                 if (!this.localValue || this.localValue.length === 0 || !this.isShowSelectAllCheck) return false;

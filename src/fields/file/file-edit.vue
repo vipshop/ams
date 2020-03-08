@@ -41,12 +41,17 @@ export default {
         handleUploadSuccess(res, file) {
             console.log('handleUploadSuccess', res, file);
             // todo: 预览、上传进度
-            const successCode = this.$block.getConfig('resource.api.successCode');
             const props = this.field.props || {};
+            let successCode;
+            if (typeof props.successCode !== 'undefined') {
+                successCode = props.successCode;
+            } else {
+                successCode = this.$block.getConfig('resource.api.successCode');
+            }
             if (res.code === successCode) {
                 const successUrlKey = this.field.successUrlKey || 'url';
-                if (res.data && res.data[successUrlKey]) {
-                    this.localValue = this.field.get(res.data[successUrlKey], this.field);
+                if (res.data) {
+                    this.localValue = this.field.get(res.data[successUrlKey] || res.data, this.field);
                 }
                 if (typeof props['on-success'] === 'function') {
                     props['on-success'](res, file);

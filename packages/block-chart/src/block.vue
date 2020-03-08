@@ -124,6 +124,15 @@ export default {
                 // 3、设置图表options
                 this.chartDom.setOption(options);
                 this.chartDom.hideLoading();
+                if (options.watermark) {
+                    const wmOptions = ams.utils.getType(options.watermark) === 'object' ? options.watermark : {};
+                    ams.utils.watermark(Object.assign({
+                        container: this.chartDom._dom,
+                        width: '200px',
+                        height: '150px',
+                        uid: this._uid
+                    }, wmOptions || {}));
+                }
             }
         },
         // 深度拷贝options各个值, 并处理'data.xxx'这类数据

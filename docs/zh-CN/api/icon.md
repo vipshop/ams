@@ -1,6 +1,6 @@
 # 图标（Icon）
 
-在[element-ui](https://element.eleme.cn/#/zh-CN/component/icon)的基础上再扩展了更多图标。
+在 [element-ui](https://element.eleme.cn/#/zh-CN/component/icon) 的基础上再扩展了更多图标。
 
 ### 使用方法
 

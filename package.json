@@ -12,7 +12,7 @@
         "vue",
         "element-ui"
     ],
-    "version": "0.24.0",
+    "version": "0.24.16",
     "main": "lib/ams.common.js",
     "unpkg": "lib/ams.js",
     "scripts": {

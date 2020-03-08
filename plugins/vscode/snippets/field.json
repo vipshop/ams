@@ -252,10 +252,13 @@
         "prefix": "ams.headimage",
         "body": [
             "{",
-            "    type: 'headimage',",
+            "    type: 'image',",
             "    label: '${1:headimage}',",
             "    tip: '${2:只能上传jpg/png文件，且不超过500kb}',",
-            "    successUrlKey: '$3'",
+            "    successUrlKey: '$3',",
+            "    props: {",
+            "        headimage: true",
+            "    }",
             "}$4"
         ],
         "description": "AMS字段-头图"
@@ -390,5 +393,18 @@
             "}$0"
         ],
         "description": "AMS字段-联合"
+    },
+    "ams.html": {
+        "prefix": "ams.html",
+        "body": [
+            "{",
+            "    type: 'html',",
+            "    label: '$1',",
+            "    view: function(value) {",
+            "        return value;",
+            "    }",
+            "}$0"
+        ],
+        "description": "AMS字段-html渲染"
     }
 }

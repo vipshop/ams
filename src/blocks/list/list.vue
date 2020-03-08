@@ -75,26 +75,36 @@
 
                 <el-table-column v-if="block.options.multipleSelect"
                                  type="selection"
+                                 :reserve-selection="columnAttrs['reserve-selection']"
                                  width="50" />
                 <el-table-column v-if="block.props.type === 'index'"
                                  type="index"
                                  align="center" />
-                <el-table-column v-for="(field, fieldName) in fields"
-                                 :label="field.label"
-                                 v-if="!field.hidden"
-                                 :key="fieldName"
-                                 :prop="fieldName"
-                                 type=""
-                                 :column-key="fieldName"
-                                 fit
-                                 :min-width="defaultListFieldWidth[field.type] || '90px'"
-                                 :align="field.props['align'] || 'center'"
-                                 v-bind="field.props">
-                    <template slot-scope="scope">
-                        <!--fields-->
-                        <field v-if="getShowState(field, scope.row)" :field="getField(field, scope.row)" :value="scope.row[fieldName]" :name="name" :context="scope.row" :path="`list[${scope.$index}].${fieldName}`"/>
-                    </template>
-                </el-table-column>
+                <template v-for="(field, fieldName) in fields">
+                    <el-table-column :label="field.label"
+                                    v-if="!field.hidden"
+                                    :key="fieldName"
+                                    :prop="fieldName"
+                                    type=""
+                                    :column-key="fieldName"
+                                    fit
+                                    :min-width="defaultListFieldWidth[field.type] || '90px'"
+                                    :align="field.props['align'] || 'center'"
+                                    v-bind="field.props">
+                        <template slot="header">
+                            <!-- 表头 -->
+                            {{field.label}}
+                            <el-tooltip effect="dark" placement="top" v-if="field.info">
+                                <i :class="field.info.icon || 'el-icon-info'"></i>
+                                <div slot="content" v-html="field.info.content || field.info"></div>
+                            </el-tooltip>
+                        </template>
+                        <template slot-scope="scope">
+                            <!--fields-->
+                            <field v-if="getShowState(field, scope.row)" :field="getField(field, scope.row)" :value="scope.row[fieldName]" :name="name" :context="scope.row" :path="`list[${scope.$index}].${fieldName}`"/>
+                        </template>
+                    </el-table-column>
+                </template>
                 <el-table-column label="操作"
                                  v-if="block.operationsCounts.operations"
                                  fixed="right"
@@ -186,7 +196,15 @@ export default {
             return this.data.list;
         },
         operationsWidth() {
-            return this.block.options && this.block.options.operationsWidth;
+            const props = this.block.props || {};
+            const options = this.block.options || {};
+            if (props && props['operations-width']) {
+                return props['operations-width'];
+            } else if (options && options.operationsWidth) {
+                console.warn(`options.operationsWidth即将废弃，请使用props['operations-width']配置操作列宽度`);
+                return options.operationsWidth;
+            }
+            return null;
         },
         expandFields() {
             // 获取展开列表展开表单的fields
@@ -202,6 +220,9 @@ export default {
             } else {
                 return false;
             }
+        },
+        columnAttrs() {
+            return this.block.props && this.block.props.column || {};
         }
     },
     methods: {
@@ -302,12 +323,18 @@ export default {
         handleSizeChange() {
             console.log('handleSizeChange');
             this.data.page = 1;
+            if (this.on && this.on['size-change']) {
+                this.on['size-change'](this.data.page);
+            }
             this.emitEvent('list');
         },
         handleCurrentChange(e) {
             console.log('handleCurrentChange');
             if (this.isSimulatePagination) {
                 return;
+            }
+            if (this.on && this.on['current-change']) {
+                this.on['current-change'](this.data.page);
             }
             this.emitEvent('list');
         },

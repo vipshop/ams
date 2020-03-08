@@ -53,6 +53,7 @@ export default {
      */
     show() {
         this.data.visible = true;
+        this.ready = true;
         return new Promise((resolve) => {
             setTimeout(() => {
                 resolve();
@@ -61,6 +62,7 @@ export default {
     },
     hide() {
         this.data.visible = false;
+        this.ready = false;
     },
     /**
      * 显式清空$prevReturn

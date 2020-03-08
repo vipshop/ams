@@ -165,9 +165,14 @@ export const SELECT_REMOTE = {
                 $field.loading = false;
 
                 let data = get(res.data, remoteConfig.dataPath);
-
+                let successCode;
+                if (typeof remoteConfig.successCode !== 'undefined') {
+                    successCode = remoteConfig.successCode;
+                } else {
+                    successCode = this.getConfig('resource.api.successCode');
+                }
                 if (
-                    res.data.code === this.getConfig('resource.api.successCode') &&
+                    res.data.code === successCode &&
                     data
                 ) {
                     const options = remoteConfig.transform.call(this, $field, data);
