@@ -1,6 +1,7 @@
 <template>
     <ams-router v-if="ready && routerReady"
-                class="ams-block-router" />
+                class="ams-block-router"
+                v-bind="block.props"/>
 </template>
 
 <script>

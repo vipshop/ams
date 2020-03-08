@@ -37,7 +37,7 @@ module.exports = {
       },
       {
         text: '示例',
-        link: '/example/#/'
+        link: '/example/'
       },
       {
         text: '版本更新',
@@ -158,14 +158,15 @@ module.exports = {
               'tabs',
               'steps',
               'card',
-              'dropdown'
+              'dropdown',
+              'popover'
             ]
         },
         {
           title: '深入',
           collapsable: false,
           children: [
-            'deep-operation', 'deep-router', 'action'
+            'deep-operation', 'deep-router', 'action', 'deep-watermark'
           ]
         },
         {

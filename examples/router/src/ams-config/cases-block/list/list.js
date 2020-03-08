@@ -6,11 +6,11 @@ ams.block('list', {
     resource: 'resource',
     props: {
         // 自动加上索引
-        type: 'index'
+        type: 'index',
+        // 定义列表操作项的宽度
+        'operations-width': 300,
     },
     options: {
-        // 定义列表操作项的宽度
-        operationsWidth: 300,
         // 支持拖拽
         drag: true
     },
@@ -217,6 +217,9 @@ ams.block('list', {
         'cell-click': function() {
             console.log('cell-click', this);
             this.$refs.amsTable.clearFilter();
+        },
+        'list-success': function(res) {
+            console.log(res);
         }
     },
     data: {

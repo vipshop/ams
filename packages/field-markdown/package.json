@@ -1,16 +1,17 @@
 {
     "name": "@ams-team/field-markdown",
-    "version": "0.2.5",
+    "version": "0.4.4",
     "main": "lib/field-markdown.js",
     "unpkg": "lib/field-markdown.js",
     "description": "markdown编辑器",
-    "author": "ams",
+    "author": "@ams-team/ams",
     "amsConfig": {
         "externals": {
             "mavon-editor": "mavon-editor"
         }
     },
     "dependencies": {
-        "mavon-editor": "^2.6.17"
+        "mavon-editor": "^2.6.17",
+        "xss": "^1.0.6"
     }
 }

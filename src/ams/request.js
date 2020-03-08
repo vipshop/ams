@@ -82,7 +82,7 @@ export default function initRequest(ams) {
 
             // 处理sendData
             // 可用contentType： json|form|multipart
-            if (method === 'POST') {
+            if (method === 'POST' || method === 'PUT') {
                 if (contentType === 'json') {
                     headers['Content-Type'] =
                         headers['Content-Type'] ||

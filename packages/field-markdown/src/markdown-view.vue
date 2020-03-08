@@ -1,21 +1,32 @@
 <template>
     <mavon-editor
         :style="field.style"
-        :value="value"
+        :value="xssValue"
         :subfield="false"
         defaultOpen="preview"
         :toolbarsFlag = "false"
         :editable="false"
         :scrollStyle="false"
         :boxShadow="false"
+        v-bind="field.props"
     ></mavon-editor>
 </template>
 
 <script>
 import ams from '@ams-team/ams';
+import xss from 'xss';
 
 export default {
-    mixins: [ams.mixins.fieldViewMixin]
+    mixins: [ams.mixins.fieldViewMixin],
+    computed: {
+        xssValue: function() {
+            const props = this.field.props || {};
+            if (props.xss) {
+                return xss(this.value);
+            }
+            return this.value;
+        }
+    }
 };
 </script>
 

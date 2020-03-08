@@ -91,6 +91,8 @@ List: List 列表
 
 ### 列表每行操作项
 
+可以通过 `props['operations-width']: 200` 来设置操作项那列的宽度。
+
 <ClientOnly>
 <block-list-demo blockName="operationsList" onlineDemo="https://codepen.io/w3cmark/pen/JjPBmMG"/>
 </ClientOnly>

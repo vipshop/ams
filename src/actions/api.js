@@ -87,6 +87,9 @@ export const update = ams.createApiAction({
         const successCode = this.getConfig('resource.api.successCode');
         if (res.data.code === successCode) {
             this.$message.success('更新成功');
+            if (typeof this.on['update-success'] === 'function') {
+                this.on['update-success'](res.data);
+            }
         } else {
             this.$message.error(`${res.data.msg}(${res.data.code})`);
             throw '@update:' + res.data.code;
@@ -116,6 +119,9 @@ export const deleteAction = ams.createApiAction({
         const successCode = this.getConfig('resource.api.successCode');
         if (res.data.code === successCode) {
             this.$message.success('删除成功');
+            if (typeof this.on['delete-success'] === 'function') {
+                this.on['delete-success'](res.data);
+            }
         } else {
             this.$message.error(`${res.data.msg}(${res.data.code})`);
             throw '@delete:' + res.data.code;
@@ -142,6 +148,9 @@ export const create = ams.createApiAction({
         const successCode = this.getConfig('resource.api.successCode');
         if (res.data.code === successCode) {
             this.$message.success('创建成功');
+            if (typeof this.on['create-success'] === 'function') {
+                this.on['create-success'](res.data);
+            }
         } else {
             this.$message.error(`${res.data.msg}(${res.data.code})`);
             throw '@create code:' + res.data.code;
@@ -231,6 +240,9 @@ export const list = ams.createApiAction({
         ) {
             this.data.list = res.data.data.list || [];
             this.data.total = res.data.data.total;
+            if (typeof this.on['list-success'] === 'function') {
+                this.on['list-success'](res.data);
+            }
         } else {
             this.$message.error(`${res.data.msg}(${res.data.code})`);
             throw '@list:' + res.data.code;

@@ -11,10 +11,10 @@ ams.block('popover', {
         popover1Block: {
             type: 'popover',
             props: {
-                title: '标题1',
-                content: '弹出框内容'
+                title: '标题1'
             },
             slots: {
+                content: '弹出框内容弹出框内容弹出框内容弹出框内容弹出框内容',
                 reference: 'hover激活'
             }
         },
@@ -27,20 +27,37 @@ ams.block('popover', {
         popover2Block: {
             type: 'popover',
             props: {
-                title: '标题2'
+                title: '标题2',
+                trigger: 'click'
             },
             slots: {
                 content: '这是一段<span style="color: red">内容</span>,这是一段内容,这是一段内容,这是一段内容。',
-                reference: 'hover激活'
+                reference: 'click激活'
             }
         },
         popover3Title: {
             type: 'title',
             options: {
-                title: '弹出框中使用block'
+                title: '弹出框中使用html'
             }
         },
         popover3Block: {
+            type: 'popover',
+            props: {
+                title: '标题2',
+            },
+            slots: {
+                content: '这是一段<span style="color: red">内容</span>,这是一段内容,这是一段内容,这是一段内容。',
+                reference: '字段说明<i class="el-icon-question"></i>'
+            }
+        },
+        popover4Title: {
+            type: 'title',
+            options: {
+                title: '弹出框中使用block'
+            }
+        },
+        popover4Block: {
             type: 'popover',
             slots: {
                 content: '这是一段<span style="color: red">内容</span>,这是一段内容,这是一段内容,这是一段内容。',

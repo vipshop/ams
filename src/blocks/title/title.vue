@@ -1,6 +1,8 @@
 <template>
     <div v-if="ready"
          :style="block.style"
+         v-bind="block.props"
+         v-on="on"
          class="ams-block-title">
          <div class="ams-title">
             <span v-html="block.options.title"></span>
@@ -9,6 +11,7 @@
                 <i :class="'el-icon-info ams-field-suffix-info ' + suffixInfoClass"></i>
                 <div slot="content" v-html="suffixInfo"></div>
             </el-tooltip>
+            <ams-blocks class="ams-blocks-inline" :blocks="block.slotBlocks.append" />
          </div>
         <ams-blocks :blocks="block.blocks" />
         <ams-operations :name="name" />

@@ -18,6 +18,11 @@ export default {
     width: 100%;
     display: flex;
     flex-flow: row wrap;
+    &-inline{
+        display: inline-block;
+        width: auto;
+        margin-left: 7px;
+    }
 }
 .ams-block {
     position: relative;

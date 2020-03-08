@@ -52,6 +52,12 @@ ams.resource('demoRes', { // ”demoRes“为资源名
 })
 ```
 
+### packages目录本地开发调试
+
+```sh
+npm run dev
+```
+
 ### 第二步，注册区块
 
 

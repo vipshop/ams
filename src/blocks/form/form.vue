@@ -20,8 +20,8 @@
                                   :prop="fields[key].type !== 'array' && fields[key].type !== 'object' ? key : ''">
                         <template v-if="fields[key].label && fields[key].labelWidth !== '0'" slot="label">
                             <el-tooltip effect="dark" placement="top" v-if="fields[key].info">
-                                <i class="el-icon-info ams-form-label-info"></i>
-                                <div slot="content" v-html="fields[key].info"></div>
+                                <i :class="(fields[key].info.icon || 'el-icon-info') + ' ams-form-label-info'"></i>
+                                <div slot="content" v-html="fields[key].info.content || fields[key].info"></div>
                             </el-tooltip>
                             {{fields[key].label}}
                         </template>

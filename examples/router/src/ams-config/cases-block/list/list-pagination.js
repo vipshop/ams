@@ -17,6 +17,11 @@ ams.block('list-pagination', {
             title: {
                 type: 'text',
                 label: '标题',
+                info: '我是提示1',
+                // info: {
+                //     icon: 'el-icon-question',
+                //     content: '我是提示2'
+                // },
                 // props: {
                 //     'suffix-info': '我是提示', // 后缀提示
                 //     // 'suffix-info-warning': '我是提示warning', // 后缀警告提示
@@ -74,7 +79,11 @@ ams.block('list-pagination', {
     },
     pageSize: 10,
     props: {
-        pagination: 'simulate' // 模拟分页
+        pagination: 'simulate', // 模拟分页
+        'row-key': 'id',
+        column: {
+            'reserve-selection': true
+        }
     },
     options: {
         // 支持多选
@@ -87,7 +96,7 @@ ams.block('list-pagination', {
     },
     actions: {
         fieldChange({ name, value, path }) {
-            console.log(name, value, path);
+            // console.log(name, value, path);
         }
     }
 });
