@@ -39,15 +39,48 @@ function _getForeignKeys(params) {
     }
     return args;
 }
+/**
+ * @param {*} config action的配置，如
+ * { path: 'list', method: 'get', successCode: 0,
+        transform(data) {
+            return data;
+        }
+    }
+ * @param {*} method GET/POST
+ * @param {*} prefix 域名前缀
+ * @param {*} arg 参数
+ */
+function _getSendData(config, method, prefix, arg) {
+    const options = {};
+    if (config.path) {
+        options.url = `${config.prefix || prefix}${config.path}`;
+    }
+    options.method = config.method || method;
+    if (['post', 'POST'].indexOf(config.method) >= 0) {
+        options.data = arg;
+    } else {
+        options.params = arg;
+    }
+    return options;
+}
 
 export const read = ams.createApiAction({
     getOptions(params) {
         const key = this.resource.key;
         let value = _getValue.call(this, key, params);
-
+        if (typeof this.resource.api.read === 'object') {
+            return _getSendData(
+                this.resource.api.read,
+                'get',
+                this.resource.api.prefix,
+                {
+                    [key]: value,
+                    ..._getForeignKeys.call(this, params)
+                });
+        }
         return {
             url: `${this.resource.api.prefix}${this.resource.api.read}`,
-            method: 'get',
+            method: this.resource.api.method || 'get',
             params: {
                 [key]: value,
                 // resId: this.block.resource,
@@ -56,9 +89,14 @@ export const read = ams.createApiAction({
         };
     },
     success(res) {
-        const successCode = this.getConfig('resource.api.successCode');
+        const successCode = this.getConfig('resource.api.read.successCode') || this.getConfig('resource.api.successCode');
         if (res.data.code === successCode) {
-            this.setBlockData(res.data.data);
+            const config = this.resource.api.read;
+            if (typeof config === 'object' && typeof config.transform === 'function') {
+                this.setBlockData(config.transform(res.data.data));
+            } else {
+                this.setBlockData(res.data.data);
+            }
         } else {
             this.$message.error(`${res.data.msg}(${res.data.code})`);
             throw '@read:' + res.data.code;
@@ -71,9 +109,19 @@ export const update = ams.createApiAction({
     getOptions(params) {
         const key = this.resource.key;
         let value = _getValue.call(this, key, params);
+        if (typeof this.resource.api.update === 'object') {
+            return _getSendData(
+                this.resource.api.update,
+                'post',
+                this.resource.api.prefix,
+                {
+                    [key]: value,
+                    ..._getForeignKeys.call(this, params)
+                });
+        }
         return {
             url: `${this.resource.api.prefix}${this.resource.api.update}`,
-            method: 'post',
+            method: this.resource.api.method || 'post',
             params: {
                 [key]: value,
                 // resId: this.block.resource,
@@ -84,7 +132,7 @@ export const update = ams.createApiAction({
     },
     success(res) {
         // 默认successCode
-        const successCode = this.getConfig('resource.api.successCode');
+        const successCode = this.getConfig('resource.api.update.successCode') || this.getConfig('resource.api.successCode');
         if (res.data.code === successCode) {
             this.$message.success('更新成功');
             if (typeof this.on['update-success'] === 'function') {
@@ -103,10 +151,21 @@ export const deleteAction = ams.createApiAction({
         const key = this.resource.key;
         let value = _getValue.call(this, key, params);
 
+        if (typeof this.resource.api.delete === 'object') {
+            return _getSendData(
+                this.resource.api.delete,
+                'post',
+                this.resource.api.prefix,
+                {
+                    [key]: value,
+                    // resId: this.block.resource,
+                    ..._getForeignKeys.call(this, params)
+                });
+        }
         // 支持传参数
         return {
             url: `${this.resource.api.prefix}${this.resource.api.delete}`,
-            method: 'post',
+            method: this.resource.api.method || 'post',
             params: {
                 [key]: value,
                 // resId: this.block.resource,
@@ -116,7 +175,7 @@ export const deleteAction = ams.createApiAction({
     },
     success(res) {
         // 默认successCode
-        const successCode = this.getConfig('resource.api.successCode');
+        const successCode = this.getConfig('resource.api.delete.successCode') || this.getConfig('resource.api.successCode');
         if (res.data.code === successCode) {
             this.$message.success('删除成功');
             if (typeof this.on['delete-success'] === 'function') {
@@ -132,10 +191,13 @@ export const deleteAction = ams.createApiAction({
 
 export const create = ams.createApiAction({
     getOptions(params) {
+        if (typeof this.resource.api.create === 'object') {
+            return _getSendData(this.resource.api.create, 'post', this.resource.api.prefix, { ..._getForeignKeys.call(this, params) });
+        }
         return {
             // withCredentials: true,
             url: `${this.resource.api.prefix}${this.resource.api.create}`,
-            method: 'post',
+            method: this.resource.api.method || 'post',
             params: {
                 // resId: this.block.resource,
                 ..._getForeignKeys.call(this, params)
@@ -145,7 +207,7 @@ export const create = ams.createApiAction({
     },
     success(res) {
         // 默认successCode
-        const successCode = this.getConfig('resource.api.successCode');
+        const successCode = this.getConfig('resource.api.create.successCode') || this.getConfig('resource.api.successCode');
         if (res.data.code === successCode) {
             this.$message.success('创建成功');
             if (typeof this.on['create-success'] === 'function') {
@@ -224,21 +286,28 @@ export const list = ams.createApiAction({
                 }
             });
         }
-
+        if (typeof this.resource.api.list === 'object') {
+            return _getSendData(this.resource.api.list, 'get', this.resource.api.prefix, arg);
+        }
         return {
             url: `${this.resource.api.prefix}${this.resource.api.list}`,
-            method: 'get',
+            method: this.resource.api.method || 'get',
             params: arg
         };
     },
     success(res) {
         // 默认successCode
-        const successCode = this.getConfig('resource.api.successCode');
+        const successCode = this.getConfig('resource.api.list.successCode') || this.getConfig('resource.api.successCode');
         if (
             res.data.code === successCode &&
             res.data.data
         ) {
-            this.data.list = res.data.data.list || [];
+            const listConfig = this.resource.api.list;
+            if (typeof listConfig === 'object' && typeof listConfig.transform === 'function') {
+                this.data.list = listConfig.transform(res.data.data.list) || [];
+            } else {
+                this.data.list = res.data.data.list || [];
+            }
             this.data.total = res.data.data.total;
             if (typeof this.on['list-success'] === 'function') {
                 this.on['list-success'](res.data);

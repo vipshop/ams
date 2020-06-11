@@ -26,12 +26,12 @@
                                     icon="el-icon-minus"></el-button>
                         <el-button size="mini"
                                     circle
-                                    v-if="index"
+                                    v-if="index && sortable"
                                     @click="moveUp(index)"
                                     icon="el-icon-caret-top"></el-button>
                         <el-button size="mini"
                                     circle
-                                    v-if="index < value.length - 1"
+                                    v-if="index < value.length - 1 && sortable"
                                     @click="moveDown(index)"
                                     icon="el-icon-caret-bottom"></el-button>
                     </template>
@@ -69,6 +69,9 @@ export default {
         },
         minLimit() {
             return this.field.props && this.field.props.min;
+        },
+        sortable() {
+            return !(this.field.props && this.field.props.sortable === false);
         }
     },
     methods: {

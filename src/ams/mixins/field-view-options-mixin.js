@@ -42,10 +42,10 @@ export default {
             if (this.showMoreIcon) {
                 return this.selectOptions.slice(0, this.showOptionsLimit).join('，');
             }
-            return this.selectOptionsPlainText;
-        },
-        selectOptionsPlainText() {
             return this.selectOptions.join('，');
+        },
+        dropdownOptions() {
+            return this.selectOptions.slice(this.field.collapseLimit);
         }
     },
 

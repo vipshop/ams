@@ -8,7 +8,7 @@
             <span slot="reference">... <el-tag size="mini" type="info">...</el-tag></span>
         </el-popover>
         <el-tooltip effect="dark" placement="top" v-if="suffixInfo">
-            <i :class="'el-icon-info ams-field-suffix-info ' + suffixInfoClass"></i>
+            <i :class="suffixIcon + ' ams-field-suffix-info ' + suffixInfoClass"></i>
             <div slot="content" v-html="suffixInfo"></div>
         </el-tooltip>
     </div>
@@ -44,6 +44,9 @@ export default {
                 return this.viewText.slice(0, this.showOptionsLimit);
             }
             return this.viewText;
+        },
+        suffixIcon() {
+            return this.field.props && this.field.props['suffix-icon'] || 'el-icon-info';
         },
         suffixInfo() {
             const info = this.field.props['suffix-info'];

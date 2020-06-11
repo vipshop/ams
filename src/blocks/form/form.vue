@@ -1,6 +1,6 @@
 <template>
     <div v-if="ready"
-         class="ams-block-form"
+         :class="'ams-block-form ' + (block.props['label-bold'] ? 'ams-block-form-label-bold' : '')"
          :style="block.style">
         <el-form :model="data"
                  v-loading="loading"
@@ -102,6 +102,11 @@ export default {
     display: inline-block;
     vertical-align: top;
     margin-right: 10px;
+}
+.ams-block-form-label-bold{
+    .el-form-item__label{
+        font-weight: bold
+    }
 }
 .ams-form-label-info{
     margin-left: 2px;

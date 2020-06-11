@@ -74,9 +74,8 @@ import reset from './operations/reset';
 import icon from './operations/icon';
 import field from './operations/field';
 import dropdown from './operations/dropdown';
-
 // 版本号
-ams.version = '0.24.16';
+ams.version = '0.25.17';
 // 挂载到ams上
 ams.mixins = mixins;
 ams.utils = utils;

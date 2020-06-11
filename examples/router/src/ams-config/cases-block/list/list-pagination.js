@@ -30,6 +30,7 @@ ams.block('list-pagination', {
                 changeConfig(field, context) {
                     if (context) {
                         if (context.id === 2) {
+                            field.props['suffix-icon'] = 'ams-icon-question';
                             field.props['suffix-info-warning'] = '我是提示warning';
                         } else if (context.id === 3) {
                             field.props['suffix-info-danger'] = '我是提示danger';

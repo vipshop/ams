@@ -1,3 +1,4 @@
+import { deepExtend } from './index';
 export function watermark({
     container = document.body,
     uid = 'uid',
@@ -51,7 +52,7 @@ export function watermark({
                 // 避免一直触发
                 mo.disconnect();
                 mo = null;
-                watermark(JSON.parse(JSON.stringify(args)));
+                watermark(deepExtend({}, args));
             }
         });
         mo.observe(container, {
