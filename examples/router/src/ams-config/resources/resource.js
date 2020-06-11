@@ -13,6 +13,17 @@ ams.resource('resource', {
         read: 'read',
         delete: 'delete',
         list: 'list'
+        // list: {
+        //     path: 'list',
+        //     method: 'get',
+        //     successCode: 0,
+        //     transform(data) {
+        //         return data.map(item => {
+        //             item.testTextarea = '测试字段';
+        //             return item;
+        //         });
+        //     }
+        // }
     },
     fields: {
         // a: {

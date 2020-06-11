@@ -7,6 +7,7 @@
                :style="field.style"
                v-bind="field.props">
         <el-button :size="field.props['size']"
+                   :disabled="field.props['disabled']"
                    type="primary">{{ field.props && field.props['button-label'] || '点击上传'}}</el-button>
         <div slot="tip"
              class="el-upload__tip"

@@ -1,6 +1,85 @@
 // 更新日志
 export default [
     {
+        version: '0.25.13',
+        date: '2020.06.05',
+        log: [
+            'feat: 内置的action支持配置path/method/successCode/transform',
+            'feat: resource增加method的配置',
+            'feat: table组件支持配置data.layout',
+            'feat: changeConfig增加第三个参数透传this',
+            'feat: router增加showTimeout配置',
+            'fix: 修复block-xlsx当code不等于0，msg不为array的情况',
+            'feat: block-xlsx@0.8.8，导入的request支持withCredentials、contentType、headers、successCode的配置',
+            'fix: list组件的列支持配置min-width',
+            'feat: text-view增加suffix-icon配置',
+            'fix: options选项多时的popover交互修改'
+        ]
+    },
+    {
+        version: '0.24.22',
+        date: '2020.04.23',
+        log: [
+            'feat: 更新字体图标',
+            'feat: field-iamge的successCode支持porps配置',
+            'feat: 增加列表配置项enterkey-search，配置为true时阻止列表搜索栏的回车搜索事件。场景：某些field类型为textarea时，默认回车时会发起搜索',
+            'feat: block的配置增加水印功能',
+            'feat: 通过ams-cli初始化的项目默认使用vishop的主题',
+            'fixed: block-steps支持description和props',
+            'fixed: datetime和datetime选择1970年部分月份时，值置空问题',
+            'fixed: field-array的删除按钮层级问题,',
+            'feat: field.info支持object配置，可以配置icon类型；',
+            'feat: 默认的几个action增加成功回调逻辑',
+            'feat：列表区块，改变页妈和页数时，增加on事件',
+            'feat: block-title增加append的slot插槽；',
+            'feat: 增加block-popover文档',
+            'feat: field-audio、field-image、field-video支持成功回调（on-success）和失败回调（on-error）',
+            'feat：支持所有block调用@show@hide进行显隐操作',
+            'feat: field-audio、field-video和field-file支持通过props配置successCode',
+            'fix: SELECT_REMOTE里的remoteMethod，在判断successCode是否配置的bug',
+            'fix：补充field的默认参数的时候，不覆盖默认参数',
+            'fix: 修复block-list的hidden失效',
+            'fix：字段类型为select，对外使用的view钩子中，加上context的参数',
+            "fix: block-list的options.operationsWidth改成props['operations-width']",
+            'fix：checkbox等进行全选操作时，加上change回调',
+            'feat: ams-cli@0.8.3：模板增加打包配置css.extract，解决打包后样式覆盖问题；npmComplete模板，修复全局结果拦截器responseInterceptor的返回promise的bug',
+            'feat: block-form支持配置label加粗样式；field-file、field-audio、field-video的上传按钮支持disabled属性配置',
+            'feat: 给array字段增加sortable配置，默认为true',
+            'feat: 区块table增加索引配置',
+            'fix: 修复编辑态的列表block在前端分页情况下，path路径问题',
+            'fix: 修复parseTime中时间格式化异常'
+        ]
+    },
+    {
+        version: '0.23.5',
+        date: '2020.01.08',
+        log: [
+            'feat: field增加html渲染字段',
+            'feat: 列表字段添加desc属性',
+            'fix: 修复导入获取rows的范围',
+            'feat: 文档增加自助仪表盘入口',
+            'feat: docs增加ams-helper介绍',
+            'fix: 修复datetime和datetime选择1970年部分月份时，值变空问题',
+            'feat: 更新字体图标，增加ams-icon-code',
+            'feat: block-steps支持description和props',
+            'fix: 修复field-array的删除按钮层级问题',
+            'feat: field-image的successCode支持props定义'
+        ]
+    },
+    {
+        version: '0.22.9',
+        date: '2019.12.14',
+        log: [
+            'feat: text的view组件添加on事件',
+            'feat: theme-vipshop主题修改',
+            'feat: block-list的操作按钮context增加数据index',
+            'feat: block-imagelist增加显示角标信息',
+            'feat: 添加nav-left插槽',
+            'feat: 新增drawer抽屉block',
+            'feat: array-simple数据更换'
+        ]
+    },
+    {
         version: '0.21.6',
         date: '2019.12.3',
         log: [

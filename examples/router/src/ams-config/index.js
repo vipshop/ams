@@ -46,6 +46,7 @@ import './cases-block/list/list-layout';
 import './cases-block/list/list-edit';
 import './cases-block/list/list-pagination';
 import './cases-block/list/list-drag';
+import './cases-block/list/list-field-convert';
 import './cases-block/calendar';
 import './cases-block/dragimage';
 import './cases-block/dragimage-updown';

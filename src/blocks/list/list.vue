@@ -75,6 +75,7 @@
 
                 <el-table-column v-if="block.options.multipleSelect"
                                  type="selection"
+                                 :selectable="columnAttrs['selectable']"
                                  :reserve-selection="columnAttrs['reserve-selection']"
                                  width="50" />
                 <el-table-column v-if="block.props.type === 'index'"
@@ -88,7 +89,7 @@
                                     type=""
                                     :column-key="fieldName"
                                     fit
-                                    :min-width="defaultListFieldWidth[field.type] || '90px'"
+                                    :min-width="field.props['min-width'] || defaultListFieldWidth[field.type] || '90px'"
                                     :align="field.props['align'] || 'center'"
                                     v-bind="field.props">
                         <template slot="header">
@@ -101,7 +102,8 @@
                         </template>
                         <template slot-scope="scope">
                             <!--fields-->
-                            <field v-if="getShowState(field, scope.row)" :field="getField(field, scope.row)" :value="scope.row[fieldName]" :name="name" :context="scope.row" :path="`list[${scope.$index}].${fieldName}`"/>
+                            <field v-if="getShowState(field, scope.row)" :field="getField(field, scope.row)" :value="scope.row[fieldName]" :name="name" :context="scope.row"
+                                :path="`list[${(isSimulatePagination ? ((data.page - 1) * data.pageSize) : 0) + scope.$index}].${fieldName}`"/>
                         </template>
                     </el-table-column>
                 </template>

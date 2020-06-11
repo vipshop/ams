@@ -9,6 +9,10 @@ title: Checkbox 多选框
 <field-checkbox-demo blockName="checkboxField1" onlineDemo="https://codepen.io/w3cmark/pen/bGbjmGo"/>
 </ClientOnly>
 
+:::tip
+checkbox配置的collapseLimit，是指超过多少项隐藏；跟text类型中的配置是指超过多少个字隐藏
+:::
+
 ### 增加全选
 
 设置props中的`select-all`为`true`

@@ -4,6 +4,10 @@ All notable changes to the "ams-helper" extension will be documented in this fil
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+### [0.4.1] - 2020-04-14
+
+- feat：更新ams.curd和ams.simple的配置
+
 ### [0.4.0] - 2020-01-10
 
 - feat：更新ams.html和ams.headimage的默认配置

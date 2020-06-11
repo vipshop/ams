@@ -6,10 +6,6 @@
 npm i -g @ams-team/cli
 ```
 
-安装成功后打印`ams`命令可以看到有以下几种使用方式
-
-![install](../assets/cli-install.png)
-
 ## 创建一个ams项目
 运行以下命令来创建一个新项目：
 

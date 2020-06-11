@@ -1,0 +1,46 @@
+{
+    "name": "@ams-team/block-xlsx",
+    "version": "0.8.10",
+    "description": "结合ams的resources配置使用的导出导出xlsx插件",
+    "author": "zebin.wu <1069467662@qq.com>",
+    "main": "lib/block-xlsx.js",
+    "unpkg": "lib/block-xlsx.js",
+    "scripts": {
+        "build": "rm -rf lib && webpack --config build/webpack.conf.js"
+    },
+    "amsConfig": {
+        "publish": false,
+        "externals": {},
+        "title": "导入导出xlsx格式插件",
+        "tags": "导入,导出,xlsx"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "autoprefixer": "^9.4.3",
+        "babel-core": "^6.26.3",
+        "babel-eslint": "^10.0.1",
+        "babel-loader": "^7.1.5",
+        "babel-plugin-module-resolver": "^3.1.1",
+        "babel-plugin-syntax-jsx": "^6.18.0",
+        "babel-plugin-transform-runtime": "^6.23.0",
+        "babel-plugin-transform-vue-jsx": "^3.7.0",
+        "babel-preset-env": "^1.7.0",
+        "babel-preset-stage-2": "^6.24.1",
+        "filemanager-webpack-plugin": "^2.0.5",
+        "node-sass": "^4.11.0",
+        "progress-bar-webpack-plugin": "^1.11.0",
+        "sass-loader": "^7.1.0",
+        "script-loader": "^0.7.2",
+        "style-loader": "^0.23.1",
+        "ts-loader": "^5.4.3",
+        "typescript": "3.4.5",
+        "vue": "^2.6.10",
+        "vue-eslint-parser": "^6.0.3",
+        "vue-loader": "^15.4.2",
+        "vue-template-compiler": "^2.6.10",
+        "webpack": "^4.25.1",
+        "webpack-cli": "^3.1.2",
+        "webpack-node-externals": "^1.7.2",
+        "worker-loader": "^2.0.0"
+    }
+}

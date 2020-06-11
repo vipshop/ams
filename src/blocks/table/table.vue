@@ -18,7 +18,6 @@
                       v-loading="loading"
                       highlight-current-row>
 
-
                 <!-- 展开行表头 -->
                 <el-table-column v-if="expandRow && expandRow.valueKey" width="50" >
                     <template slot-scope="scope">
@@ -32,6 +31,9 @@
 
                 <!-- 含有多级表头配置 -->
                 <template v-if="tableColumn">
+                    <el-table-column v-if="block.props.type === 'index'"
+                                     type="index"
+                                     align="center" />
                     <el-table-column v-for="(column, index) in tableColumn"
                                     v-if="!column.hidden"
                                     :key="column.name || index"
@@ -46,7 +48,6 @@
                         <!-- 自定义表头  S-->
                         <template slot="header">
                             <SlotHeader :column="column" @handleCollapse="handleColumnCollapse" />
-
                         </template>
                         <!-- 自定义表头  E-->
 
@@ -57,6 +58,7 @@
                                         :value="scope.row[column.name]"
                                         :name="name"
                                         :path="`list[${scope.$index}].${column.name}`"
+                                        :context="scope.row"
                                         :class="`ams-field ams-field-${column.type}-${column.ctx}`">
                             </component>
                         </template>
@@ -89,6 +91,7 @@
                                                 :value="scope.row[item.name]"
                                                 :name="name"
                                                 :path="`list[${scope.$index}].${item.name}`"
+                                                :context="scope.row"
                                                 :class="`ams-field ams-field-${item.type}-${item.ctx}`">
                                     </component>
 
@@ -121,7 +124,7 @@
                        @current-change="handleCurrentChange"
                        :current-page.sync="data.page"
                        :page-size.sync="data.pageSize"
-                       layout="prev, sizes, pager, next, jumper"
+                       :layout="data.layout || 'prev, sizes, pager, next, jumper'"
                        background
                        align="right"
                        :total="data.total">

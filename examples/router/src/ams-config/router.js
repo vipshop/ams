@@ -211,6 +211,11 @@ ams.block('router', {
                                 name: '列表拖拽',
                                 path: 'list-drag',
                                 block: 'list-drag'
+                            },
+                            {
+                                name: '字段处理',
+                                path: 'list-field-convert',
+                                block: 'list-field-convert'
                             }
                         ]
                     },

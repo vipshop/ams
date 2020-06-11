@@ -159,7 +159,8 @@ module.exports = {
               'steps',
               'card',
               'dropdown',
-              'popover'
+              'popover',
+              'tree'
             ]
         },
         {

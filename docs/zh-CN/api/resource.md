@@ -25,7 +25,15 @@ ams.resource('demo-resource', {
         update: 'update',
         read: 'read',
         delete: 'delete',
-        list: 'list'
+        // list: 'list', 方法1
+        list: { // 方法2：可以给每个内置action单独配置path,method,successCode等
+            path: 'list',
+            method: 'post',
+            successCode: 1,
+            transform(data) { // 仅list和read有transform方法，用于在AMS赋值给区块前，转化接口返回数据
+                return data
+            }
+        }
     },
     fields: { // 字段
         id: {

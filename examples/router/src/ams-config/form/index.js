@@ -39,6 +39,9 @@ ams.block('index', {
                 cancel: '@cancel',
                 dialog: 'demo-dialog.show'
             },
+            props: {
+                'label-bold': true // label 加粗
+            },
             actions: {
                 getData({ $prevReturn }) {
                     console.log('getData--', $prevReturn);
