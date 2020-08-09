@@ -1,5 +1,42 @@
+import { get as lodashGet } from 'lodash';
 import ams from '../ams';
 import { getQueryString } from '../utils';
+
+/**
+ * 获取 API Response 相关字段
+ *
+ * @param {Object} response : api response data
+ * @param {String} action : read/update/list/delete
+ */
+function getInfoFromApi (response, action) {
+    const getConfigKey = (action, key) => this.getConfig(`resource.api.${action}.${key}`) || this.getConfig(`resource.api.${key}`)
+
+    // this.getConfig -> src/ams/mixins/block-mixin.js
+    const dataKey = getConfigKey(action, 'dataKey') || 'data.list';
+    // 用于 list 接口，通常提供给list、table 的分页组件使用
+    const totalKey = getConfigKey(action, 'totalKey') || 'data.total';
+
+    const messageKey = getConfigKey(action, 'message') || 'message';
+    const message = lodashGet(response.data, messageKey);
+
+    // deprecated
+    const successCode =  getConfigKey(action, 'successCode');
+
+    const codeKey = getConfigKey(action, 'code') || 'code';
+    const expectedCodeValue = getConfigKey(action, 'successCode');
+    const apiCodeValue = lodashGet(response.data, codeKey);
+
+    return {
+        dataKey,
+        totalKey,
+        codeKey,
+        successCode,
+        messageKey,
+        message,
+        apiCodeValue,
+        expectedCodeValue,
+    }
+}
 
 /**
  * 自动获取的key值有几种场景：
@@ -89,8 +126,8 @@ export const read = ams.createApiAction({
         };
     },
     success(res) {
-        const successCode = this.getConfig('resource.api.read.successCode') || this.getConfig('resource.api.successCode');
-        if (res.data.code === successCode) {
+        const { message, apiCodeValue, expectedCodeValue, dataKey, totalKey } = getInfoFromApi.call(this, res,  'read')
+        if (apiCodeValue === expectedCodeValue) {
             const config = this.resource.api.read;
             if (typeof config === 'object' && typeof config.transform === 'function') {
                 this.setBlockData(config.transform(res.data.data));
@@ -98,8 +135,8 @@ export const read = ams.createApiAction({
                 this.setBlockData(res.data.data);
             }
         } else {
-            this.$message.error(`${res.data.msg}(${res.data.code})`);
-            throw '@read:' + res.data.code;
+            this.$message.error(`${message}(${apiCodeValue})`);
+            throw '@read:' + apiCodeValue;
         }
         return res;
     }
@@ -131,16 +168,15 @@ export const update = ams.createApiAction({
         };
     },
     success(res) {
-        // 默认successCode
-        const successCode = this.getConfig('resource.api.update.successCode') || this.getConfig('resource.api.successCode');
-        if (res.data.code === successCode) {
+        const { message, apiCodeValue, expectedCodeValue, dataKey, totalKey } = getInfoFromApi.call(this, res,  'update')
+        if (apiCodeValue === expectedCodeValue) {
             this.$message.success('更新成功');
             if (typeof this.on['update-success'] === 'function') {
                 this.on['update-success'](res.data);
             }
         } else {
-            this.$message.error(`${res.data.msg}(${res.data.code})`);
-            throw '@update:' + res.data.code;
+            this.$message.error(`${message}(${apiCodeValue})`);
+            throw '@update:' + apiCodeValue;
         }
         return res;
     }
@@ -174,16 +210,15 @@ export const deleteAction = ams.createApiAction({
         };
     },
     success(res) {
-        // 默认successCode
-        const successCode = this.getConfig('resource.api.delete.successCode') || this.getConfig('resource.api.successCode');
-        if (res.data.code === successCode) {
+        const { message, apiCodeValue, expectedCodeValue, dataKey, totalKey } = getInfoFromApi.call(this, res, 'delete')
+        if (apiCodeValue === expectedCodeValue) {
             this.$message.success('删除成功');
             if (typeof this.on['delete-success'] === 'function') {
                 this.on['delete-success'](res.data);
             }
         } else {
-            this.$message.error(`${res.data.msg}(${res.data.code})`);
-            throw '@delete:' + res.data.code;
+            this.$message.error(`${message}(${apiCodeValue})`);
+            throw '@delete:' + apiCodeValue;
         }
         return res;
     }
@@ -206,21 +241,22 @@ export const create = ams.createApiAction({
         };
     },
     success(res) {
-        // 默认successCode
-        const successCode = this.getConfig('resource.api.create.successCode') || this.getConfig('resource.api.successCode');
-        if (res.data.code === successCode) {
+        const { message, apiCodeValue, expectedCodeValue, dataKey, totalKey } = getInfoFromApi.call(this, res,  'create')
+        if (apiCodeValue === expectedCodeValue) {
             this.$message.success('创建成功');
             if (typeof this.on['create-success'] === 'function') {
                 this.on['create-success'](res.data);
             }
         } else {
-            this.$message.error(`${res.data.msg}(${res.data.code})`);
-            throw '@create code:' + res.data.code;
+            this.$message.error(`${message}(${apiCodeValue})`);
+            throw '@create code:' + apiCodeValue;
         }
         return res;
     }
 });
 
+// https://github.com/vipshop/ams/blob/5c8e0112c3b8e42c4bed9ff658767bbdbcf9bbd4/src/ams/request.js#L162
+// createApiAction -> src/ams/request.js
 export const list = ams.createApiAction({
     getOptions(params) {
         // 使用传入页数，如搜索使用 @list:1 将页数重置为1
@@ -296,25 +332,27 @@ export const list = ams.createApiAction({
         };
     },
     success(res) {
-        // 默认successCode
-        const successCode = this.getConfig('resource.api.list.successCode') || this.getConfig('resource.api.successCode');
+        // whenSuccess = res => res[codeKey] === expectedCodeValue
+        const { message, apiCodeValue, expectedCodeValue, dataKey, totalKey } = getInfoFromApi.call(this, res,   'list')
         if (
-            res.data.code === successCode &&
+            apiCodeValue === expectedCodeValue &&
             res.data.data
         ) {
+            const finalData = lodashGet(res.data, dataKey);
+            const total = lodashGet(res.data, totalKey);
             const listConfig = this.resource.api.list;
             if (typeof listConfig === 'object' && typeof listConfig.transform === 'function') {
-                this.data.list = listConfig.transform(res.data.data.list) || [];
+                this.data.list = listConfig.transform(finalData) || [];
             } else {
-                this.data.list = res.data.data.list || [];
+                this.data.list = finalData || [];
             }
-            this.data.total = res.data.data.total;
+            this.data.total = total;
             if (typeof this.on['list-success'] === 'function') {
                 this.on['list-success'](res.data);
             }
         } else {
-            this.$message.error(`${res.data.msg}(${res.data.code})`);
-            throw '@list:' + res.data.code;
+            this.$message.error(`${message}(${apiCodeValue})`);
+            throw '@list:' + apiCodeValue;
         }
 
         return res;
