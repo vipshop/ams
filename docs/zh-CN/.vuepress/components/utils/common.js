@@ -4,7 +4,7 @@ export function downloadTemplate(target,name, config) {
 <head>
     <meta charset="utf-8">
     <title>首页</title>
-    <script src="https//h5rsc.vipstatic.com/ams/babel-polyfill/7.4.0/polyfill.min.js"></script>
+    <script src="https://h5rsc.vipstatic.com/ams/babel-polyfill/7.4.0/polyfill.min.js"></script>
 </head>
 <body>
     <script>
