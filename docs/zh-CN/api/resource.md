@@ -63,9 +63,11 @@ ams.resource('demo-resource', {
 
 - `api`： 对resource的一些内置方法，`prefix`为接口地址，目前提供了`create` `update` `read` `delete` `list` 几个内置请求方法
 
+<!-- TODO fixme 404 -->
 - `fields`： resource里的详细的字段描述，点击前往[更深入的了解fields](/api/field.html)
 
-#### field通用配置
+<!-- TODO 这里是否需要向下调整，将 注册资源 和 使用资源 放在一起 -->
+## field 通用配置
 
 | 参数 | 类型 | 是否必传 | 说明
 | -- | -- | -- | --
