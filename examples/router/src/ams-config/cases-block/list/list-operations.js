@@ -11,6 +11,14 @@ ams.block('list-operations', {
         // tableHeightFit: true
     },
 
+    props: {
+        // 设置多选列props
+        'selection-props': {
+            width: 100,
+            align: 'center'
+        }
+    },
+
     // 过滤设置（列表特有）
     filters: {
         testCheckbox: {

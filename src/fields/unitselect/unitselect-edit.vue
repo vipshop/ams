@@ -48,6 +48,7 @@ export default {
                 val: this.val,
                 unit: this.unit,
             };
+            this.on.change && this.on.change(this.localValue);
         },
         changeUnit(e) {
             // console.log('changeUnit', e, this.unit)
@@ -55,6 +56,7 @@ export default {
                 val: this.val,
                 unit: this.unit,
             };
+            this.on.change && this.on.change(this.localValue);
         }
     }
 };

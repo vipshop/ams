@@ -12,7 +12,11 @@ export default {
     methods: {
         emit() {
             ams.$prevReturn = this.context;
-            this.$block.emitEvent(this.field.event);
+            const field = this.field;
+            if (field.props && field.props.emitFieldChange) {
+                this.fieldChange(field.props.text || field.label, field, this.path);
+            }
+            this.$block.emitEvent(field.event);
         }
     }
 };

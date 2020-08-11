@@ -13,8 +13,12 @@ export default {
     data() {
         return {
             icons: [
-                'user', 'woman', 'man', 'question', 'watcher', 'advocate', 'fold', 'crown', 'heart', 'brick', 'dashboard',
-                'portrait', 'brand-equity', 'crowd-manage', 'account-sales', 'help-center', 'data-report', 'customer-operation', 'code'
+                'lower-prices', 'petal', 'tag', 'vip-sales', 'caret-left', 'caret-right', 'caret-bottom', 'caret-bottom', 'caret-top', 
+                'information', 'export', 'data', 'flat', 'top', 'bottom', 'ams', 'vis', 'man', 'woman', 'watcher', 'brick', 'heart', 'advocate',
+                'crown', 'code', 'clock', 'car', 'star', 'edit', 'view', 'fixed', 'prohibit', 'balance', 'arrow-up', 'arrow-down', 'required', 'error',
+                'circle-plus', 'search', 'document-check', 'check', 'data-sale', 'data-uv', 'data-percent', 'reset', 'big-arrow-up',
+                'check2', 'close', 'data-line', 'dashboard', 'portrait', 'brand-equity', 'user-manager', 'account-sales', 'help', 'data-report',
+                'customer-operation', 'fold', 'question', 'user', 'mp', 'list-search', 'list-user', 'system-icon'
             ]
         }
     },

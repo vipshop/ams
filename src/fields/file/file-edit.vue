@@ -55,10 +55,12 @@ export default {
                     this.localValue = this.field.get(res.data[successUrlKey] || res.data, this.field);
                 }
                 if (typeof props['on-success'] === 'function') {
-                    props['on-success'](res, file);
+                    console.warn('0.25.20版本之前，on-success的this指向自身方法，之后指向vue实例');
+                    props['on-success'].call(this, res, file);
                 }
             } else if (typeof props['on-error'] === 'function') {
-                props['on-error'](res, file);
+                console.warn('0.25.20版本之前，on-error的this指向自身方法，之后指向vue实例');
+                props['on-error'].call(this, res, file);
             } else {
                 this.$message.error(`${res.msg}(${res.code})`);
             }

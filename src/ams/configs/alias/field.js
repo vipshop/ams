@@ -181,6 +181,11 @@ export const SELECT_REMOTE = {
                         optionsCache[cacheKey] = deepExtend(optionsCache[cacheKey] || {}, optionsEntity);
                     }
                     $field.$set($field.field.props, 'options', options);
+                    if (typeof remoteConfig.onSuccess === 'function') {
+                        remoteConfig.onSuccess(options, res);
+                    }
+                } else if (typeof remoteConfig.onError === 'function') {
+                    remoteConfig.onError(data, res);
                 }
                 nextLockQuery();
             } catch (e) {
