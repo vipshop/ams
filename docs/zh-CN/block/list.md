@@ -55,6 +55,8 @@ List: List 列表
 
 如果没有配置会使用同名 `field` 的 `props.options` 配置，如果都没有filter配置会失效
 
+若配置`props['pagination']: 'simulate'`的纯前端分页，也支持排序
+
 <ClientOnly>
 <block-list-demo blockName="filtersList" onlineDemo="https://codepen.io/w3cmark/pen/zYOLmPO"/>
 </ClientOnly>

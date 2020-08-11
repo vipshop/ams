@@ -12,7 +12,7 @@
         "vue",
         "element-ui"
     ],
-    "version": "0.25.17",
+    "version": "0.25.28",
     "main": "lib/ams.common.js",
     "unpkg": "lib/ams.js",
     "scripts": {
@@ -21,9 +21,9 @@
         "lint": "./node_modules/.bin/eslint --ext vue,js ./",
         "clean": "rimraf lib && rimraf dist",
         "build": "node build/bin/prebuild.js && npm run lint && npm run clean &&  webpack --config build/webpack.conf.js && webpack --config build/webpack.common.js",
-        "components": "webpack --config build/webpack.component.js",
-        "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.js",
-        "update-doc": "cd ./docs && npm run build && cd ../ && cd ./examples/router && npm run build && cd ../../  && node build/bin/update-doc.js"
+        "components": "webpack --config build/webpack.component.js --libraryTarget commonjs2",
+        "components-umd": "webpack --config build/webpack.component.js --libraryTarget umd",
+        "dev": "lerna bootstrap && webpack-dev-server --inline --progress --config build/webpack.dev.js"
     },
     "dependencies": {
         "@babel/runtime": "^7.4.4",

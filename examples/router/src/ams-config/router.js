@@ -216,6 +216,11 @@ ams.block('router', {
                                 name: '字段处理',
                                 path: 'list-field-convert',
                                 block: 'list-field-convert'
+                            },
+                            {
+                                name: '前端分页',
+                                path: 'list-simulate',
+                                block: 'list-simulate'
                             }
                         ]
                     },

@@ -77,7 +77,9 @@
                                  type="selection"
                                  :selectable="columnAttrs['selectable']"
                                  :reserve-selection="columnAttrs['reserve-selection']"
-                                 width="50" />
+                                 :width="selectionProps.width || 50"
+                                 v-bind="selectionProps" />
+
                 <el-table-column v-if="block.props.type === 'index'"
                                  type="index"
                                  align="center" />
@@ -158,7 +160,7 @@
 <script>
 import mixins from '../../ams/mixins';
 import { defaultListFieldWidth } from '../../ams/configs/field';
-import { addEvent, getDomPos, getDomStyle, debounce, loadJS } from '../../utils/index';
+import { addEvent, getDomPos, getDomStyle, debounce, loadJS, sortBy } from '../../utils/index';
 import field from '../../components/field';
 
 export default {
@@ -207,6 +209,13 @@ export default {
                 return options.operationsWidth;
             }
             return null;
+        },
+        selectionProps() {
+            const props = this.block.props || {};
+            if (props && props['selection-props']) {
+                return props['selection-props'];
+            }
+            return {};
         },
         expandFields() {
             // 获取展开列表展开表单的fields
@@ -340,12 +349,16 @@ export default {
             }
             this.emitEvent('list');
         },
-        handleSortChange({ prop, order }) {
+        handleSortChange({ column, prop, order }) {
             console.log('handleSortChange', prop, order);
             this.sortField = prop;
             this.sortOrder = order;
             this.data.page = 1;
-            this.emitEvent('list');
+            if (!this.isSimulatePagination) {
+                this.emitEvent('list');
+            } else {
+                this.data.list = sortBy(this.data.list, { [prop]: order });
+            }
         },
         handleFilterChange(e) {
             console.log('handleFilterChange', e);

@@ -5,8 +5,12 @@
                 :class="operation.props && operation.props.inline === false ? 'el-form-item--block' : ''"
                  v-if="getShowState(operation, context)"
                  :key="operationKey">
+                 <el-tooltip effect="dark" placement="top" v-if="operation.info">
+                    <i class="el-icon-info ams-form-label-info el-form-item__label"></i>
+                    <div slot="content" v-html="operation.info"></div>
+                </el-tooltip>
                 <label v-if="operation.label && !/^(?:button|reset|icon|text)$/.test(operation.type)"
-                       class="el-form-item__label">{{operation.label}}</label>
+                class="el-form-item__label">{{operation.label}}</label>
                 <div class="el-form-item__content">
                     <component :is="'ams-operation-' + operation.type"
                                :name="name"

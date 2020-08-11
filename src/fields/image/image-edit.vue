@@ -50,10 +50,11 @@ export default {
     },
     methods: {
         beforeUpload(file) {
-            return new Promise((resolve, reject) => {
+            return new Promise(async (resolve, reject) => {
                 if (!this.field.check) {
                     return resolve();
                 }
+                const props = this.field.props || {};
 
                 let { maxSizeInKB, imgMaxWidth, imgMaxHeight, imgMinWidth, imgMinHeight, imgWidth, imgHeight } = this.field.check;
                 if (maxSizeInKB && (file.size / 1024) > maxSizeInKB) {
@@ -63,7 +64,7 @@ export default {
 
                 if (imgMaxWidth || imgMaxHeight || imgMinWidth || imgMinHeight || imgWidth || imgHeight) {
                     let image = new Image();
-                    image.onload = () => {
+                    image.onload = async () => {
                         let widthVaild = true;
                         let heightValid = true;
 
@@ -98,6 +99,9 @@ export default {
                             this.$message('图片高度必须为' + imgHeight + 'px');
                         }
                         if (widthVaild && heightValid) {
+                            if (typeof props['before-upload'] === 'function') {
+                                await props['before-upload'](file);
+                            }
                             resolve();
                         } else {
                             reject(); // eslint-disable-line prefer-promise-reject-errors
@@ -105,6 +109,9 @@ export default {
                     };
                     image.src = URL.createObjectURL(file);
                 } else {
+                    if (typeof props['before-upload'] === 'function') {
+                        await props['before-upload'](file);
+                    }
                     resolve();
                 }
             });

@@ -7,6 +7,8 @@
         <ams-operations :name="name"
                         slot-name="searchs"></ams-operations>
 
+        <ams-blocks :blocks="block.slotBlocks.tableTop" />
+
         <el-form :model="data">
             <el-table border
                       :data="tableList"

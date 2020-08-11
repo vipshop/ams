@@ -1,8 +1,12 @@
 <template>
     <div v-if="value && field.fields"
          :style="field.style">
+        <i v-if="collapseKeys.length"
+            @click="collapseStatus = !collapseStatus"
+            class="el-icon icon-collapse"
+            :class="collapseStatus ? 'el-icon-caret-top' : 'el-icon-caret-bottom'"></i>
         <template v-for="(fieldLayout, key) in layout">
-            <template v-if="fieldLayout && getShowState(field.fields[key], value)">
+            <template v-if="fieldLayout && getShowState(field.fields[key], value) && !(!collapseStatus && collapseKeys.indexOf(key) >= 0)">
                 <el-form-item v-if="typeof fieldLayout === 'string'"
                               :label="field.fields[key].labelWidth !== '0' ? field.fields[key].label : ''"
                               :key="key"
@@ -73,13 +77,31 @@ export default {
     mixins: [mixins.fieldEditArrayMixin, mixins.getShowState, mixins.getField],
     data() {
         return {
-            layout: null
+            layout: null,
+            collapseStatus: true
         };
+    },
+    computed: {
+        collapseKeys() {
+            return this.field.props && this.field.props.collapseKeys || [];
+        }
     },
     created() {
         if (this.field.fields) {
             this.layout = this.$block.getFieldsLayout(this.field.fields, this.field.layout);
         }
+        if (this.collapseKeys.length) {
+            this.collapseStatus = false;
+        }
     }
 };
 </script>
+<style scoped>
+.icon-collapse {
+   position: absolute;
+   font-size: 28px;
+   margin-top: 6px;
+   color: #888;
+}
+</style>
+

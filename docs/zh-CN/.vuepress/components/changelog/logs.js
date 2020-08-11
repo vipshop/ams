@@ -1,9 +1,22 @@
 // 更新日志
 export default [
     {
-        version: '0.25.13',
-        date: '2020.06.05',
+        version: '0.25.28',
+        date: '2020.07.29',
         log: [
+            'feat: unitselect字段增加on.change回调',
+            'feat: list区块增加前端排序',
+            'feat: field-audio、field-image、field-video支持在props配置before-upload回调',
+            'feat: table组件支持tableTop的插槽',
+            'feat: list组件，前端分页时，点击排序请求接口',
+            'feat:  前端分页时，点击排序触发fieldChange',
+            'feat: object增加collapseKeys配置',
+            'feat: 字段button增加emitFieldChange配置，可手动触发fieldChange方法',
+            'feat: operation添加info支持',
+            'feat: 远程搜索组件添加onSuccess和onError的回调方法',
+            'fix: table组件添加context参数',
+            'feat: 补全list区块的props配置',
+            'feat: 内置action的read中，添加tansform配置',
             'feat: 内置的action支持配置path/method/successCode/transform',
             'feat: resource增加method的配置',
             'feat: table组件支持配置data.layout',
@@ -13,7 +26,7 @@ export default [
             'feat: block-xlsx@0.8.8，导入的request支持withCredentials、contentType、headers、successCode的配置',
             'fix: list组件的列支持配置min-width',
             'feat: text-view增加suffix-icon配置',
-            'fix: options选项多时的popover交互修改'
+            'fix: options选项多时的popover交互修改',
         ]
     },
     {

@@ -66,6 +66,7 @@ module.exports = {
             '',
             'resource',
             'block',
+            'template',
             'demo'
           ]
         },
@@ -103,7 +104,7 @@ module.exports = {
         {
           title: '基础',
           collapsable: false,
-          children: ['text','password', 'textarea', 'switch',  'color', 'rate', 'unitselect', 'link', 'button', 'html']
+          children: ['text','password', 'textarea', 'switch',  'color', 'rate', 'unitselect', 'link', 'button', 'html', 'tree']
         },
         {
           title: '时间',
@@ -159,8 +160,7 @@ module.exports = {
               'steps',
               'card',
               'dropdown',
-              'popover',
-              'tree'
+              'popover'
             ]
         },
         {
