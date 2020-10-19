@@ -41,8 +41,16 @@ function _getForeignKeys(params) {
 }
 /**
  * @param {*} config action的配置，如
- * { path: 'list', method: 'get', successCode: 0,
+ * {    path: 'list',
+        method: 'get',
+        successCode: 0,
         transform(data) {
+            return data;
+        },
+        requestDataParse(data) {
+            return data;
+        },
+        responseDataParse(data) {
             return data;
         }
     }
@@ -55,11 +63,12 @@ function _getSendData(config, method, prefix, arg) {
     if (config.path) {
         options.url = `${config.prefix || prefix}${config.path}`;
     }
+    const sendArg = typeof config.requestDataParse === 'function' ? config.requestDataParse(arg) : arg;
     options.method = config.method || method;
     if (['post', 'POST'].indexOf(config.method) >= 0) {
-        options.data = arg;
+        options.data = sendArg;
     } else {
-        options.params = arg;
+        options.params = sendArg;
     }
     return options;
 }
@@ -93,7 +102,10 @@ export const read = ams.createApiAction({
         if (res.data.code === successCode) {
             const config = this.resource.api.read;
             if (typeof config === 'object' && typeof config.transform === 'function') {
+                console.warn('resource.api中的transform方法配置即将废弃，请更换成responseDataParse方法');
                 this.setBlockData(config.transform(res.data.data));
+            } else if (typeof config === 'object' && typeof config.responseDataParse === 'function') {
+                this.setBlockData(config.responseDataParse(res.data.data));
             } else {
                 this.setBlockData(res.data.data);
             }
@@ -116,7 +128,8 @@ export const update = ams.createApiAction({
                 this.resource.api.prefix,
                 {
                     [key]: value,
-                    ..._getForeignKeys.call(this, params)
+                    ..._getForeignKeys.call(this, params),
+                    ...this.data
                 });
         }
         return {
@@ -192,7 +205,12 @@ export const deleteAction = ams.createApiAction({
 export const create = ams.createApiAction({
     getOptions(params) {
         if (typeof this.resource.api.create === 'object') {
-            return _getSendData(this.resource.api.create, 'post', this.resource.api.prefix, { ..._getForeignKeys.call(this, params) });
+            return _getSendData(
+                this.resource.api.create,
+                'post',
+                this.resource.api.prefix,
+                { ..._getForeignKeys.call(this, params), ...this.data }
+            );
         }
         return {
             // withCredentials: true,
@@ -302,9 +320,11 @@ export const list = ams.createApiAction({
             res.data.code === successCode &&
             res.data.data
         ) {
-            const listConfig = this.resource.api.list;
-            if (typeof listConfig === 'object' && typeof listConfig.transform === 'function') {
-                this.data.list = listConfig.transform(res.data.data.list) || [];
+            const config = this.resource.api.list;
+            if (typeof config === 'object' && typeof config.transform === 'function') {
+                this.data.list = config.transform(res.data.data.list) || [];
+            } else if (typeof config === 'object' && typeof config.responseDataParse === 'function') {
+                this.data.list = config.responseDataParse(res.data.data.list) || [];
             } else {
                 this.data.list = res.data.data.list || [];
             }

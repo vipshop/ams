@@ -177,7 +177,6 @@ export default {
     }
     &-con{
         width: 100%;
-        overflow: hidden;
         position: relative;
         z-index: 1;
         height: 120px;
@@ -209,8 +208,9 @@ export default {
             -webkit-box-orient: vertical;
             transition: ease 0.3s;
             background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
             &.is-hover-subtitle{
-                transform: translateY(100%);
+                transform: translateY(10%);
             }
         }
         .list-item-topright-operations{
@@ -220,8 +220,9 @@ export default {
             z-index: 2;
             top: 0;
             right: 0;
-            transform: translateY(-100%);
+            transform: translateY(-10%);
             transition: ease 0.3s;
+            opacity: 0;
             .el-form--inline .el-form-item{
                 margin-right: 5px;
             }
@@ -291,6 +292,7 @@ export default {
     &:hover{
         .is-hover-subtitle,.list-item-topright-operations{
             transform: translateY(0);
+            opacity: 1;
         }
     }
     &-subscript {

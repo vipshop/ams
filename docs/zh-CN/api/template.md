@@ -9,7 +9,7 @@ Template: Template 模板
 
 第一步，创建一个html文件
 
-```js
+```html
 <!DOCTYPE html>
     <html>
     <head>
@@ -19,7 +19,7 @@ Template: Template 模板
         <script src="https://h5rsc.vipstatic.com/ams/babel-polyfill/7.4.0/polyfill.min.js"></script>
         <script src="https://h5rsc.vipstatic.com/ams/vue@2.6.10.js"></script>
         <script src="https://h5rsc.vipstatic.com/ams/element-ui@2.11.1/index.js"></script>
-        <script src="https://h5rsc.vipstatic.com/ams/ams@0.25.28.js"></script>
+        <script src="https://h5rsc.vipstatic.com/ams/ams@0.27.0.js"></script>
     </head>
     <body>
         <script>

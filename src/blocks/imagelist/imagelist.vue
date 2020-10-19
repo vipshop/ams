@@ -38,7 +38,7 @@
                     :image="item"
                     :block="block"
                     :name="name"
-                    :key="index"
+                    :key="item.id"
                     :index="index"
                     :batchSelected="batchSelected"
                     :showCheckbox="showBatchOperations"
@@ -87,6 +87,7 @@ import ams from '../../ams/index';
 import mixins from '../../ams/mixins';
 // import { addEvent, getDomPos, getDomStyle, debounce } from '../../utils/index';
 import listitem from './listitem';
+import { deepExtend } from '../../utils/index';
 
 export default {
     components: {
@@ -137,7 +138,7 @@ export default {
         isSelectAll: {
             set(val) {
                 if (val) {
-                    this.batchSelected = this.listData;
+                    this.batchSelected = deepExtend([], this.listData);
                 } else {
                     this.batchSelected = [];
                 }

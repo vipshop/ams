@@ -28,6 +28,7 @@ ams.block('image', {
                     default: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
                     props: {
                         action: upload,
+                        fit: 'contain',
                         'list-type': 'picture-card',
                         'show-file-list': true,
                         'file-list': [{
@@ -49,6 +50,23 @@ ams.block('image', {
                             trigger: 'change'
                         }
                     ]
+                },
+                defaultImageList: {
+                    label: '可选图片',
+                    type: 'image',
+                    props: {
+                        fit: 'contain',
+                        'default-image-list': [
+                            {
+                                name: 'img1',
+                                url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
+                            },
+                            {
+                                name: 'img2',
+                                url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
+                            }
+                        ]
+                    }
                 },
                 image4: {
                     label: '固定尺寸',

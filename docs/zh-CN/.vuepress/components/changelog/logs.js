@@ -1,9 +1,32 @@
 // 更新日志
 export default [
     {
-        version: '0.25.28',
+        version: '0.27.0',
+        date: '2020.09.30',
+        log: [
+            'feat: 列表拖动功能支持根据 SortableJS 官方文档配置参数',
+            'fix: 修正列表拖拽某列的使用方法'
+        ]
+    },
+    {
+        version: '0.26.3',
+        date: '2020.09.17',
+        log: [
+            'feat: 资源的api请求配置，新增requestDataParse和responseDataParse',
+            'feat: 图片编辑可选图片场，供可选的列表图片接入 el-image 来实现 fit 入参',
+            'fix: 图片编辑单张图片预览场景接入 el-image 组件用以实现 fit 入参',
+            'fix: field的default值初始化处理',
+            'feat: 对field default值也进行get/set处理'
+        ]
+    },
+    {
+        version: '0.25.39',
         date: '2020.07.29',
         log: [
+            'feat: 修复列表区块操作中，最后一项操作表的居中问题',
+            'feat: 更新collpase和imagelist的样式',
+            'feat: 新增多种类型的icon',
+            'feat: list区块请求时禁止分页操作',
             'feat: unitselect字段增加on.change回调',
             'feat: list区块增加前端排序',
             'feat: field-audio、field-image、field-video支持在props配置before-upload回调',
@@ -26,7 +49,7 @@ export default [
             'feat: block-xlsx@0.8.8，导入的request支持withCredentials、contentType、headers、successCode的配置',
             'fix: list组件的列支持配置min-width',
             'feat: text-view增加suffix-icon配置',
-            'fix: options选项多时的popover交互修改',
+            'fix: options选项多时的popover交互修改'
         ]
     },
     {
