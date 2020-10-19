@@ -17,6 +17,12 @@ ams.resource('resource', {
         //     path: 'list',
         //     method: 'get',
         //     successCode: 0,
+        //     requestDataParse(query) {
+        //         return query;
+        //     },
+        //     responseDataParse(data) {
+        //         return data;
+        //     },
         //     transform(data) {
         //         return data.map(item => {
         //             item.testTextarea = '测试字段';

@@ -47,6 +47,7 @@ export default {
             let wmOptions = this.block.options && this.block.options.watermark;
             if (wmOptions) {
                 wmOptions = getType(wmOptions) === 'object' ? wmOptions : {};
+                // eslint-disable-next-line
                 watermark(Object.assign({
                     container: this.$el,
                     uid: this._uid
@@ -192,6 +193,7 @@ export default {
                                     if (!(propKey in field.props)) {
                                         field.props[propKey] = defaultField.props[propKey];
                                     } else if (propKey === 'props') {
+                                        // eslint-disable-next-line
                                         field.props[propKey] = Object.assign(
                                             {},
                                             defaultField.props[propKey] || {},
@@ -395,7 +397,11 @@ export default {
             } else {
                 if (typeof data === 'undefined') {
                     // 默认值
-                    data = field.default;
+                    if (typeof field.set === 'function' && typeof field.get === 'function') {
+                        data = field.set(field.get(field.default, field), field);
+                    } else {
+                        data = field.default;
+                    }
                 }
                 if (typeof data !== 'undefined') {
                     // fieldChange event

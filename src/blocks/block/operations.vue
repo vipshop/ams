@@ -143,10 +143,17 @@ export default {
 </script>
 
 <style lang="scss">
-.ams-block .ams-operations .el-form-item{
-    margin-bottom: 12px;
-    .el-form-item__content{
-        line-height: 40px;
+.ams-block {
+    .ams-operations.el-form--inline {
+        > .el-form-item:last-child {
+            margin-right: 0;
+        }
+    }
+    .ams-operations .el-form-item {
+        margin-bottom: 12px;
+        .el-form-item__content{
+            line-height: 40px;
+        }
     }
 }
 </style>
