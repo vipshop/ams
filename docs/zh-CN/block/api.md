@@ -55,7 +55,7 @@ style: {
 }
 ```
 
-## data 
+## data
 
 - 类型：`object`
 - 默认值：`undefined`
@@ -87,7 +87,7 @@ data: {
 当type为`error`, data配置如下
 ```js
 data: {
-    img: 'Url | Base64',    
+    img: 'Url | Base64',
     title: 'String',      // 默认为Error
     subtitle: 'String'    // 默认为Opps，some error happen !
 }

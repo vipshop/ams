@@ -64,6 +64,8 @@ module.exports = {
           collapsable: false,
           children: [
             '',
+            'try',
+            'getstart',
             'resource',
             'block',
             'template',
