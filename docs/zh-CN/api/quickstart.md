@@ -4,7 +4,30 @@
 
 ### 方式一：通过npm安装（依赖node环境）
 
-详见[通过npm安装](./npm.md)
+相关依赖安装
+
+```js
+npm i @ams-team/ams vue element-ui
+```
+
+通过Vue.use() 明确地安装ams功能：
+
+```js
+// 不要忘了引入 element-ui
+import ElementUI from 'element-ui';
+// 使用 element-ui 默认主题
+import 'element-ui/lib/theme-chalk/index.css';
+// 或者使用 vipshop 定制主题
+import '@ams-team/ams/lib/theme-vipshop/index.css';
+
+import locale from 'element-ui/lib/locale/lang/zh-CN'; // lang i18n
+Vue.use(ElementUI, { locale });
+
+// 再引入ams
+import ams from '@ams-team/ams';
+
+Vue.use(ams);
+```
 
 ### 方式二：直接用 script 引入
 

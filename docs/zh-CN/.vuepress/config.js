@@ -1,4 +1,5 @@
 // 根据打包命令参数，决定打包输出路径
+// npm run build -- ams-os 打包路径将是ams-os库在你本地的路径（按需修改）
 const dest = 'dist'
 
 module.exports = {
@@ -64,6 +65,8 @@ module.exports = {
           collapsable: false,
           children: [
             '',
+            'try',
+            'quickstart',
             'resource',
             'block',
             'template',
