@@ -52,8 +52,6 @@ export function getRouter(router) {
 
     getRoutes(router.routes, routes);
 
-    console.log('routes', routes);
-
     return new VueRouter({
         ...router,
         routes

@@ -30,7 +30,16 @@ ams.resource('demo-resource', {
             path: 'list',
             method: 'post',
             successCode: 1,
-            transform(data) { // 仅list和read有transform方法，用于在AMS赋值给区块前，转化接口返回数据
+            // 仅list和read有transform方法，用于在AMS赋值给区块前，转化接口返回数据，如果是list组件，这里的data代表的是data.list
+            transform(data) {
+                return data
+            },
+            // 所有内置action都有的方法
+            requestDataParse(data) {
+                return data
+            },
+            // 仅list和read有transform方法，用于在AMS赋值给区块前，转化接口返回数据，如果是list组件，这里的data代表的是data
+            responseDataParse(data) {
                 return data
             }
         }
@@ -55,17 +64,6 @@ ams.resource('demo-resource', {
 })
 ```
 
-## 使用资源
-
-根据资源名字来使用某个资源，在注册`block`时指定资源名字来使用
-
-```javascript
-ams.block('demo', {
-  resource: 'demo-resource',
-  ...
-});
-```
-
 以上注册了名字为 `demo-resource` 的资源，而这个资源由三部分组成，分别时`key` `api` `fields`，其中这三部分的意义为：
 
 - `key`： 【非必须】标识该resource的`keyName`，有些场景需要通过 `queryString` 传入，通过解析 `key=value` 获取
@@ -76,7 +74,7 @@ ams.block('demo', {
 
 - `fields`： resource里的详细的字段描述，点击前往[更深入的了解fields](/field/)
 
-## field 通用配置
+## field通用配置
 
 | 参数 | 类型 | 是否必传 | 说明
 | -- | -- | -- | --
@@ -94,6 +92,17 @@ ams.block('demo', {
 | set | function | 否 | set函数，编辑状态下生效（`ctx: 'eidt'`）
 | view | function | 否 | view函数，显示状态下生效（`ctx: 'view'`）
 | labelWidth | string | 否 | form内label的显示宽度
+
+## 使用资源
+
+根据资源名字来使用某个资源，在注册`block`时指定资源名字来使用
+
+```javascript
+ams.block('demo', {
+  resource: 'demo-resource',
+  ...
+});
+```
 
 接下来，我们将介绍AMS另外一个核心概念`区块`
 

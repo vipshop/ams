@@ -110,7 +110,7 @@ ams.block('list', {
         },
         back: {
             type: 'button',
-            label: '回退1',
+            label: '回退',
             props: {
                 size: 'mini'
             }
@@ -163,6 +163,7 @@ ams.block('list', {
         testSelect: {
             slot: 'searchs',
             type: 'field'
+            // desc: '<div style="color: red;">desc校验提示</div>'
             // field: 'testSelect' // field可省略
             // label: '可省略'
         },

@@ -1,9 +1,17 @@
 // 更新日志
 export default [
     {
-        version: '0.27.0',
-        date: '2020.09.30',
+        version: '0.27.9',
+        date: '2020.11.26',
         log: [
+            'feat: form区块支持changeConfig配置',
+            'fix: 修复list区块在前端分页下，不触发current-change事件问题',
+            'feat: 更正block-chart的颜色分布',
+            'fix: 内置的用户信息区块和 ELEMENT UI 框架中图片放大功能的样式冲突',
+            'feat: 默认@list的action中，将requestDataParse的处理参数改为res.data',
+            'feat: 默认@list的action中，将responseDataParse处理范围从data.list变更为data',
+            'feat: 简化operaions中自定义field的配置',
+            'feat: operations增加changeConfig配置',
             'feat: 列表拖动功能支持根据 SortableJS 官方文档配置参数',
             'fix: 修正列表拖拽某列的使用方法'
         ]

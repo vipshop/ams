@@ -114,7 +114,7 @@
                                  fixed="right"
                                  min-width="140px"
                                  :width="operationsWidth"
-                                 align="center"
+                                 :align="operationsAlign"
                                  class-name="ams-list-row-operations">
                     <template slot-scope="scope">
                         <ams-operations :name="name"
@@ -210,6 +210,13 @@ export default {
                 return options.operationsWidth;
             }
             return null;
+        },
+        operationsAlign() {
+            const props = this.block.props || {};
+            if (props && props['operations-align']) {
+                return props['operations-align'];
+            }
+            return 'center';
         },
         selectionProps() {
             const props = this.block.props || {};
@@ -394,11 +401,11 @@ export default {
         },
         handleCurrentChange(e) {
             console.log('handleCurrentChange');
-            if (this.isSimulatePagination) {
-                return;
-            }
             if (this.on && this.on['current-change']) {
                 this.on['current-change'](this.data.page);
+            }
+            if (this.isSimulatePagination) {
+                return;
             }
             this.emitEvent('list');
         },

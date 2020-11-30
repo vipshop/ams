@@ -102,10 +102,9 @@ export const read = ams.createApiAction({
         if (res.data.code === successCode) {
             const config = this.resource.api.read;
             if (typeof config === 'object' && typeof config.transform === 'function') {
-                console.warn('resource.api中的transform方法配置即将废弃，请更换成responseDataParse方法');
                 this.setBlockData(config.transform(res.data.data));
             } else if (typeof config === 'object' && typeof config.responseDataParse === 'function') {
-                this.setBlockData(config.responseDataParse(res.data.data));
+                this.setBlockData(config.responseDataParse(res.data));
             } else {
                 this.setBlockData(res.data.data);
             }
@@ -324,7 +323,7 @@ export const list = ams.createApiAction({
             if (typeof config === 'object' && typeof config.transform === 'function') {
                 this.data.list = config.transform(res.data.data.list) || [];
             } else if (typeof config === 'object' && typeof config.responseDataParse === 'function') {
-                this.data.list = config.responseDataParse(res.data.data.list) || [];
+                this.data = config.responseDataParse(res.data) || [];
             } else {
                 this.data.list = res.data.data.list || [];
             }
