@@ -6,8 +6,9 @@
   },
   "private": true,
   "dependencies": {
-    "@ams-team/ams": "^0.27.0",
+    "@ams-team/ams": "latest",
     "@ams-team/block-ams-config": "latest",
+    "@ams-team/block-calendar": "latest",
     "@ams-team/block-chart": "latest",
     "@ams-team/json-stringify": "latest",
     "element-ui": "^2.11.1",

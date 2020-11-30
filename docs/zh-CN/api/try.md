@@ -6,4 +6,4 @@
 
 接下来，让我们学习如何使用AMS来配置出这些页面吧
 
-[下一节：快速起步](/api/getstart.html)
+[下一节：快速起步](/api/quickstart.html)

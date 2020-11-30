@@ -12,13 +12,14 @@
                 <label v-if="operation.label && !/^(?:button|reset|icon|text)$/.test(operation.type)"
                 class="el-form-item__label">{{operation.label}}</label>
                 <div class="el-form-item__content">
-                    <component :is="'ams-operation-' + operation.type"
+                    <component :is="'ams-operation-' + getOpType(operation.type)"
                                :name="name"
                                :operation-key="operationKey"
                                :context="context"
                                :path="path"
                                class="ams-operation"
-                               :operation="operation" />
+                               :operation="getField(operation, context)" />
+                    <div class="ams-form-item-desc" v-if="operation.desc" v-html="operation.desc"></div>
                 </div>
             </div>
         </template>
@@ -29,8 +30,9 @@
 import ams from '../../ams';
 import mixins from '../../ams/mixins';
 
+const operationTypes = ['button', 'dropdown', 'icon', 'reset', 'text']; // TODO 这里列出了部分不需要处理的operations类型
 export default {
-    mixins: [mixins.getShowState],
+    mixins: [mixins.getShowState, mixins.getField],
     props: {
         name: {
             type: String,
@@ -94,9 +96,14 @@ export default {
                     };
                 } else if (type === 'string') {
                     field = this.$block.fields[operationFields[key]];
-                } else {
+                } else if (this.$block.fields[key]) {
                     // 使用operationKey作为默认的key
                     field = this.$block.fields[key];
+                } else {
+                    field = {
+                        name: key,
+                        ...operationFields[key]
+                    };
                 }
 
                 if (field) {
@@ -123,7 +130,7 @@ export default {
             // console.log('slotName', slotName);
             Object.keys(operations).forEach(key => {
                 let operation = operations[key];
-                if (operation.type === 'field') {
+                if (operationTypes.indexOf(operation.type) < 0) {
                     isEmpty = false;
                     this.setFieldDefaultValue({ [key]: operation.field }, slotName, data);
                 }
@@ -137,6 +144,12 @@ export default {
             if (!isEmpty) {
                 this.$set(this.$block.data, slotName, data);
             }
+        },
+        getOpType(type) {
+            if (operationTypes.indexOf(type) >= 0) {
+                return type;
+            }
+            return 'field';
         }
     }
 };
@@ -144,9 +157,11 @@ export default {
 
 <style lang="scss">
 .ams-block {
-    .ams-operations.el-form--inline {
-        > .el-form-item:last-child {
-            margin-right: 0;
+    td.is-center {
+        .ams-operations.el-form--inline {
+            > .el-form-item:last-child {
+                margin-right: 0;
+            }
         }
     }
     .ams-operations .el-form-item {

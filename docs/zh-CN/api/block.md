@@ -305,7 +305,8 @@ operations结构类型如下：
 		show?: String | Object | Function,
 		style: {
 			[styleName: String]: String
-		}
+        },
+        changeConfig: Function(field: Object, context: Object)
 	}
 }
 ```

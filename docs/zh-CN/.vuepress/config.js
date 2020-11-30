@@ -38,7 +38,7 @@ module.exports = {
       },
       {
         text: '示例',
-        link: '/example/'
+        link: 'https://vipshop.github.io/ams/example/#/'
       },
       {
         text: '版本更新',
