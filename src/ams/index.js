@@ -195,34 +195,70 @@ const ams = {
     },
 
     /**
+     * 调用action
      *
-     * @param {调用action} acitonName
-     * @param {*} args
+     * @param {String} maybeMultipleActionStr '@addDialog.show @clear @hide'
+     * @param {Object} args
      */
-    async callAction(acitonName = '', args = {}) {
-        const actionNames = acitonName.split(/\s+/);
-        for (let i = 0; i < actionNames.length; i++) {
-            let name = actionNames[i];
-            if (name) {
-                let names = /^(@)?(?:(.*?)\.)?(.*?)(?::(.*))?$/.exec(name);
-                if (names) {
-                    name = names[3];
-                    const target = names[2] ? ams.$blocks[names[2]] : this;
+    async callAction(maybeMultipleActionStr = '', args = {}) {
+        if (!maybeMultipleActionStr.trim()) return;
+        /**
+         *
+         * actionName: '@list' -> ['@list']
+         * \s是指空白，包括空格、换行、tab缩进等所有的空白
+         * split(/\s+/) 简单理解：split('空白字符<主要是空格>'):
+         *
+         * eg:
+         * 'a b c'.split(/\s+/)    -> ['a', 'b', 'c']
+         * @addDialog.show @clear' -> ['@adminDialog.show', '@clear']
+         *
+         */
+        const maybeMultipleActionStrArr = maybeMultipleActionStr.split(/\s+/);
+        for (let i = 0; i < maybeMultipleActionStrArr.length; i++) {
+            let actionStr = maybeMultipleActionStrArr[i];
+            if (actionStr) {
+                /**
+                 * 举例几种场景的处理：
+                 *
+                 * #1
+                 * actionStr: "@list"
+                 * actionDetail: ["@list", "@", undefined, "list", undefined, index: 0, input: "@list", groups: undefined]
+                 *
+                 * #2
+                 * actionStr: "addDialogForm.submit"
+                 * -> actionDetail: ["addDialogForm.submit", undefined, "addDialogForm", "submit", undefined, index: 0, input: "addDialogForm.submit", groups: undefined]
+                 *
+                 * #3
+                 * actionStr: "@addDialogForm.submit"
+                 * -> actionDetail: ["addDialogForm.submit", "@", "addDialogForm", "submit", undefined, index: 0, input: "addDialogForm.submit", groups: undefined]
+                 *
+                 * 理解正则
+                 * https://regexper.com/#%2F%5E%28%40%29%3F%28%3F%3A%28.*%3F%29%5C.%29%3F%28.*%3F%29%28%3F%3A%3A%28.*%29%29%3F%24%2F
+                 */
+
+                // actionDetail action字符串的组成
+                let actionDetail = /^(@)?(?:(.*?)\.)?(.*?)(?::(.*))?$/.exec(actionStr);
+                // eslint-disable-next-line no-unused-vars
+                const [rawString, at, blockName, actionName, argument] = actionDetail;
+
+                if (actionDetail) {
+                    const target = blockName ? ams.$blocks[blockName] : this;
                     // args标准参数，如event配置为 @block.action:arg1,arg2，参数为args1,arg2的字符串
-                    // 先取name[4], name[4]为手动输入优先级应该高于从上一个action传递下来的args.$arg
-                    args.$arg = names[4] || args.$arg || '';
+                    // 先取argument, argument为手动输入优先级应该高于从上一个action传递下来的args.$arg
+                    args.$arg = argument || args.$arg || '';
                     args.$context = this;
                     args.$prevReturn = ams.$prevReturn;
 
                     // 事件 event
-                    if (!names[1]) {
+                    if (!at) {
                         if (target && target.emitEvent) {
-                            await target.emitEvent(name, args);
+                            // /ams/src/ams/mixins/block-mixin.js
+                            await target.emitEvent(actionName, args);
                         }
                         // action
                     } else {
                         if (target) {
-                            const action = (target.block && target.block.actions && target.block.actions[name]) || ams.actions[name];
+                            const action = (target.block && target.block.actions && target.block.actions[actionName]) || ams.actions[actionName];
                             if (action) {
                                 let result = await action.call(
                                     target,
