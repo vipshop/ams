@@ -65,7 +65,7 @@ function _getSendData(config, method, prefix, arg) {
     }
     const sendArg = typeof config.requestDataParse === 'function' ? config.requestDataParse(arg) : arg;
     options.method = config.method || method;
-    if (['post', 'POST'].indexOf(config.method) >= 0) {
+    if (['post', 'POST'].indexOf(options.method) >= 0) {
         options.data = sendArg;
     } else {
         options.params = sendArg;

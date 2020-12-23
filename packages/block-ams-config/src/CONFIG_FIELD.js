@@ -215,6 +215,20 @@ export default {
             }
         }
     },
+    changeConfig: {
+        type: 'ams-code',
+        label: 'changeConfig',
+        valueType: 'function',
+        info: '对字段的处理，参数field代表字段配置，context代表当前行数据',
+        default: function (field, context) {
+            if (context.id === 1) {
+                field.style = {
+                    color: '#409EFF'
+                };
+            }
+            return field;
+        }
+    }
     /**
      * type
      * label

@@ -54,7 +54,7 @@
                                       :rules="fields[fieldName].rules"
                                       :prop="fields[fieldName].type !== 'array' && fields[fieldName].type !== 'object' ? fieldName : ''">
                             <component :is="`ams-field-${fields[fieldName].type}-${fields[fieldName].ctx}`"
-                                       :field="fields[fieldName]"
+                                       :field="getField(fields[fieldName], data)"
                                        :value="data[fieldName]"
                                        :ref="`$${fieldName}`"
                                        :name="name"

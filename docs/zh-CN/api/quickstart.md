@@ -40,11 +40,11 @@ Vue.use(ams);
 <!-- element-ui -->
 <link rel="stylesheet" href="https://unpkg.com/element-ui@2.11.1/lib/theme-chalk/index.css"/>
 <!-- 或者使用vipshop定制UI主题 -->
-<link rel="stylesheet" href="https://h5rsc.vipstatic.com/ams/theme-vipshop@0.27.9/index.css"/>
+<link rel="stylesheet" href="https://h5rsc.vipstatic.com/ams/theme-vipshop@0.28.0/index.css"/>
 
 <script src="https://unpkg.com/element-ui@2.11.1/lib/index.js"></script>
 
-<script src="https://h5rsc.vipstatic.com/ams/ams@0.27.9.js"></script>
+<script src="https://h5rsc.vipstatic.com/ams/ams@0.28.0.js"></script>
 ```
 
 尝试AMS的最简单的方式是使用[JSRUN上的官方入门Demo](http://jsrun.net/sehKp/edit?utm_source=website)。你可以在浏览器新标签页中打开它，跟着例子学习一些基础用法。

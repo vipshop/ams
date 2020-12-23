@@ -10,13 +10,14 @@
         <ams-blocks :blocks="block.slotBlocks.tableTop" />
 
         <el-form :model="data">
-            <el-table border
+            <el-table :border="isBorder"
                       :data="tableList"
                       @sort-change="handleSortChange"
                       @filter-change="handleFilterChange"
                       :span-method="handleSpanMethod"
                       v-on="on"
                       v-bind="block.props"
+                      :height="height"
                       v-loading="loading"
                       highlight-current-row>
 
@@ -140,7 +141,7 @@
 import mixins from '../../ams/mixins';
 import { defaultListFieldWidth } from '../../ams/configs/field';
 import SlotHeader from './components/SlotHeader.vue';
-import { deepExtend } from '../../utils';
+import { addEvent, debounce, deepExtend } from '../../utils';
 
 export default {
     components: {
@@ -155,6 +156,7 @@ export default {
             options: {},
             sortField: null,
             sortOrder: null,
+            height: null,
 
             loading: false,
             tableList: [],          // data.list数据处理
@@ -168,6 +170,13 @@ export default {
         };
     },
     computed: {
+        isBorder() {
+            const props = this.block.props;
+            if (props && typeof props.border !== 'undefined') {
+                return props.border;
+            }
+            return true;
+        },
         tableColumn() {
             // option配置有多级表头
             if (this.block.options && this.block.options['table-column'] && this.block.options['table-column'].length) {
@@ -201,6 +210,19 @@ export default {
         }
     },
     methods: {
+        afterReady() {
+            // 屏幕自适应
+            if (this.block.options && this.block.options.tableHeightFit) {
+                this.heightFit();
+
+                // 监听滚动事件
+                this.events.push(addEvent(window, 'resize', debounce(() => {
+                    this.heightFit();
+                }, 100)));
+            } else if (this.block.props && this.block.props.height) {
+                this.height = this.block.props.height;
+            }
+        },
         // 行展开或展开子表
         async handleRowClick(rowItem, rowIndex) {
 

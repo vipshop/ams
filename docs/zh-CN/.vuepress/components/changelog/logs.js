@@ -1,6 +1,29 @@
 // 更新日志
 export default [
     {
+        version: '0.28.0',
+        date: '2020.12.23',
+        log: [
+            'fix:  `inputnumber` 字段忽略了设置为 0 时的场景',
+            'feat: 新增处理上传视频中，Element UI 的 `on-error` 事件',
+            'feat: 将上传视频成功流程里的 this.field 调整为 this 和 transform 的一致',
+            'feat: `table`组件支持height配置',
+        ]
+    },
+    {
+        version: '0.27.17',
+        date: '2020.12.17',
+        log: [
+            'fix: `video`上传的 on-error 事件无法执行清空操作',
+            'fix: `video`上传失败时清空选项',
+            'feat: `table`组件暴露border设置',
+            'fix: ESLint，数字类型变量不能指派给字符串类型',
+            'feat: `ams.request`formData 场景支持入参 Blob 格式',
+            'fix: 修复默认action自定义配置无传method时，传参异常问题',
+            'feat: `ams.request`增加responseType',
+        ]
+    },
+    {
         version: '0.27.9',
         date: '2020.11.26',
         log: [
