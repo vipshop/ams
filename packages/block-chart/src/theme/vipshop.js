@@ -21,11 +21,30 @@
     }
     echarts.registerTheme('vipshop', {
         'color': [
-            '#684bc5',
-            '#50b5ff',
-            '#f56c6c',
-            '#67c23a',
-            '#f7a545'
+            '#797EF5',
+            '#FF80CF',
+            '#9866FF',
+            '#DF2F91',
+            '#FF757E',
+            '#FF8F33',
+            '#FFC033',
+            '#B7D71D',
+            '#3EC705',
+            '#00E09F',
+            '#47CBFF',
+            '#33A6FF',
+            '#333AFF ',
+            '#722EFF',
+            '#EF38AA',
+            '#C31E79',
+            '#EC202C',
+            '#EB6900',
+            '#EBA300',
+            '#98B319',
+            '#33A404',
+            '#00B37F',
+            '#00A5E6',
+            '#007EE0'
         ],
         'backgroundColor': 'rgba(0,0,0,0)',
         'textStyle': {},
@@ -165,7 +184,32 @@
             }
         },
         'funnel': {
-            color: ['#684bc5', '#866fd1', '#a493dc', '#c3b7e8', '#e1dbf3'],
+            color: [
+                '#797EF5',
+                '#FF80CF',
+                '#9866FF',
+                '#DF2F91',
+                '#FF757E',
+                '#FF8F33',
+                '#FFC033',
+                '#B7D71D',
+                '#3EC705',
+                '#00E09F',
+                '#47CBFF',
+                '#33A6FF',
+                '#333AFF ',
+                '#722EFF',
+                '#EF38AA',
+                '#C31E79',
+                '#EC202C',
+                '#EB6900',
+                '#EBA300',
+                '#98B319',
+                '#33A404',
+                '#00B37F',
+                '#00A5E6',
+                '#007EE0'
+            ],
             'toolbox': {
                 'feature': {
                     'dataView': {

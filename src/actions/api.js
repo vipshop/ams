@@ -8,8 +8,8 @@ import { getQueryString } from '../utils';
  * @param {Object} response : api response data
  * @param {String} action : read/update/list/delete
  */
-function getInfoFromApi (response, action) {
-    const getConfigKey = (action, key) => this.getConfig(`resource.api.${action}.${key}`) || this.getConfig(`resource.api.${key}`)
+function getInfoFromApi(response, action) {
+    const getConfigKey = (action, key) => this.getConfig(`resource.api.${action}.${key}`) || this.getConfig(`resource.api.${key}`);
 
     // this.getConfig -> src/ams/mixins/block-mixin.js
     const dataKey = getConfigKey(action, 'dataKey') || 'data.list';
@@ -35,7 +35,7 @@ function getInfoFromApi (response, action) {
         message,
         apiCodeValue,
         expectedCodeValue,
-    }
+    };
 }
 
 /**
@@ -78,8 +78,16 @@ function _getForeignKeys(params) {
 }
 /**
  * @param {*} config action的配置，如
- * { path: 'list', method: 'get', successCode: 0,
+ * {    path: 'list',
+        method: 'get',
+        successCode: 0,
         transform(data) {
+            return data;
+        },
+        requestDataParse(data) {
+            return data;
+        },
+        responseDataParse(data) {
             return data;
         }
     }
@@ -92,11 +100,12 @@ function _getSendData(config, method, prefix, arg) {
     if (config.path) {
         options.url = `${config.prefix || prefix}${config.path}`;
     }
+    const sendArg = typeof config.requestDataParse === 'function' ? config.requestDataParse(arg) : arg;
     options.method = config.method || method;
-    if (['post', 'POST'].indexOf(config.method) >= 0) {
-        options.data = arg;
+    if (['post', 'POST'].indexOf(options.method) >= 0) {
+        options.data = sendArg;
     } else {
-        options.params = arg;
+        options.params = sendArg;
     }
     return options;
 }
@@ -126,11 +135,13 @@ export const read = ams.createApiAction({
         };
     },
     success(res) {
-        const { message, apiCodeValue, expectedCodeValue, dataKey, totalKey } = getInfoFromApi.call(this, res,  'read')
+        const { message, apiCodeValue, expectedCodeValue, dataKey, totalKey } = getInfoFromApi.call(this, res, 'read');
         if (apiCodeValue === expectedCodeValue) {
             const config = this.resource.api.read;
             if (typeof config === 'object' && typeof config.transform === 'function') {
                 this.setBlockData(config.transform(res.data.data));
+            } else if (typeof config === 'object' && typeof config.responseDataParse === 'function') {
+                this.setBlockData(config.responseDataParse(res.data));
             } else {
                 this.setBlockData(res.data.data);
             }
@@ -153,7 +164,8 @@ export const update = ams.createApiAction({
                 this.resource.api.prefix,
                 {
                     [key]: value,
-                    ..._getForeignKeys.call(this, params)
+                    ..._getForeignKeys.call(this, params),
+                    ...this.data
                 });
         }
         return {
@@ -168,7 +180,7 @@ export const update = ams.createApiAction({
         };
     },
     success(res) {
-        const { message, apiCodeValue, expectedCodeValue, dataKey, totalKey } = getInfoFromApi.call(this, res,  'update')
+        const { message, apiCodeValue, expectedCodeValue, dataKey, totalKey } = getInfoFromApi.call(this, res, 'update');
         if (apiCodeValue === expectedCodeValue) {
             this.$message.success('更新成功');
             if (typeof this.on['update-success'] === 'function') {
@@ -210,7 +222,7 @@ export const deleteAction = ams.createApiAction({
         };
     },
     success(res) {
-        const { message, apiCodeValue, expectedCodeValue, dataKey, totalKey } = getInfoFromApi.call(this, res, 'delete')
+        const { message, apiCodeValue, expectedCodeValue, dataKey, totalKey } = getInfoFromApi.call(this, res, 'delete');
         if (apiCodeValue === expectedCodeValue) {
             this.$message.success('删除成功');
             if (typeof this.on['delete-success'] === 'function') {
@@ -227,7 +239,12 @@ export const deleteAction = ams.createApiAction({
 export const create = ams.createApiAction({
     getOptions(params) {
         if (typeof this.resource.api.create === 'object') {
-            return _getSendData(this.resource.api.create, 'post', this.resource.api.prefix, { ..._getForeignKeys.call(this, params) });
+            return _getSendData(
+                this.resource.api.create,
+                'post',
+                this.resource.api.prefix,
+                { ..._getForeignKeys.call(this, params), ...this.data }
+            );
         }
         return {
             // withCredentials: true,
@@ -241,7 +258,7 @@ export const create = ams.createApiAction({
         };
     },
     success(res) {
-        const { message, apiCodeValue, expectedCodeValue, dataKey, totalKey } = getInfoFromApi.call(this, res,  'create')
+        const { message, apiCodeValue, expectedCodeValue, dataKey, totalKey } = getInfoFromApi.call(this, res, 'create');
         if (apiCodeValue === expectedCodeValue) {
             this.$message.success('创建成功');
             if (typeof this.on['create-success'] === 'function') {
@@ -333,16 +350,18 @@ export const list = ams.createApiAction({
     },
     success(res) {
         // whenSuccess = res => res[codeKey] === expectedCodeValue
-        const { message, apiCodeValue, expectedCodeValue, dataKey, totalKey } = getInfoFromApi.call(this, res,   'list')
+        const { message, apiCodeValue, expectedCodeValue, dataKey, totalKey } = getInfoFromApi.call(this, res, 'list');
         if (
             apiCodeValue === expectedCodeValue &&
             res.data.data
         ) {
             const finalData = lodashGet(res.data, dataKey);
             const total = lodashGet(res.data, totalKey);
-            const listConfig = this.resource.api.list;
-            if (typeof listConfig === 'object' && typeof listConfig.transform === 'function') {
-                this.data.list = listConfig.transform(finalData) || [];
+            const config = this.resource.api.list;
+            if (typeof config === 'object' && typeof config.transform === 'function') {
+                this.data.list = config.transform(finalData) || [];
+            } else if (typeof config === 'object' && typeof config.responseDataParse === 'function') {
+                this.data = config.responseDataParse(res.data) || [];
             } else {
                 this.data.list = finalData || [];
             }

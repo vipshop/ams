@@ -2,7 +2,7 @@
 
 可以通过ams.config配置各种全局的选项，会深度合并现有配置
 
-在block内可以配置config字段，也会通过ams.config
+在block内可以配置config字段，会跟ams.config的配置一起执行
 
 ```js
 ams.config({

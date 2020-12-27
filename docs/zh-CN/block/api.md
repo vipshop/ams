@@ -195,6 +195,8 @@ fields: {
 
 `show`代表按钮出现的条件，可以配置string或者function(content)，content是按钮所在行的数据
 
+`changeConfig` 可以对该字段的配置做处理，接受function(field, context)，其中field是指该字段的配置，content是按钮所在行的数据
+
 ```js
 operations: {
   dropdown: {
@@ -284,6 +286,9 @@ operations: {
     tooltip: '审核通过',
     show(context) {
       return context.status !== ActivitiesAuditStatus.Draft ? context.operations.allow_audit : false
+    },
+    changeConfig(field, context) {
+      return field
     }
   },
   reject: {
@@ -321,7 +326,7 @@ operations: {
 
 上述例子中，当点击submit按钮时，会调用`events`中的同名events方法，若没有绑定同名event则调用同名action
 
-点击前往[更多operations相关介绍](/api/operation.html)
+点击前往[更多operations相关介绍](/api/deep-operation.html)
 
 ## blocks
 

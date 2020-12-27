@@ -7,7 +7,7 @@
                     <el-collapse-item :key="key" :name="key">
 
                         <template slot="title">
-                            <span v-html="typeof option === 'string' ? option : option['title']"></span>
+                            <div class="ams-block-collapse-title" v-html="typeof option === 'string' ? option : option['title']"></div>
                         </template>
                          <!-- <ams-block :name="key" v-if="(typeof data.active !== 'undefined') && (isAccordion ? data.active === key : data.active.indexOf(key) >= 0)"/> -->
                         <CollapsePane :name="key" :active="data.active" :option="option"/>
@@ -38,3 +38,9 @@ export default {
     }
 };
 </script>
+<style>
+.ams-block-collapse-title {
+    width: 100%;
+}
+</style>
+

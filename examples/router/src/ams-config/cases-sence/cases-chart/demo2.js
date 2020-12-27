@@ -1,216 +1,70 @@
 import ams from '@ams-team/ams';
 
 ams.block('chart-demo2', {
-    resources: {
-        chart6: {
-            foreignKeys: ['timeRadio', 'classRadio', 'numRadio', 'rankRadio'],
-            api: {
-                // api前缀
-                prefix: 'https://easy-mock.com/mock/5c76c559086fe75d555c7744/templates/demo/',
-                // 读取数据接口
-                read: 'chartData6',
-            },
-            fields: {
-                timeRadio: {
-                    type: 'radio',
-                    label: '',
-                    props: {
-                        options: {
-                            a: '昨日',
-                            b: '周至今',
-                            c: '月至今',
-                            d: '季度至今',
-                            e: '年至今'
-                        }
-                    }
-                },
-                classRadio: {
-                    type: 'radio',
-                    label: '',
-                    props: {
-                        options: {
-                            a: '按毛利率',
-                            b: '按净收入',
-                            c: '按毛利额',
-                            d: '按周转'
-                        }
-                    }
-                },
-                numRadio: {
-                    type: 'radio',
-                    label: '',
-                    props: {
-                        options: {
-                            a: '前20名',
-                            b: '后20名'
-                        }
-                    }
-                },
-                rankRadio: {
-                    type: 'radio',
-                    label: '',
-                    props: {
-                        options: {
-                            a: '品牌排名',
-                            b: '品类排名',
-                            c: '价格带排名'
-                        }
-                    }
-                },
-            }
-        }
-    },
     blocks: {
-        titles2: {
-            type: 'title',
-            options: {
-                title: '分货运营-销售分析'
-            }
-        },
-        tab: {
-            type: 'tabs',
-            options: {
-                tab1: '大盘',
-                tab2: '特卖会',
-                tab3: '唯品仓',
-                tab4: '云品仓',
-                tab5: 'VIPSHOP',
-                tab6: 'VIPMAXX'
+        chartBlock: {
+            // 类型
+            type: 'chart',
+            // 样式
+            style: {
+                width: '100%',
+                height: '500px',
+                display: 'block'
+            },
+            // 数据
+            data: {
+                xAxis: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                series: [
+                    { data: [120, 132, 101, 134, 90, 230, 210] },
+                    { data: [122, 122, 112, 164, 130, 126, 321] },
+                    { data: [120, 132, 101, 134, 90, 230, 210] }
+                ]
             },
             props: {
-                type: 'card'
+                chartDom: true
             },
-            blocks: {
-                tab1: {
-                    blocks: {
-                        chart6Nav: {
-                            ctx: 'edit',
-                            type: 'form',
-                            resource: 'chart6',
-                            data: {
-                                //   timeRadio: 'a',
-                            },
-                            actions: {
-                                fieldChange({
-                                    name,
-                                    value
-                                }) {
-                                    console.log(name, value);
-                                    if (name && value && this.data) {
-                                        const ams = window.ams;
-                                        ams.$prevReturn = {
-                                            ...this.data
-                                        };
-
-                                        this.callAction(`@chart6.read`);
-                                    }
-                                }
-                            }
-                        },
-                        chart6: {
-                            type: 'chart',
-                            style: {
-                                width: '100%',
-                                height: '500px'
-                            },
-                            resource: 'chart6',
-                            data: {
-                                title: '',
-                                series1: [],
-                            },
-                            // 图表配置
-                            options: {
-                                tooltip: {
-                                    trigger: 'axis',
-                                    axisPointer: {
-                                        type: 'cross'
-                                    }
-                                },
-                                legend: {
-                                    data: 'data.legend',
-                                    textStyle: {
-                                        fontSize: 20
-                                    }
-                                },
-                                xAxis: {
-                                    type: 'category',
-                                    data: 'data.xAxis',
-                                    axisLabel: {
-                                        interval: 0,
-                                        rotate: 30,
-                                        fontSize: 16,
-                                        height: 100,
-                                        width: 100
-                                    }
-                                },
-                                yAxis: [{
-                                    type: 'value'
-                                }],
-                                series: [{
-                                    type: 'bar',
-                                    barWidth: 20,
-                                    label: {
-                                        show: true,
-                                        position: 'top'
-                                    },
-                                    data: 'data.series1'
-                                }]
-                            },
-                            events: {
-                                init: '@read'
-                            }
-                        }
-                    }
+            // 图表配置--参照echarts的options配置
+            options: {
+                BASE: 'BAR',
+                series: 'data.series'
+            }
+        },
+        rerenderBlock: {
+            type: 'component',
+            style: {
+                margin: '0 0 0 101px'
+            },
+            operations: {
+                rerenderType: {
+                    type: 'button',
+                    label: '重绘图表'
                 },
-                tab2: {
-                    type: 'component',
-                    options: {
-                        is: 'div',
-                        text: '我是特卖会的内容'
-                    },
-                    style: {
-                        padding: '100px',
-                    }
+                hideButton: {
+                    type: 'button',
+                    label: '隐藏'
                 },
-                tab3: {
-                    type: 'component',
-                    options: {
-                        is: 'div',
-                        text: '我是唯品仓的内容'
-                    },
-                    style: {
-                        padding: '100px',
-                    }
+                showButton: {
+                    type: 'button',
+                    label: '显示'
+                }
+            },
+            actions: {
+                rerenderType: function() {
+                    const result = [...Array(Math.floor((Math.random() + 1) * 3)).keys()].map(item =>
+                        ({
+                            data: [120, 132, 101, 134, 90, 230, 210].map(Math.random)
+                        })
+                    );
+                    ams.$blocks.chartBlock.chartDom.setOption({}, true);
+                    ams.$blocks.chartBlock.setBlockData({
+                        series: result
+                    });
                 },
-                tab4: {
-                    type: 'component',
-                    options: {
-                        is: 'div',
-                        text: '我是云品仓的内容'
-                    },
-                    style: {
-                        padding: '100px',
-                    }
+                hideButton() {
+                    ams.$blocks.chartBlock.block.style.display = 'none';
                 },
-                tab5: {
-                    type: 'component',
-                    options: {
-                        is: 'div',
-                        text: '我是VIPSHOP的内容'
-                    },
-                    style: {
-                        padding: '100px',
-                    }
-                },
-                tab6: {
-                    type: 'component',
-                    options: {
-                        is: 'div',
-                        text: '我是VIPMAXX的内容'
-                    },
-                    style: {
-                        padding: '100px',
-                    }
+                showButton() {
+                    ams.$blocks.chartBlock.block.style.display = 'block';
                 }
             }
         }

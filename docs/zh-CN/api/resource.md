@@ -30,7 +30,16 @@ ams.resource('demo-resource', {
             path: 'list',
             method: 'post',
             successCode: 1,
-            transform(data) { // 仅list和read有transform方法，用于在AMS赋值给区块前，转化接口返回数据
+            // 仅list和read有transform方法，用于在AMS赋值给区块前，转化接口返回数据，如果是list组件，这里的data代表的是data.list
+            transform(data) {
+                return data
+            },
+            // 所有内置action都有的方法
+            requestDataParse(data) {
+                return data
+            },
+            // 仅list和read有transform方法，用于在AMS赋值给区块前，转化接口返回数据，如果是list组件，这里的data代表的是data
+            responseDataParse(data) {
                 return data
             }
         }
@@ -63,9 +72,9 @@ ams.resource('demo-resource', {
 
 - `api`： 对resource的一些内置方法，`prefix`为接口地址，目前提供了`create` `update` `read` `delete` `list` 几个内置请求方法
 
-- `fields`： resource里的详细的字段描述，点击前往[更深入的了解fields](/api/field.html)
+- `fields`： resource里的详细的字段描述，点击前往[更深入的了解fields](/field/)
 
-#### field通用配置
+## field通用配置
 
 | 参数 | 类型 | 是否必传 | 说明
 | -- | -- | -- | --

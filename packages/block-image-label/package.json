@@ -1,6 +1,6 @@
 {
     "name": "@ams-team/block-image-label",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "description": "AMS图片打标签",
     "author": "ams",
     "main": "lib/block-image-label.js",

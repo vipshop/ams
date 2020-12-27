@@ -123,4 +123,11 @@ export default {
         text-align: center;
     }
 }
+
+/**
+ * 解决使用该区块导致和 Element UI 图片组件放大预览功能样式冲突的问题
+ */
+.el-image-viewer__close {
+  top: 104px!important;
+}
 </style>

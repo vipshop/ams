@@ -24,7 +24,7 @@ export default {
     mixins: [mixins.fieldEditMixin],
     methods: {
         beforeUpload(file) {
-            return new Promise((resolve, reject) => {
+            return new Promise(async (resolve, reject) => {
                 if (!this.field.check) {
                     return resolve();
                 }
@@ -33,6 +33,10 @@ export default {
                 if (maxSizeInKB && (file.size / 1024) > maxSizeInKB) {
                     this.$message.error('上传音频大小不能超过 ' + (maxSizeInKB / 1024).toFixed(2) + 'MB!');
                     return reject(); // eslint-disable-line prefer-promise-reject-errors
+                }
+                const props = this.field.props || {};
+                if (typeof props['before-upload'] === 'function') {
+                    await props['before-upload'](file);
                 }
                 resolve();
             });

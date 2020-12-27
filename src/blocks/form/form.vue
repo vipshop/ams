@@ -26,7 +26,7 @@
                             {{fields[key].label}}
                         </template>
                         <component :is="`ams-field-${fields[key].type}-${fields[key].ctx}`"
-                                   :field="fields[key]"
+                                   :field="getField(fields[key], data)"
                                    :value="data[key]"
                                    :ref="`$${key}`"
                                    :name="name"
@@ -54,7 +54,7 @@
                                       :rules="fields[fieldName].rules"
                                       :prop="fields[fieldName].type !== 'array' && fields[fieldName].type !== 'object' ? fieldName : ''">
                             <component :is="`ams-field-${fields[fieldName].type}-${fields[fieldName].ctx}`"
-                                       :field="fields[fieldName]"
+                                       :field="getField(fields[fieldName], data)"
                                        :value="data[fieldName]"
                                        :ref="`$${fieldName}`"
                                        :name="name"
@@ -83,7 +83,7 @@ import mixins from '../../ams/mixins';
 import { getType } from '../../utils';
 
 export default {
-    mixins: [mixins.blockMixin, mixins.getShowState],
+    mixins: [mixins.blockMixin, mixins.getField, mixins.getShowState],
     methods: {
         keyEnter(...args) {
             if (this.block.on

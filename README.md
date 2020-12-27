@@ -6,6 +6,9 @@
 
 AMS是基于 [Vue.js](https://github.com/vuejs/vue) 和 [Element组件库](https://github.com/ElemeFE/element)、通过JSON配置来快速搭建管理后台的一整套解决方案
 
+- [使用文档](https://vipshop.github.io/ams/)
+- [演示示例](https://vipshop.github.io/ams/example/#/)
+- [FAQ相关](./FAQ.md)
 
 ## npm 安装
 
@@ -94,11 +97,7 @@ ams.render('demo')
 npm run dev
 ```
 
-## 相关链接
 
-- [文档与教程](https://vipshop.github.io/ams/)
-- [FAQ](./FAQ.md)
-- [官方入门Demo](http://jsrun.net/sehKp/edit?utm_source=website)
 
 ## 浏览器支持
 
