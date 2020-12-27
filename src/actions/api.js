@@ -99,7 +99,7 @@ export const read = ams.createApiAction({
         };
     },
     success(res) {
-        const { message, code, isSuccess, data } = getInfoFromResponse.call(this, res, 'read', { dataPath: 'data' });
+        const { message, code, isSuccess, data } = getInfoFromResponse.call(this, res, 'read');
         if (isSuccess) {
             const config = this.resource.api.read;
             let blockData = data;
