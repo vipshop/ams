@@ -1,42 +1,6 @@
-import { get as lodashGet } from 'lodash';
 import ams from '../ams';
+import { getInfoFromResponse } from '../utils/api';
 import { getQueryString } from '../utils';
-
-/**
- * 获取 API Response 相关字段
- *
- * @param {Object} response : api response data
- * @param {String} action : read/update/list/delete
- */
-function getInfoFromApi(response, action) {
-    const getConfigKey = (action, key) => this.getConfig(`resource.api.${action}.${key}`) || this.getConfig(`resource.api.${key}`);
-
-    // this.getConfig -> src/ams/mixins/block-mixin.js
-    const dataKey = getConfigKey(action, 'dataKey') || 'data.list';
-    // 用于 list 接口，通常提供给list、table 的分页组件使用
-    const totalKey = getConfigKey(action, 'totalKey') || 'data.total';
-
-    const messageKey = getConfigKey(action, 'message') || 'message';
-    const message = lodashGet(response.data, messageKey);
-
-    // deprecated
-    const successCode =  getConfigKey(action, 'successCode');
-
-    const codeKey = getConfigKey(action, 'code') || 'code';
-    const expectedCodeValue = getConfigKey(action, 'successCode');
-    const apiCodeValue = lodashGet(response.data, codeKey);
-
-    return {
-        dataKey,
-        totalKey,
-        codeKey,
-        successCode,
-        messageKey,
-        message,
-        apiCodeValue,
-        expectedCodeValue,
-    };
-}
 
 /**
  * 自动获取的key值有几种场景：
@@ -95,14 +59,14 @@ function _getForeignKeys(params) {
  * @param {*} prefix 域名前缀
  * @param {*} arg 参数
  */
-function _getSendData(config, method, prefix, arg) {
+function _getSendData(config, method = 'get', prefix, arg) {
     const options = {};
     if (config.path) {
         options.url = `${config.prefix || prefix}${config.path}`;
     }
     const sendArg = typeof config.requestDataParse === 'function' ? config.requestDataParse(arg) : arg;
-    options.method = config.method || method;
-    if (['post', 'POST'].indexOf(options.method) >= 0) {
+    options.method = (config.method || method).toLowerCase();
+    if (options.method === 'post') {
         options.data = sendArg;
     } else {
         options.params = sendArg;
@@ -111,43 +75,19 @@ function _getSendData(config, method, prefix, arg) {
 }
 
 export const read = ams.createApiAction({
-    getOptions(params) {
-        const key = this.resource.key;
-        let value = _getValue.call(this, key, params);
-        if (typeof this.resource.api.read === 'object') {
-            return _getSendData(
-                this.resource.api.read,
-                'get',
-                this.resource.api.prefix,
-                {
-                    [key]: value,
-                    ..._getForeignKeys.call(this, params)
-                });
-        }
-        return {
-            url: `${this.resource.api.prefix}${this.resource.api.read}`,
-            method: this.resource.api.method || 'get',
-            params: {
-                [key]: value,
-                // resId: this.block.resource,
-                ..._getForeignKeys.call(this, params)
-            }
-        };
-    },
     success(res) {
-        const { message, apiCodeValue, expectedCodeValue, dataKey, totalKey } = getInfoFromApi.call(this, res, 'read');
-        if (apiCodeValue === expectedCodeValue) {
-            const config = this.resource.api.read;
-            if (typeof config === 'object' && typeof config.transform === 'function') {
-                this.setBlockData(config.transform(res.data.data));
-            } else if (typeof config === 'object' && typeof config.responseDataParse === 'function') {
-                this.setBlockData(config.responseDataParse(res.data));
-            } else {
-                this.setBlockData(res.data.data);
+        const { message, code, isSuccess } = getInfoFromResponse.call(this, res, 'read');
+        if (isSuccess) {
+            const apiConfig = this.resource.api.read;
+            let blockData = res.data.data;
+            if (typeof apiConfig === 'object') {
+                const { transform, responseDataParse } = apiConfig;
+                blockData = isFn(transform) ? transform(res.data.data) : (isFn(responseDataParse) ? responseDataParse(res.data) : res.data.data);
             }
+            this.setBlockData(blockData);
         } else {
-            this.$message.error(`${message}(${apiCodeValue})`);
-            throw '@read:' + apiCodeValue;
+            this.$message.error(`${message}(${code})`);
+            throw '@read:' + code;
         }
         return res;
     }
@@ -180,15 +120,15 @@ export const update = ams.createApiAction({
         };
     },
     success(res) {
-        const { message, apiCodeValue, expectedCodeValue, dataKey, totalKey } = getInfoFromApi.call(this, res, 'update');
-        if (apiCodeValue === expectedCodeValue) {
+        const { message, code, isSuccess } = getInfoFromResponse.call(this, res, 'update');
+        if (isSuccess) {
             this.$message.success('更新成功');
             if (typeof this.on['update-success'] === 'function') {
                 this.on['update-success'](res.data);
             }
         } else {
-            this.$message.error(`${message}(${apiCodeValue})`);
-            throw '@update:' + apiCodeValue;
+            this.$message.error(`${message}(${code})`);
+            throw '@update:' + code;
         }
         return res;
     }
@@ -222,15 +162,15 @@ export const deleteAction = ams.createApiAction({
         };
     },
     success(res) {
-        const { message, apiCodeValue, expectedCodeValue, dataKey, totalKey } = getInfoFromApi.call(this, res, 'delete');
-        if (apiCodeValue === expectedCodeValue) {
+        const { message, code, isSuccess } = getInfoFromResponse.call(this, res, 'delete');
+        if (isSuccess) {
             this.$message.success('删除成功');
             if (typeof this.on['delete-success'] === 'function') {
                 this.on['delete-success'](res.data);
             }
         } else {
-            this.$message.error(`${message}(${apiCodeValue})`);
-            throw '@delete:' + apiCodeValue;
+            this.$message.error(`${message}(${code})`);
+            throw '@delete:' + code;
         }
         return res;
     }
@@ -258,19 +198,23 @@ export const create = ams.createApiAction({
         };
     },
     success(res) {
-        const { message, apiCodeValue, expectedCodeValue, dataKey, totalKey } = getInfoFromApi.call(this, res, 'create');
-        if (apiCodeValue === expectedCodeValue) {
+        const { message, code, isSuccess } = getInfoFromResponse.call(this, res, 'create');
+        if (isSuccess) {
             this.$message.success('创建成功');
             if (typeof this.on['create-success'] === 'function') {
                 this.on['create-success'](res.data);
             }
         } else {
-            this.$message.error(`${message}(${apiCodeValue})`);
-            throw '@create code:' + apiCodeValue;
+            this.$message.error(`${message}(${code})`);
+            throw '@create code:' + code;
         }
         return res;
     }
 });
+
+function isFn(value) {
+    return typeof value === 'function';
+}
 
 // https://github.com/vipshop/ams/blob/5c8e0112c3b8e42c4bed9ff658767bbdbcf9bbd4/src/ams/request.js#L162
 // createApiAction -> src/ams/request.js
@@ -283,7 +227,7 @@ export const list = ams.createApiAction({
                 this.data.page = page;
             }
         }
-        const arg = {
+        let arg = {
             // resId: this.block.resource,
             page: this.data.page,
             pageSize: this.data.pageSize,
@@ -339,6 +283,8 @@ export const list = ams.createApiAction({
                 }
             });
         }
+        const requestAdaptor = this.resource.api.list.requestAdaptor || (data => data);
+        arg = requestAdaptor(arg);
         if (typeof this.resource.api.list === 'object') {
             return _getSendData(this.resource.api.list, 'get', this.resource.api.prefix, arg);
         }
@@ -348,30 +294,32 @@ export const list = ams.createApiAction({
             params: arg
         };
     },
+    /**
+     *
+     * @param {*} res { status: statusCode, data: JSON.parse(xhr.responseText) }
+     */
     success(res) {
-        // whenSuccess = res => res[codeKey] === expectedCodeValue
-        const { message, apiCodeValue, expectedCodeValue, dataKey, totalKey } = getInfoFromApi.call(this, res, 'list');
-        if (
-            apiCodeValue === expectedCodeValue &&
-            res.data.data
-        ) {
-            const finalData = lodashGet(res.data, dataKey);
-            const total = lodashGet(res.data, totalKey);
-            const config = this.resource.api.list;
-            if (typeof config === 'object' && typeof config.transform === 'function') {
-                this.data.list = config.transform(finalData) || [];
-            } else if (typeof config === 'object' && typeof config.responseDataParse === 'function') {
-                this.data = config.responseDataParse(res.data) || [];
-            } else {
-                this.data.list = finalData || [];
+        // whenSuccess = res => res[codeKey] === expectedCode
+        const { message, code, isSuccess, total, data } = getInfoFromResponse.call(this, res, 'list');
+        if (isSuccess && res.data.data) {
+            const apiConfig = this.resource.api.list;
+            if (typeof apiConfig === 'object') {
+                const { transform, responseDataParse } = apiConfig;
+                if (isFn(transform)) {
+                    this.data.list = transform(apiConfig, data);
+                } else if (isFn(responseDataParse)) {
+                    this.data = responseDataParse(res.data);
+                } else {
+                    this.data.list = data;
+                }
             }
             this.data.total = total;
             if (typeof this.on['list-success'] === 'function') {
                 this.on['list-success'](res.data);
             }
         } else {
-            this.$message.error(`${message}(${apiCodeValue})`);
-            throw '@list:' + apiCodeValue;
+            this.$message.error(`${message}(${code})`);
+            throw '@list:' + code;
         }
 
         return res;

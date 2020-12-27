@@ -1,8 +1,12 @@
 export * from './uri';
 export * from './date';
+export * from './number';
 export * from './dom';
 export * from './function';
 export * from './tools';
+export * from './api';
+export * from './type';
+import { isDefined, getType } from './type';
 
 export function get(object, path) {
     path = path.split('.');
@@ -55,14 +59,6 @@ export function set(object, path, value) {
         return false;
     }
     // console.log('object', object)
-}
-
-
-export function getType(obj) {
-    return Object.prototype.toString
-        .call(obj)
-        .replace(/^\[\w+ (\w+)\]$/, '$1')
-        .toLowerCase();
 }
 
 export function serialize(params, obj, scope) {
@@ -126,13 +122,8 @@ export function deepExtend(destination, source) {
 
 // 按照优先级取值，如果是undefined获取下一个
 export function getByOrder(...args) {
-    let i = 0;
-    for (; i < args.length - 1; i++) {
-        if (typeof args[i] !== 'undefined') {
-            return args[i];
-        }
-    }
-    return args[i];
+    const item = args.find(isDefined);
+    return item ? item : args[args.length - 1];
 }
 
 

@@ -72,7 +72,18 @@ ams.resource('demo-resource', {
 
 - `api`： 对resource的一些内置方法，`prefix`为接口地址，目前提供了`create` `update` `read` `delete` `list` 几个内置请求方法
 
-- `fields`： resource里的详细的字段描述，点击前往[更深入的了解fields](/field/)
+- `fields`： resource里的详细的字段描述，点击前往[更深入的了解fields](/field)
+
+## 使用资源
+
+根据资源名字来使用某个资源，在注册`block`时指定资源名字来使用
+
+```javascript
+ams.block('demo', {
+  resource: 'demo-resource',
+  ...
+});
+```
 
 ## field通用配置
 

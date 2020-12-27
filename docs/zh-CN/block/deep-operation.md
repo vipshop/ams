@@ -4,6 +4,8 @@
 该页面假设你已经阅读过了[operations基础配置](/api/block.html#operations)。如果你还对`operations`配置不太了解，推荐你先阅读它。
 :::
 
+operations 简单理解其实就是 放在`某个位置(slot)`的操作
+
 ## 配置指定位置的具名插槽 operation <Badge text="0.5.0+"/>
 
 `slot` 属性可以指定operation所在插槽，如list支持 `searchs` 和 `multipleSelect` 定制搜索操作和多选操作
