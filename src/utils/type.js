@@ -6,6 +6,10 @@ export function isDefined(val) {
     return !isUndefined(val);
 }
 
+export function isFn(value) {
+    return typeof value === 'function';
+}
+
 export function getType(obj) {
     return Object.prototype.toString
         .call(obj)

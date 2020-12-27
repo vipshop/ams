@@ -1,6 +1,5 @@
 import ams from '../ams';
-import { getInfoFromResponse } from '../utils/api';
-import { getQueryString } from '../utils';
+import { getQueryString, isFn, getInfoFromResponse } from '../utils';
 
 /**
  * 自动获取的key值有几种场景：
@@ -64,7 +63,7 @@ function _getSendData(config, method = 'get', prefix, arg) {
     if (config.path) {
         options.url = `${config.prefix || prefix}${config.path}`;
     }
-    const sendArg = typeof config.requestDataParse === 'function' ? config.requestDataParse(arg) : arg;
+    const sendArg = isFn(config.requestDataParse) ? config.requestDataParse(arg) : arg;
     options.method = (config.method || method).toLowerCase();
     if (options.method === 'post') {
         options.data = sendArg;
@@ -105,7 +104,10 @@ export const read = ams.createApiAction({
             let blockData = data;
             if (typeof config === 'object') {
                 const { transform, responseDataParse } = config;
-                blockData = isFn(transform) ? transform(res.data.data) : (isFn(responseDataParse) ? responseDataParse(res.data) : data);
+                // 优先级：transform > responseDataParse > data
+                blockData = isFn(transform) ?
+                    transform(res.data.data) :
+                    (isFn(responseDataParse) ? responseDataParse(res.data) : data);
             }
             this.setBlockData(blockData);
         } else {
@@ -146,7 +148,7 @@ export const update = ams.createApiAction({
         const { message, code, isSuccess } = getInfoFromResponse.call(this, res, 'update');
         if (isSuccess) {
             this.$message.success('更新成功');
-            if (typeof this.on['update-success'] === 'function') {
+            if (isFn(this.on['update-success'])) {
                 this.on['update-success'](res.data);
             }
         } else {
@@ -188,7 +190,7 @@ export const deleteAction = ams.createApiAction({
         const { message, code, isSuccess } = getInfoFromResponse.call(this, res, 'delete');
         if (isSuccess) {
             this.$message.success('删除成功');
-            if (typeof this.on['delete-success'] === 'function') {
+            if (isFn(this.on['delete-success'])) {
                 this.on['delete-success'](res.data);
             }
         } else {
@@ -224,7 +226,7 @@ export const create = ams.createApiAction({
         const { message, code, isSuccess } = getInfoFromResponse.call(this, res, 'create');
         if (isSuccess) {
             this.$message.success('创建成功');
-            if (typeof this.on['create-success'] === 'function') {
+            if (isFn(this.on['create-success'])) {
                 this.on['create-success'](res.data);
             }
         } else {
@@ -234,10 +236,6 @@ export const create = ams.createApiAction({
         return res;
     }
 });
-
-function isFn(value) {
-    return typeof value === 'function';
-}
 
 // https://github.com/vipshop/ams/blob/5c8e0112c3b8e42c4bed9ff658767bbdbcf9bbd4/src/ams/request.js#L162
 // createApiAction -> src/ams/request.js
@@ -337,7 +335,7 @@ export const list = ams.createApiAction({
                 }
             }
             this.data.total = total;
-            if (typeof this.on['list-success'] === 'function') {
+            if (isFn(this.on['list-success'])) {
                 this.on['list-success'](res.data);
             }
         } else {
