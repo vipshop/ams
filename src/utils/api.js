@@ -62,7 +62,7 @@ export function getInfoFromResponse(response, action, actionGetter) {
         totalPath: getter.totalPath,
         codeKey: getter.codeKey,
         successCode: getter.successCode, // expectedCode, 期待的 code(success/result) 对应的值
-        message: lodashGet(response.data, getter.message),
+        message: lodashGet(response.data, getter.messageKey),
         code,
         // eslint-disable-next-line
         isSuccess: code == getter.successCode
