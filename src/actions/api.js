@@ -64,8 +64,9 @@ function _getSendData(config, method = 'get', prefix, arg) {
         options.url = `${config.prefix || prefix}${config.path}`;
     }
     const sendArg = typeof config.requestDataParse === 'function' ? config.requestDataParse(arg) : arg;
-    options.method = config.method || method;
-    if (options.method.toLowerCase() === 'post') {
+    // https://github.com/axios/axios/blob/fa3673710ea6bb3f351b4790bb17998d2f01f342/lib/core/Axios.js#L40
+    options.method = (config.method || method).toLowerCase();
+    if (options.method === 'post') {
         options.data = sendArg;
     } else {
         options.params = sendArg;
