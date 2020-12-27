@@ -1,3 +1,5 @@
+import _dayjs from 'dayjs';
+
 export function parseTime(time, cFormat) {
     if (!time) {
         return '';
@@ -33,3 +35,6 @@ export function parseTime(time, cFormat) {
         });
 }
 
+export function dayjs(...args) {
+    return _dayjs(...args);
+}
