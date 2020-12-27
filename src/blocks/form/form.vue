@@ -10,42 +10,51 @@
             <ams-blocks :blocks="block.slotBlocks.top" />
             <!--fields-->
             <template v-for="(fieldLayout, key) in layout">
-                <template v-if="fieldLayout && getShowState(fields[key], data)">
-                    <el-form-item v-if="typeof fieldLayout === 'string'"
-                                  :key="key"
-                                  :label-width="fields[key].labelWidth"
-                                  :class="fields[key].props && (fields[key].props.class ? fields[key].props.class : '') + ( fields[key].props.inline ? ' el-form-item-inline' : '')"
-                                  :style="`width: ${fields[key].props && fields[key].props.formItemWidth}`"
-                                  :rules="fields[key].ctx === 'view' ? undefined : fields[key].rules"
-                                  :prop="fields[key].type !== 'array' && fields[key].type !== 'object' ? key : ''">
-                        <template v-if="fields[key].label && fields[key].labelWidth !== '0'" slot="label">
-                            <el-tooltip effect="dark" placement="top" v-if="fields[key].info">
-                                <i :class="(fields[key].info.icon || 'el-icon-info') + ' ams-form-label-info'"></i>
-                                <div slot="content" v-html="fields[key].info.content || fields[key].info"></div>
+                <!-- https://dev.to/pbastowski/comment/7fc9 -->
+                <!-- https://stackoverflow.com/questions/59388851/is-there-something-like-react-fragment-in-vue -->
+                <Fragment
+                    :key="key"
+                    :field="field = fields[key]"
+                    :fieldProps="fieldProps = fields[key] ? fields[key].props : {}"
+                >
+                <template v-if="fieldLayout && getShowState(field, data)">
+                    <el-form-item
+                        v-if="typeof fieldLayout === 'string'"
+                        :key="key"
+                        :label-width="field.labelWidth"
+                        :class="[fieldProps.class, fieldProps.inline || 'el-form-item-inline']"
+                        :style="`width: ${fieldProps.formItemWidth}`"
+                        :rules="field.ctx === 'view' ? undefined : field.rules"
+                        :prop="['array', 'object'].includes(field.type) ? '' : key"
+                    >
+                        <template v-if="field.label && field.labelWidth !== '0'" slot="label">
+                            <el-tooltip effect="dark" placement="top" v-if="field.info">
+                                <i :class="(field.info.icon || 'el-icon-info') + ' ams-form-label-info'"></i>
+                                <div slot="content" v-html="field.info.content || field.info"></div>
                             </el-tooltip>
-                            {{fields[key].label}}
+                            {{field.label}}
                         </template>
-                        <component :is="`ams-field-${fields[key].type}-${fields[key].ctx}`"
-                                   :field="getField(fields[key], data)"
+                        <component :is="`ams-field-${field.type}-${field.ctx}`"
+                                   :field="getField(field, data)"
                                    :value="data[key]"
                                    :ref="`$${key}`"
                                    :name="name"
                                    :path="key"
                                    :context="data"
-                                   :class="`ams-field ams-field-${fields[key].type}-${fields[key].ctx}`" />
-                        <div class="ams-form-item-desc" v-if="fields[key].desc && fields[key].ctx === 'edit'" v-html="fields[key].desc"></div>
+                                   :class="`ams-field ams-field-${field.type}-${field.ctx}`" />
+                        <div class="ams-form-item-desc" v-if="field.desc && field.ctx === 'edit'" v-html="field.desc"></div>
                     </el-form-item>
                     <el-form-item
                                   v-else
-                                  :label-width="fields[key].labelWidth"
+                                  :label-width="field.labelWidth"
                                   class="ams-form-inline"
                                   :key="key">
-                        <template v-if="fields[key].label && fields[key].labelWidth !== '0'" slot="label">
-                            <el-tooltip effect="dark" placement="top" v-if="fields[key].info">
+                        <template v-if="field.label && field.labelWidth !== '0'" slot="label">
+                            <el-tooltip effect="dark" placement="top" v-if="field.info">
                                 <i class="el-icon-info ams-form-label-info"></i>
-                                <div slot="content" v-html="fields[key].info"></div>
+                                <div slot="content" v-html="field.info"></div>
                             </el-tooltip>
-                            {{fields[key].label}}
+                            {{field.label}}
                         </template>
                         <el-form-item v-for="fieldName in fieldLayout"
                                       :key="fieldName"
@@ -62,12 +71,13 @@
                                        :context="data"
                                        :class="`ams-field ams-field-${fields[fieldName].type}-${fields[fieldName].ctx}`" />
                         </el-form-item>
-                        <div class="ams-form-item-desc" v-if="fields[key].desc && fields[key].ctx === 'edit'" v-html="fields[key].desc"></div>
+                        <div class="ams-form-item-desc" v-if="field.desc && field.ctx === 'edit'" v-html="field.desc"></div>
                     </el-form-item>
                 </template>
                 <ams-blocks v-if="block.slotBlocks['field:' + key]"
                             :blocks="block.slotBlocks['field:' + key]"
                             :key="key + 'Slot'" />
+                </Fragment>
             </template>
             <el-form-item v-if="block.operationsCounts.operations">
                 <ams-operations :name="name"
@@ -82,7 +92,13 @@
 import mixins from '../../ams/mixins';
 import { getType } from '../../utils';
 
+const Fragment = {
+    functional: true,
+    render: (h, ctx) => ctx.children
+};
+
 export default {
+    components: { Fragment },
     mixins: [mixins.blockMixin, mixins.getField, mixins.getShowState],
     methods: {
         keyEnter(...args) {
@@ -119,4 +135,3 @@ export default {
     color: #999;
 }
 </style>
-
