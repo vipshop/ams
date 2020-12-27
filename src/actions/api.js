@@ -99,13 +99,13 @@ export const read = ams.createApiAction({
         };
     },
     success(res) {
-        const { message, code, isSuccess } = getInfoFromResponse.call(this, res, 'read');
+        const { message, code, isSuccess, data } = getInfoFromResponse.call(this, res, 'read', { dataPath: 'data' });
         if (isSuccess) {
-            const apiConfig = this.resource.api.read;
-            let blockData = res.data.data;
-            if (typeof apiConfig === 'object') {
-                const { transform, responseDataParse } = apiConfig;
-                blockData = isFn(transform) ? transform(res.data.data) : (isFn(responseDataParse) ? responseDataParse(res.data) : res.data.data);
+            const config = this.resource.api.read;
+            let blockData = data;
+            if (typeof config === 'object') {
+                const { transform, responseDataParse } = config;
+                blockData = isFn(transform) ? transform(res.data.data) : (isFn(responseDataParse) ? responseDataParse(res.data) : data);
             }
             this.setBlockData(blockData);
         } else {
@@ -325,11 +325,11 @@ export const list = ams.createApiAction({
         // whenSuccess = res => res[codeKey] === expectedCode
         const { message, code, isSuccess, total, data } = getInfoFromResponse.call(this, res, 'list');
         if (isSuccess && res.data.data) {
-            const apiConfig = this.resource.api.list;
-            if (typeof apiConfig === 'object') {
-                const { transform, responseDataParse } = apiConfig;
+            const config = this.resource.api.list;
+            if (typeof config === 'object') {
+                const { transform, responseDataParse } = config;
                 if (isFn(transform)) {
-                    this.data.list = transform(apiConfig, data);
+                    this.data.list = transform(config, data);
                 } else if (isFn(responseDataParse)) {
                     this.data = responseDataParse(res.data);
                 } else {
