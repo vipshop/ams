@@ -75,6 +75,29 @@ function _getSendData(config, method = 'get', prefix, arg) {
 }
 
 export const read = ams.createApiAction({
+    getOptions(params) {
+        const key = this.resource.key;
+        let value = _getValue.call(this, key, params);
+        if (typeof this.resource.api.read === 'object') {
+            return _getSendData(
+                this.resource.api.read,
+                'get',
+                this.resource.api.prefix,
+                {
+                    [key]: value,
+                    ..._getForeignKeys.call(this, params)
+                });
+        }
+        return {
+            url: `${this.resource.api.prefix}${this.resource.api.read}`,
+            method: this.resource.api.method || 'get',
+            params: {
+                [key]: value,
+                // resId: this.block.resource,
+                ..._getForeignKeys.call(this, params)
+            }
+        };
+    },
     success(res) {
         const { message, code, isSuccess } = getInfoFromResponse.call(this, res, 'read');
         if (isSuccess) {
