@@ -58,14 +58,14 @@ function _getForeignKeys(params) {
  * @param {*} prefix 域名前缀
  * @param {*} arg 参数
  */
-function _getSendData(config, method, prefix, arg) {
+function _getSendData(config, method = 'get', prefix, arg) {
     const options = {};
     if (config.path) {
         options.url = `${config.prefix || prefix}${config.path}`;
     }
     const sendArg = typeof config.requestDataParse === 'function' ? config.requestDataParse(arg) : arg;
     options.method = config.method || method;
-    if (['post', 'POST'].indexOf(options.method) >= 0) {
+    if (options.method.toLowerCase() === 'post') {
         options.data = sendArg;
     } else {
         options.params = sendArg;
