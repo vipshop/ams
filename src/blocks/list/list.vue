@@ -77,7 +77,9 @@
                                  type="selection"
                                  :selectable="columnAttrs['selectable']"
                                  :reserve-selection="columnAttrs['reserve-selection']"
-                                 width="50" />
+                                 :width="selectionProps.width || 50"
+                                 v-bind="selectionProps" />
+
                 <el-table-column v-if="block.props.type === 'index'"
                                  type="index"
                                  align="center" />
@@ -112,7 +114,7 @@
                                  fixed="right"
                                  min-width="140px"
                                  :width="operationsWidth"
-                                 align="center"
+                                 :align="operationsAlign"
                                  class-name="ams-list-row-operations">
                     <template slot-scope="scope">
                         <ams-operations :name="name"
@@ -142,6 +144,7 @@
                        v-if="pageTotal"
                        @size-change="handleSizeChange"
                        @current-change="handleCurrentChange"
+                       :disabled="loading"
                        :current-page.sync="data.page"
                        :page-size.sync="data.pageSize"
                        :page-sizes="data.pageSizes"
@@ -158,7 +161,7 @@
 <script>
 import mixins from '../../ams/mixins';
 import { defaultListFieldWidth } from '../../ams/configs/field';
-import { addEvent, getDomPos, getDomStyle, debounce, loadJS } from '../../utils/index';
+import { addEvent, getDomPos, getDomStyle, debounce, loadJS, sortBy } from '../../utils/index';
 import field from '../../components/field';
 
 export default {
@@ -208,6 +211,20 @@ export default {
             }
             return null;
         },
+        operationsAlign() {
+            const props = this.block.props || {};
+            if (props && props['operations-align']) {
+                return props['operations-align'];
+            }
+            return 'center';
+        },
+        selectionProps() {
+            const props = this.block.props || {};
+            if (props && props['selection-props']) {
+                return props['selection-props'];
+            }
+            return {};
+        },
         expandFields() {
             // 获取展开列表展开表单的fields
             if (this.block.expand && Object.keys(this.block.expand).length > 0) {
@@ -231,7 +248,9 @@ export default {
         afterReady() {
             // 表格拖拽
             if (this.isDrag) {
-                this.loadSortable();
+                const dragOptions = this.block && this.block.dragOptions || {};
+
+                this.loadSortable(dragOptions);
             }
 
             // 屏幕自适应
@@ -246,53 +265,103 @@ export default {
                 this.height = this.block.props.height;
             }
         },
-        async loadSortable() {
+        async loadSortable(dragOptions) {
             // 加载sortable
             if (!window.Sortable) {
                 const res = await loadJS('http://h5rsc.vipstatic.com/ams/sortable@1.10.0.js');
 
                 if (res.code === 0) {
-                    this.drag();
+                    this.drag(dragOptions);
                 } else {
                     console.warn('fail: 列表拖拽插件加载失败');
                 }
             } else {
-                this.drag();
+                this.drag(dragOptions);
             }
         },
-        drag() {
+        handleDragOptions(dragOptions) {
+            // 列表区块原有的默认配置，需兼容，因此当作默认配置
+            const defaultOptions = {
+                sort: true,
+                revert: true,
+                disabled: false,
+                handle: '.drag-column',
+                ghostClass: 'sortable-ghost'
+            };
+
+            // 事件配置
+            const eventOptions = {
+                onStart: (evt) => {
+                    // 触发回调
+                    this.on['drag-start'] && this.on['drag-start'](evt);
+                },
+                onEnd: (evt) => {
+                    const { oldIndex, newIndex } = evt;
+                    const newList = JSON.parse(JSON.stringify(this.data.list));
+                    const currRow = newList.splice(oldIndex, 1)[0];
+                    newList.splice(newIndex, 0, currRow);
+
+                    // 记录高度
+                    const height = this.$refs.amsTable.$el.scrollHeight;
+                    // 设置高度
+                    this.$refs.amsTable.$el.style.height = height + 'px';
+                    // 修改单个row，且有operation时错乱，先请空触发渲染
+                    this.data.list = [];
+                    // 渲染完监听，重新赋值
+                    this.$nextTick(() => {
+                        this.data.list = newList;
+                        this.$refs.amsTable.$el.style.height = '';
+                        // 触发回调
+                        this.on['drag-end'] && this.on['drag-end'](evt);
+                    });
+                },
+                onChoose: (evt) => {
+                    this.on['drag-choose'] && this.on['drag-choose'](evt);
+                },
+                onUnchoose: (evt) => {
+                    this.on['drag-unchoose'] && this.on['drag-unchoose'](evt);
+                },
+                onAdd: (evt) => {
+                    this.on['drag-add'] && this.on['drag-choose'](evt);
+                },
+                onUpdate: (evt) => {
+                    this.on['drag-update'] && this.on['drag-update'](evt);
+                },
+                onSort: (evt) => {
+                    this.on['drag-sort'] && this.on['drag-choose'](evt);
+                },
+                onRemove: (evt) => {
+                    this.on['drag-remove'] && this.on['drag-choose'](evt);
+                },
+                onFilter: (evt) => {
+                    this.on['drag-filter'] && this.on['drag-choose'](evt);
+                },
+                onMove: (evt, originalEvent) => {
+                    this.on['drag-move'] && this.on['drag-choose'](evt, originalEvent);
+                },
+                onClone: (evt) => {
+                    this.on['drag-clone'] && this.on['drag-choose'](evt);
+                },
+                onChange: (evt) => {
+                    this.on['drag-change'] && this.on['drag-choose'](evt);
+                },
+                setData: (dataTransfer, dragEl) => {
+                    this.on['drag-set-data'] && this.on['drag-choose'](dataTransfer, dragEl);
+                }
+            };
+
+            // 在列表中事件挂在 `on` 下，因此需覆盖 `dragOptions` 下的事件入参
+            return {
+                ...defaultOptions,
+                ...dragOptions,
+                ...eventOptions
+            };
+        },
+        drag(dragOptions) {
             if (window.Sortable) {
                 const el = this.$refs.amsTable.$el.querySelectorAll('.el-table__body-wrapper > table > tbody')[0];
-                window.Sortable.create(el, {
-                    sort: true,
-                    disabled: false,
-                    handle: '.drag-column',
-                    ghostClass: 'sortable-ghost',
-                    onStart: (evt) => {
-                        // 触发回调
-                        this.on['drag-start'] && this.on['drag-start'](evt);
-                    },
-                    onEnd: (evt) => {
-                        const { oldIndex, newIndex } = evt;
-                        const newList = JSON.parse(JSON.stringify(this.data.list));
-                        const currRow = newList.splice(oldIndex, 1)[0];
-                        newList.splice(newIndex, 0, currRow);
 
-                        // 记录高度
-                        const height = this.$refs.amsTable.$el.scrollHeight;
-                        // 设置高度
-                        this.$refs.amsTable.$el.style.height = height + 'px';
-                        // 修改单个row，且有operation时错乱，先请空触发渲染
-                        this.data.list = [];
-                        // 渲染完监听，重新赋值
-                        this.$nextTick(() => {
-                            this.data.list = newList;
-                            this.$refs.amsTable.$el.style.height = '';
-                            // 触发回调
-                            this.on['drag-end'] && this.on['drag-end'](evt);
-                        });
-                    }
-                });
+                window.Sortable.create(el, this.handleDragOptions(dragOptions));
             }
         },
         heightFit() {
@@ -332,20 +401,24 @@ export default {
         },
         handleCurrentChange(e) {
             console.log('handleCurrentChange');
-            if (this.isSimulatePagination) {
-                return;
-            }
             if (this.on && this.on['current-change']) {
                 this.on['current-change'](this.data.page);
             }
+            if (this.isSimulatePagination) {
+                return;
+            }
             this.emitEvent('list');
         },
-        handleSortChange({ prop, order }) {
+        handleSortChange({ column, prop, order }) {
             console.log('handleSortChange', prop, order);
             this.sortField = prop;
             this.sortOrder = order;
             this.data.page = 1;
-            this.emitEvent('list');
+            if (!this.isSimulatePagination) {
+                this.emitEvent('list');
+            } else {
+                this.data.list = sortBy(this.data.list, { [prop]: order });
+            }
         },
         handleFilterChange(e) {
             console.log('handleFilterChange', e);

@@ -21,12 +21,31 @@ export default {
     computed: {
         field() {
             // 使用operationKey作用默认field名
-            if (!this.operation.field) {
-                return this.$block.fields[this.operationKey];
+            const fields = this.$block.fields;
+            if (!this.operation.field && fields[this.operationKey]) {
+                return fields[this.operationKey];
             }
+            // 使用operation.field的字段配置
             if (typeof this.operation.field === 'string') {
-                return this.$block.fields[this.operation.field];
-            } else {
+                return fields[this.operation.field];
+            }
+            // 类型
+            // customText: {
+            //     slot: 'searchs',
+            //     type: 'field',
+            //     label: '自定义标签',
+            //     field: {
+            //         type: 'select',
+            //         props: {
+            //             options: {
+            //                 1: 'a',
+            //                 2: 'b',
+            //                 3: 'c'
+            //             }
+            //         }
+            //     }
+            // }
+            if (typeof this.operation.field === 'object') {
                 // 获取field默认配置
                 this.$block.initDefaultField(this.operation.field);
                 return {
@@ -34,6 +53,24 @@ export default {
                     ...this.operation.field
                 };
             }
+            // 类型
+            // customText: {
+            //     slot: 'searchs',
+            //     type: 'field',
+            //     label: '自定义标签',
+            //     props: {
+            //         options: {
+            //             1: 'a',
+            //             2: 'b',
+            //             3: 'c'
+            //         }
+            //     }
+            // }
+            this.$block.initDefaultField(this.operation);
+            return {
+                name: this.operationKey,
+                ...this.operation
+            };
         }
     }
 };

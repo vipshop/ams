@@ -131,7 +131,8 @@ export const defaultFieldConfig = {
         get,
         set,
         view,
-        equals
+        equals,
+        emptyEquel: false
     },
     password: {
         props: {

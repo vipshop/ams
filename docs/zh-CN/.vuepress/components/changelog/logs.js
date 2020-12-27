@@ -1,9 +1,76 @@
 // 更新日志
 export default [
     {
-        version: '0.25.13',
-        date: '2020.06.05',
+        version: '0.28.0',
+        date: '2020.12.23',
         log: [
+            'fix:  `inputnumber` 字段忽略了设置为 0 时的场景',
+            'feat: 新增处理上传视频中，Element UI 的 `on-error` 事件',
+            'feat: 将上传视频成功流程里的 this.field 调整为 this 和 transform 的一致',
+            'feat: `table`组件支持height配置',
+        ]
+    },
+    {
+        version: '0.27.17',
+        date: '2020.12.17',
+        log: [
+            'fix: `video`上传的 on-error 事件无法执行清空操作',
+            'fix: `video`上传失败时清空选项',
+            'feat: `table`组件暴露border设置',
+            'fix: ESLint，数字类型变量不能指派给字符串类型',
+            'feat: `ams.request`formData 场景支持入参 Blob 格式',
+            'fix: 修复默认action自定义配置无传method时，传参异常问题',
+            'feat: `ams.request`增加responseType',
+        ]
+    },
+    {
+        version: '0.27.9',
+        date: '2020.11.26',
+        log: [
+            'feat: form区块支持changeConfig配置',
+            'fix: 修复list区块在前端分页下，不触发current-change事件问题',
+            'feat: 更正block-chart的颜色分布',
+            'fix: 内置的用户信息区块和 ELEMENT UI 框架中图片放大功能的样式冲突',
+            'feat: 默认@list的action中，将requestDataParse的处理参数改为res.data',
+            'feat: 默认@list的action中，将responseDataParse处理范围从data.list变更为data',
+            'feat: 简化operaions中自定义field的配置',
+            'feat: operations增加changeConfig配置',
+            'feat: 列表拖动功能支持根据 SortableJS 官方文档配置参数',
+            'fix: 修正列表拖拽某列的使用方法'
+        ]
+    },
+    {
+        version: '0.26.3',
+        date: '2020.09.17',
+        log: [
+            'feat: 资源的api请求配置，新增requestDataParse和responseDataParse',
+            'feat: 图片编辑可选图片场，供可选的列表图片接入 el-image 来实现 fit 入参',
+            'fix: 图片编辑单张图片预览场景接入 el-image 组件用以实现 fit 入参',
+            'fix: field的default值初始化处理',
+            'feat: 对field default值也进行get/set处理'
+        ]
+    },
+    {
+        version: '0.25.39',
+        date: '2020.07.29',
+        log: [
+            'feat: 修复列表区块操作中，最后一项操作表的居中问题',
+            'feat: 更新collpase和imagelist的样式',
+            'feat: 新增多种类型的icon',
+            'feat: list区块请求时禁止分页操作',
+            'feat: unitselect字段增加on.change回调',
+            'feat: list区块增加前端排序',
+            'feat: field-audio、field-image、field-video支持在props配置before-upload回调',
+            'feat: table组件支持tableTop的插槽',
+            'feat: list组件，前端分页时，点击排序请求接口',
+            'feat:  前端分页时，点击排序触发fieldChange',
+            'feat: object增加collapseKeys配置',
+            'feat: 字段button增加emitFieldChange配置，可手动触发fieldChange方法',
+            'feat: operation添加info支持',
+            'feat: 远程搜索组件添加onSuccess和onError的回调方法',
+            'fix: table组件添加context参数',
+            'feat: 补全list区块的props配置',
+            'feat: 内置action的read中，添加tansform配置',
             'feat: 内置的action支持配置path/method/successCode/transform',
             'feat: resource增加method的配置',
             'feat: table组件支持配置data.layout',

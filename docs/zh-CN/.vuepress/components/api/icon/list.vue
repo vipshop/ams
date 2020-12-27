@@ -13,8 +13,16 @@ export default {
     data() {
         return {
             icons: [
-                'user', 'woman', 'man', 'question', 'watcher', 'advocate', 'fold', 'crown', 'heart', 'brick', 'dashboard',
-                'portrait', 'brand-equity', 'crowd-manage', 'account-sales', 'help-center', 'data-report', 'customer-operation', 'code'
+                'picture', 'split', 'time', 'clock2', 'marketing', 'funnel', 'pmd-logo',
+                'attract', 'star', 'star2', 'fold', 'circle-square', 'circles', 't-shirt', 'trademark', 'handbag', 'bulb', 'warning',
+                'data-sale', 'data-sale-7d', 'data-sun-black', 'data-mid', 'data-inventory', 'data-sale-x', 'data-footmark', 'data-price-field',
+                'data-price', 'data-inventory-field', 'data-low-inventory', 'data-point-star', 'handbag2', 'precent',
+                'lower-prices', 'petal', 'tag', 'caret-left', 'caret-right', 'caret-bottom', 'caret-bottom', 'caret-top', 
+                'information', 'export', 'data', 'flat', 'top', 'bottom', 'ams', 'vis', 'man', 'woman', 'watcher', 'brick', 'heart', 'advocate',
+                'crown', 'code', 'clock', 'car', 'star', 'edit', 'view', 'fixed', 'prohibit', 'balance', 'arrow-up', 'arrow-down', 'required', 'error',
+                'circle-plus', 'search', 'document-check', 'check', 'data-footmark', 'data-percent', 'reset', 'big-arrow-up',
+                'check2', 'close', 'data-line', 'dashboard', 'portrait', 'brand-equity', 'user-manager', 'account-sales', 'help', 'data-report',
+                'customer-operation', 'question', 'user', 'mp', 'list-search', 'list-user', 'system-icon'
             ]
         }
     },

@@ -24,7 +24,7 @@ export default function initRequest(ams) {
             let val = obj[key];
             val = val == null ? '' : val;
             if (typeof val === 'object') {
-                if (val instanceof window.File) {
+                if (val instanceof window.File || val instanceof window.Blob) {
                     formData.append(key, val);
                 } else {
                     formData.append(key, JSON.stringify(val));
@@ -46,6 +46,7 @@ export default function initRequest(ams) {
         params, {a: 1},
         withCredentials: true,
         contentType: true,
+        responseType: '',
         headers: {'X-Custom-Header': 'foobar'}
     });
     */
@@ -63,7 +64,8 @@ export default function initRequest(ams) {
                 params,
                 headers = {},
                 withCredentials = ams.configs.withCredentials,
-                contentType = ams.configs.contentType
+                contentType = ams.configs.contentType,
+                responseType = ams.configs.responseType || '',
             } = options;
 
             const xhr = new XMLHttpRequest();
@@ -141,7 +143,7 @@ export default function initRequest(ams) {
                         }
 
                     } else {
-                        reject(new Error(xhr.status));
+                        reject(new Error(`${xhr.status}`));
                     }
                 }
             };
@@ -149,6 +151,8 @@ export default function initRequest(ams) {
 
             // withCredentials默认为true
             xhr.withCredentials = withCredentials;
+
+            xhr.responseType = responseType;
 
             xhr.send(sendData);
         });
@@ -237,8 +241,7 @@ export default function initRequest(ams) {
                 );
 
             } catch (e) {
-                // 处理完继续抛出错误使aciton中断
-
+                // 处理完继续抛出错误使 action 中断
                 this.hideLoading();
                 throw e;
             }

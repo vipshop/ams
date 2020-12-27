@@ -150,6 +150,12 @@ ams.block('select', {
                         action: `${prefix}tag`,
                         queryKey: 'requiredName',
                         labelKey: 'name',
+                        onSuccess: function(options, res) {
+                            console.log('请求成功后的回调', options, res);
+                        },
+                        onError: function(options, res) {
+                            console.log('请求失败的回调', options, res);
+                        }
                     }
                 },
                 singleSelectView: {

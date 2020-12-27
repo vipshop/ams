@@ -1,20 +1,6 @@
 import ams from '@ams-team/ams';
 
 ams.block('card', {
-    resources: {
-        /**
-         * 配置数据（资源）
-         * 首先我们需要配置`资源`、用于描述接口的`字段`组成、以及`api`的存取地址
-         */
-        ecahrtRes: {
-            api: {
-                // api前缀
-                prefix: 'https://www.easy-mock.com/mock/5bf25b2b34392218c898a5fd/',
-                // 读取数据接口
-                read: 'read',
-            }
-        }
-    },
     /**
      * 配置区块
      */
@@ -208,7 +194,6 @@ ams.block('card', {
                         height: '480px',
                         margin: '20px auto 0'
                     },
-                    resource: 'ecahrtRes',
                     data: {
                         legend: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎'],
                         xAxis: ['周二', '周二', '周二', '周四', '周五', '周六', '周日'],

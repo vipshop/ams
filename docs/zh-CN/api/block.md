@@ -305,7 +305,8 @@ operations结构类型如下：
 		show?: String | Object | Function,
 		style: {
 			[styleName: String]: String
-		}
+        },
+        changeConfig: Function(field: Object, context: Object)
 	}
 }
 ```
@@ -406,7 +407,7 @@ block支持透传props、on和style 至 block 内部根元素（原生节点或�
     }" src="//b.appsimg.com/upload/vivaadmin/2018/11/07/69/1541579376290922128.png"/>
 ```
 
-## 通用配置
+## block 通用配置
 
 | 参数 | 类型 | 是否必传 | 说明
 | -- | -- | -- | --

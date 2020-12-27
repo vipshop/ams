@@ -173,3 +173,61 @@ export function loadJS(url) {
         document.body.appendChild(script);
     });
 }
+
+/**
+ * 排序
+ */
+function SortByProps(item1, item2) {
+    const props = [];
+    for (let i = 2; i < arguments.length; i++) {
+        props[i - 2] = arguments[i];
+    }
+    let cps = [];
+    // 存储排序属性比较结果
+    // 如果未指定排序属性，则按照全属性升序排序
+    let asc = true;
+    if (props.length < 1) {
+        for (const p in item1) {
+            if (item1[p] > item2[p]) {
+                cps.push(1);
+                break;
+            } else if (item1[p] === item2[p]) {
+                cps.push(0);
+            } else {
+                cps.push(-1);
+                break;
+            }
+        }
+    } else {
+        for (let i = 0; i < props.length; i++) {
+            const prop = props[i];
+            for (const o in prop) {
+                if (Object.prototype.hasOwnProperty.call(prop, o)) {
+                    asc = Boolean(prop[o] === 'ascending');
+                    if (item1[o] > item2[o]) {
+                        cps.push(asc ? 1 : -1);
+                        break;
+                    } else if (item1[o] === item2[o]) {
+                        cps.push(0);
+                    } else {
+                        cps.push(asc ? -1 : 1);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    for (let j = 0; j < cps.length; j++) {
+        if (cps[j] === 1 || cps[j] === -1) {
+            return cps[j];
+        }
+    }
+    return 0;
+}
+export function sortBy(source, propOrders) {
+    if (Array.isArray(source) && source.length) {
+        return source.sort((a, b) => SortByProps(a, b, propOrders));
+    }
+    return [];
+}

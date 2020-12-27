@@ -1,6 +1,6 @@
 {
     "name": "@ams-team/block-ams-config",
-    "version": "0.3.4",
+    "version": "0.3.5",
     "description": "AMS可视化配置工具",
     "author": "ams",
     "main": "lib/block-ams-config.js",

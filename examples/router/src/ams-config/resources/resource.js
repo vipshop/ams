@@ -6,7 +6,6 @@ import { prefix } from '@/utils';
 ams.resource('resource', {
     key: 'id',
     api: {
-        // prefix: 'https://easy-mock.com/mock/5a0023effbbb09615044cb82/',
         prefix: prefix,
         create: 'create',
         update: 'update',
@@ -17,6 +16,12 @@ ams.resource('resource', {
         //     path: 'list',
         //     method: 'get',
         //     successCode: 0,
+        //     requestDataParse(query) {
+        //         return query;
+        //     },
+        //     responseDataParse(data) {
+        //         return data;
+        //     },
         //     transform(data) {
         //         return data.map(item => {
         //             item.testTextarea = '测试字段';
@@ -145,7 +150,13 @@ ams.resource('resource', {
         },
         testDate: {
             type: 'date',
-            label: '日期'
+            label: '日期',
+            changeConfig(fields, context) {
+                fields.style = {
+                    color: 'red'
+                };
+                return fields;
+            }
         },
         testTime: {
             type: 'time',

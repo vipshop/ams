@@ -11,6 +11,14 @@ ams.block('list-operations', {
         // tableHeightFit: true
     },
 
+    props: {
+        // 设置多选列props
+        'selection-props': {
+            width: 100,
+            align: 'center'
+        }
+    },
+
     // 过滤设置（列表特有）
     filters: {
         testCheckbox: {
@@ -49,33 +57,30 @@ ams.block('list-operations', {
     },
 
     operations: {
-        dropdown: {
-            slot: 'searchs',
-            type: 'dropdown',
-            label: '更多搜索',
-            event: 'list',
+        custome: {
+            type: 'select',
+            label: '自定义的搜索字段',
             props: {
-                placeholder: '搜索...'
-            },
-            style: {
-                width: '300px'
-            },
-            fields: {
-                testTextarea: true,
-                testDate: true,
-                testTime: true,
-                testDatetime: true,
-                testSwitch: true
+                options: {
+                    1: 'a',
+                    2: 'b',
+                    3: 'c'
+                }
             }
         },
 
         edit: {
             type: 'button',
-            label: '跳转'
-        },
-        edit2: {
-            type: 'button',
-            label: '跳转2'
+            label: '跳转',
+            props: {
+                disabled: false
+            },
+            changeConfig(field, context) {
+                if (context.testInputnumber > 50) {
+                    field.props.disabled = true;
+                }
+                return field;
+            }
         },
 
         testText: {

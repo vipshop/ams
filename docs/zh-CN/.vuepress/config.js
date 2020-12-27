@@ -1,4 +1,5 @@
 // 根据打包命令参数，决定打包输出路径
+// npm run build -- ams-os 打包路径将是ams-os库在你本地的路径（按需修改）
 const dest = 'dist'
 
 module.exports = {
@@ -37,7 +38,7 @@ module.exports = {
       },
       {
         text: '示例',
-        link: '/example/'
+        link: 'https://vipshop.github.io/ams/example/#/'
       },
       {
         text: '版本更新',
@@ -64,8 +65,11 @@ module.exports = {
           collapsable: false,
           children: [
             '',
+            'try',
+            'quickstart',
             'resource',
             'block',
+            'template',
             'demo'
           ]
         },
@@ -103,7 +107,7 @@ module.exports = {
         {
           title: '基础',
           collapsable: false,
-          children: ['text','password', 'textarea', 'switch',  'color', 'rate', 'unitselect', 'link', 'button', 'html']
+          children: ['text','password', 'textarea', 'switch',  'color', 'rate', 'unitselect', 'link', 'button', 'html', 'tree']
         },
         {
           title: '时间',
@@ -159,8 +163,7 @@ module.exports = {
               'steps',
               'card',
               'dropdown',
-              'popover',
-              'tree'
+              'popover'
             ]
         },
         {

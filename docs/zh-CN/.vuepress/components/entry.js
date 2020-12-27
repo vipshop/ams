@@ -25,6 +25,7 @@ import 'highlight.js/styles/tomorrow-night-eighties.css';
 // import calendar from '@ams-team/block-calendar';
 // import card from '@ams-team/block-card';
 import chart from '@ams-team/block-chart';
+// import amsConfig from '../../../../packages/block-ams-config/src'
 import amsConfig from '@ams-team/block-ams-config';
 
 Vue.use(ElementUI);
