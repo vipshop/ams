@@ -101,15 +101,9 @@ export const read = ams.createApiAction({
     success(res) {
         const { message, code, isSuccess, data } = getInfoFromResponse.call(this, res, 'read');
         if (isSuccess) {
-            const config = this.resource.api.read;
-            let blockData = data;
-            if (typeof config === 'object') {
-                const { transform, responseDataParse } = config;
-                // 优先级：transform > responseDataParse > data
-                blockData = isFn(transform) ?
-                    transform(res.data.data) :
-                    (isFn(responseDataParse) ? responseDataParse(res.data) : data);
-            }
+            const { transform, responseDataParse } = this.resource.api.read || {};
+            // 优先级：transform > responseDataParse > data
+            const blockData = isFn(transform) ? transform(res.data.data) : (isFn(responseDataParse) ? responseDataParse(res.data) : data);
             this.setBlockData(blockData);
         } else {
             this.$message.error(`${message}(${code})`);
@@ -324,16 +318,14 @@ export const list = ams.createApiAction({
         // whenSuccess = res => res[codeKey] === expectedCode
         const { message, code, isSuccess, total, data } = getInfoFromResponse.call(this, res, 'list');
         if (isSuccess && res.data.data) {
-            const config = this.resource.api.list;
-            if (typeof config === 'object') {
-                const { transform, responseDataParse } = config;
-                if (isFn(transform)) {
-                    this.data.list = transform(config, data);
-                } else if (isFn(responseDataParse)) {
-                    this.data = responseDataParse(res.data);
-                } else {
-                    this.data.list = data;
-                }
+            const config = this.resource.api.list || {};
+            const { transform, responseDataParse } = config;
+            if (isFn(transform)) {
+                this.data.list = transform(config, data);
+            } else if (isFn(responseDataParse)) {
+                this.data = responseDataParse(res.data);
+            } else {
+                this.data.list = data;
             }
             this.data.total = total;
             if (isFn(this.on['list-success'])) {
