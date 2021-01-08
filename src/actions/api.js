@@ -243,7 +243,7 @@ export const list = ams.createApiAction({
                 this.data.page = page;
             }
         }
-        let arg = {
+        const arg = {
             // resId: this.block.resource,
             page: this.data.page,
             pageSize: this.data.pageSize,
@@ -299,8 +299,6 @@ export const list = ams.createApiAction({
                 }
             });
         }
-        const requestAdaptor = this.resource.api.list.requestAdaptor || (data => data);
-        arg = requestAdaptor(arg);
         if (typeof this.resource.api.list === 'object') {
             return _getSendData(this.resource.api.list, 'get', this.resource.api.prefix, arg);
         }
