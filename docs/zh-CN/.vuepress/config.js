@@ -66,7 +66,7 @@ module.exports = {
           children: [
             '',
             'try',
-            'quickstart',
+            'getstart',
             'resource',
             'block',
             'template',

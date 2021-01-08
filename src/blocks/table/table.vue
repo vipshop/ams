@@ -184,9 +184,7 @@ export default {
                 return this.handleTableColumn(this.block.options['table-column']);
             } else {
 
-                return this.handleTableColumn(
-                    Object.keys(this.fields).map(val => this.fields[val])
-                );
+                return this.handleTableColumn(Object.values(this.fields));
             }
         },
         expandRow() {

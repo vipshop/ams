@@ -19,6 +19,7 @@ export default {
         if (!Vue.component('RouterView') && !Vue.component('router-view')) {
             Vue.use(VueRouter);
         }
+        // ams-block-router
         Vue.component(`ams-block-${this.type}`, block);
     }
 };
