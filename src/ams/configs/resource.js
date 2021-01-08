@@ -1,5 +1,5 @@
 import { Message } from 'element-ui';
-import { get as lodashGet } from 'lodash';
+import lodashGet from 'lodash.get';
 
 export const resource = {
     // /**
