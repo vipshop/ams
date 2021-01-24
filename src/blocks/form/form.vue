@@ -22,7 +22,7 @@
                         v-if="typeof fieldLayout === 'string'"
                         :key="key"
                         :label-width="field.labelWidth"
-                        :class="[fieldProps.class, fieldProps.inline || 'el-form-item-inline']"
+                        :class="[fieldProps.class, fieldProps.inline && 'el-form-item-inline']"
                         :style="`width: ${fieldProps.formItemWidth}`"
                         :rules="field.ctx === 'view' ? undefined : field.rules"
                         :prop="['array', 'object'].includes(field.type) ? '' : key"
