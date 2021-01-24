@@ -6,6 +6,7 @@ export * from './function';
 export * from './tools';
 export * from './api';
 export * from './type';
+export * from './browser';
 import { isDefined, getType } from './type';
 
 export function get(object, path) {

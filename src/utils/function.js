@@ -16,3 +16,15 @@ export function debounce(method, delay = 100) {
         }, delay);
     };
 }
+
+
+/**
+* Calls the given callback on every Element of an Object. Uses hasOwnProperty.
+*/
+export function loopObject(object, callback) {
+    for (let key in object) {
+        if (object.hasOwnProperty(key)) {
+            callback(key, object[key]);
+        }
+    }
+}
