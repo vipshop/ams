@@ -188,7 +188,7 @@ export default {
                         console.warn(`Method "${key}" has already been defined as a prop.`);
                     }
                     if (isAmsReservedMethod(key)) {
-                        console.warning(`Method "${key}" conflicts with an existing AMS block method`);
+                        console.warn(`Method "${key}" conflicts with an existing AMS block method`);
                     }
                 }
                 this[key] = methods[key] == null ? noop : methods[key].bind(this);
