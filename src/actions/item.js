@@ -13,7 +13,7 @@ const FROM_BLOCK_NAME = `${WRAP_BLOCK_NAME}From`;
  * @param {string} type 'add'|'edit'
  * @param {string} insertType 'dialog'|'after'
  */
-export function commonHandlerItem({ blockConfig, type, resource, insertType, $prevReturn }) {
+export function commonHandlerItem({ blockConfig, type, resource, insertType, $prevReturn, fields, formProps }) {
     return new Promise((resolve, reject) => {
         const $currentBlock = this;
         if (currentParentBlock) {
@@ -52,6 +52,8 @@ export function commonHandlerItem({ blockConfig, type, resource, insertType, $pr
                     type: 'form',
                     ctx: 'edit',
                     resource: resource || this.resource,
+                    fields,
+                    props: formProps,
                     actions: {
                         init({ $prevReturn }) {
                             this.setBlockData($prevReturn);
