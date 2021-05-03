@@ -34,7 +34,7 @@ export default {
     methods: {
         emit() {
             ams.$prevReturn = this.context;
-            this.$block.emitEvent(this.operation.event || this.operationKey);
+            this.$block.emitEvent(this.operation.event || this.operationKey, this.operation);
         }
     },
 
