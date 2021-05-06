@@ -2,8 +2,14 @@
     <div class="ams-navbar">
         <hamburger :toggle-click="toggleSideBar"
                    :is-active="sidebar.opened"/>
-        <img class="logo" v-if="$block.data.logo" :src="$block.data.logo">
-        <h1>{{ $block.data.title }}</h1>
+        <div
+            @click="handleLogoClick($block.data.logoPath)"
+            :class="handleLogoClassNames"
+            class="ams-logo"
+        >
+            <img class="ams-logo__img" v-if="$block.data.logo" :src="$block.data.logo">
+            <h1 class="ams-logo__title">{{ $block.data.title }}</h1>
+        </div>
 
         <ams-blocks :blocks="$block.block.slotBlocks['nav-left']" class="ams-navbar-slot-left"></ams-blocks>
         <!-- 左边 -->
@@ -34,39 +40,46 @@ export default {
     },
     inject: ['$block'],
     props: ['sidebar'],
+    computed: {
+        /**
+         * 处理 Logo 的场景类名
+         */
+        handleLogoClassNames() {
+            const { logoPath = '' } = this.$block.data;
+
+            return {
+                'ams-logo--has-path': logoPath !== ''
+            };
+        },
+    },
     methods: {
         toggleSideBar() {
             this.$parent.toggleSideBar();
         },
         handleCommand(command) {
             if (command === 'login-out') {
-                console.log('loginOutClick');
                 ams.callAction.call(this.$block, '@loginOut');
             }
+        },
+        /**
+         * 处理 Logo 点击跳转
+         * @param {string} path 路由路径
+         */
+        handleLogoClick(path = '') {
+            if (!path) return;
+
+            this.$router.push({ path });
         }
     }
 };
 </script>
 
-<style rel="stylesheet/scss" lang="scss">
+<style lang="scss">
 .ams-navbar {
     height: 50px;
     line-height: 50px;
     border-radius: 0px !important;
     transition: margin-left 0.28s;
-    .logo{
-        height: 100%;
-        padding: 5px 10px;
-        box-sizing: border-box;
-        vertical-align: top;
-    }
-    h1{
-        display: inline-block;
-        vertical-align: top;
-        margin: 0;
-        font-size: 20px;
-        margin-right: 20px;
-    }
     .ams-navbar-slot-left {
         width: auto;
         display: inline-block;
@@ -102,17 +115,6 @@ export default {
         position: relative;
         z-index: 1;
         font-size: 14px;
-        // &::after {
-        //     content: '';
-        //     width: 1px;
-        //     height: 12px;
-        //     position: absolute;
-        //     z-index: 2;
-        //     right: -20px;
-        //     top: 50%;
-        //     margin-top: -6px;
-        //     background-color: #000;
-        // }
     }
 }
 // 下拉样式调整
@@ -124,10 +126,26 @@ export default {
     }
 }
 
-/**
- * 解决使用该区块导致和 Element UI 图片组件放大预览功能样式冲突的问题
- */
-.el-image-viewer__close {
-  top: 104px!important;
+
+.ams-logo {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 20px;
+    height: 100%;
+    &__img {
+        display: inline-block;
+        vertical-align: top;
+        height: 100%;
+        padding: 5px 10px;
+    }
+    &__title {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0;
+        font-size: 20px;
+    }
+    &--has-path {
+        cursor: pointer;
+    }
 }
 </style>

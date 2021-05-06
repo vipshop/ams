@@ -39,9 +39,9 @@ export default {
         this.$nextTick(async () => {
             // 初始化init
             this.ready = true;
+
             await this.emitEvent('created');
             await this.emitEvent('init');
-
             this.afterReady && this.afterReady();
 
             let wmOptions = this.block.options && this.block.options.watermark;
@@ -52,6 +52,14 @@ export default {
                     container: this.$el,
                     uid: this._uid
                 }, wmOptions));
+            }
+
+            const show = this.getShowState(this.block, this.block.data);
+            if (!show) {
+                this.block.style = this.block.style || {};
+                this.block.style = {
+                    display: 'none'
+                };
             }
         });
     },
@@ -95,6 +103,16 @@ export default {
         }
     },
     methods: {
+        getShowState(block, data) {
+            const type = typeof block.show;
+            if (type === 'undefined') {
+                return true;
+            } else if (type === 'function') {
+                return block.show.call(this.$block || this, data);
+            } else if (type === 'boolean') {
+                return block.show;
+            }
+        },
         showLoading() {
             if (this.block && this.block.options.showLoading !== false) {
                 this.loading = true;

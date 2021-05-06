@@ -1,5 +1,6 @@
 import { deepExtend, get } from '../../../utils';
 import * as fieldGetSet from '../field-get-set';
+import { httpRequestTypeExcludeGet } from '../../request';
 
 // fields
 export const RESET_GET_SET = {
@@ -66,21 +67,28 @@ export const SELECT_REMOTE = {
          * @param {*} query 当前搜索参数
          * @param {*} isBackfill 是否是触发回填
          */
-        async request($field, query = '', isBackfill) {
+        async request($field, query = '') {
             const field = $field.field;
             const remoteConfig = field.remoteConfig;
+            const method = remoteConfig.method && remoteConfig.method.toUpperCase();
 
             // 组装请求参数
             const params = {
-                url: remoteConfig.action,
-                method: 'get'
+                url: remoteConfig.action || remoteConfig.url,
+                method: method || 'GET'
             };
             if (query) {
-                params.params = {};
-                params.params[remoteConfig.queryKey] = query;
+                if (!method || method === 'GET') {
+                    params.params = {};
+                    params.params[remoteConfig.queryKey] = query;
+                } else if (httpRequestTypeExcludeGet.indexOf(method) >= 0) {
+                    params.data = {};
+                    params.data[remoteConfig.queryKey] = query;
+                }
             }
             // 深度合并传入的params
-            deepExtend(params, remoteConfig.params);
+            deepExtend(params.params, remoteConfig.params);
+            deepExtend(params.data, remoteConfig.data);
 
             const res = await $field.$ams.request(params);
 
@@ -166,6 +174,7 @@ export const SELECT_REMOTE = {
 
                 let data = get(res.data, remoteConfig.dataPath);
                 let successCode;
+
                 if (typeof remoteConfig.successCode !== 'undefined') {
                     successCode = remoteConfig.successCode;
                 } else {
@@ -184,8 +193,12 @@ export const SELECT_REMOTE = {
                     if (typeof remoteConfig.onSuccess === 'function') {
                         remoteConfig.onSuccess(options, res);
                     }
-                } else if (typeof remoteConfig.onError === 'function') {
-                    remoteConfig.onError(data, res);
+                } else {
+                    $field.$set($field.field.props, 'options', []);
+
+                    if (typeof remoteConfig.onError === 'function') {
+                        remoteConfig.onError(data, res);
+                    }
                 }
                 nextLockQuery();
             } catch (e) {

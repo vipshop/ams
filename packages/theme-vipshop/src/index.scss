@@ -23,3 +23,13 @@ $primaryColor: #797EF5; // 主色调
 .ams-block-form .el-form-item .el-form-item__content {
     z-index: 1;
 }
+
+// 修复配置主题后popconfirm的样式遗失问题
+.el-popconfirm__main {
+    display: flex;
+    align-items: center;
+}
+.el-popconfirm__action {
+    text-align: right;
+    margin: 0;
+}

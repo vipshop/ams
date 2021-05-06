@@ -1,6 +1,6 @@
 {
     "name": "@ams-team/block-xlsx",
-    "version": "0.8.10",
+    "version": "0.9.3",
     "description": "结合ams的resources配置使用的导出导出xlsx插件",
     "author": "zebin.wu <1069467662@qq.com>",
     "main": "lib/block-xlsx.js",

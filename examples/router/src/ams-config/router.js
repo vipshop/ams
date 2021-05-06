@@ -7,6 +7,7 @@ ams.block('router', {
     data: {
         roles: ['admin'],
         logo: '//h5rsc.vipstatic.com/ams/ams-logo2.png?20191105', // 系统logo（只有使用vipshop的UI主题才会显示）
+        logoPath: '/',
         title: 'AMS在线示例', // 系统标题（只有使用vipshop的UI主题才会显示）
         userImg: '', // 用户头像（如果头像为空，则用默认头像）
         userName: '' // 用户名字（如果名字为空则不展示用户信息模块）
@@ -142,6 +143,11 @@ ams.block('router', {
                         name: '图片上传',
                         path: 'image',
                         block: 'image'
+                    },
+                    {
+                        name: '视频上传',
+                        path: 'video',
+                        block: 'video'
                     },
                     {
                         name: '树形控件',
@@ -340,6 +346,11 @@ ams.block('router', {
                         block: 'popover'
                     },
                     {
+                        name: '气泡确认框',
+                        path: 'popconfirm',
+                        block: 'popconfirm'
+                    },
+                    {
                         name: '抽屉',
                         path: 'drawer',
                         block: 'drawer'
@@ -348,6 +359,11 @@ ams.block('router', {
                         name: 'bct定制进度条',
                         path: 'bct-progress',
                         block: 'bct-progress'
+                    },
+                    {
+                        name: 'Alert告警',
+                        path: 'alert',
+                        block: 'alert'
                     }
                 ]
             },

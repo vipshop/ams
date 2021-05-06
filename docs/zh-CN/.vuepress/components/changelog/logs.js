@@ -1,6 +1,68 @@
 // 更新日志
 export default [
     {
+        version: '0.31.3',
+        date: '2020.04.26',
+        log: [
+            'feat: 添加block-alert类型',
+            'feat: field-tag 增加 no-match-text 配置下，搜索无数据时可显示相关信息',
+            'fix: 修复field-tag一些搜索异常场景'
+        ]
+    },
+    {
+        version: '0.30.5',
+        date: '2020.04.01',
+        log: [
+            'fix: block-xlsx导入配置post方式时，支持用data来传参',
+            'feat: field-editor富文本自定义字段，支持 Quilljs 参数配置和事件绑定',
+            'feat: 完善富文本编辑器示例',
+            'refactor: 调整富文本字段 options 的入参方式',
+            'fix: 图片字段，在图片校验通过时，没有 resolve',
+            'fix: 远程搜索传参',
+            'feat: issue#77 导航的 Logo 和标题支持点击跳转',
+            'feat: ams.configs增加consoleWarn的全局配置',
+            'fix:issue#79 修复远程 SELECT 字段在接口返回异常时没有重置下拉列表的问题'
+        ]
+    },
+    {
+        version: '0.29.11',
+        date: '2020.02.23',
+        log: [
+
+            'fix: 修复block的show配置在router切换下异常',
+            'feat: select远程搜索的remoteConfig支持method和url的配置',
+            'fix: router区块增加loading',
+            'feat: 更新element-ui版本到2.14.1，增加popconfirm组件',
+            'feat: 更换chart区块的颜色序列',
+            'fix: break-change，resource中的默认contentType修改为form',
+            'fix: 配置responseDataParse时，不覆盖data之前配置的数据',
+            'feat: xlsx区块的上传，增加on.getXlsxData方法',
+            'feat: list曲表增加table-column配置',
+            'fix: 增强list中格式的校验',
+            'feat: 默认action增加clear',
+            'feat: list区块增加multipleSelectAffixShow配置',
+            'fix: operations-mixin兼容block-list中配置multipleSelectAffixShow: true的情况',
+            'fix： xlsx导入限制修复',
+            'feat: list的block支持配置hidden和show'
+        ]
+    },
+    {
+        version: '0.28.7',
+        date: '2020.01.08',
+        log: [
+            'feat: select支持分组',
+            'feat: 新增视频字段实例',
+            'feat: 视频字段在展示场景支持倍速控制',
+            'refactor: 视频字段展示场景下，控制是否展示出视频操作判断保护',
+            'fix: 修复视频字段和播放控制之间的间隙问题',
+            'feat: update的action增加put处理',
+            'feat: 优化左侧菜单 UI，使其和页头 UI 联调更协调',
+            'feat: 菜单支持入参 `hide-timeout` 参数',
+            'fix: resource中的update配置，method配置失效问题',
+            'fix: @list中的method默认设置为get'
+        ]
+    },
+    {
         version: '0.28.0',
         date: '2020.12.23',
         log: [

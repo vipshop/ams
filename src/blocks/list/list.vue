@@ -20,7 +20,7 @@
         <!-- 多选时的operations -->
         <ams-operations :name="name"
                         :context="batchSelected"
-                        v-if="batchSelected.length > 0"
+                        v-if="batchSelected.length > 0 || block.options.multipleSelectAffixShow"
                         slot-name="multipleSelect"></ams-operations>
 
         <el-form :model="data" ref="amsForm">
@@ -83,32 +83,62 @@
                 <el-table-column v-if="block.props.type === 'index'"
                                  type="index"
                                  align="center" />
-                <template v-for="(field, fieldName) in fields">
-                    <el-table-column :label="field.label"
-                                    v-if="!field.hidden"
-                                    :key="fieldName"
-                                    :prop="fieldName"
-                                    type=""
-                                    :column-key="fieldName"
-                                    fit
-                                    :min-width="field.props['min-width'] || defaultListFieldWidth[field.type] || '90px'"
-                                    :align="field.props['align'] || 'center'"
-                                    v-bind="field.props">
-                        <template slot="header">
-                            <!-- 表头 -->
-                            {{field.label}}
-                            <el-tooltip effect="dark" placement="top" v-if="field.info">
-                                <i :class="field.info.icon || 'el-icon-info'"></i>
-                                <div slot="content" v-html="field.info.content || field.info"></div>
+
+                <!-- 含有多级表格配置的处理 -->
+                <template v-if="tableColumn.length">
+                    <el-table-column v-for="(column, index) in tableColumn"
+                                        v-if="!column.hidden"
+                                        :key="column.name || index"
+                                        :prop="column.name"
+                                        :label="column.label"
+                                        :column-key="column.name"
+                                        v-bind="column.props"
+                                        fit
+                                        :min-width="column.props['min-width'] || defaultListFieldWidth[column.type] || '90px'"
+                                        :align="column.props['align'] || 'center'">
+                        <!-- 第一层表头的处理 -->
+                        <template slot="header" v-if="column.name">
+                            {{column.label}}
+                            <el-tooltip effect="dark" placement="top" v-if="column.info">
+                                <i :class="column.info.icon || 'el-icon-info'"></i>
+                                <div slot="content" v-html="column.info.content || column.info"></div>
                             </el-tooltip>
                         </template>
-                        <template slot-scope="scope">
-                            <!--fields-->
-                            <field v-if="getShowState(field, scope.row)" :field="getField(field, scope.row)" :value="scope.row[fieldName]" :name="name" :context="scope.row"
-                                :path="`list[${(isSimulatePagination ? ((data.page - 1) * data.pageSize) : 0) + scope.$index}].${fieldName}`"/>
+                        <template slot-scope="scope" v-if="column.name">
+                            <field v-if="getShowState(column, scope.row)" :field="getField(column, scope.row)" :value="scope.row[column.name]" :name="name" :context="scope.row"
+                                :path="`list[${(isSimulatePagination ? ((data.page - 1) * data.pageSize) : 0) + scope.$index}].${column.name}`"/>
+                        </template>
+
+                        <!-- 第二层表头的处理 -->
+                        <template v-if="column.children && column.children.length > 0">
+                            <template v-for="(item) in column.children">
+                                    <el-table-column :label="fields[item.name].label"
+                                                v-if="!fields[item.name].hidden"
+                                                :key="item.name"
+                                                :prop="item.name"
+                                                type=""
+                                                :column-key="item.name"
+                                                fit
+                                                :min-width="fields[item.name].props['min-width'] || defaultListFieldWidth[fields[item.name].type] || '90px'"
+                                                :align="fields[item.name].props['align'] || 'center'"
+                                                v-bind="fields[item.name].props">
+                                    <template slot="header">
+                                        {{fields[item.name].label}}
+                                        <el-tooltip effect="dark" placement="top" v-if="fields[item.name].info">
+                                            <i :class="fields[item.name].info.icon || 'el-icon-info'"></i>
+                                            <div slot="content" v-html="fields[item.name].info.content || fields[item.name].info"></div>
+                                        </el-tooltip>
+                                    </template>
+                                    <template slot-scope="scope">
+                                        <field v-if="getShowState(fields[item.name], scope.row)" :field="getField(fields[item.name], scope.row)" :value="scope.row[item.name]" :name="name" :context="scope.row"
+                                            :path="`list[${(isSimulatePagination ? ((data.page - 1) * data.pageSize) : 0) + scope.$index}].${item.name}`"/>
+                                    </template>
+                                </el-table-column>
+                            </template>
                         </template>
                     </el-table-column>
                 </template>
+
                 <el-table-column label="操作"
                                  v-if="block.operationsCounts.operations"
                                  fixed="right"
@@ -161,7 +191,7 @@
 <script>
 import mixins from '../../ams/mixins';
 import { defaultListFieldWidth } from '../../ams/configs/field';
-import { addEvent, getDomPos, getDomStyle, debounce, loadJS, sortBy } from '../../utils/index';
+import { addEvent, getDomPos, getDomStyle, debounce, loadJS, sortBy, deepExtend, getType } from '../../utils/index';
 import field from '../../components/field';
 
 export default {
@@ -242,6 +272,16 @@ export default {
         },
         columnAttrs() {
             return this.block.props && this.block.props.column || {};
+        },
+        tableColumn() {
+            // option配置有多级表头
+            const options = this.block.options;
+            if (options && options['table-column'] && options['table-column'].length) {
+                return this.handleTableColumn(options['table-column']);
+            } else if (getType(this.fields) === 'object') {
+                return Object.keys(this.fields).map(val => this.fields[val]);
+            }
+            return [];
         }
     },
     methods: {
@@ -358,9 +398,8 @@ export default {
             };
         },
         drag(dragOptions) {
-            if (window.Sortable) {
+            if (window.Sortable && this.$refs.amsTable) {
                 const el = this.$refs.amsTable.$el.querySelectorAll('.el-table__body-wrapper > table > tbody')[0];
-
                 window.Sortable.create(el, this.handleDragOptions(dragOptions));
             }
         },
@@ -449,7 +488,53 @@ export default {
         },
         handleSelectAll(selection) {
             this.batchSelected = selection;
-        }
+        },
+        // 处理多级表头数据
+        // TODO 暂时复用了table的方法，后续list和table准备合并为一个区块
+        handleTableColumn(tableColumn) {
+            let newColumn = [];
+            let collapseName = [];
+
+            newColumn = tableColumn.map((val, idx, arr) => {
+                // 默认表头{}
+                let defaultColumn = {
+                    ctx: 'view',
+                    default: '',
+                    hidden: false,
+                    label: '',
+                    name: '',
+                    props: {},
+                    children: [],
+                    type: 'text'
+                };
+
+                // 1、如果表头含有fiedls则合并fields到defaultColumn
+                if (this.fields[val.name]) {
+                    deepExtend(defaultColumn, this.fields[val.name]);
+                }
+
+                // 2、合并option中数据到defaultColumn
+                deepExtend(defaultColumn, val);
+
+                // 3、递归处理子级表头
+                if (defaultColumn.children && defaultColumn.children.length > 0) {
+                    defaultColumn.children = this.handleTableColumn(defaultColumn.children);
+                }
+
+                return defaultColumn;
+            });
+
+            // 剔除表头中的collapseColumn折叠项
+            if (collapseName.length > 0) {
+                for (let i = 0; i < newColumn.length; i++) {
+                    if (collapseName.indexOf(newColumn[i].name) >= 0) {
+                        newColumn.splice(i--, 1);
+                    }
+                }
+            }
+
+            return newColumn;
+        },
     }
 };
 </script>
