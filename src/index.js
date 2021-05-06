@@ -11,6 +11,7 @@ import * as utils from './utils';
 import actions from './actions';
 
 // block
+import alert from './blocks/alert';
 import block from './blocks/block';
 import card from './blocks/card';
 import component from './blocks/component';
@@ -31,6 +32,7 @@ import grid from './blocks/grid';
 import carousel from './blocks/carousel';
 import backtop from './blocks/backtop';
 import popover from './blocks/popover';
+import popconfirm from './blocks/popconfirm';
 
 // field 和文件夹一一对应
 import array from './fields/array';
@@ -75,7 +77,7 @@ import icon from './operations/icon';
 import field from './operations/field';
 import dropdown from './operations/dropdown';
 // 版本号
-ams.version = '0.28.0';
+ams.version = '0.31.3';
 // 挂载到ams上
 ams.mixins = mixins;
 ams.utils = utils;
@@ -102,6 +104,7 @@ ams.install = function(Vue) {
         ams.action(actionName, actions[actionName])
     );
     // blocks
+    ams.registerBlock(alert);
     ams.registerBlock(block);
     ams.registerBlock(card);
     ams.registerBlock(component);
@@ -122,6 +125,7 @@ ams.install = function(Vue) {
     ams.registerBlock(carousel);
     ams.registerBlock(backtop);
     ams.registerBlock(popover);
+    ams.registerBlock(popconfirm);
 
     // fields
     ams.registerField(array);

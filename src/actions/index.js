@@ -76,6 +76,9 @@ export default {
     resetData() {
         this.setBlockData(this.block.data);
     },
+    clear() {
+        this.setBlockData(this.block.data);
+    },
 
     // 等待毫秒，如果不传值则为0
     wait({ $arg }) {

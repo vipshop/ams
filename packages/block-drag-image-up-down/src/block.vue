@@ -13,6 +13,7 @@
                 <div class="frame" :style="{ top: block.options.top + 'px', width: block.options.width + 'px', height: block.options.cutHeight + 'px' }"
                     @mousedown="dragstart"
                     @mousemove="dragmove"
+                    @mouseleave="dragend"
                     @mouseup="dragend">
                     <div class="dot dot-left-top"></div>
                     <div class="dot dot-left-bottom"></div>
@@ -35,17 +36,19 @@ export default {
     data() {
         return {
             isDrag: false,
-            startClientY: 0
+            disY: 0
         };
     },
     methods: {
         dragstart(e) {
             this.isDrag = true;
-            this.startClientY = e.clientY;
+            let odiv = e.target; // 获取目标元素
+            // 算出鼠标相对元素的位置
+            this.disY = e.clientY - odiv.offsetTop;
         },
         dragmove(e) {
             if (this.isDrag) {
-                const top = this.block.options.top + (e.clientY - this.startClientY) * this.block.options.ratio;
+                let top = e.clientY - this.disY;
                 if (top < 0) {
                     this.block.options.top = 0;
                 } else if (top > this.block.options.height - this.block.options.cutHeight) {
@@ -81,7 +84,7 @@ export default {
     .frame {
         position: absolute;
         left: 0;
-        border: 2px dashed #20A0FF;
+        border: 1px dashed #20A0FF;
         box-sizing: border-box;
         cursor: move;
         user-select: none;

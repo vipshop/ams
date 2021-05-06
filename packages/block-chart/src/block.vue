@@ -59,6 +59,15 @@ export default {
                 const globalTheme = ams.configs && ams.configs['block_chart'] && ams.configs['block_chart'].theme;
                 const themeName = this.block.theme || globalTheme || 'macarons';
                 this.chartDom = echarts.init(this.$refs.chart, themeName);
+                const block = this.block;
+                if (block && block.props && block.props.events) {
+                    let o = block.props.events;
+                    Object.keys(o).forEach(eventName => {
+                        if (ams.utils.getType(o[eventName] === 'function')) {
+                            this.chartDom.on(eventName, o[eventName]);
+                        }
+                    });
+                }
                 this.chartDom.showLoading();
                 this.setChartOption();
             }

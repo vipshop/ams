@@ -1,7 +1,7 @@
 export const config = {
     BASE: 'CONFIG_BLOCK',
     type: {
-        default: 'popover'
+        default: 'popconfirm'
     },
     blocks: {
         fields: {
@@ -14,7 +14,7 @@ export const config = {
     data: {
     },
     options: {
-        text: 'popover'
+        title: 'popconfirm'
     }
 };
 

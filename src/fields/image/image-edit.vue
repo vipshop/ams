@@ -87,8 +87,6 @@ export default {
                         let widthVaild = true;
                         let heightValid = true;
 
-                        console.log(image.width, image.height);
-
                         if (imgMaxWidth && image.width > imgMaxWidth) {
                             widthVaild = false;
                             this.$message('图片宽度不能超过' + imgMaxWidth + 'px');
@@ -121,10 +119,13 @@ export default {
                             if (typeof props['before-upload'] === 'function') {
                                 resolve(props['before-upload'](file));
                             }
+
+                            resolve();
                         } else {
                             reject(); // eslint-disable-line prefer-promise-reject-errors
                         }
                     };
+
                     image.src = URL.createObjectURL(file);
                 } else {
                     if (typeof props['before-upload'] === 'function') {

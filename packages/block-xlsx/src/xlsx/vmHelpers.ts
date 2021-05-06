@@ -312,6 +312,10 @@ export async function importHelper(options: {
     setLoadingOptions({ show: false })
   };
   async function importRequestHelper(data: any): Promise<void> {
+    // 如果配置了getXlsx返回准备提交的所有数据
+    if ($vm.on.getXlsxData && typeof $vm.on.getXlsxData === 'function') {
+      $vm.on.getXlsxData(data)
+    }
     const batches: any[] = [];
     const BATCH_SIZE = eachPushRows; // 单次100条
 

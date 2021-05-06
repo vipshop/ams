@@ -24,8 +24,13 @@
         @keyup.enter.native="handleInputEnterConfirm"
         >
         <template slot-scope="{ item }">
-            <div class="name">{{ typeof item[field.props['nameKey']] !== 'undefined' ? item[field.props['nameKey']] : item }}</div>
-            <div class="sub-name" v-if="item[field.props['subNameKey']] || item[field.props['idKey']]">{{ item[field.props['subNameKey']] || item[field.props['idKey']] }}</div>
+            <template v-if="item['no-match-text']">
+                <p class="el-select-dropdown__empty">{{ item['no-match-text'] }}</p>
+            </template>
+            <template v-else>
+                <div class="name">{{ typeof item[field.props['nameKey']] !== 'undefined' ? item[field.props['nameKey']] : item }}</div>
+                <div class="sub-name" v-if="item[field.props['subNameKey']] || item[field.props['idKey']]">{{ item[field.props['subNameKey']] || item[field.props['idKey']] }}</div>
+            </template>
         </template>
     </el-autocomplete>
 
@@ -116,6 +121,9 @@ export default {
         },
         handleInputConfirm(item) {
             // 选择下拉项
+            if (item['no-match-text']) {
+                return;
+            }
             if (typeof item === 'string') {
                 this.inputValue = item;
                 this.handleInputEnterConfirm();
@@ -177,7 +185,11 @@ export default {
                 restaurants = await this.getList(queryString);
             }
             const results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants;
-
+            if (this.field.props['no-match-text'] && results instanceof Array && results.length === 0) {
+                results.push({
+                    'no-match-text': this.field.props['no-match-text']
+                });
+            }
             cb(results);
         },
         createFilter(queryString) {
@@ -260,6 +272,12 @@ export default {
     .highlighted .sub-name {
         color: #ddd;
     }
+}
+.my-autocomplete .el-select-dropdown__empty {
+    padding: 0;
+    background-color: #fff;
+    margin: -5px -7px;
+    cursor: default;
 }
 .ams-field-tag-edit{
     .el-tag{
