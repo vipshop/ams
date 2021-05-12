@@ -23,7 +23,7 @@ export function commonHandlerItem({ blockConfig, type, resource, insertType, $pr
             }
         }
         blockConfig = deepExtend({
-            type: insertType === 'dialog' ? 'dialog' : 'component',
+            type: ['dialog', 'drawer'].includes(insertType) ? insertType : 'component',
             data: {
                 title: type === 'add' ? '添加' : '修改'
             },
@@ -34,7 +34,7 @@ export function commonHandlerItem({ blockConfig, type, resource, insertType, $pr
                 id: WRAP_BLOCK_NAME
             },
             style: {
-                padding: insertType === 'dialog' ? '0' : '20px 0'
+                padding: ['dialog', 'drawer'].includes(insertType) ? '0' : '20px 0'
             },
             events: {
                 cancel: '@hide @remove',
@@ -112,10 +112,17 @@ export async function addItemDialog(params) {
     await commonHandlerItem.call(this, { type: 'add', insertType: 'dialog', ...params });
 }
 
+export async function addItemDrawer(params) {
+    await commonHandlerItem.call(this, { type: 'add', insertType: 'drawer', ...params });
+}
+
 export async function editItemAfter(params) {
     await commonHandlerItem.call(this, { type: 'edit', insertType: 'after', ...params });
 }
 
 export async function editItemDialog(params) {
     await commonHandlerItem.call(this, { type: 'edit', insertType: 'dialog', ...params });
+}
+export async function editItemDrawer(params) {
+    await commonHandlerItem.call(this, { type: 'edit', insertType: 'drawer', ...params });
 }

@@ -25,6 +25,8 @@ export default {
                 // 把this绑定到当前block，如果是operatio或者field是this.$block，如果是block内是this
                 // 方便用户如果有更复杂的判断可能通过this获取更多的信息
                 return field.show.call(this.$block || this, data);
+            } else if (type === 'boolean') {
+                return field.show;
             }
         }
     }

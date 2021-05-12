@@ -1,7 +1,7 @@
 <template>
     <div v-if="ready"
          :style="block.style"
-         class="ams-block-tooltips">
+         class="ams-block-popover">
         <el-popover v-on="on" v-bind="block.props">
             <span v-if="slot.content" v-html="slot.content"></span>
             <ams-blocks :blocks="block.slotBlocks.content" />

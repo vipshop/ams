@@ -19,7 +19,7 @@ Template: Template 模板
         <script src="https://h5rsc.vipstatic.com/ams/babel-polyfill/7.4.0/polyfill.min.js"></script>
         <script src="https://h5rsc.vipstatic.com/ams/vue@2.6.10.js"></script>
         <script src="https://h5rsc.vipstatic.com/ams/element-ui@2.11.1/index.js"></script>
-        <script src="https://h5rsc.vipstatic.com/ams/ams@0.28.0.js"></script>
+        <script src="https://h5rsc.vipstatic.com/ams/ams@0.31.3.js"></script>
     </head>
     <body>
         <script>

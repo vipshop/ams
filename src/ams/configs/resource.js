@@ -27,7 +27,7 @@ export const resource = {
         // 全局默认withCredentials
         withCredentials: true,
         // 全局默认contentType json|form|multipart
-        contentType: 'json',
+        contentType: 'form',
         // 全局成功code
         successCode: 0
     },

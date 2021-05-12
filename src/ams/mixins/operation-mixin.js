@@ -34,6 +34,15 @@ export default {
     methods: {
         emit() {
             ams.$prevReturn = this.context;
+            // 兼容block-list中配置multipleSelectAffixShow: true的情况
+            if (
+                this.$block.block.type === 'list' &&
+                this.path === 'multipleSelect' &&
+                Array.isArray(this.context) &&
+                !this.context.length) {
+                this.$message('已选择的数据项为空');
+                return;
+            }
             this.$block.emitEvent(this.operation.event || this.operationKey, this.operation);
         }
     },

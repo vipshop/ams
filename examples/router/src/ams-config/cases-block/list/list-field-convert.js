@@ -38,7 +38,7 @@ ams.block('list-field-convert', {
             testTextarea: {
                 type: 'textarea',
                 label: '介绍(店铺：美食）',
-                changeConfig: function(field, data) {
+                changeConfig: function (field, data) {
                     data.testTextarea = `${data.testText}：${({
                         a: '黄金糕',
                         b: '双皮奶',
@@ -53,7 +53,7 @@ ams.block('list-field-convert', {
             testRate: {
                 type: 'rate',
                 label: '店铺评分',
-                changeConfig: function(field, data) {
+                changeConfig: function (field, data) {
                     field.type = 'html';
                     return field;
                 },
@@ -72,7 +72,37 @@ ams.block('list-field-convert', {
         'enterkey-search': false
     },
     options: {
-        operationsWidth: '120px'
+        operationsWidth: '120px',
+        'table-column': [
+            {
+                label: '店铺名称',
+                children: [{
+                    label: 'id',
+                    name: 'id'
+                },
+                {
+                    label: 'testText',
+                    name: 'testText'
+                }
+                ]
+            },
+            {
+                label: '店铺详情',
+                children: [{
+                    label: 'testRadio',
+                    name: 'testRadio'
+                },
+                {
+                    label: 'testTextarea',
+                    name: 'testTextarea'
+                },
+                {
+                    label: 'testRate',
+                    name: 'testRate'
+                }
+                ]
+            }
+        ],
     },
     data: {
         pageSize: 20,

@@ -4,6 +4,7 @@ import { getType, deepExtend } from '../utils';
 export default function initConfig(ams) {
     // 配置列表
     ams.configs = {
+        consoleWarn: true,
         ...configs
     };
 
@@ -37,7 +38,7 @@ export default function initConfig(ams) {
             if (getType(base) === 'object') {
                 clone = base;
                 Object.keys(currentBase).forEach(key => {
-                    if (/\./.test(key)) {
+                    if (ams.configs.consoleWarn && /\./.test(key)) {
                         console.warn(`ams Err: please do not use . in object key: ${key}, it may cause some error`);
                     }
                     const value = currentBase[key];
@@ -52,7 +53,7 @@ export default function initConfig(ams) {
             }
             Object.keys(target).forEach(key => {
                 if (key !== 'BASE') {
-                    if (/\./.test(key)) {
+                    if (ams.configs.consoleWarn && /\./.test(key)) {
                         console.warn(`ams Err: please do not use . in object key: ${key}, it may cause some error`);
                     }
                     const value = target[key];

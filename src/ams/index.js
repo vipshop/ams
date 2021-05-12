@@ -18,8 +18,6 @@ const ams = {
     // 扁平的blocks结构
     blocks: {},
     // blocks的vue对象引用、会根据vue生命周期自动注册卸载
-    // 添加场景：src/ams/mixins/block-mixin.js -> initBlock -> ams.$blocks[this.name] = this;
-    // 删除场景：src/ams/mixins/block-mixin.js -> destroyed -> delete ams.$blocks[this.name];
     $blocks: {},
     resources: {},
     bus: null,
@@ -28,23 +26,23 @@ const ams = {
     /**
      * 方法
      */
-    _setBlocks(blockConfig) {
-        let blocks = blockConfig.blocks;
+    _setBlocks(block) {
+        let blocks = block.blocks;
         const arr = [];
         Object.keys(blocks).forEach(blockId => {
-            let subBlockConfig = blocks[blockId];
-            this.block(blockId, subBlockConfig);
+            let subBlock = blocks[blockId];
+            this.block(blockId, subBlock);
             // slot 插槽，无slot block为默认子blocks
-            if (subBlockConfig.slot) {
-                if (!blockConfig.slotBlocks[subBlockConfig.slot]) {
-                    blockConfig.slotBlocks[subBlockConfig.slot] = [];
+            if (subBlock.slot) {
+                if (!block.slotBlocks[subBlock.slot]) {
+                    block.slotBlocks[subBlock.slot] = [];
                 }
-                blockConfig.slotBlocks[subBlockConfig.slot].push(blockId);
+                block.slotBlocks[subBlock.slot].push(blockId);
             } else {
                 arr.push(blockId);
             }
         });
-        blockConfig.blocks = arr;
+        block.blocks = arr;
     },
     action(name, action) {
         if (this.actions[name]) {
@@ -52,30 +50,23 @@ const ams = {
         }
         this.actions[name] = action;
     },
-    /**
-     * 注册资源
-     * 文档：https://vipshop.github.io/ams/api/resource.html#%E6%B3%A8%E5%86%8C%E8%B5%84%E6%BA%90
-     * 用法：ams.resource(name, resource)
-     * @param {String} name
-     * @param {Object} resourceConfig
-     */
-    resource(name, resourceConfig) {
+    resource(name, resource) {
         // 合并BASE简化配置
-        if (resourceConfig) {
-            resourceConfig = this.deepCloneConfig(resourceConfig);
+        if (resource) {
+            resource = this.deepCloneConfig(resource);
             // console.log(name, resource);
-            resourceConfig.api = resourceConfig.api || {};
-            resourceConfig.key = resourceConfig.key || 'id';
+            resource.api = resource.api || {};
+            resource.key = resource.key || 'id';
             if (name) {
-                this.resources[name] = resourceConfig;
+                this.resources[name] = resource;
             }
         }
-        return resourceConfig;
+        return resource;
     },
     // 封装同步和异步block
     async getBlock(name) {
         let block = ams.blocks[name];
-        if (!block) {
+        if (ams.configs.consoleWarn && !block) {
             console.warn(`ams Err: can not find block: ${name}, please run ams.block() first`);
         }
         if (typeof block === 'function') {
@@ -87,91 +78,74 @@ const ams = {
         }
         return ams.blocks[name];
     },
-    /**
-     * 注册 block
-     * 文档：https://vipshop.github.io/ams/api/block.html
-     * 用法：ams.block(name, blockConfig)
-     *
-     * @param {String}} name
-     * @param {Object} blockConfig
-     *
-     */
-    block(name, blockConfig) {
+    block(name, block) {
         if (this.blocks[name]) {
             console.warn('重复注册block：', name);
         }
         // 异步函数通过函数包装，延迟初始化
-        if (typeof blockConfig === 'function') {
-            this.blocks[name] = blockConfig;
+        if (typeof block === 'function') {
+            this.blocks[name] = block;
             return;
         }
         // 合并BASE简化配置
-        blockConfig = this.deepCloneConfig(blockConfig);
+        block = this.deepCloneConfig(block);
         // 初始化props
-        blockConfig.props = {
-            ...ams.configs.defaultBlockProps[blockConfig.type],
-            ...blockConfig.props
+        block.props = {
+            ...ams.configs.defaultBlockProps[block.type],
+            ...block.props
         };
         // 通用配置
-        blockConfig.options = blockConfig.options || {};
+        block.options = block.options || {};
         // 注册resources
-        if (blockConfig.resources) {
-            Object.keys(blockConfig.resources).forEach(key =>
-                this.resource(key, blockConfig.resources[key])
+        if (block.resources) {
+            Object.keys(block.resources).forEach(key =>
+                this.resource(key, block.resources[key])
             );
         }
         // 合并全局config
-        if (blockConfig.config) {
-            this.config(blockConfig.config);
-            delete blockConfig.config;
+        if (block.config) {
+            this.config(block.config);
+            delete block.config;
         }
-        blockConfig.slotBlocks = blockConfig.slotBlocks || {};
+        block.slotBlocks = block.slotBlocks || {};
         // 拉平block结构，换成名字引用
-        if (blockConfig.blocks && !Array.isArray(blockConfig.blocks)) {
-            this._setBlocks(blockConfig);
+        if (block.blocks && !Array.isArray(block.blocks)) {
+            this._setBlocks(block);
         }
         // 初始化data
-        blockConfig.data = {
-            ...ams.configs.defaultBlockDatas[blockConfig.type],
-            ...blockConfig.data
+        block.data = {
+            ...ams.configs.defaultBlockDatas[block.type],
+            ...block.data
         };
         // 初始化events
-        blockConfig.events = blockConfig.events || {};
+        block.events = block.events || {};
         // 初始化actions
-        blockConfig.actions = blockConfig.actions || {};
+        block.actions = block.actions || {};
         // 初始化列表参数
-        if (this.configs.baseBlockType[blockConfig.type] === 'list') {
-            const {
-                pageSize = (blockConfig.pageSize || 20),
-                pageSizes = [10, 20, 30, 40, 50, 100],
-                layout = 'total, prev, sizes, pager, next, jumper',
-                page = 1,
-                total = 0,
-                list = []
-            } = blockConfig.data;
-            blockConfig.data.pageSize = pageSize;
-            blockConfig.data.pageSizes = pageSizes;
-            blockConfig.data.layout = layout;
-            blockConfig.data.page = page;
-            blockConfig.data.total = total;
-            blockConfig.data.list = list;
+        if (this.configs.baseBlockType[block.type] === 'list') {
+            block.data.pageSize = block.data.pageSize || block.pageSize || 20;
+            block.data.pageSizes = block.data.pageSizes || [10, 20, 30, 40, 50, 100];
+            block.data.layout = block.data.layout || 'total, prev, sizes, pager, next, jumper';
+            block.data.page = block.data.page || 1;
+            block.data.total = block.data.total || 0;
+            block.data.list = block.data.list || [];
             // 列表默认值
-            blockConfig.sorts = blockConfig.sorts || {};
-            blockConfig.filters = blockConfig.filters || {};
-            if (blockConfig.searchs || blockConfig.searchsOptions) {
+            block.sorts = block.sorts || {};
+            block.filters = block.filters || {};
+            if (block.searchs || block.searchsOptions) {
                 // !!!!! 搜索配置兼容旧版本及废弃提示 !!!!!
                 console.warn('列表的searchs和searchsOptions已在ams@0.6.0+废弃，请使用 slot operations 替代，如：  \nsearchs:{testText:true} 修改为\noperations: { testText: {type: "field", field: "testText", slot: "searchs"} }');
             }
-        } else if (blockConfig.type === 'dialog' || blockConfig.type === 'drawer') {
+        } else if (block.type === 'dialog' || block.type === 'drawer') {
             // 初始化dialog
-            blockConfig.data.visible = !!blockConfig.data.visible;
+            block.data.visible = !!block.data.visible;
         }
 
-        this.blocks[name] = blockConfig;
+        this.blocks[name] = block;
 
         // render
-        if (blockConfig.render) {
-            this.render(name, blockConfig.render);
+        if (block.render) {
+            this.render(name, block.render);
         }
     },
 
