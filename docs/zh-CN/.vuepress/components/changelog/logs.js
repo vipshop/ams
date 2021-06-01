@@ -1,6 +1,21 @@
 // 更新日志
 export default [
     {
+        version: '0.32.0',
+        date: '2020.06.01',
+        log: [
+            'feat: 设置add/editDialogDrawer 默认为 append-to-body',
+            'feat: 添加addItemDrawer和editItemDrawer配置',
+            'feat: 点击删除的时候，显示弹窗进行二次确认',
+            'feat: text增加tooltip配置',
+            'feat: feat: multiple的operation增加allowNoSelect配置',
+            'feat: feat: list增加表头管理',
+            'fix: 修复表头管理设置后operation错乱，先请空触发渲染；增加缓存字段跟resource对比',
+            'fix: 修复远程搜索再设置了isInitEmpty:true情况下，设置额外传参报错问题',
+            'fix: 更改列表区块的total赋值逻辑'
+        ]
+    },
+    {
         version: '0.31.3',
         date: '2020.04.26',
         log: [
