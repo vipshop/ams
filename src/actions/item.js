@@ -32,6 +32,7 @@ export function commonHandlerItem({ blockConfig, type, resource, insertType, $pr
             },
             props: {
                 id: WRAP_BLOCK_NAME,
+                'append-to-body': true,
                 ...dialogProps
             },
             style: {
