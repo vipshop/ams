@@ -34,10 +34,13 @@ export default {
     methods: {
         emit() {
             ams.$prevReturn = this.context;
+            const allowNoSelect = this.operation.props && this.operation.props.allowNoSelect;
+            const block = this.$block.block;
             // 兼容block-list中配置multipleSelectAffixShow: true的情况
             if (
-                this.$block.block.type === 'list' &&
+                block.type === 'list' &&
                 this.path === 'multipleSelect' &&
+                !allowNoSelect &&
                 Array.isArray(this.context) &&
                 !this.context.length) {
                 this.$message('已选择的数据项为空');

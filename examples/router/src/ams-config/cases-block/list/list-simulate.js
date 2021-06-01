@@ -33,7 +33,8 @@ ams.block('list-simulate', {
         testText: true
     },
     options: {
-        operationsWidth: '120px'
+        operationsWidth: '120px',
+        multipleSelect: true
     },
     data: {
         list: Array.from(Array(100), (v, k) => ({
@@ -45,5 +46,12 @@ ams.block('list-simulate', {
     },
     events: {
         back: '@routerGo:-1'
+    },
+    operations: {
+        multiSetHeader: {
+            slot: 'searchs',
+            type: 'filter',
+            label: '批量设置表头'
+        }
     }
 });

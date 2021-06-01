@@ -75,13 +75,13 @@ ams.block('list-field-convert', {
         operationsWidth: '120px',
         'table-column': [
             {
+                label: 'ID',
+                name: 'id'
+            },
+            {
                 label: '店铺名称',
                 children: [{
-                    label: 'id',
-                    name: 'id'
-                },
-                {
-                    label: 'testText',
+                    label: '店铺',
                     name: 'testText'
                 }
                 ]
@@ -89,15 +89,15 @@ ams.block('list-field-convert', {
             {
                 label: '店铺详情',
                 children: [{
-                    label: 'testRadio',
+                    label: '美食',
                     name: 'testRadio'
                 },
                 {
-                    label: 'testTextarea',
+                    label: '介绍',
                     name: 'testTextarea'
                 },
                 {
-                    label: 'testRate',
+                    label: '店铺评分',
                     name: 'testRate'
                 }
                 ]
@@ -111,5 +111,12 @@ ams.block('list-field-convert', {
     events: {
         init: '@list',
         back: '@routerGo:-1'
+    },
+    operations: {
+        multiSetHeader: {
+            slot: 'searchs',
+            type: 'filter',
+            label: '批量设置表头'
+        }
     }
 });

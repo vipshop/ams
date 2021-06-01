@@ -333,6 +333,8 @@ export const list = ams.createApiAction({
             res.data.data
         ) {
             const config = this.resource.api.list;
+            this.data.total = res.data.data.total;
+
             if (typeof config === 'object' && typeof config.transform === 'function') {
                 this.data.list = config.transform(res.data.data.list) || [];
             } else if (typeof config === 'object' && typeof config.responseDataParse === 'function') {
@@ -346,7 +348,6 @@ export const list = ams.createApiAction({
             } else {
                 this.data.list = res.data.data.list || [];
             }
-            this.data.total = res.data.data.total;
             if (typeof this.on['list-success'] === 'function') {
                 this.on['list-success'](res.data);
             }

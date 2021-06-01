@@ -85,8 +85,8 @@
                                  align="center" />
 
                 <!-- 含有多级表格配置的处理 -->
-                <template v-if="tableColumn.length">
-                    <el-table-column v-for="(column, index) in tableColumn"
+                <template v-if="tableColumnSelected.length">
+                    <el-table-column v-for="(column, index) in tableColumnSelected"
                                         v-if="!column.hidden"
                                         :key="column.name || index"
                                         :prop="column.name"
@@ -97,7 +97,7 @@
                                         :min-width="column.props['min-width'] || defaultListFieldWidth[column.type] || '90px'"
                                         :align="column.props['align'] || 'center'">
                         <!-- 第一层表头的处理 -->
-                        <template slot="header" v-if="column.name">
+                        <template slot="header" v-if="column.name && headerSelected.indexOf()">
                             {{column.label}}
                             <el-tooltip effect="dark" placement="top" v-if="column.info">
                                 <i :class="column.info.icon || 'el-icon-info'"></i>
@@ -185,6 +185,23 @@
         </el-pagination>
 
         <ams-blocks :blocks="block.blocks" />
+
+        <el-dialog
+            title="表头管理"
+            :visible.sync="headerSelectedDialog.show"
+            width="50%">
+            <el-checkbox-group v-model="headerSelectedDialog.headers">
+                <el-checkbox v-for="column in tableColumnOptions"
+                    :label="column.name"
+                    :key="column.name"
+                    :style="{ width: headerSelectedDialog.labelWidth }">{{column.label}}
+                </el-checkbox>
+            </el-checkbox-group>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="headerSelectedDialog.show = false">取 消</el-button>
+                <el-button type="primary" @click="handleHeaderSelectedChange">确 定</el-button>
+            </span>
+        </el-dialog>
     </div>
 </template>
 
@@ -193,6 +210,7 @@ import mixins from '../../ams/mixins';
 import { defaultListFieldWidth } from '../../ams/configs/field';
 import { addEvent, getDomPos, getDomStyle, debounce, loadJS, sortBy, deepExtend, getType } from '../../utils/index';
 import field from '../../components/field';
+import { LocalStorage } from '../../utils';
 
 export default {
     components: {
@@ -206,7 +224,14 @@ export default {
             sortField: null,
             sortOrder: null,
             batchSelected: [],
-            height: null
+            headerSelected: [],
+            height: null,
+
+            headerSelectedDialog: {
+                show: false,
+                headers: [],
+                labelWidth: '100px' // 预留配置项
+            }
         };
     },
     computed: {
@@ -215,6 +240,11 @@ export default {
         },
         isSimulatePagination() {
             return this.block.props && this.block.props.pagination === 'simulate';
+        },
+        // 是否多级表头
+        isMultiTableColumn() {
+            const options = this.block.options;
+            return options && options['table-column'] && options['table-column'].length;
         },
         pageTotal() {
             // 列表数据总数
@@ -273,16 +303,57 @@ export default {
         columnAttrs() {
             return this.block.props && this.block.props.column || {};
         },
+        // 可选择的列，初始化结果，带chilren
         tableColumn() {
-            // option配置有多级表头
             const options = this.block.options;
-            if (options && options['table-column'] && options['table-column'].length) {
+            if (this.isMultiTableColumn) {
                 return this.handleTableColumn(options['table-column']);
             } else if (getType(this.fields) === 'object') {
                 return Object.keys(this.fields).map(val => this.fields[val]);
             }
             return [];
-        }
+        },
+        // 已经选择的列，带children
+        // [
+        //     { label: 'id', name: 'id ' },
+        //     { label: 'field', children: [] }
+        // ]
+        tableColumnSelected() {
+            const headerSelected = this.headerSelected;
+            if (this.isMultiTableColumn) {
+                const tableColumn = JSON.parse(JSON.stringify(this.tableColumn));
+                return tableColumn.filter(item => {
+                    let children = item.children;
+                    if (children && children.length) {
+                        item.children = children.filter(child => headerSelected.indexOf(child.name) >= 0);
+                        return children.length;
+                    }
+                    return headerSelected.indexOf(item.name) >= 0;
+                });
+            }
+            return this.tableColumn.filter(val => headerSelected.indexOf(val.name) >= 0);
+        },
+        // 可选择的列，用于弹窗展示，不带children。如多级表头，将chilren扁平化合在一个array中
+        tableColumnOptions() {
+            const tableColumn = this.tableColumn;
+            if (this.isMultiTableColumn) {
+                return tableColumn.reduce((arr, cur) => {
+                    const children = cur.children;
+                    if (children && children.length) {
+                        arr = arr.concat(cur.children.map(item => ({ label: item.label, name: item.name })));
+                    } else if (cur.name) {
+                        arr.push({ label: cur.label, name: cur.name });
+                    }
+                    return arr;
+                }, []);
+            }
+            return tableColumn;
+        },
+    },
+    created() {
+        this.$nextTick(() => {
+            this.headerSelected = this.handerGetHeaderSelected();
+        });
     },
     methods: {
         afterReady() {
@@ -464,10 +535,6 @@ export default {
             // 远程筛选
             let remoteFilterChange = false;
             Object.keys(e).forEach(key => {
-                console.log(
-                    'this.block.filters[key].remote',
-                    this.block.filters[key].remote
-                );
                 if (this.block.filters[key].remote) {
                     remoteFilterChange = true;
                     const filter = e[key].join(',');
@@ -535,6 +602,50 @@ export default {
 
             return newColumn;
         },
+        showHeaderSelectedDialog() {
+            this.headerSelectedDialog.show = true;
+            this.headerSelectedDialog.headers = this.handerGetHeaderSelected();
+        },
+        handerGetHeaderSelected() {
+            const name = this.name;
+            let headerFromStorage = LocalStorage.get(`BLOCK_${name}`);
+
+            // 从Storage取出来的field要跟resource做对比
+            const resourceFieldKeys = Object.keys(this.resource.fields);
+            headerFromStorage = headerFromStorage && headerFromStorage.split(',');
+            if (headerFromStorage && headerFromStorage.length) {
+                headerFromStorage = headerFromStorage.filter(header => resourceFieldKeys.indexOf(header) >= 0);
+            }
+            if (headerFromStorage && headerFromStorage.length) {
+                return headerFromStorage;
+            }
+
+            if (this.isMultiTableColumn) {
+                return this.tableColumn.reduce((arr, cur) => {
+                    const children = cur.children;
+                    if (children && children.length) {
+                        arr = arr.concat(cur.children.map(item => item.name));
+                    } else if (cur.name) {
+                        arr.push(cur.name);
+                    }
+                    return arr;
+                }, []);
+            } else if (getType(this.fields) === 'object') {
+                return this.tableColumn.map(item => item.name);
+            }
+        },
+        handleHeaderSelectedChange() {
+            LocalStorage.set(`BLOCK_${this.name}`, this.headerSelectedDialog.headers.join(','));
+            this.headerSelected = this.headerSelectedDialog.headers;
+            this.headerSelectedDialog.show = false;
+
+            // 修改列，且有operation时错乱，先请空触发渲染
+            const newList = JSON.parse(JSON.stringify(this.data.list));
+            this.data.list = [];
+            this.$nextTick(() => {
+                this.data.list = newList;
+            });
+        }
     }
 };
 </script>

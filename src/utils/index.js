@@ -3,6 +3,7 @@ export * from './date';
 export * from './dom';
 export * from './function';
 export * from './tools';
+export * from './localstorage';
 
 export function get(object, path) {
     path = path.split('.');

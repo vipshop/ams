@@ -76,8 +76,9 @@ import reset from './operations/reset';
 import icon from './operations/icon';
 import field from './operations/field';
 import dropdown from './operations/dropdown';
+import filter from './operations/filter';
 // 版本号
-ams.version = '0.31.3';
+ams.version = '0.32.0';
 // 挂载到ams上
 ams.mixins = mixins;
 ams.utils = utils;
@@ -168,6 +169,7 @@ ams.install = function(Vue) {
     ams.registerOperation(icon);
     ams.registerOperation(field);
     ams.registerOperation(dropdown);
+    ams.registerOperation(filter);
 
     // inject vue prototype
     Vue.prototype.$ams = ams;
