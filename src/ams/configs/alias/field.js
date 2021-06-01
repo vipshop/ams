@@ -75,14 +75,14 @@ export const SELECT_REMOTE = {
             // 组装请求参数
             const params = {
                 url: remoteConfig.action || remoteConfig.url,
-                method: method || 'GET'
+                method: method || 'GET',
+                params: {},
+                data: {}
             };
             if (query) {
                 if (!method || method === 'GET') {
-                    params.params = {};
                     params.params[remoteConfig.queryKey] = query;
                 } else if (httpRequestTypeExcludeGet.indexOf(method) >= 0) {
-                    params.data = {};
                     params.data[remoteConfig.queryKey] = query;
                 }
             }

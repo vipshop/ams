@@ -4,6 +4,9 @@ import { getType, deepExtend } from '../utils';
 export default function initConfig(ams) {
     // 配置列表
     ams.configs = {
+        appName: '', // ams的全局name，可以用于区分同域下的localstorage等
+        sentPageMars: false, // 是否发送页面埋点
+        sentBehaviorMars: false, // 是否发送行为埋点
         consoleWarn: true,
         ...configs
     };

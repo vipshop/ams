@@ -1,9 +1,10 @@
-import { on } from './computed';
+import { on, tooltip } from './computed';
 import { equals } from '../configs/field-get-set';
 
 export default {
     computed: {
         on,
+        tooltip,
         localValue: {
             get() {
                 return this.field.get ? this.field.get(this.value, this.field) : this.value;
