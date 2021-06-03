@@ -1,8 +1,8 @@
 // 更新日志
 export default [
     {
-        version: '0.32.0',
-        date: '2020.06.01',
+        version: '0.32.1',
+        date: '2020.06.03',
         log: [
             'feat: 设置add/editDialogDrawer 默认为 append-to-body',
             'feat: 添加addItemDrawer和editItemDrawer配置',

@@ -25,21 +25,18 @@ ams.resource('demo-resource', {
         update: 'update',
         read: 'read',
         delete: 'delete',
+        successCode: 1, // 作用于resource所有默认action
         // list: 'list', 方法1
         list: { // 方法2：可以给每个内置action单独配置path,method,successCode等
             path: 'list',
             method: 'post',
-            successCode: 1,
-            // 仅list和read有transform方法，用于在AMS赋值给区块前，转化接口返回数据，如果是list组件，这里的data代表的是data.list
-            transform(data) {
-                return data
-            },
+            successCode: 1, // 只作用于当前action
             // 所有内置action都有的方法
             requestDataParse(data) {
                 return data
             },
             // 仅list和read有transform方法，用于在AMS赋值给区块前，转化接口返回数据，如果是list组件，这里的data代表的是data
-            responseDataParse(data) {
+            responseDataParse({ code, data, msg }) {
                 return data
             }
         }

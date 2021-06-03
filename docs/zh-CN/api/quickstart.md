@@ -44,7 +44,7 @@ Vue.use(ams);
 
 <script src="https://unpkg.com/element-ui@2.11.1/lib/index.js"></script>
 
-<script src="https://h5rsc.vipstatic.com/ams/ams@0.32.0.js"></script>
+<script src="https://unpkg.com/@ams-team/ams/lib/ams.js"></script>
 ```
 
 尝试AMS的最简单的方式是使用[JSRUN上的官方入门Demo](http://jsrun.net/sehKp/edit?utm_source=website)。你可以在浏览器新标签页中打开它，跟着例子学习一些基础用法。
