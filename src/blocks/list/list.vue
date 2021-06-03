@@ -351,9 +351,10 @@ export default {
         },
     },
     created() {
-        this.$nextTick(() => {
+        // 最后执行
+        setTimeout(() => {
             this.headerSelected = this.handerGetHeaderSelected();
-        });
+        }, 0);
     },
     methods: {
         afterReady() {
