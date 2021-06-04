@@ -1,8 +1,29 @@
 import Vue from 'vue';
 import ams from '../index';
-import { listStringHasValue, get, getByOrder, deepExtend, getType, watermark } from '../../utils';
+import { listStringHasValue, get, getByOrder, deepExtend, getType, watermark, hasOwn } from '../../utils';
 import { getRouter } from './router';
 import Blank from '../../blocks/block/Blank';
+
+function noop(a, b, c) {}
+function isAmsReservedMethod(methodKey) {
+    return [
+        'showLoading',
+        'hideLoading',
+        'getOperationsCounts',
+        'getConfig',
+        'initRouter',
+        'initActionsToVM',
+        'initBlock',
+        'initDefaultField',
+        'initFields',
+        'getFieldsLayout',
+        'setBlockData',
+        'setFieldData',
+        'fieldChange',
+        'emitEvent',
+        'callAction'
+    ].includes(methodKey);
+}
 
 export default {
     data() {
@@ -170,11 +191,33 @@ export default {
                 });
             }
         },
+        // 借鉴vue源码中的initMethods
+        initActionsToVM() {
+            const props = this.$options.props;
+            const methods = this.block.actions || {};
+            // eslint-disable-next-line guard-for-in
+            for (const key in methods) {
+                if (process.env.NODE_ENV !== 'production') {
+                    if (methods[key] == null) {
+                        console.warn(`Method "${key}" has an undefined value in the component definition. ` +
+                  `Did you reference the function correctly?`);
+                    }
+                    if (props && hasOwn(props, key)) {
+                        console.warn(`Method "${key}" has already been defined as a prop.`);
+                    }
+                    if (isAmsReservedMethod(key)) {
+                        console.warn(`Method "${key}" conflicts with an existing AMS block method`);
+                    }
+                }
+                this[key] = methods[key] == null ? noop : methods[key].bind(this);
+            }
+        },
         /**
          * 如果新增、删除fields，需要触发initBlock
          */
         async initBlock() {
             this.block = await ams.getBlock(this.name);
+            this.initActionsToVM(); // #70
             if (this.block) {
                 this.resource =
                     typeof this.block.resource === 'string'
