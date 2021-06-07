@@ -46,7 +46,7 @@ export default {
                 this.$message('已选择的数据项为空');
                 return;
             }
-            this.$block.emitEvent(this.operation.event || this.operationKey, this.operation);
+            this.$block.emitEvent(this.operation.event || this.operationKey, { operation: this.operation });
         }
     },
 
