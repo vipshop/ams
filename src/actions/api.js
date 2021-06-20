@@ -21,7 +21,12 @@ function _getValue(key, { $arg, $prevReturn }) {
     } else if ($prevReturn && Array.isArray($prevReturn) && $prevReturn.length) {
         value = $prevReturn.map(arg => arg[key]).filter(arg => arg).join(',');
         console.log('$prevReturn', value);
-    } else if (queryValue) {
+    } else if (
+        // #161
+        !this.data.hasOwnProperty(key) &&
+        ($prevReturn && typeof $prevReturn.hasOwnProperty === 'function' && !$prevReturn.hasOwnProperty(key)) &&
+        queryValue
+    ) {
         value = queryValue;
         console.log('getQueryString', value);
     } else if ($arg) {
