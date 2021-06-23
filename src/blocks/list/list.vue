@@ -40,7 +40,10 @@
                 <template v-if="expandFields">
                     <el-table-column type="expand">
                         <template slot-scope="scope">
-                            <el-form class="ams-block-list-expand" :label-width="block.props && block.props['label-width'] || '100px'" >
+                            <el-form
+                                class="ams-block-list-expand"
+                                :label-width="block.props && block.props['label-width'] || '100px'"
+                            >
                                 <el-form-item v-for="(field, fieldName) in expandFields"
                                             :key="fieldName"
                                             :label="field.label"
@@ -105,7 +108,11 @@
                             </el-tooltip>
                         </template>
                         <template slot-scope="scope" v-if="column.name">
-                            <field v-if="getShowState(column, scope.row)" :field="getField(column, scope.row)" :value="scope.row[column.name]" :name="name" :context="scope.row"
+                            <field
+                                v-if="getShowState(column, scope.row)"
+                                :field="getField(column, scope.row)"
+                                :value="scope.row[column.name]" :name="name"
+                                :context="scope.row"
                                 :path="`list[${(isSimulatePagination ? ((data.page - 1) * data.pageSize) : 0) + scope.$index}].${column.name}`"/>
                         </template>
 

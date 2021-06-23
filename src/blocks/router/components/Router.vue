@@ -70,6 +70,42 @@ export default {
                 [this.currentRouter.class]: this.currentRouter.class ? true : false
             };
         },
+        /**
+         * 添加 $route 的 case，方便理解代码
+         *
+         * $route: {
+            "name": "报表",
+            "meta": {
+                "index": "5.0.0",
+                "path": "/cases-block/list/student-report"
+            },
+            "path": "/cases-block/list/student-report",
+            "hash": "",
+            "query": {},
+            "params": {},
+            "fullPath": "/cases-block/list/student-report",
+            "matched": [
+                {
+                    "path": "/cases-block/list/student-report",
+                    "regex": {
+                        "keys": []
+                    },
+                    "components": {},
+                    "instances": {},
+                    "name": "报表",
+                    "meta": {
+                        "index": "5.0.0",
+                        "path": "/cases-block/list/student-report"
+                    },
+                    "props": {
+                        "default": {
+                            "name": "student-report"
+                        }
+                    }
+                }
+            ]
+         }
+         */
         key() {
             return this.$route.fullPath;
         },
