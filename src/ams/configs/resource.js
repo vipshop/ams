@@ -1,5 +1,5 @@
 import { Message } from 'element-ui';
-import _ from 'lodash';
+import { get as lodashGet } from 'lodash';
 
 export const resource = {
     // /**
@@ -35,7 +35,7 @@ export const resource = {
 
     codes: {
         '-1701': function (res, options) {
-            const redirectUrl = _.get(res, 'data.data.redirectUrl');
+            const redirectUrl = lodashGet(res, 'data.data.redirectUrl');
             if (!redirectUrl) return res;
             const split = redirectUrl.includes('?') ? '&' : '?';
             location.href = `${redirectUrl}${split}ams_redirect_url=${encodeURIComponent(location.href)}`;
