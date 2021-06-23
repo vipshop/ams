@@ -1,3 +1,45 @@
+<!--
+    增加注释，解释 template 中 getShowState、getField 的作用
+
+    以一个 list block 为例
+    {
+        type: 'list',
+        fields: {
+            'status': {
+                'type': 'text',
+                'label': 'status',
+                view(fieldValue, field) {
+                    return fieldValue > 0 ? `+${fieldValue}` : `-${fieldValue}`
+                },
+            },
+        }
+    }
+    其中
+    - scope.row 为：
+        {
+            "id": 21,
+            "email": "test-create-dsp@demo.com",
+            "status": 2,
+        }
+
+    - getShowState(field, scope.row) 为：true
+
+
+    - getField(field, scope.row) 为：
+        {
+            "name": "status",
+            "ctx": "view",
+            "props": {
+                "clearable": true
+            },
+            "on": {},
+            "type": "text",
+            "label": "status",
+            "default": ""
+        }
+
+    - `list[${scope.$index}].${fieldName}` 为(其中一个)：list[0].status
+-->
 <template>
     <div v-if="ready"
          class="ams-block-list"
