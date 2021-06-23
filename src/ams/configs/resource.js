@@ -1,4 +1,5 @@
 import { Message } from 'element-ui';
+import _ from 'lodash';
 
 export const resource = {
     // /**
@@ -34,12 +35,11 @@ export const resource = {
 
     codes: {
         '-1701': function (res, options) {
-            if (res.data && res.data.data && res.data.data.redirectUrl) {
-                const split = res.data.data.redirectUrl.indexOf('?') >= 0 ? '&' : '?';
-                location.href = `${res.data.data.redirectUrl}${split}ams_redirect_url=${encodeURIComponent(location.href)}`;
-                return false;
-            }
-            return res;
+            const redirectUrl = _.get(res, 'data.data.redirectUrl');
+            if (!redirectUrl) return res;
+            const split = redirectUrl.includes('?') ? '&' : '?';
+            location.href = `${redirectUrl}${split}ams_redirect_url=${encodeURIComponent(location.href)}`;
+            return false;
         },
         '-1702': function (res, options) {
             Message.error(res.data && res.data.msg || '没有操作权限');
