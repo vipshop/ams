@@ -1,6 +1,7 @@
 /* eslint-disable complexity,no-new,max-depth */
 
 import Vue from 'vue';
+import { get as lodashGet } from 'lodash';
 import initRequest from './request';
 import initConfig from './config';
 
@@ -241,38 +242,30 @@ const ams = {
                 // eslint-disable-next-line no-unused-vars
                 const [rawString, at, blockName, actionName, argument] = actionDetail;
 
-                if (actionDetail) {
-                    const target = blockName ? ams.$blocks[blockName] : this;
-                    // args标准参数，如event配置为 @block.action:arg1,arg2，参数为args1,arg2的字符串
-                    // 先取argument, argument为手动输入优先级应该高于从上一个action传递下来的args.$arg
-                    args.$arg = argument || args.$arg || '';
-                    args.$context = this;
-                    args.$prevReturn = ams.$prevReturn;
+                if (!actionDetail) return;
+                const target = blockName ? ams.$blocks[blockName] : this;
+                // args标准参数，如event配置为 @block.action:arg1,arg2，参数为args1,arg2的字符串
+                // 先取argument, argument为手动输入优先级应该高于从上一个action传递下来的args.$arg
+                args.$arg = argument || args.$arg || '';
+                args.$context = this;
+                args.$prevReturn = ams.$prevReturn;
 
-                    // 事件 event
-                    if (!at) {
-                        if (target && target.emitEvent) {
-                            // /ams/src/ams/mixins/block-mixin.js
-                            await target.emitEvent(actionName, args);
-                        }
-                        // action
-                    } else {
-                        if (target) {
-                            const action = (target.block && target.block.actions && target.block.actions[actionName]) || ams.actions[actionName];
-                            if (action) {
-                                let result = await action.call(
-                                    target,
-                                    args
-                                );
-
-                                // 保存当前结果，下一个action的args.$prevReturn用来取值
-                                if (result) {
-                                    // 只有需要显式return数据的场景才记录$prevReturn，方便控制需要关心的$prevReturn参数传递
-                                    ams.$prevReturn = result;
-                                }
-                            }
-                        }
+                // 事件 event
+                if (!at) {
+                    if (target && target.emitEvent) {
+                        // /ams/src/ams/mixins/block-mixin.js
+                        await target.emitEvent(actionName, args);
                     }
+                    // action
+                } else {
+                    if (!target) return 
+                    const action = lodashGet(target, block.actions[actionName], ams.actions[actionName]);
+                    if (!action) return;
+                    let result = await action.call(target, args);
+                    // 保存当前结果，下一个action的args.$prevReturn用来取值
+                    if (!result) return
+                    // 只有需要显式return数据的场景才记录$prevReturn，方便控制需要关心的$prevReturn参数传递
+                    ams.$prevReturn = result;
                 }
             }
         }
