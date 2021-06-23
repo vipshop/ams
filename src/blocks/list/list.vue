@@ -207,6 +207,7 @@
 
 <script>
 import mixins from '../../ams/mixins';
+import { operationsWidth } from '../../ams/mixins/computed';
 import { defaultListFieldWidth } from '../../ams/configs/field';
 import { addEvent, getDomPos, getDomStyle, debounce, loadJS, sortBy, deepExtend, getType } from '../../utils/index';
 import field from '../../components/field';
@@ -260,17 +261,7 @@ export default {
             }
             return this.data.list;
         },
-        operationsWidth() {
-            const props = this.block.props || {};
-            const options = this.block.options || {};
-            if (props && props['operations-width']) {
-                return props['operations-width'];
-            } else if (options && options.operationsWidth) {
-                console.warn(`options.operationsWidth即将废弃，请使用props['operations-width']配置操作列宽度`);
-                return options.operationsWidth;
-            }
-            return null;
-        },
+        operationsWidth,
         operationsAlign() {
             const props = this.block.props || {};
             if (props && props['operations-align']) {

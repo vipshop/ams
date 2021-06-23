@@ -63,3 +63,14 @@ export const badge = function () {
         }
     }
 };
+
+export const operationsWidth = function() {
+    // 不推荐使用解构，因为可能存在为 null 的情况
+    const props = this.block.props || {};
+    const options = this.block.options || {};
+    const operationsWidth = props['operations-width'] || options.operationsWidth;
+    if (options.operationsWidth) {
+        console.warn(`options.operationsWidth即将废弃，请使用props['operations-width']配置操作列宽度`);
+    }
+    return operationsWidth;
+};
