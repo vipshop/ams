@@ -385,8 +385,7 @@ export default {
             return la;
         },
         setBlockData(data) {
-            const isForm = ['form'].includes(this.block.type);
-            if (isForm) {
+            if (['form'].indexOf(this.block.type) > -1) {
                 // 只有form才会通过field setData，初始化fieldChange
                 let dt = this.setFieldData(data, {
                     type: 'object',
