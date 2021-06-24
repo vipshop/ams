@@ -69,7 +69,7 @@ function _getSendData(config, method = 'get', prefix, arg) {
     if (config.path) {
         options.url = `${config.prefix || prefix}${config.path}`;
     }
-    // 支持 requestDataParse 为字符串形式，比如 requestDataParse: `query => { query.pageSize = query.page; return query; }`
+    // 支持 requestDataParse 为字符串形式，比如 requestDataParse: `query => { query.pageNum = query.page; return query; }`
     if (getType(config.requestDataParse) === 'string') {
         // eslint-disable-next-line no-new-func
         config.requestDataParse = new Function(`return ${config.requestDataParse}`)();
