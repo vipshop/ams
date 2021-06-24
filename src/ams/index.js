@@ -223,24 +223,23 @@ const ams = {
             let actionStr = maybeMultipleActionStrArr[i];
             if (!actionStr) return ams.$prevReturn;
             /**
-                 * 举例几种场景的处理：
-                 *
-                 * #1
-                 * actionStr: "@list"
-                 * actionDetail: ["@list", "@", undefined, "list", undefined, index: 0, input: "@list", groups: undefined]
-                 *
-                 * #2
-                 * actionStr: "addDialogForm.submit"
-                 * -> actionDetail: ["addDialogForm.submit", undefined, "addDialogForm", "submit", undefined, index: 0, input: "addDialogForm.submit", groups: undefined]
-                 *
-                 * #3
-                 * actionStr: "@addDialogForm.submit"
-                 * -> actionDetail: ["addDialogForm.submit", "@", "addDialogForm", "submit", undefined, index: 0, input: "addDialogForm.submit", groups: undefined]
-                 *
-                 * 理解正则
-                 * https://regexper.com/#%2F%5E%28%40%29%3F%28%3F%3A%28.*%3F%29%5C.%29%3F%28.*%3F%29%28%3F%3A%3A%28.*%29%29%3F%24%2F
-                 */
-
+             * 举例几种场景的处理：
+             *
+             * #1
+             * actionStr: "@list"
+             * actionDetail: ["@list", "@", undefined, "list", undefined, index: 0, input: "@list", groups: undefined]
+             *
+             * #2
+             * actionStr: "addDialogForm.submit"
+             * -> actionDetail: ["addDialogForm.submit", undefined, "addDialogForm", "submit", undefined, index: 0, input: "addDialogForm.submit", groups: undefined]
+             *
+             * #3
+             * actionStr: "@addDialogForm.submit"
+             * -> actionDetail: ["addDialogForm.submit", "@", "addDialogForm", "submit", undefined, index: 0, input: "addDialogForm.submit", groups: undefined]
+             *
+             * 理解正则
+             * https://regexper.com/#%2F%5E%28%40%29%3F%28%3F%3A%28.*%3F%29%5C.%29%3F%28.*%3F%29%28%3F%3A%3A%28.*%29%29%3F%24%2F
+             */
             // actionDetail action字符串的组成
             let actionDetail = /^(@)?(?:(.*?)\.)?(.*?)(?::(.*))?$/.exec(actionStr);
             // eslint-disable-next-line no-unused-vars
