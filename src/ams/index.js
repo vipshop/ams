@@ -3,6 +3,7 @@
 import Vue from 'vue';
 import initRequest from './request';
 import initConfig from './config';
+import { filter } from '../utils/tpl';
 
 let amsRootId = 0;
 
@@ -202,6 +203,9 @@ const ams = {
      */
     async callAction(maybeMultipleActionStr = '', args = {}) {
         if (!maybeMultipleActionStr.trim()) return;
+        // 用来解析：routePush：/detail-page/id=<%=data.ctx.id%> 之类的lodash.template
+        // 感觉这里放在，比如 routePush 这个函数里面去做更合适，但是这里面的正则无法兼容，因此不得不将其提前到callAction中对tpl进行处理
+        maybeMultipleActionStr = filter(maybeMultipleActionStr, { ctx: ams.$prevReturn });
         /**
          *
          * actionName: '@list' -> ['@list']
