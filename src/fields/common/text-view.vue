@@ -1,3 +1,35 @@
+<!--
+  以 fields: {
+    'status': {
+      'type': 'text',
+      'label': 'status',
+      view(fieldValue, field) {
+      return fieldValue > 0 ? `+${fieldValue}` : `-${fieldValue}`
+      },
+    },
+  }
+  为例：
+
+  `ams-field-${field.type}-${field.ctx}` === 'ams-field-text-view'
+
+  其中
+  field === {
+    "name": "status",
+    "ctx": "view",
+    "props": {
+      "clearable": true
+    },
+    "on": {},
+    "type": "text",
+    "label": "status",
+    "default": ""
+  }
+
+  value ==== 2
+  name(blockName) === 'dspListView'
+  path(第一行) === list[0].status
+ -->
+
 <template>
     <div :style="field.style" v-bind="field.props" v-on="on">{{ actualViewText }}<el-popover v-if="showMoreIcon"
                     :placement="field.collapsePlacement || 'right'"
