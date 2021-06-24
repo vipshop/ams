@@ -1,5 +1,5 @@
 import ams from '../ams';
-import { getQueryString, getType } from '../utils';
+import { getQueryString, getType, isFn } from '../utils';
 import { httpRequestTypeExcludeGet } from '../ams/request';
 
 /**
@@ -69,7 +69,13 @@ function _getSendData(config, method = 'get', prefix, arg) {
     if (config.path) {
         options.url = `${config.prefix || prefix}${config.path}`;
     }
-    const sendArg = typeof config.requestDataParse === 'function' ? config.requestDataParse(arg) : arg;
+    // 支持 requestDataParse 为字符串形式，比如 requestDataParse: `query => { query.pageNum = query.page; return query; }`
+    if (getType(config.requestDataParse) === 'string') {
+        // eslint-disable-next-line no-new-func
+        config.requestDataParse = new Function(`return ${config.requestDataParse}`)();
+    }
+    const sendArg = isFn(config.requestDataParse) ? config.requestDataParse(arg) : arg;
+    // https://github.com/axios/axios/blob/fa3673710ea6bb3f351b4790bb17998d2f01f342/lib/core/Axios.js#L40
     options.method = (config.method || method).toUpperCase();
     if (httpRequestTypeExcludeGet.indexOf(options.method) >= 0) {
         options.data = sendArg;
