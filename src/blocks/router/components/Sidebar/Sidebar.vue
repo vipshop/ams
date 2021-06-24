@@ -1,6 +1,7 @@
 <template>
     <el-scrollbar wrap-class="scrollbar-wrapper">
         <el-menu :show-timeout="router['showTimeout'] || 200"
+                 :hide-timeout="router['hideTimeout'] || 100"
                  :default-active="$route.path"
                  :collapse="isCollapse"
                  :unique-opened="uniqueOpened"

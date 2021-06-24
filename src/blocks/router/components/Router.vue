@@ -103,10 +103,10 @@ export default {
 
         },
         shwoBreadcrumb() {
-            if (this.$block.block.router && typeof this.$block.block.router.shwoBreadcrumb === 'undefined') {
+            if (this.$block.block.router && typeof this.$block.block.router.showBreadcrumb === 'undefined') {
                 return true;
             }
-            return this.$block.block.router.shwoBreadcrumb;
+            return this.$block.block.router.showBreadcrumb;
         }
     },
     methods: {

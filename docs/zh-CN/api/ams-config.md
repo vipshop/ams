@@ -15,26 +15,45 @@ ams.config({
                 ...options.headers,
                 "xsrf-token": "token"
             }
-            return options;
+            return options
         },
         /**
          * 全局请求结果拦截器，只能有一个，新配置的会覆盖旧的，返回空会中断后续处理，不处理的场景返回res
          */
-        responseInterceptor(res) {
-            if (res.data.code === -33) {
+        responseInterceptor(response) {
+            if (response.data.code === -33) {
                 // 跳转登录并中断请求
                 ams.callAction('routerPush:/login')
-                return;
+                return
             }
-            return res;
+            return response
+        },
+        /**
+         * 全局请求异常拦截器，当xhr.onerror或者xhr.status !== 200的异常，会执行此拦截器
+         */
+        errorInterceptor(err) {
+            return err
+        },
+        /**
+         * 根据不同code处理res
+         */
+        codes: {
+            1001(response, options) {
+                return response
+            },
+            1002(response, options) {
+                return response
+            }
         },
 
-        // 全局默认withCredentials，请求接口是否携带cookie
-        withCredentials: true,
-        // 全局默认contentType json | form
-        contentType: 'json',
-        // 全局成功code
-        successCode: 0
+        api: {
+            // 全局默认withCredentials，请求接口是否携带cookie
+            withCredentials: true,
+            // 全局默认contentType json | form
+            contentType: 'json',
+            // 全局成功code
+            successCode: 0
+        }
     }
 })
 ```

@@ -1,8 +1,29 @@
 import Vue from 'vue';
 import ams from '../index';
-import { listStringHasValue, get, getByOrder, deepExtend, getType, watermark } from '../../utils';
+import { listStringHasValue, get, getByOrder, deepExtend, getType, watermark, hasOwn } from '../../utils';
 import { getRouter } from './router';
 import Blank from '../../blocks/block/Blank';
+
+function noop(a, b, c) {}
+function isAmsReservedMethod(methodKey) {
+    return [
+        'showLoading',
+        'hideLoading',
+        'getOperationsCounts',
+        'getConfig',
+        'initRouter',
+        'initActionsToVM',
+        'initBlock',
+        'initDefaultField',
+        'initFields',
+        'getFieldsLayout',
+        'setBlockData',
+        'setFieldData',
+        'fieldChange',
+        'emitEvent',
+        'callAction'
+    ].includes(methodKey);
+}
 
 export default {
     data() {
@@ -39,9 +60,9 @@ export default {
         this.$nextTick(async () => {
             // 初始化init
             this.ready = true;
+
             await this.emitEvent('created');
             await this.emitEvent('init');
-
             this.afterReady && this.afterReady();
 
             let wmOptions = this.block.options && this.block.options.watermark;
@@ -52,6 +73,14 @@ export default {
                     container: this.$el,
                     uid: this._uid
                 }, wmOptions));
+            }
+
+            const show = this.getShowState(this.block, this.block.data);
+            if (!show) {
+                this.block.style = this.block.style || {};
+                this.block.style = {
+                    display: 'none'
+                };
             }
         });
     },
@@ -95,6 +124,16 @@ export default {
         }
     },
     methods: {
+        getShowState(block, data) {
+            const type = typeof block.show;
+            if (type === 'undefined') {
+                return true;
+            } else if (type === 'function') {
+                return block.show.call(this.$block || this, data);
+            } else if (type === 'boolean') {
+                return block.show;
+            }
+        },
         showLoading() {
             if (this.block && this.block.options.showLoading !== false) {
                 this.loading = true;
@@ -157,11 +196,33 @@ export default {
             const isString =  typeof this.block.resource === 'string'
             this.resource = isString ? ams.resources[resource] : ams.resource('', resource);
         },
+        // 借鉴vue源码中的initMethods
+        initActionsToVM() {
+            const props = this.$options.props;
+            const methods = this.block.actions || {};
+            // eslint-disable-next-line guard-for-in
+            for (const key in methods) {
+                if (process.env.NODE_ENV !== 'production') {
+                    if (methods[key] == null) {
+                        console.warn(`Method "${key}" has an undefined value in the component definition. ` +
+                  `Did you reference the function correctly?`);
+                    }
+                    if (props && hasOwn(props, key)) {
+                        console.warn(`Method "${key}" has already been defined as a prop.`);
+                    }
+                    if (isAmsReservedMethod(key)) {
+                        console.warn(`Method "${key}" conflicts with an existing AMS block method`);
+                    }
+                }
+                this[key] = methods[key] == null ? noop : methods[key].bind(this);
+            }
+        },
         /**
          * 如果新增、删除fields，需要触发initBlock
          */
         async initBlock() {
             this.block = await ams.getBlock(this.name);
+            this.initActionsToVM(); // #70
             if (this.block) {
                 this.initResource();
                 ams.$blocks[this.name] = this;

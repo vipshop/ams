@@ -11,24 +11,24 @@ ams.resource('resource', {
         update: 'update',
         read: 'read',
         delete: 'delete',
-        list: 'list'
-        // list: {
-        //     path: 'list',
-        //     method: 'get',
-        //     successCode: 0,
-        //     requestDataParse(query) {
-        //         return query;
-        //     },
-        //     responseDataParse(data) {
-        //         return data;
-        //     },
-        //     transform(data) {
-        //         return data.map(item => {
-        //             item.testTextarea = '测试字段';
-        //             return item;
-        //         });
-        //     }
-        // }
+        // list: 'list'
+        list: {
+            path: 'list',
+            method: 'get',
+            successCode: 0,
+            requestDataParse(query) {
+                return query;
+            },
+            responseDataParse(data) {
+                return data.data;
+            },
+            // transform(data) {
+            //     return data.map(item => {
+            //         item.testTextarea = '测试字段';
+            //         return item;
+            //     });
+            // }
+        }
     },
     fields: {
         // a: {

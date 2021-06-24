@@ -10,7 +10,7 @@
 注意要先引入vue element-ui的依赖
 
 ```html
-<script src="https://h5rsc.vipstatic.com/ams/ams@0.7.16.js"></script>
+<script src="https://h5rsc.vipstatic.com/ams/ams@0.32.0.js"></script>
 ```
 
 

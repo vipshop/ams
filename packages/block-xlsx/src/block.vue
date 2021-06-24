@@ -99,72 +99,98 @@ export default {
             this.$refs.file.click();
         },
         handleExport(isTemplate) {
-            const on = this.exportOptions.on || {};
+            const exportOptions = this.exportOptions;
+            const on = exportOptions.on || {};
             const methodToString = Object.keys(on)
-                .map(item => ({ field: item, value: this.exportOptions.on[item].toString() }))
+                .map(item => ({ field: item, value: exportOptions.on[item].toString() }))
                 .reduce((obj, cur) => Object.assign(obj, { [cur.field]: cur.value }), {});
             exportHelper({
-                itemName: this.exportOptions.itemName,
-                sheetName: this.exportOptions.itemName,
+                itemName: exportOptions.itemName,
+                sheetName: exportOptions.itemName,
                 $vm: this,
-                ext: this.exportOptions.ext || 'xlsx',
+                ext: exportOptions.ext || 'xlsx',
                 Worker: ExportWorker,
                 workerInitData: {
                     order: {
-                        field: this.exportOptions.idField,
-                        direction: this.exportOptions.direction || 1
+                        field: exportOptions.idField,
+                        direction: exportOptions.direction || 1
                     },
-                    opts: this.exportOptions.options || {},
-                    headers: this.exportOptions.headers,
-                    mergeHeaders: this.exportOptions.mergeHeaders || [],
+                    opts: exportOptions.options || {},
+                    headers: exportOptions.headers,
+                    mergeHeaders: exportOptions.mergeHeaders || [],
                     on: methodToString,
                     br: getLineBreakInExcel()
                 },
-                idField: this.exportOptions.idField || 'id',
+                idField: exportOptions.idField || 'id',
                 downlownTemplate: isTemplate || false,
-                pagesize: this.exportOptions.pagesize || 100,
-                eachFileRows: this.exportOptions.eachFileRows || 10000,
-                exportType: this.exportOptions.exportType || 'async',
+                pagesize: exportOptions.pagesize || 100,
+                eachFileRows: exportOptions.eachFileRows || 10000,
+                exportType: exportOptions.exportType || 'async',
                 getTotal: () => {
                     let query = {
-                        ...this.exportOptions.query || {},
-                        ...this.exportOptions.request.params || {}
+                        ...exportOptions.query || {},
+                        ...exportOptions.request.params || {}
                     };
                     query.is_export = 1;
                     query.pageSize = 0;
-                    query.order = `${this.exportOptions.idField} desc`;
+                    query.order = `${exportOptions.idField} desc`;
                     if (on.queryFilter) query = on.queryFilter(query);
                     return ams.request({
-                        url: this.exportOptions.request.url,
-                        method: this.exportOptions.request.method || 'get',
+                        url: exportOptions.request.url,
+                        method: exportOptions.request.method || 'get',
                         params: query,
-                        data: this.exportOptions.request.data || {}
+                        data: exportOptions.request.data || {}
                     }).then(({ data }) => {
                         return data.data.total;
                     }).catch(this.$alert.error);
                 },
                 getList: (lastId, page, size) => {
-                    let query = {
-                        pageSize: size,
-                        ...this.exportOptions.query || {},
-                        ...this.exportOptions.request.params || {}
-                    };
-                    if (this.exportOptions.exportType === 'sync') {
+                    let query = {};
+                    let params = {};
+                    let data = {};
+
+                    const method =
+                        exportOptions.request.method && exportOptions.request.method.toLocaleLowerCase()
+                        || 'get';
+                    if (['post', 'put'].indexOf(method) >= 0) {
+                        query = {
+                            pageSize: size,
+                            ...exportOptions.query || {},
+                            ...exportOptions.request.data || {}
+                        };
+                        params = exportOptions.request.params || {};
+                    } else {
+                        query = {
+                            pageSize: size,
+                            ...exportOptions.query || {},
+                            ...exportOptions.request.params || {}
+                        };
+                        data = exportOptions.request.data || {};
+                    }
+
+                    if (exportOptions.exportType === 'sync') {
                         delete query.page;
                         if (lastId) {
-                            query[`lt_${this.exportOptions.idField}`] = lastId;
+                            query[`lt_${exportOptions.idField}`] = lastId;
                         }
                     } else {
                         query.page = page;
                     }
                     query.is_export = 1;
-                    query.order = `${this.exportOptions.idField} desc`;
+                    query.order = `${exportOptions.idField} desc`;
                     if (on.queryFilter) query = on.queryFilter(query);
+
+
+                    if (['post', 'put'].indexOf(method) >= 0) {
+                        data = query;
+                    } else {
+                        params = query;
+                    }
                     return ams.request({
-                        url: this.exportOptions.request.url,
-                        method: this.exportOptions.request.method || 'get',
-                        params: query,
-                        data: this.exportOptions.request.data || {}
+                        url: exportOptions.request.url,
+                        method,
+                        params,
+                        data
                     }).then(({ data }) => data.data.list)
                         .catch(this.$alert.error);
                 },
@@ -174,7 +200,7 @@ export default {
         handleImport() {
             this.setLoadingOptions({ show: true });
             const file = this.$refs.file.files[0];
-            if (['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel'].indexOf(file.type) < 0) {
+            if (file.type && ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel'].indexOf(file.type) < 0) {
                 this.$alert('只能导入excel文件，格式为.xls,.xlsx，请重新选择');
                 return;
             }

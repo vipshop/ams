@@ -1,3 +1,4 @@
+import { Message } from 'element-ui';
 import ams from '@ams-team/ams';
 
 import './resources/resource';
@@ -32,6 +33,7 @@ import './cases-field/union';
 import './cases-field/unitselect';
 import './cases-field/originfile';
 import './cases-field/image';
+import './cases-field/video';
 import './cases-field/arraylist';
 import './cases-field/tree';
 import './cases-field/link';
@@ -48,6 +50,7 @@ import './cases-block/list/list-pagination';
 import './cases-block/list/list-drag';
 import './cases-block/list/list-field-convert';
 import './cases-block/list/list-simulate';
+import './cases-block/alert';
 import './cases-block/calendar';
 import './cases-block/dragimage';
 import './cases-block/dragimage-updown';
@@ -62,6 +65,7 @@ import './cases-block/backtop';
 import './cases-block/tabs';
 import './cases-block/component';
 import './cases-block/popover';
+import './cases-block/popconfirm';
 import './cases-block/bct-progress';
 import './cases-block/imagelist/imagelist';
 import './cases-block/imagelist/imagelist2';
@@ -88,6 +92,13 @@ ams.config({
         //     }
         //     return options
         // },
+        errorInterceptor(enhancedErr) {
+            const { code, xhr, response, message } = enhancedErr;
+            console.log(`Http code: ${code}, Message: ${message}`, 'XHR object: ', xhr, 'Response Content: ', response);
+            Message.error(message || '网络错误，请重试');
+            // 继续抛出错误
+            throw enhancedErr;
+        },
         api: {
             withCredentials: false
         }

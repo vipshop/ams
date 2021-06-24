@@ -1,5 +1,6 @@
 import ams from '../ams';
-import { getQueryString } from '../utils';
+import { getQueryString, getType } from '../utils';
+import { httpRequestTypeExcludeGet } from '../ams/request';
 
 /**
  * 自动获取的key值有几种场景：
@@ -20,7 +21,12 @@ function _getValue(key, { $arg, $prevReturn }) {
     } else if ($prevReturn && Array.isArray($prevReturn) && $prevReturn.length) {
         value = $prevReturn.map(arg => arg[key]).filter(arg => arg).join(',');
         console.log('$prevReturn', value);
-    } else if (queryValue) {
+    } else if (
+        // #161
+        !this.data.hasOwnProperty(key) &&
+        ($prevReturn && typeof $prevReturn.hasOwnProperty === 'function' && !$prevReturn.hasOwnProperty(key)) &&
+        queryValue
+    ) {
         value = queryValue;
         console.log('getQueryString', value);
     } else if ($arg) {
@@ -64,9 +70,8 @@ function _getSendData(config, method = 'get', prefix, arg) {
         options.url = `${config.prefix || prefix}${config.path}`;
     }
     const sendArg = typeof config.requestDataParse === 'function' ? config.requestDataParse(arg) : arg;
-    // https://github.com/axios/axios/blob/fa3673710ea6bb3f351b4790bb17998d2f01f342/lib/core/Axios.js#L40
-    options.method = (config.method || method).toLowerCase();
-    if (options.method === 'post') {
+    options.method = (config.method || method).toUpperCase();
+    if (httpRequestTypeExcludeGet.indexOf(options.method) >= 0) {
         options.data = sendArg;
     } else {
         options.params = sendArg;
@@ -78,19 +83,21 @@ export const read = ams.createApiAction({
     getOptions(params) {
         const key = this.resource.key;
         let value = _getValue.call(this, key, params);
-        if (typeof this.resource.api.read === 'object') {
+        const { read, prefix } = this.resource.api;
+        const method = this.resource.api.method || 'get';
+        if (typeof read === 'object') {
             return _getSendData(
-                this.resource.api.read,
-                'get',
-                this.resource.api.prefix,
+                read,
+                method,
+                prefix,
                 {
                     [key]: value,
                     ..._getForeignKeys.call(this, params)
                 });
         }
         return {
-            url: `${this.resource.api.prefix}${this.resource.api.read}`,
-            method: this.resource.api.method || 'get',
+            url: `${prefix}${read}`,
+            method,
             params: {
                 [key]: value,
                 // resId: this.block.resource,
@@ -121,11 +128,14 @@ export const update = ams.createApiAction({
     getOptions(params) {
         const key = this.resource.key;
         let value = _getValue.call(this, key, params);
-        if (typeof this.resource.api.update === 'object') {
+
+        const { update, prefix } = this.resource.api;
+        const method = this.resource.api.method || 'post';
+        if (typeof update === 'object') {
             return _getSendData(
-                this.resource.api.update,
-                'post',
-                this.resource.api.prefix,
+                update,
+                method,
+                prefix,
                 {
                     [key]: value,
                     ..._getForeignKeys.call(this, params),
@@ -133,8 +143,8 @@ export const update = ams.createApiAction({
                 });
         }
         return {
-            url: `${this.resource.api.prefix}${this.resource.api.update}`,
-            method: this.resource.api.method || 'post',
+            url: `${prefix}${update}`,
+            method,
             params: {
                 [key]: value,
                 // resId: this.block.resource,
@@ -164,11 +174,14 @@ export const deleteAction = ams.createApiAction({
         const key = this.resource.key;
         let value = _getValue.call(this, key, params);
 
-        if (typeof this.resource.api.delete === 'object') {
+        const prefix = this.resource.api.prefix;
+        const deleteConfig = this.resource.api.delete;
+        const method = this.resource.api.method || 'post';
+        if (typeof deleteConfig === 'object') {
             return _getSendData(
-                this.resource.api.delete,
-                'post',
-                this.resource.api.prefix,
+                deleteConfig,
+                method,
+                prefix,
                 {
                     [key]: value,
                     // resId: this.block.resource,
@@ -177,8 +190,8 @@ export const deleteAction = ams.createApiAction({
         }
         // 支持传参数
         return {
-            url: `${this.resource.api.prefix}${this.resource.api.delete}`,
-            method: this.resource.api.method || 'post',
+            url: `${prefix}${deleteConfig}`,
+            method,
             params: {
                 [key]: value,
                 // resId: this.block.resource,
@@ -204,18 +217,20 @@ export const deleteAction = ams.createApiAction({
 
 export const create = ams.createApiAction({
     getOptions(params) {
+        const { create, prefix } = this.resource.api;
+        const method = this.resource.api.method || 'post';
         if (typeof this.resource.api.create === 'object') {
             return _getSendData(
-                this.resource.api.create,
-                'post',
-                this.resource.api.prefix,
+                create,
+                method,
+                prefix,
                 { ..._getForeignKeys.call(this, params), ...this.data }
             );
         }
         return {
             // withCredentials: true,
-            url: `${this.resource.api.prefix}${this.resource.api.create}`,
-            method: this.resource.api.method || 'post',
+            url: `${prefix}${create}`,
+            method,
             params: {
                 // resId: this.block.resource,
                 ..._getForeignKeys.call(this, params)
@@ -304,12 +319,14 @@ export const list = ams.createApiAction({
                 }
             });
         }
-        if (typeof this.resource.api.list === 'object') {
-            return _getSendData(this.resource.api.list, 'get', this.resource.api.prefix, arg);
+        const { list, prefix } = this.resource.api;
+        const method = this.resource.api.method || 'get';
+        if (typeof list === 'object') {
+            return _getSendData(list, method, prefix, arg);
         }
         return {
-            url: `${this.resource.api.prefix}${this.resource.api.list}`,
-            method: this.resource.api.method || 'get',
+            url: `${prefix}${list}`,
+            method,
             params: arg
         };
     },
@@ -321,14 +338,21 @@ export const list = ams.createApiAction({
             res.data.data
         ) {
             const config = this.resource.api.list;
+            this.data.total = res.data.data.total;
+
             if (typeof config === 'object' && typeof config.transform === 'function') {
                 this.data.list = config.transform(res.data.data.list) || [];
             } else if (typeof config === 'object' && typeof config.responseDataParse === 'function') {
-                this.data = config.responseDataParse(res.data) || [];
+                const convertResponseDataParse = config.responseDataParse(res.data);
+                if (getType(convertResponseDataParse) !== 'object') {
+                    console.error('responseDataParse中需要返回object类型，如{ list: [] }');
+                    this.data.list = [];
+                } else {
+                    this.data = { ...this.data, ...config.responseDataParse(res.data) };
+                }
             } else {
                 this.data.list = res.data.data.list || [];
             }
-            this.data.total = res.data.data.total;
             if (typeof this.on['list-success'] === 'function') {
                 this.on['list-success'](res.data);
             }

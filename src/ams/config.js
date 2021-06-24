@@ -4,6 +4,10 @@ import { getType, deepExtend } from '../utils';
 export default function initConfig(ams) {
     // 配置列表
     ams.configs = {
+        appName: '', // ams的全局name，可以用于区分同域下的localstorage等
+        sentPageMars: false, // 是否发送页面埋点
+        sentBehaviorMars: false, // 是否发送行为埋点
+        consoleWarn: true,
         ...configs
     };
 
@@ -37,7 +41,7 @@ export default function initConfig(ams) {
             if (getType(base) === 'object') {
                 clone = base;
                 Object.keys(currentBase).forEach(key => {
-                    if (/\./.test(key)) {
+                    if (ams.configs.consoleWarn && /\./.test(key)) {
                         console.warn(`ams Err: please do not use . in object key: ${key}, it may cause some error`);
                     }
                     const value = currentBase[key];
@@ -52,7 +56,7 @@ export default function initConfig(ams) {
             }
             Object.keys(target).forEach(key => {
                 if (key !== 'BASE') {
-                    if (/\./.test(key)) {
+                    if (ams.configs.consoleWarn && /\./.test(key)) {
                         console.warn(`ams Err: please do not use . in object key: ${key}, it may cause some error`);
                     }
                     const value = target[key];

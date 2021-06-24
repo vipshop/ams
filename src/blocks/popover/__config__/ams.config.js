@@ -15,7 +15,7 @@ export const config = {
     },
     options: {
         text: 'popover'
-    },
+    }
 };
 
 export const defaults = {};

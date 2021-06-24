@@ -20,7 +20,7 @@
         <!-- 多选时的operations -->
         <ams-operations :name="name"
                         :context="batchSelected"
-                        v-if="batchSelected.length > 0"
+                        v-if="batchSelected.length > 0 || block.options.multipleSelectAffixShow"
                         slot-name="multipleSelect"></ams-operations>
 
         <el-form :model="data" ref="amsForm">
@@ -83,32 +83,62 @@
                 <el-table-column v-if="block.props.type === 'index'"
                                  type="index"
                                  align="center" />
-                <template v-for="(field, fieldName) in fields">
-                    <el-table-column :label="field.label"
-                                    v-if="!field.hidden"
-                                    :key="fieldName"
-                                    :prop="fieldName"
-                                    type=""
-                                    :column-key="fieldName"
-                                    fit
-                                    :min-width="field.props['min-width'] || defaultListFieldWidth[field.type] || '90px'"
-                                    :align="field.props['align'] || 'center'"
-                                    v-bind="field.props">
-                        <template slot="header">
-                            <!-- 表头 -->
-                            {{field.label}}
-                            <el-tooltip effect="dark" placement="top" v-if="field.info">
-                                <i :class="field.info.icon || 'el-icon-info'"></i>
-                                <div slot="content" v-html="field.info.content || field.info"></div>
+
+                <!-- 含有多级表格配置的处理 -->
+                <template v-if="tableColumnSelected.length">
+                    <el-table-column v-for="(column, index) in tableColumnSelected"
+                                        v-if="!column.hidden"
+                                        :key="column.name || index"
+                                        :prop="column.name"
+                                        :label="column.label"
+                                        :column-key="column.name"
+                                        v-bind="column.props"
+                                        fit
+                                        :min-width="column.props['min-width'] || defaultListFieldWidth[column.type] || '90px'"
+                                        :align="column.props['align'] || 'center'">
+                        <!-- 第一层表头的处理 -->
+                        <template slot="header" v-if="column.name && headerSelected.indexOf()">
+                            {{column.label}}
+                            <el-tooltip effect="dark" placement="top" v-if="column.info">
+                                <i :class="column.info.icon || 'el-icon-info'"></i>
+                                <div slot="content" v-html="column.info.content || column.info"></div>
                             </el-tooltip>
                         </template>
-                        <template slot-scope="scope">
-                            <!--fields-->
-                            <field v-if="getShowState(field, scope.row)" :field="getField(field, scope.row)" :value="scope.row[fieldName]" :name="name" :context="scope.row"
-                                :path="`list[${(isSimulatePagination ? ((data.page - 1) * data.pageSize) : 0) + scope.$index}].${fieldName}`"/>
+                        <template slot-scope="scope" v-if="column.name">
+                            <field v-if="getShowState(column, scope.row)" :field="getField(column, scope.row)" :value="scope.row[column.name]" :name="name" :context="scope.row"
+                                :path="`list[${(isSimulatePagination ? ((data.page - 1) * data.pageSize) : 0) + scope.$index}].${column.name}`"/>
+                        </template>
+
+                        <!-- 第二层表头的处理 -->
+                        <template v-if="column.children && column.children.length > 0">
+                            <template v-for="(item) in column.children">
+                                    <el-table-column :label="fields[item.name].label"
+                                                v-if="!fields[item.name].hidden"
+                                                :key="item.name"
+                                                :prop="item.name"
+                                                type=""
+                                                :column-key="item.name"
+                                                fit
+                                                :min-width="fields[item.name].props['min-width'] || defaultListFieldWidth[fields[item.name].type] || '90px'"
+                                                :align="fields[item.name].props['align'] || 'center'"
+                                                v-bind="fields[item.name].props">
+                                    <template slot="header">
+                                        {{fields[item.name].label}}
+                                        <el-tooltip effect="dark" placement="top" v-if="fields[item.name].info">
+                                            <i :class="fields[item.name].info.icon || 'el-icon-info'"></i>
+                                            <div slot="content" v-html="fields[item.name].info.content || fields[item.name].info"></div>
+                                        </el-tooltip>
+                                    </template>
+                                    <template slot-scope="scope">
+                                        <field v-if="getShowState(fields[item.name], scope.row)" :field="getField(fields[item.name], scope.row)" :value="scope.row[item.name]" :name="name" :context="scope.row"
+                                            :path="`list[${(isSimulatePagination ? ((data.page - 1) * data.pageSize) : 0) + scope.$index}].${item.name}`"/>
+                                    </template>
+                                </el-table-column>
+                            </template>
                         </template>
                     </el-table-column>
                 </template>
+
                 <el-table-column label="操作"
                                  v-if="block.operationsCounts.operations"
                                  fixed="right"
@@ -155,14 +185,33 @@
         </el-pagination>
 
         <ams-blocks :blocks="block.blocks" />
+
+        <el-dialog
+            title="表头管理"
+            :visible.sync="headerSelectedDialog.show"
+            width="50%">
+            <el-checkbox-group v-model="headerSelectedDialog.headers">
+                <el-checkbox v-for="column in tableColumnOptions"
+                    :label="column.name"
+                    :key="column.name"
+                    :style="{ width: headerSelectedDialog.labelWidth }">{{column.label}}
+                </el-checkbox>
+            </el-checkbox-group>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="headerSelectedDialog.show = false">取 消</el-button>
+                <el-button type="primary" @click="handleHeaderSelectedChange">确 定</el-button>
+            </span>
+        </el-dialog>
     </div>
 </template>
 
 <script>
 import mixins from '../../ams/mixins';
+import { operationsWidth } from '../../ams/mixins/computed';
 import { defaultListFieldWidth } from '../../ams/configs/field';
-import { addEvent, getDomPos, getDomStyle, debounce, loadJS, sortBy } from '../../utils/index';
+import { addEvent, getDomPos, getDomStyle, debounce, loadJS, sortBy, deepExtend, getType } from '../../utils/index';
 import field from '../../components/field';
+import { LocalStorage } from '../../utils';
 
 export default {
     components: {
@@ -176,7 +225,14 @@ export default {
             sortField: null,
             sortOrder: null,
             batchSelected: [],
-            height: null
+            headerSelected: [],
+            height: null,
+
+            headerSelectedDialog: {
+                show: false,
+                headers: [],
+                labelWidth: '100px' // 预留配置项
+            }
         };
     },
     computed: {
@@ -185,6 +241,11 @@ export default {
         },
         isSimulatePagination() {
             return this.block.props && this.block.props.pagination === 'simulate';
+        },
+        // 是否多级表头
+        isMultiTableColumn() {
+            const options = this.block.options;
+            return options && options['table-column'] && options['table-column'].length;
         },
         pageTotal() {
             // 列表数据总数
@@ -200,17 +261,7 @@ export default {
             }
             return this.data.list;
         },
-        operationsWidth() {
-            const props = this.block.props || {};
-            const options = this.block.options || {};
-            if (props && props['operations-width']) {
-                return props['operations-width'];
-            } else if (options && options.operationsWidth) {
-                console.warn(`options.operationsWidth即将废弃，请使用props['operations-width']配置操作列宽度`);
-                return options.operationsWidth;
-            }
-            return null;
-        },
+        operationsWidth,
         operationsAlign() {
             const props = this.block.props || {};
             if (props && props['operations-align']) {
@@ -242,7 +293,59 @@ export default {
         },
         columnAttrs() {
             return this.block.props && this.block.props.column || {};
-        }
+        },
+        // 可选择的列，初始化结果，带chilren
+        tableColumn() {
+            const options = this.block.options;
+            if (this.isMultiTableColumn) {
+                return this.handleTableColumn(options['table-column']);
+            } else if (getType(this.fields) === 'object') {
+                return Object.keys(this.fields).map(val => this.fields[val]);
+            }
+            return [];
+        },
+        // 已经选择的列，带children
+        // [
+        //     { label: 'id', name: 'id ' },
+        //     { label: 'field', children: [] }
+        // ]
+        tableColumnSelected() {
+            const headerSelected = this.headerSelected;
+            if (this.isMultiTableColumn) {
+                const tableColumn = JSON.parse(JSON.stringify(this.tableColumn));
+                return tableColumn.filter(item => {
+                    let children = item.children;
+                    if (children && children.length) {
+                        item.children = children.filter(child => headerSelected.indexOf(child.name) >= 0);
+                        return children.length;
+                    }
+                    return headerSelected.indexOf(item.name) >= 0;
+                });
+            }
+            return this.tableColumn.filter(val => headerSelected.indexOf(val.name) >= 0);
+        },
+        // 可选择的列，用于弹窗展示，不带children。如多级表头，将chilren扁平化合在一个array中
+        tableColumnOptions() {
+            const tableColumn = this.tableColumn;
+            if (this.isMultiTableColumn) {
+                return tableColumn.reduce((arr, cur) => {
+                    const children = cur.children;
+                    if (children && children.length) {
+                        arr = arr.concat(cur.children.map(item => ({ label: item.label, name: item.name })));
+                    } else if (cur.name) {
+                        arr.push({ label: cur.label, name: cur.name });
+                    }
+                    return arr;
+                }, []);
+            }
+            return tableColumn;
+        },
+    },
+    created() {
+        // 最后执行
+        setTimeout(() => {
+            this.headerSelected = this.handerGetHeaderSelected();
+        }, 0);
     },
     methods: {
         afterReady() {
@@ -358,9 +461,8 @@ export default {
             };
         },
         drag(dragOptions) {
-            if (window.Sortable) {
+            if (window.Sortable && this.$refs.amsTable) {
                 const el = this.$refs.amsTable.$el.querySelectorAll('.el-table__body-wrapper > table > tbody')[0];
-
                 window.Sortable.create(el, this.handleDragOptions(dragOptions));
             }
         },
@@ -425,10 +527,6 @@ export default {
             // 远程筛选
             let remoteFilterChange = false;
             Object.keys(e).forEach(key => {
-                console.log(
-                    'this.block.filters[key].remote',
-                    this.block.filters[key].remote
-                );
                 if (this.block.filters[key].remote) {
                     remoteFilterChange = true;
                     const filter = e[key].join(',');
@@ -449,6 +547,96 @@ export default {
         },
         handleSelectAll(selection) {
             this.batchSelected = selection;
+        },
+        // 处理多级表头数据
+        // TODO 暂时复用了table的方法，后续list和table准备合并为一个区块
+        handleTableColumn(tableColumn) {
+            let newColumn = [];
+            let collapseName = [];
+
+            newColumn = tableColumn.map((val, idx, arr) => {
+                // 默认表头{}
+                let defaultColumn = {
+                    ctx: 'view',
+                    default: '',
+                    hidden: false,
+                    label: '',
+                    name: '',
+                    props: {},
+                    children: [],
+                    type: 'text'
+                };
+
+                // 1、如果表头含有fiedls则合并fields到defaultColumn
+                if (this.fields[val.name]) {
+                    deepExtend(defaultColumn, this.fields[val.name]);
+                }
+
+                // 2、合并option中数据到defaultColumn
+                deepExtend(defaultColumn, val);
+
+                // 3、递归处理子级表头
+                if (defaultColumn.children && defaultColumn.children.length > 0) {
+                    defaultColumn.children = this.handleTableColumn(defaultColumn.children);
+                }
+
+                return defaultColumn;
+            });
+
+            // 剔除表头中的collapseColumn折叠项
+            if (collapseName.length > 0) {
+                for (let i = 0; i < newColumn.length; i++) {
+                    if (collapseName.indexOf(newColumn[i].name) >= 0) {
+                        newColumn.splice(i--, 1);
+                    }
+                }
+            }
+
+            return newColumn;
+        },
+        showHeaderSelectedDialog() {
+            this.headerSelectedDialog.show = true;
+            this.headerSelectedDialog.headers = this.handerGetHeaderSelected();
+        },
+        handerGetHeaderSelected() {
+            const name = this.name;
+            let headerFromStorage = LocalStorage.get(`BLOCK_${name}`);
+
+            // 从Storage取出来的field要跟resource做对比
+            const resourceFieldKeys = Object.keys(this.resource.fields);
+            headerFromStorage = headerFromStorage && headerFromStorage.split(',');
+            if (headerFromStorage && headerFromStorage.length) {
+                headerFromStorage = headerFromStorage.filter(header => resourceFieldKeys.indexOf(header) >= 0);
+            }
+            if (headerFromStorage && headerFromStorage.length) {
+                return headerFromStorage;
+            }
+
+            if (this.isMultiTableColumn) {
+                return this.tableColumn.reduce((arr, cur) => {
+                    const children = cur.children;
+                    if (children && children.length) {
+                        arr = arr.concat(cur.children.map(item => item.name));
+                    } else if (cur.name) {
+                        arr.push(cur.name);
+                    }
+                    return arr;
+                }, []);
+            } else if (getType(this.fields) === 'object') {
+                return this.tableColumn.map(item => item.name);
+            }
+        },
+        handleHeaderSelectedChange() {
+            LocalStorage.set(`BLOCK_${this.name}`, this.headerSelectedDialog.headers.join(','));
+            this.headerSelected = this.headerSelectedDialog.headers;
+            this.headerSelectedDialog.show = false;
+
+            // 修改列，且有operation时错乱，先请空触发渲染
+            const newList = JSON.parse(JSON.stringify(this.data.list));
+            this.data.list = [];
+            this.$nextTick(() => {
+                this.data.list = newList;
+            });
         }
     }
 };

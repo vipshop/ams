@@ -3,9 +3,9 @@
                     :placement="field.collapsePlacement || 'right'"
                     :title="field.collapseTitle || ''"
                     :width="field.collapseWidth || 200"
-                    trigger="hover"
-                    :content="viewText">
+                    trigger="hover">
             <span slot="reference">... <el-tag size="mini" type="info">...</el-tag></span>
+            <div v-html="viewText"></div>
         </el-popover>
         <el-tooltip effect="dark" placement="top" v-if="suffixInfo">
             <i :class="suffixIcon + ' ams-field-suffix-info ' + suffixInfoClass"></i>

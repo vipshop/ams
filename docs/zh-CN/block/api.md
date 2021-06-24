@@ -43,6 +43,15 @@ API: API 配置
 
 优先级3：使用默认field的props。附默认列表
 
+## show
+
+- 类型: `boolean | function`
+- 默认值: `undefined`
+
+控制整个block的显示状态，如果show最终值为false则不渲染改组件
+
+show可以接受`function`类型，接收两个参数`block`（指向block的实例) `data`（指向block.data），返回值需是`boolean`值
+
 ## style
 
 - 类型：`object`

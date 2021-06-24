@@ -139,6 +139,7 @@
 
 <script>
 import mixins from '../../ams/mixins';
+import { operationsWidth } from '../../ams/mixins/computed';
 import { defaultListFieldWidth } from '../../ams/configs/field';
 import SlotHeader from './components/SlotHeader.vue';
 import { addEvent, debounce, deepExtend } from '../../utils';
@@ -196,9 +197,7 @@ export default {
                 return false;
             }
         },
-        operationsWidth() {
-            return this.block.options && this.block.options.operationsWidth;
-        }
+        operationsWidth,
     },
     watch: {
         'data.list'(val, oldVal) {

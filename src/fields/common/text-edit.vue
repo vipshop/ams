@@ -1,12 +1,17 @@
 <template>
-    <el-input v-model="localValue"
-              v-on="on"
-              :style="field.style"
-              v-bind="field.props">
-              <template v-for="item in slots" :slot="item">
-                  <template v-if="field.slots && field.slots[item]">{{field.slots[item]}}</template>
-              </template>
-    </el-input>
+
+    <el-tooltip :disabled="!tooltip"
+                v-bind="tooltip">
+        <el-input v-model="localValue"
+                v-on="on"
+                :style="field.style"
+                v-bind="field.props">
+                <template v-for="item in slots" :slot="item">
+                    <template v-if="field.slots && field.slots[item]">{{field.slots[item]}}</template>
+                </template>
+        </el-input>
+    </el-tooltip>
+
 </template>
 
 <script>

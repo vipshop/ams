@@ -42,8 +42,8 @@ export default {
                     },
                     props: {
                         placeholder: '请输入标签',
-                        action: 'https://www.easy-mock.com/mock/5a0023effbbb09615044cb82/tag',
-                        successCode: 200
+                        action: 'https://nei.netease.com/api/apimock-v2/b96b1d7d30d6ce8e4ba2bd4eada72786/ams-packages/tags',
+                        successCode: 0
                     }
                 },
                 testTag2: {
@@ -51,9 +51,10 @@ export default {
                     label: '选择标签（mini）',
                     props: {
                         placeholder: '请输入标签',
-                        action: 'https://www.easy-mock.com/mock/5a0023effbbb09615044cb82/tag',
-                        successCode: 200,
+                        action: 'https://nei.netease.com/api/apimock-v2/b96b1d7d30d6ce8e4ba2bd4eada72786/ams-packages/tags',
+                        successCode: 0,
                         size: 'mini',
+                        'no-match-text': '无数据',
                         'multiple-limit': 2
                         // type: 'info'
                         // 'trigger-on-focus': false
@@ -113,8 +114,8 @@ export default {
                     props: {
                         placeholder: '请输入标签',
                         'allow-create': true,
-                        action: 'https://www.easy-mock.com/mock/5a0023effbbb09615044cb82/tag',
-                        successCode: 200,
+                        action: 'https://nei.netease.com/api/apimock-v2/b96b1d7d30d6ce8e4ba2bd4eada72786/ams-packages/tags',
+                        successCode: 0,
                         options: ['唯品会', '天猫', '淘宝', '京东', '拼多多']
                     }
                 },
