@@ -146,7 +146,10 @@ export default {
         },
         getOperationsCounts() {
             // console.log('getOperationsCounts:');
-            if (!this.block || !this.block.operations) return; // 貌似没有必要，因此只有 !!this.block,才会调用 getOperationsCounts
+            if (!this.block || !this.block.operations) {
+                this.block.operationsCounts = {}; // 初始化，防止在表格等显示操作列的时候（v-if="block.operationsCounts.operations"）异常
+                return; // 貌似没有必要，因此只有 !!this.block,才会调用 getOperationsCounts
+            }
             let counts = {};
             const operations = this.block.operations;
             Object.keys(operations).forEach(key => {
