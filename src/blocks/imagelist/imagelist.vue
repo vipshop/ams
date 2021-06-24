@@ -85,6 +85,7 @@
 <script>
 import ams from '../../ams/index';
 import mixins from '../../ams/mixins';
+import { operationsWidth } from '../../ams/mixins/computed';
 // import { addEvent, getDomPos, getDomStyle, debounce } from '../../utils/index';
 import listitem from './listitem';
 import { deepExtend } from '../../utils/index';
@@ -126,9 +127,7 @@ export default {
             }
             return this.data.list;
         },
-        operationsWidth() {
-            return this.block.options && this.block.options.operationsWidth;
-        },
+        operationsWidth,
         indeterminate() {
             if (this.batchSelected.length > 0 && this.batchSelected.length < this.listData.length) {
                 return true;
