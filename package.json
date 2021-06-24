@@ -27,8 +27,10 @@
     },
     "dependencies": {
         "@babel/runtime": "^7.4.4",
-        "gh-pages": "^2.1.0",
+        "dayjs": "^1.10.5",
         "element-ui": "^2.15.1",
+        "gh-pages": "^2.1.0",
+        "lodash": "^4.17.21",
         "normalize.css": "^8.0.1",
         "vue": "^2.6.10",
         "vue-router": "^3.0.6"
