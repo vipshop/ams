@@ -203,7 +203,7 @@ const ams = {
      * @param {Object} args
      */
     async callAction(maybeMultipleActionStr = '', args = {}) {
-        if (!maybeMultipleActionStr.trim()) return;
+        if (!maybeMultipleActionStr.trim()) return ams.$prevReturn;
         // 用来解析：routePush：/detail-page/id=<%=data.ctx.id%> 之类的lodash.template
         // 感觉这里放在，比如 routePush 这个函数里面去做更合适，但是这里面的正则无法兼容，因此不得不将其提前到callAction中对tpl进行处理
         maybeMultipleActionStr = filter(maybeMultipleActionStr, { ctx: ams.$prevReturn });
@@ -221,8 +221,8 @@ const ams = {
         const maybeMultipleActionStrArr = maybeMultipleActionStr.split(/\s+/);
         for (let i = 0; i < maybeMultipleActionStrArr.length; i++) {
             let actionStr = maybeMultipleActionStrArr[i];
-            if (actionStr) {
-                /**
+            if (!actionStr) return ams.$prevReturn;
+            /**
                  * 举例几种场景的处理：
                  *
                  * #1
@@ -241,36 +241,35 @@ const ams = {
                  * https://regexper.com/#%2F%5E%28%40%29%3F%28%3F%3A%28.*%3F%29%5C.%29%3F%28.*%3F%29%28%3F%3A%3A%28.*%29%29%3F%24%2F
                  */
 
-                // actionDetail action字符串的组成
-                let actionDetail = /^(@)?(?:(.*?)\.)?(.*?)(?::(.*))?$/.exec(actionStr);
-                // eslint-disable-next-line no-unused-vars
-                const [rawString, at, blockName, actionName, argument] = actionDetail;
+            // actionDetail action字符串的组成
+            let actionDetail = /^(@)?(?:(.*?)\.)?(.*?)(?::(.*))?$/.exec(actionStr);
+            // eslint-disable-next-line no-unused-vars
+            const [rawString, at, blockName, actionName, argument] = actionDetail;
 
-                if (!actionDetail) return;
-                const target = blockName ? ams.$blocks[blockName] : this;
-                // args标准参数，如event配置为 @block.action:arg1,arg2，参数为args1,arg2的字符串
-                // 先取argument, argument为手动输入优先级应该高于从上一个action传递下来的args.$arg
-                args.$arg = argument || args.$arg || '';
-                args.$context = this;
-                args.$prevReturn = ams.$prevReturn;
+            if (!actionDetail) return ams.$prevReturn;
+            const target = blockName ? ams.$blocks[blockName] : this;
+            // args标准参数，如event配置为 @block.action:arg1,arg2，参数为args1,arg2的字符串
+            // 先取argument, argument为手动输入优先级应该高于从上一个action传递下来的args.$arg
+            args.$arg = argument || args.$arg || '';
+            args.$context = this;
+            args.$prevReturn = ams.$prevReturn;
 
-                // 事件 event
-                if (!at) {
-                    if (target && target.emitEvent) {
-                        // /ams/src/ams/mixins/block-mixin.js
-                        await target.emitEvent(actionName, args);
-                    }
-                    // action
-                } else {
-                    if (!target) return;
-                    const action = lodashGet(target, `block.actions[${actionName}]`, ams.actions[actionName]);
-                    if (!action) return;
-                    let result = await action.call(target, args);
-                    // 保存当前结果，下一个action的args.$prevReturn用来取值
-                    if (!result) return;
-                    // 只有需要显式return数据的场景才记录$prevReturn，方便控制需要关心的$prevReturn参数传递
-                    ams.$prevReturn = result;
+            // 事件 event
+            if (!at) {
+                if (target && target.emitEvent) {
+                    // /ams/src/ams/mixins/block-mixin.js
+                    await target.emitEvent(actionName, args);
                 }
+                // action
+            } else {
+                if (!target) return ams.$prevReturn;
+                const action = lodashGet(target, `block.actions[${actionName}]`, ams.actions[actionName]);
+                if (!action) return ams.$prevReturn;
+                let result = await action.call(target, args);
+                // 保存当前结果，下一个action的args.$prevReturn用来取值
+                if (!result) return ams.$prevReturn;
+                // 只有需要显式return数据的场景才记录$prevReturn，方便控制需要关心的$prevReturn参数传递
+                ams.$prevReturn = result;
             }
         }
         return ams.$prevReturn;
