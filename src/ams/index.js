@@ -258,12 +258,12 @@ const ams = {
                     }
                     // action
                 } else {
-                    if (!target) return 
-                    const action = lodashGet(target, block.actions[actionName], ams.actions[actionName]);
+                    if (!target) return;
+                    const action = lodashGet(target, `block.actions[${actionName}]`, ams.actions[actionName]);
                     if (!action) return;
                     let result = await action.call(target, args);
                     // 保存当前结果，下一个action的args.$prevReturn用来取值
-                    if (!result) return
+                    if (!result) return;
                     // 只有需要显式return数据的场景才记录$prevReturn，方便控制需要关心的$prevReturn参数传递
                     ams.$prevReturn = result;
                 }
