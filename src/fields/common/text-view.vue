@@ -1,5 +1,17 @@
 <template>
-    <div :style="field.style" v-bind="field.props" v-on="on">{{ actualViewText }}<el-popover v-if="showMoreIcon"
+    <div :style="field.style" v-bind="field.props" v-on="on">
+        <vnode
+            v-if="field.render"
+            :render="field.render"
+            :scope="{
+                $createElement,
+                value,
+                field,
+                context,
+            }"
+        />
+        <div v-else v-html="actualViewText"></div>
+        <el-popover v-if="showMoreIcon"
                     :placement="field.collapsePlacement || 'right'"
                     :title="field.collapseTitle || ''"
                     :width="field.collapseWidth || 200"
@@ -19,7 +31,7 @@
 import mixins from '../../ams/mixins';
 
 export default {
-    mixins: [mixins.fieldViewMixin],
+    mixins: [mixins.fieldViewMixin, mixins.vnodeMixin],
     data() {
         return {
             suffixInfoClass: ''
