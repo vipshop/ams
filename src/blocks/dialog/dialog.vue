@@ -5,8 +5,12 @@
                    :style="block.style"
                    v-on="on"
                    v-bind="block.props">
-            <ams-blocks v-loading="loading" :blocks="block.blocks"
-                            v-if="data.visible" />
+                   <template v-if="data.visible">
+                        <vnode v-loading="loading" :render="block.render" v-if="block.render" />
+                        <ams-blocks v-loading="loading" :blocks="block.blocks" v-else />
+                   </template>
+
+
             <div slot="footer">
                 <ams-operations :name="name"></ams-operations>
             </div>
@@ -18,7 +22,7 @@
 import mixins from '../../ams/mixins';
 
 export default {
-    mixins: [mixins.blockMixin]
+    mixins: [mixins.blockMixin, mixins.vnodeMixin]
 };
 </script>
 
