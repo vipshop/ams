@@ -1,4 +1,6 @@
-import { deepExtend, get } from '../../../utils';
+/* eslint-disable complexity,no-new,max-depth */
+
+import { deepExtend, responseHandler } from '../../../utils';
 import * as fieldGetSet from '../field-get-set';
 import { httpRequestTypeExcludeGet } from '../../request';
 
@@ -171,19 +173,13 @@ export const SELECT_REMOTE = {
                 $field.loading = true;
                 const res = await remoteConfig.request.call(this, $field, query, isBackfill);
                 $field.loading = false;
-
-                let data = get(res.data, remoteConfig.dataPath);
-                let successCode;
-
-                if (typeof remoteConfig.successCode !== 'undefined') {
-                    successCode = remoteConfig.successCode;
-                } else {
-                    successCode = this.getConfig('resource.api.successCode');
-                }
-                if (
-                    res.data.code === successCode &&
-                    data
-                ) {
+                // eslint-disable-next-line no-unused-vars
+                const { isSuccess, data } = responseHandler.call(this, res, '', {
+                    dataPath: remoteConfig.dataPath, // 'data.list',
+                    successCode: remoteConfig.successCode || this.getConfig('resource.api.successCode'),
+                    codePath: remoteConfig.codePath || this.getConfig('resource.api.code') || 'code'
+                });
+                if (isSuccess && data) {
                     const options = remoteConfig.transform.call(this, $field, data);
                     const optionsEntity = options.reduce((obj, cur) => Object.assign(obj, { [cur.label]: cur.value }), {});
                     if (remoteConfig.isCache) {
