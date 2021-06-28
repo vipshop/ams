@@ -341,8 +341,7 @@ export const list = ams.createApiAction({
 
             const { transform, responseDataParse } = this.resource.api.list || {};
             if (isFn(transform)) {
-                this.data.list = transform(data);
-
+                this.data.list = transform(list);
             } else if (isFn(responseDataParse)) {
                 const parsedData = responseDataParse(data);
                 if (getType(parsedData) !== 'object') {
