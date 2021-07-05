@@ -28,7 +28,7 @@ export default {
             required: false
         }
     },
-
+    // src/ams/mixins/block-mixin.js
     inject: ['$block'],
 
     methods: {

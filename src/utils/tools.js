@@ -27,15 +27,15 @@ export function watermark({
     const __vm_uid = `__wm_${uid}`;
     const __wm = document.querySelector(`.${__vm_uid}`);
     const watermarkDiv = __wm || document.createElement('div');
-    const styleStr = `          
-        position:absolute;          
-        top:0;          
-        left:0;          
-        width:100%;          
-        height:100%;          
-        z-index:${zIndex};          
-        pointer-events:none;          
-        background-repeat:repeat;          
+    const styleStr = `
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        z-index:${zIndex};
+        pointer-events:none;
+        background-repeat:repeat;
         background-image:url('${base64Url}')`;
     watermarkDiv.setAttribute('style', styleStr);
     watermarkDiv.classList.add(__vm_uid);

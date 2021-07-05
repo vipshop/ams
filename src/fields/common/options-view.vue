@@ -15,7 +15,10 @@
         </el-tag>
       </span>
       <ul class="el-scrollbar__view el-select-dropdown__list ams-popover-content-view">
-        <li class="el-select-dropdown__item" v-for="option in dropdownOptions">
+        <li
+          class="el-select-dropdown__item"
+          v-for="(option, index) in dropdownOptions" :key="index"
+        >
             <span>{{option}}</span>
         </li>
       </ul>

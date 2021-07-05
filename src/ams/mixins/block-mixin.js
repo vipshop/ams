@@ -146,21 +146,29 @@ export default {
         },
         getOperationsCounts() {
             // console.log('getOperationsCounts:');
-            let counts = {};
-            if (this.block) {
-                if (this.block.operations) {
-                    Object.keys(this.block.operations).forEach(key => {
-                        let operaSlot = this.block.operations[key].slot || 'operations';
-                        if (!counts[operaSlot]) {
-                            counts[operaSlot] = 1;
-                        } else {
-                            counts[operaSlot]++;
-                        }
-                    });
-                }
-                this.block.operationsCounts = counts;
+            if (!this.block || !this.block.operations) {
+                this.block.operationsCounts = {}; // 初始化，防止在表格等显示操作列的时候（v-if="block.operationsCounts.operations"）异常
+                return; // 貌似没有必要，因此只有 !!this.block,才会调用 getOperationsCounts
             }
+            let counts = {};
+            const operations = this.block.operations;
+            Object.keys(operations).forEach(key => {
+                let operaSlot = operations[key].slot || 'operations';
+                if (!counts[operaSlot]) {
+                    counts[operaSlot] = 1;
+                } else {
+                    counts[operaSlot]++;
+                }
+            });
+            this.block.operationsCounts = counts;
         },
+        /**
+         *
+         * @param {String} key
+         *
+         * eg: this.getConfig(`resource.api.${action}.dataPath`) || this.getConfig(`resource.api.dataPath`) || 'data.list';
+         *
+         */
         getConfig(key) {
             return getByOrder(get(this, key), get(ams.configs, key));
         },
@@ -212,6 +220,11 @@ export default {
                 this[key] = methods[key] == null ? noop : methods[key].bind(this);
             }
         },
+        initResource() {
+            const resource = this.block.resource;
+            const isStr =  typeof this.block.resource === 'string';
+            this.resource = isStr ? ams.resources[resource] : ams.resource('', resource);
+        },
         /**
          * 如果新增、删除fields，需要触发initBlock
          */
@@ -219,10 +232,7 @@ export default {
             this.block = await ams.getBlock(this.name);
             this.initActionsToVM(); // #70
             if (this.block) {
-                this.resource =
-                    typeof this.block.resource === 'string'
-                        ? ams.resources[this.block.resource]
-                        : ams.resource('', this.block.resource);
+                this.initResource();
                 ams.$blocks[this.name] = this;
                 this.initFields();
                 this.getOperationsCounts();
@@ -492,16 +502,15 @@ export default {
         },
         async emitEvent(name, args) {
             // console.log('emitEvent', name, args)
-            if (name) {
-                const action = this.block.events[name];
-                // 保证传入action的都是一个对象
-                args = args || {};
-                if (action) {
-                    await this.callAction(action, args);
-                } else {
-                    // 如果没有绑定event、默认调用同名action、这样可以简化减少如 evnets:{list:'@list'} 的配置
-                    await this.callAction(`@${name}`, args);
-                }
+            if (!name) return;
+            const action = this.block.events[name];
+            // 保证传入action的都是一个对象
+            args = args || {};
+            if (action) {
+                await this.callAction(action, args);
+            } else {
+                // 如果没有绑定event、默认调用同名action、这样可以简化减少如 events:{list:'@list'} 的配置
+                await this.callAction(`@${name}`, args);
             }
         },
         async callAction(...args) {

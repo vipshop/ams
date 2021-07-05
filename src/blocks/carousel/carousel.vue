@@ -7,7 +7,7 @@
       </el-carousel-item>
     </template>
     <template v-else>
-      <el-carousel-item v-for="(value, key) in block.options" :key="key" :style="{'line-height': height}">
+      <el-carousel-item v-for="(value, key) in block.options" :key="key" :style="{ 'line-height': height }">
         {{ value}}
       </el-carousel-item>
     </template>
