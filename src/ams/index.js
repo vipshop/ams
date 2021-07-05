@@ -90,7 +90,8 @@ const ams = {
             return;
         }
         // 合并BASE简化配置
-        block = this.deepCloneConfig(block);
+        const defaultBlockConfig = ams.configs.defaultBlockConfig && ams.configs.defaultBlockConfig[block.type];
+        block = this.deepCloneConfig(block, defaultBlockConfig);
         // 初始化props
         block.props = {
             ...ams.configs.defaultBlockProps[block.type],

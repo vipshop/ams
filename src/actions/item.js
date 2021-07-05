@@ -58,7 +58,6 @@ export function commonHandlerItem({ blockConfig, type, resource, insertType, $pr
             },
             actions: {
                 remove() {
-                    console.log('remove');
                     listRemoveItem($currentBlock.block.blocks, WRAP_BLOCK_NAME);
                     resolve();
                 }

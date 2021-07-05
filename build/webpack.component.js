@@ -19,7 +19,7 @@ let externals = {
 const moveFiles = [];
 
 // 打包类型
-let libraryTarget = process.argv && process.argv[5] || 'commonjs2'
+let libraryTarget = process.argv && process.argv[5] || 'commonjs2';
 
 const webpackConfig = env => {
     // 如果通过 npm run components -- --env.pkg=field-editor 传入会获取到 pkg，打包单一模块
@@ -44,6 +44,7 @@ const webpackConfig = env => {
                 componentPath,
                 'src/theme/vipshop'
             );
+            // npm run components-umd -- --env.pkg=field-editor
             if (libraryTarget === 'umd') {
                 moveFiles.push({
                     source: path.join(
@@ -155,7 +156,7 @@ const webpackConfig = env => {
             new VueLoaderPlugin(),
             new FileManagerPlugin({
                 onEnd: {
-                    mkdir:  [
+                    mkdir: [
                         './dist/block',
                         './dist/fields',
                     ],

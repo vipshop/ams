@@ -142,7 +142,7 @@
                                         :min-width="column.props['min-width'] || defaultListFieldWidth[column.type] || '90px'"
                                         :align="column.props['align'] || 'center'">
                         <!-- 第一层表头的处理 -->
-                        <template slot="header" v-if="column.name && headerSelected.indexOf()">
+                        <template slot="header" v-if="column.name">
                             {{column.label}}
                             <el-tooltip effect="dark" placement="top" v-if="column.info">
                                 <i :class="column.info.icon || 'el-icon-info'"></i>
@@ -392,9 +392,9 @@ export default {
     },
     created() {
         // 最后执行
-        setTimeout(() => {
+        this.$nextTick(() => {
             this.headerSelected = this.handerGetHeaderSelected();
-        }, 0);
+        });
     },
     methods: {
         afterReady() {
@@ -654,7 +654,7 @@ export default {
             // 从Storage取出来的field要跟resource做对比
             const resourceFieldKeys = Object.keys(this.resource.fields);
             headerFromStorage = headerFromStorage && headerFromStorage.split(',');
-            if (headerFromStorage && headerFromStorage.length) {
+            if (resourceFieldKeys && headerFromStorage && headerFromStorage.length) {
                 headerFromStorage = headerFromStorage.filter(header => resourceFieldKeys.indexOf(header) >= 0);
             }
             if (headerFromStorage && headerFromStorage.length) {
