@@ -128,6 +128,7 @@ npm run dev
 vip.com以外的开发者：
 
 + [hodor-cn](https://github.com/hodor-cn)
++ [ly525](https://github.com/ly525)
 
 ## 社区互助
 

@@ -1,6 +1,6 @@
 <template>
   <div :style="field.style" class="ams-options-view">
-    {{actualSelectOptionsText}}
+    <span v-html="actualSelectOptionsText"></span>
     <el-popover
       v-if="showMoreIcon"
       :placement="field.collapsePlacement || 'bottom-end'"
@@ -19,7 +19,7 @@
           class="el-select-dropdown__item"
           v-for="(option, index) in dropdownOptions" :key="index"
         >
-            <span>{{option}}</span>
+            <span v-html="option"></span>
         </li>
       </ul>
     </el-popover>
