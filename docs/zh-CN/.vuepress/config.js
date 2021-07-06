@@ -50,6 +50,10 @@ module.exports = {
           {
             text: '规划总览',
             link: '/version/VERSION'
+          },
+          {
+            text: 'cdn资源',
+            link: '/version/cdn-script'
           }
         ]
       },
@@ -179,7 +183,7 @@ module.exports = {
             children: ['chart']
         }
       ],
-      '/version/': ['changelog', 'VERSION']
+      '/version/': ['changelog', 'VERSION', 'cdn-script']
     }
   }
 };
