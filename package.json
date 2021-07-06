@@ -1,7 +1,7 @@
 {
     "name": "@ams-team/ams",
     "description": "Admin Materials System.",
-    "license": "MIT",
+    "license": "Apache 2.0",
     "homepage": "https://github.com/vipshop/ams/",
     "repository": {
         "type": "git",
