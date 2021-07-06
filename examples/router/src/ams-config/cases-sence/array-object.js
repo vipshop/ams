@@ -57,7 +57,7 @@ ams.block('array-object', {
                     props: {
                         align: 'left',
                         'header-align': 'center'
-                    },
+                    }
                 },
                 mutiObject: {
                     type: 'object',
@@ -263,8 +263,8 @@ ams.block('array-object', {
             type: 'form',
             resource: 'arrayObject',
             events: {
-                init: '@read',
-            },
+                init: '@read'
+            }
         },
         arrayList: {
             ctx: 'view',

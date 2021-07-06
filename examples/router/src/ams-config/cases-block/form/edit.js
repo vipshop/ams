@@ -70,10 +70,10 @@ ams.block('form-edit', {
                 testDatetime: true,
                 testSwitch: true
             }
-        },
+        }
     },
     layout: {
-        testTime: ['testTime', 'testDatetime'],
+        testTime: ['testTime', 'testDatetime']
         // testDatetime: 'testDatetime'
     },
 

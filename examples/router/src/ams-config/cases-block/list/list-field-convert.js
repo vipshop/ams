@@ -102,7 +102,7 @@ ams.block('list-field-convert', {
                 }
                 ]
             }
-        ],
+        ]
     },
     data: {
         pageSize: 20,

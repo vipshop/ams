@@ -43,7 +43,7 @@ ams.block('dropdown', {
                     {
                         text: '双皮奶',
                         props: {
-                            disabled: true,
+                            disabled: true
                         }
                     }, {
                         text: '蚵仔煎',
@@ -80,7 +80,7 @@ ams.block('dropdown', {
                     {
                         text: '双皮奶',
                         props: {
-                            disabled: true,
+                            disabled: true
                         }
                     }, {
                         text: '蚵仔煎',

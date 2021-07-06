@@ -38,7 +38,7 @@ ams.block('radio', {
                             {
                                 label: '哈哈哈',
                                 value: 1
-                            },
+                            }
                         ]
                     },
                     on: {
@@ -127,7 +127,7 @@ ams.block('radio', {
                             console.log('radiobutton-change', val);
                         }
                     }
-                },
+                }
             }
         }
     },

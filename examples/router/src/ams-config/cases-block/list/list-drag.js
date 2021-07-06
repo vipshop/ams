@@ -39,7 +39,7 @@ ams.block('list-drag', {
                 label: '选择',
                 default: '内容配置',
                 style: {
-                    width: '95px',
+                    width: '95px'
                 },
                 props: {
                     width: 105,

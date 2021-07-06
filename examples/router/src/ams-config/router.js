@@ -135,6 +135,11 @@ ams.block('router', {
                         block: 'union'
                     },
                     {
+                        name: '对象字段',
+                        path: 'object',
+                        block: 'object'
+                    },
+                    {
                         name: '原始文件上传',
                         path: 'originfile',
                         block: 'originfile'
@@ -486,7 +491,6 @@ ams.block('router', {
     },
     on: {
         beforeEach: function(to, from, next) {
-            console.log(to);
             let href = '';
             switch (to.meta.path) {
                 case '/':
