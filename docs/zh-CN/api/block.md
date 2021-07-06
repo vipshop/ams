@@ -235,6 +235,10 @@ actions: {
 | show | Promise | 设置`this.data.visible`为`true`，当`this.$nextTick()`执行然后返回
 | hide | 无 | 设置`this.data.visible`为`false`
 | clearReturn | 无 | 清除上一次action的返回值
+| resetData | 无 | 重置block的data默认值
+| clear | 无 | 同resetData，重置block的默认值
+| showBatch | 无 | block-imagelist 显示 批量操作的按钮
+| hideBatch | 无 | block-imagelist 退出 批量操作的按钮
 | routerPush | Promise | 跳转新页面
 | routerReplace | Promise | 重定向当前页
 | routerGo | Promise | 回退或者前进 页面
@@ -244,6 +248,10 @@ actions: {
 | addItemDialog | Promise | (ams >= 0.7.7) 弹窗增加一项数据，可通过参数指定resource和blockConfig
 | editItemAfter | Promise | (ams >= 0.7.7) 在列表后面显示修改改项数据的表单，可通过参数指定resource和blockConfig
 | editItemDialog | Promise | (ams >= 0.7.7)  弹窗修改该项数据，可通过参数指定resource和blockConfig
+| addItemDrawer | Promise | (ams >= 0.7.7)  弹窗修改该项数据，可通过参数指定resource和blockConfig
+| editItemDrawer | Promise | (ams >= 0.7.7)  弹窗修改该项数据，可通过参数指定resource和blockConfig
+| viewItemDialog | Promise | (ams >= 0.32.3)  弹窗修改该项数据，可通过参数指定resource和blockConfig
+| viewItemDrawer | Promise | (ams >= 0.32.3)  弹窗修改该项数据，可通过参数指定resource和blockConfig
 
 可以自定义actions，可被`events`中使用，如果定义跟内置action同名则会覆盖默认提供方法
 
@@ -315,8 +323,8 @@ operations结构类型如下：
 
 ```js
 operations: {
-	editItem: {
-		type: 'button',
+    editItem: {
+        type: 'button',
 		props: {
 			type: 'primary',
 			icon: 'el-icon-edit',

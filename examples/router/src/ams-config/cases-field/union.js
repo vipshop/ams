@@ -34,7 +34,7 @@ ams.block('union', {
             type: 'form',
             resource: 'union',
             data: {
-                union: '1548413724000,1548417324000',
+                union: '1548413724000,1548417324000'
             },
             operations: {
                 update: {
@@ -51,7 +51,7 @@ ams.block('union', {
             type: 'form',
             resource: 'union',
             data: {
-                union: '1548413724000,1548417324000',
+                union: '1548413724000,1548417324000'
             }
         }
     }

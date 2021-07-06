@@ -44,7 +44,7 @@ ams.block('link', {
                             label: '链接',
                             props: {
                                 type: 'primary',
-                                target: '_blank',
+                                target: '_blank'
                             }
                         }
                     }

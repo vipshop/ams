@@ -4,7 +4,7 @@ import { prefix } from '@/utils';
 ams.block('login-auth', {
     type: 'component',
     options: {
-        is: 'div',
+        is: 'div'
     },
     actions: {
         needlogin() {
@@ -24,15 +24,15 @@ ams.block('login-auth', {
     operations: {
         needlogin: {
             type: 'button',
-            label: '需登录的请求',
+            label: '需登录的请求'
         },
         dosomething: {
             type: 'button',
-            label: '无权限的请求',
+            label: '无权限的请求'
         },
         test: {
             type: 'button',
-            label: '修改operation',
+            label: '修改operation'
         }
     }
 });

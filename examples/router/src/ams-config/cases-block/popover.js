@@ -44,7 +44,7 @@ ams.block('popover', {
         popover3Block: {
             type: 'popover',
             props: {
-                title: '标题2',
+                title: '标题2'
             },
             slots: {
                 content: '这是一段<span style="color: red">内容</span>,这是一段内容,这是一段内容,这是一段内容。',

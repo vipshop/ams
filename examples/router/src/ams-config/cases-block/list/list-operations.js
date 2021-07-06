@@ -6,7 +6,7 @@ ams.block('list-operations', {
 
     options: {
         // 支持多选
-        multipleSelect: true,
+        multipleSelect: true
         // 列表高度自适应屏幕
         // tableHeightFit: true
     },

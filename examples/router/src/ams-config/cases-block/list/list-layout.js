@@ -17,7 +17,7 @@ ams.block('list-layout', {
                     },
                     options: {
                         // 支持多选
-                        multipleSelect: true,
+                        multipleSelect: true
                         // 列表高度自适应屏幕
                         // tableHeightFit: true
                     },
@@ -226,7 +226,7 @@ ams.block('list-layout', {
                         a: false,
                         c: false,
                         testVideo: false,
-                        testAudio: false,
+                        testAudio: false
                     },
                     actions: {
                         show({ row }) {

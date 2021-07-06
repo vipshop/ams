@@ -10,7 +10,7 @@ ams.block('card', {
             type: 'card',
             style: {
                 width: '600px',
-                margin: '20px auto 0',
+                margin: '20px auto 0'
             },
             blocks: {
                 emptyCardTextCard: {
@@ -34,7 +34,7 @@ ams.block('card', {
             type: 'card',
             style: {
                 width: '600px',
-                margin: '20px auto 0',
+                margin: '20px auto 0'
             },
             options: {
                 headerTitle: '卡片类型自带的标题'
@@ -53,7 +53,7 @@ ams.block('card', {
             type: 'card',
             style: {
                 width: '600px',
-                margin: '20px auto 0',
+                margin: '20px auto 0'
             },
             blocks: {
                 emptyCardTextCard21: {
@@ -77,7 +77,7 @@ ams.block('card', {
             type: 'card',
             style: {
                 width: '600px',
-                margin: '20px auto 0',
+                margin: '20px auto 0'
             },
             operations: {
                 submit: {
@@ -111,10 +111,10 @@ ams.block('card', {
             type: 'card',
             style: {
                 width: '600px',
-                margin: '20px auto 0',
+                margin: '20px auto 0'
             },
             options: {
-                headerTitle: '卡片类型自带的标题',
+                headerTitle: '卡片类型自带的标题'
             },
             operations: {
                 submit: {
@@ -140,7 +140,7 @@ ams.block('card', {
             type: 'card',
             style: {
                 width: '600px',
-                margin: '20px auto',
+                margin: '20px auto'
             },
             resource: 'resource-card',
             data: {
@@ -153,9 +153,6 @@ ams.block('card', {
                         type: 'mini'
                     }
                 }
-            },
-            events: {
-                // init: '@read'
             },
             blocks: {
                 cardScheduleTitle: {
@@ -216,9 +213,6 @@ ams.block('card', {
                                 data: 'data.series'
                             }
                         ]
-                    },
-                    events: {
-                        init: '@read'
                     }
                 }
             }
