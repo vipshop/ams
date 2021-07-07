@@ -82,7 +82,13 @@
                 <template v-if="expandFields">
                     <el-table-column type="expand">
                         <template slot-scope="scope">
+                            <vnode
+                                v-if="block.expandRender"
+                                :render="block.expandRender"
+                                :scope="scope"
+                            />
                             <el-form
+                                v-else
                                 class="ams-block-list-expand"
                                 :label-width="block.props && block.props['label-width'] || '100px'"
                             >
@@ -266,7 +272,12 @@ export default {
     components: {
         field
     },
-    mixins: [mixins.blockMixin, mixins.getField, mixins.getShowState],
+    mixins: [
+        mixins.blockMixin,
+        mixins.getField,
+        mixins.getShowState,
+        mixins.vnodeMixin
+    ],
     data() {
         return {
             defaultListFieldWidth,

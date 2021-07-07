@@ -9,6 +9,7 @@ import fieldViewMixin from './field-view-mixin';
 import operationMixin from './operation-mixin';
 import getShowState from './get-show-state';
 import getField from './get-field';
+import vnodeMixin from './vnode';
 
 export default {
     blockMixin,
@@ -21,5 +22,6 @@ export default {
     fieldViewMixin,
     operationMixin,
     getShowState,
-    getField
+    getField,
+    vnodeMixin,
 };
