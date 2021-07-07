@@ -54,11 +54,7 @@ export default {
     show() {
         this.data.visible = true;
         this.ready = true;
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                resolve();
-            }, 100);
-        });
+        return new Promise(resolve => setTimeout(resolve, 100));
     },
     hide() {
         this.data.visible = false;
@@ -81,13 +77,8 @@ export default {
     },
 
     // 等待毫秒，如果不传值则为0
-    wait({ $arg }) {
-        return new Promise((resolve, reject) => {
-            // console.log(this.block.data)
-            setTimeout(() => {
-                resolve();
-            }, $arg || 0);
-        });
+    wait({ $arg = 0 }) {
+        return new Promise(resolve => setTimeout(resolve, $arg));
     },
     // block-imagelist 全选 操作
     // todo: 最好针对某个block设置它的内置action

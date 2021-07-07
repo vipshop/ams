@@ -26,6 +26,16 @@ export const equals = function(val1, val2, field) {
         return true;
     }
 
+    // 如果是File类型
+    if (val1 instanceof File && val2 instanceof File) {
+        for (const key in val1) {
+            if (val1[key] !== val2[key]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     const type1 = typeof val1;
     const type2 = typeof val2;
 

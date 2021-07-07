@@ -8,7 +8,7 @@ ams.block('list', {
         // 自动加上索引
         type: 'index',
         // 定义列表操作项的宽度
-        'operations-width': 300,
+        'operations-width': 300
     },
     options: {
         // 支持拖拽
@@ -86,7 +86,7 @@ ams.block('list', {
             },
             props: {
                 size: 'mini'
-            },
+            }
 
         },
         replace: {
@@ -202,7 +202,7 @@ ams.block('list', {
                     return true;
                 }
             }
-        },
+        }
         // search: {
         //     slot: 'searchs',
         //     type: 'button',

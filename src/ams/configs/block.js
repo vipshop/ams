@@ -1,3 +1,4 @@
+export const defaultBlockConfig = {};
 export const defaultBlockProps = {
     form: {
         ref: 'amsForm',

@@ -33,21 +33,21 @@ ams.block('imagelist2', {
             type: 'text',
             props: {
                 type: 'danger',
-                size: 'mini',
+                size: 'mini'
             },
             label: '驳回'
         },
         rejectedItem1: {
             type: 'text',
             props: {
-                size: 'mini',
+                size: 'mini'
             },
             label: '通过(设计)'
         },
         rejectedItem2: {
             type: 'text',
             props: {
-                size: 'mini',
+                size: 'mini'
             },
             label: '通过(协助)'
         },
@@ -85,7 +85,7 @@ ams.block('imagelist2', {
         // 'empty-text': '暂无数据'
     },
     events: {
-        init: '@list',
+        init: '@list'
     },
     actions: {
         fieldChange({ name, value, path }) {

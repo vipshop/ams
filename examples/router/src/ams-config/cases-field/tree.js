@@ -95,6 +95,6 @@ ams.block('tree', {
                     console.log('fieldChange', value, path);
                 }
             }
-        },
+        }
     }
 });

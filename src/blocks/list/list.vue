@@ -1,3 +1,45 @@
+<!--
+    增加注释，解释 template 中 getShowState、getField 的作用
+
+    以一个 list block 为例
+    {
+        type: 'list',
+        fields: {
+            'status': {
+                'type': 'text',
+                'label': 'status',
+                view(fieldValue, field) {
+                    return fieldValue > 0 ? `+${fieldValue}` : `-${fieldValue}`
+                },
+            },
+        }
+    }
+    其中
+    - scope.row 为：
+        {
+            "id": 21,
+            "email": "test-create-dsp@demo.com",
+            "status": 2,
+        }
+
+    - getShowState(field, scope.row) 为：true
+
+
+    - getField(field, scope.row) 为：
+        {
+            "name": "status",
+            "ctx": "view",
+            "props": {
+                "clearable": true
+            },
+            "on": {},
+            "type": "text",
+            "label": "status",
+            "default": ""
+        }
+
+    - `list[${scope.$index}].${fieldName}` 为(其中一个)：list[0].status
+-->
 <template>
     <div v-if="ready"
          class="ams-block-list"
@@ -106,7 +148,7 @@
                                         :min-width="column.props['min-width'] || defaultListFieldWidth[column.type] || '90px'"
                                         :align="column.props['align'] || 'center'">
                         <!-- 第一层表头的处理 -->
-                        <template slot="header" v-if="column.name && headerSelected.indexOf()">
+                        <template slot="header" v-if="column.name">
                             {{column.label}}
                             <el-tooltip effect="dark" placement="top" v-if="column.info">
                                 <i :class="column.info.icon || 'el-icon-info'"></i>
@@ -114,7 +156,11 @@
                             </el-tooltip>
                         </template>
                         <template slot-scope="scope" v-if="column.name">
-                            <field v-if="getShowState(column, scope.row)" :field="getField(column, scope.row)" :value="scope.row[column.name]" :name="name" :context="scope.row"
+                            <field
+                                v-if="getShowState(column, scope.row)"
+                                :field="getField(column, scope.row)"
+                                :value="scope.row[column.name]" :name="name"
+                                :context="scope.row"
                                 :path="`list[${(isSimulatePagination ? ((data.page - 1) * data.pageSize) : 0) + scope.$index}].${column.name}`"/>
                         </template>
 
@@ -357,9 +403,9 @@ export default {
     },
     created() {
         // 最后执行
-        setTimeout(() => {
+        this.$nextTick(() => {
             this.headerSelected = this.handerGetHeaderSelected();
-        }, 0);
+        });
     },
     methods: {
         afterReady() {
@@ -619,7 +665,7 @@ export default {
             // 从Storage取出来的field要跟resource做对比
             const resourceFieldKeys = Object.keys(this.resource.fields);
             headerFromStorage = headerFromStorage && headerFromStorage.split(',');
-            if (headerFromStorage && headerFromStorage.length) {
+            if (resourceFieldKeys && headerFromStorage && headerFromStorage.length) {
                 headerFromStorage = headerFromStorage.filter(header => resourceFieldKeys.indexOf(header) >= 0);
             }
             if (headerFromStorage && headerFromStorage.length) {

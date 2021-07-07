@@ -26,7 +26,7 @@ ams.block('editor', {
                         ready($event) {
                             console.log('onEditorReady');
                         }
-                    },
+                    }
                 },
                 testEditor2: {
                     type: 'editor',
@@ -36,11 +36,11 @@ ams.block('editor', {
                             placeholder: '自定义 placeholder',
                             modules: {
                                 toolbar: [
-                                    ['bold', 'italic', 'underline', 'strike'],
+                                    ['bold', 'italic', 'underline', 'strike']
                                 ]
-                            },
-                        },
-                    },
+                            }
+                        }
+                    }
                 },
                 testMarkdown: {
                     type: 'markdown',

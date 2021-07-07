@@ -43,7 +43,7 @@ ams.block('list-pagination', {
                 type: 'textarea',
                 label: '内容',
                 props: {
-                    'suffix-info': '我是提示', // 后缀提示
+                    'suffix-info': '我是提示' // 后缀提示
                 }
             }
         }
@@ -62,7 +62,7 @@ ams.block('list-pagination', {
             slot: 'searchs',
             type: 'button',
             props: {
-                type: 'primary',
+                type: 'primary'
             },
             label: '搜索',
             event: 'list:1'
@@ -88,7 +88,7 @@ ams.block('list-pagination', {
     },
     options: {
         // 支持多选
-        multipleSelect: true,
+        multipleSelect: true
         // 列表高度自适应屏幕
         // tableHeightFit: true
     },

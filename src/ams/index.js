@@ -89,7 +89,8 @@ const ams = {
             return;
         }
         // 合并BASE简化配置
-        block = this.deepCloneConfig(block);
+        const defaultBlockConfig = ams.configs.defaultBlockConfig && ams.configs.defaultBlockConfig[block.type];
+        block = this.deepCloneConfig(block, defaultBlockConfig);
         // 初始化props
         block.props = {
             ...ams.configs.defaultBlockProps[block.type],
@@ -202,7 +203,7 @@ const ams = {
      * @param {Object} args
      */
     async callAction(maybeMultipleActionStr = '', args = {}) {
-        if (!maybeMultipleActionStr.trim()) return;
+        if (!maybeMultipleActionStr.trim()) return ams.$prevReturn;
         // 用来解析：routePush：/detail-page/id=<%=data.ctx.id%> 之类的lodash.template
         // 感觉这里放在，比如 routePush 这个函数里面去做更合适，但是这里面的正则无法兼容，因此不得不将其提前到callAction中对tpl进行处理
         maybeMultipleActionStr = filter(maybeMultipleActionStr, { ctx: ams.$prevReturn });
@@ -221,24 +222,24 @@ const ams = {
         for (let i = 0; i < maybeMultipleActionStrArr.length; i++) {
             let actionStr = maybeMultipleActionStrArr[i];
             if (actionStr) {
-                /**
-                 * 举例几种场景的处理：
-                 *
-                 * #1
-                 * actionStr: "@list"
-                 * actionDetail: ["@list", "@", undefined, "list", undefined, index: 0, input: "@list", groups: undefined]
-                 *
-                 * #2
-                 * actionStr: "addDialogForm.submit"
-                 * -> actionDetail: ["addDialogForm.submit", undefined, "addDialogForm", "submit", undefined, index: 0, input: "addDialogForm.submit", groups: undefined]
-                 *
-                 * #3
-                 * actionStr: "@addDialogForm.submit"
-                 * -> actionDetail: ["addDialogForm.submit", "@", "addDialogForm", "submit", undefined, index: 0, input: "addDialogForm.submit", groups: undefined]
-                 *
-                 * 理解正则
-                 * https://regexper.com/#%2F%5E%28%40%29%3F%28%3F%3A%28.*%3F%29%5C.%29%3F%28.*%3F%29%28%3F%3A%3A%28.*%29%29%3F%24%2F
-                 */
+            /**
+             * 举例几种场景的处理：
+             *
+             * #1
+             * actionStr: "@list"
+             * actionDetail: ["@list", "@", undefined, "list", undefined, index: 0, input: "@list", groups: undefined]
+             *
+             * #2
+             * actionStr: "addDialogForm.submit"
+             * -> actionDetail: ["addDialogForm.submit", undefined, "addDialogForm", "submit", undefined, index: 0, input: "addDialogForm.submit", groups: undefined]
+             *
+             * #3
+             * actionStr: "@addDialogForm.submit"
+             * -> actionDetail: ["addDialogForm.submit", "@", "addDialogForm", "submit", undefined, index: 0, input: "addDialogForm.submit", groups: undefined]
+             *
+             * 理解正则
+             * https://regexper.com/#%2F%5E%28%40%29%3F%28%3F%3A%28.*%3F%29%5C.%29%3F%28.*%3F%29%28%3F%3A%3A%28.*%29%29%3F%24%2F
+             */
 
                 // actionDetail action字符串的组成
                 let actionDetail = /^(@)?(?:(.*?)\.)?(.*?)(?::(.*))?$/.exec(actionStr);
