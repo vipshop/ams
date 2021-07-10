@@ -10,7 +10,7 @@ ams.block('chart-demo1', {
         'foreignKeys': ['timeRadio', 'classRadio', 'numRadio', 'rankRadio'],
         'api': {
             'withCredentials': false,
-            'prefix': 'https://www.yournana.club/vipshop/chart/',
+            'prefix': '//www.yournana.club/vipshop/chart/',
             'read': 'chartData6'
         },
         'fields': {

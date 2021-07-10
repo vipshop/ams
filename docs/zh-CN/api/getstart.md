@@ -42,7 +42,7 @@ var config = {
             api: {
                 // api前缀
                 prefix:
-                    'https://www.yournana.club/vipshop/',
+                    '//www.yournana.club/vipshop/',
                 // 读取数据接口
                 read: 'read',
                 // 更新数据接口

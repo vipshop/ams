@@ -16,7 +16,7 @@ ams.block('bct-progress', {
         ecahrtRes: {
             api: {
                 // api前缀
-                prefix: 'https://www.yournana.club/vipshop/',
+                prefix: '//www.yournana.club/vipshop/',
                 // 读取数据接口
                 read: 'read',
             }

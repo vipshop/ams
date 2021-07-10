@@ -26,7 +26,7 @@
             "                resources: {",
             "                    demoResource: {",
             "                        api: {",
-            "                            prefix: 'https://www.yournana.club/vipshop/',",
+            "                            prefix: '//www.yournana.club/vipshop/',",
             "                            read: 'read',",
             "                            update: 'update',",
             "                            list: 'list',",
