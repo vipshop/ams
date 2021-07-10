@@ -138,7 +138,7 @@ ams.block('checkbox', {
                         queryKey: 'requiredName',
                         labelKey: 'name',
                         isInitEmpty: true,
-                        isMiniBackfill: false,
+                        isMiniBackfill: false
                     }
                 }
             }

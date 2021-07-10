@@ -94,7 +94,7 @@ ams.block('index', {
                         disabled: false,
                         'suffix-icon': 'ams-my-icon'
                     }
-                },
+                }
                 // testPassword: {
                 //     props: {
                 //         disabled: false

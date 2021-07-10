@@ -55,8 +55,8 @@ a:hover {
 
 .el-image-viewer__close{
     color: #fff;
+    top: 80px;
 }
-
 
 .ams-field-radio-edit{
     // 去除button-radio背景和radio间距
@@ -140,4 +140,10 @@ a:hover {
 // 解决表格loading弹层 层级问题
 .el-table{
     z-index: 1;
+    .el-table__fixed {
+        z-index: 5;
+    }
+    .el-table__fixed-right {
+        z-index: 4;
+    }
 }

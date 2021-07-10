@@ -11,10 +11,10 @@ ams.block('video', {
             fields: {
                 video1: {
                     label: '上传视频',
-                    type: 'video',
-                },
+                    type: 'video'
+                }
             }
-        },
+        }
     },
     blocks: {
         videoEdit: {
@@ -32,7 +32,7 @@ ams.block('video', {
                 videoEditForm: {
                     type: 'form',
                     ctx: 'edit',
-                    resource: 'video',
+                    resource: 'video'
                 }
             }
         },
@@ -57,7 +57,7 @@ ams.block('video', {
                             default: 'https://vjs.zencdn.net/v/oceans.mp4',
                             props: {
                                 isShowPlaybackRate: true
-                            },
+                            }
                         }
                     }
                 }

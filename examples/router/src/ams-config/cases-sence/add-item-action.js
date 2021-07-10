@@ -8,7 +8,7 @@ ams.block('add-item-action', {
         add: '@addItemAfter @after',
         addDialog: '@addItemDialog @after',
         edit: '@editItemAfter @after',
-        editDialog: '@editItemDialog @after',
+        editDialog: '@editItemDialog @after'
     },
     fields: {
         testVideo: false,
@@ -28,20 +28,20 @@ ams.block('add-item-action', {
         add: {
             slot: 'searchs',
             type: 'button',
-            label: '添加',
+            label: '添加'
         },
         addDialog: {
             slot: 'searchs',
             type: 'button',
-            label: '弹窗添加',
+            label: '弹窗添加'
         },
         edit: {
             type: 'button',
-            label: '修改',
+            label: '修改'
         },
         editDialog: {
             type: 'button',
-            label: '弹窗修改',
+            label: '弹窗修改'
         }
     }
 });

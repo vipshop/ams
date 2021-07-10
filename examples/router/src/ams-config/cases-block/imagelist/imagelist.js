@@ -97,14 +97,14 @@ ams.block('imagelist', {
             type: 'text',
             props: {
                 type: 'danger',
-                size: 'mini',
+                size: 'mini'
             },
             label: '驳回'
         },
         rejectedItem1: {
             type: 'text',
             props: {
-                size: 'mini',
+                size: 'mini'
             },
             label: '通过(设计)'
         },
@@ -145,7 +145,7 @@ ams.block('imagelist', {
         // 'empty-text': '暂无数据'
     },
     events: {
-        init: '@list',
+        init: '@list'
     },
     actions: {
         batchPassItems() {

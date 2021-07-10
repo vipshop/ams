@@ -87,6 +87,10 @@ function _getSendData(config, method = 'get', prefix, arg) {
 
 export const read = ams.createApiAction({
     getOptions(params) {
+        if (!this.resource) {
+            console.error('resource参数配置有误，请检查');
+            return;
+        }
         const key = this.resource.key;
         let value = _getValue.call(this, key, params);
         const { read, prefix } = this.resource.api;
@@ -106,7 +110,6 @@ export const read = ams.createApiAction({
             method,
             params: {
                 [key]: value,
-                // resId: this.block.resource,
                 ..._getForeignKeys.call(this, params)
             }
         };

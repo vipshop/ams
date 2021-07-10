@@ -29,9 +29,6 @@
                         {{field.fields[key].label}}
                     </template>
                     <field :field="getField(field.fields[key], value)" :value="value[key]" :context="context" :name="name" :path="`${path}.${key}`"/>
-                    <div class="ams-form-item-desc"
-            v-if="field.fields[key].desc && field.fields[key].ctx === 'edit'"
-            v-html="field.fields[key].desc"></div>
                 </el-form-item>
                 <el-form-item v-else
                               :label="field.fields[key].labelWidth !== '0' ? field.fields[key].label : ''"
@@ -57,9 +54,6 @@
                                   :prop="field.fields[fieldName].type !== 'array' && field.fields[fieldName].type !== 'object' ? `${path}.${fieldName}` : ''">
                         <field :field="getField(field.fields[fieldName], value)" :value="value[fieldName]" :context="context" :name="name" :path="`${path}.${fieldName}`"/>
                     </el-form-item>
-                    <div class="ams-form-item-desc"
-            v-if="field.fields[key].desc && field.fields[key].ctx === 'edit'"
-            v-html="field.fields[key].desc"></div>
                 </el-form-item>
             </template>
         </template>

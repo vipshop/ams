@@ -44,7 +44,7 @@ function lodashCompile(str, data) {
 export function register() {
     return {
         name: 'lodash',
-        test: (str) => !!~str.indexOf('<%'),
+        test: (str) => Boolean(str.indexOf('<%') > -1),
         compile: (str, data) => lodashCompile(str, data)
     };
 }

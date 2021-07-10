@@ -4,7 +4,7 @@
                    separator="/">
         <transition-group name="breadcrumb">
             <el-breadcrumb-item v-for="(item, index) in levelList" :key="'key' + index">
-                <span v-if="(levelList.length > 1 && index == levelList.length - 1) || (!item.block && !item.redirect) || item.meta.noRedirect"
+                <span v-if="(levelList.length > 1 && index === levelList.length - 1) || (!item.block && !item.component && !item.redirect) || item.meta.noRedirect"
                       class="no-redirect">{{ item.name }}</span>
                 <router-link v-else
                              :to="item.redirect || item.meta.path">{{ item.name }}</router-link>

@@ -55,7 +55,7 @@ ams.block('drawer', {
                                 type: 'text',
                                 slots: {
                                     suffix: '输入框尾部内容'
-                                },
+                                }
                             },
                             text4: {
                                 label: 'text4',
@@ -129,7 +129,7 @@ ams.block('drawer', {
                     ctx: 'edit',
                     data: {
                         text7: '测试文字',
-                        text11: '上传成功',
+                        text11: '上传成功'
                     }
                 }
             }

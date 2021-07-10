@@ -23,7 +23,7 @@ ams.block('arraylist', {
                                 {
                                     required: true,
                                     message: '请输入活动名称',
-                                    trigger: 'change',
+                                    trigger: 'change'
                                 },
                                 {
                                     min: 3,
