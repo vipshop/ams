@@ -343,15 +343,17 @@ export const list = ams.createApiAction({
             if (isFn(transform)) {
                 this.data.list = transform(list);
             } else if (isFn(responseDataParse)) {
-                const parsedData = responseDataParse(data);
+                const parsedData = responseDataParse({
+                    ...res,
+                    msg: message,
+                    code,
+                    data
+                });
                 if (getType(parsedData) !== 'object') {
                     console.error('responseDataParse中需要返回object类型，如{ list: [] }');
                     this.data.list = [];
                 } else {
-                    this.data = {
-                        ...this.data,
-                        ...parsedData
-                    };
+                    Object.assign(this.data, parsedData);
                 }
             }
             const onSuccess = this.on['list-success'];
