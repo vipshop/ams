@@ -97,6 +97,11 @@ export default {
     },
 
     created() {
+        // 非远程搜索，但是可以借助远程搜索的能力，实现通过API加载下拉菜单
+        if (this.field.isInitOptionsWithAPI) {
+            this.field.props.remote = false;
+            this.field.remoteConfig && (this.field.remoteConfig.isInitEmpty = true);
+        }
         if (this.field.remoteConfig) {
             this.initRemoteOptions(this.value);
         }

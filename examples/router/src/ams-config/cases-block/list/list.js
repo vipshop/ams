@@ -133,6 +133,77 @@ ams.block('list', {
             field: 'id',
             label: '文本'
         },
+        timeRange: {
+            slot: 'searchs',
+            type: 'field',
+            label: '日期选择',
+            field: {
+                type: 'datetimerange',
+                props: {
+                    size: 'mini'
+                },
+                default: [Number(new Date()), Number(new Date())]
+            }
+        },
+        localOptions: {
+            slot: 'searchs',
+            type: 'field',
+            label: '本地列表',
+            field: {
+                type: 'select',
+                label: '本地用户',
+                props: {
+                    type: 'button',
+                    size: 'mini',
+                    multiple: false,
+                    clearable: true,
+                    options: [
+                        {
+                            label: '黄金糕',
+                            value: 'a'
+                        },
+                        {
+                            label: '双皮奶',
+                            value: 'b'
+                        },
+                        {
+                            label: '蚵仔煎',
+                            value: 'c'
+                        }
+                    ]
+                }
+            }
+        },
+        remoteOptions: {
+            slot: 'searchs',
+            type: 'field',
+            label: '远程列表',
+            field: {
+                isInitOptionsWithAPI: true,
+                type: 'select',
+                BASE: 'SELECT_REMOTE',
+                remoteConfig: {
+                    isInitEmpty: true,
+                    action:
+                        'http://rap2api.taobao.org/app/mock/245887/example/1582993530845',
+                    queryKey: 'query'
+                }
+            }
+        },
+        remoteSearchOptions: {
+            slot: 'searchs',
+            type: 'field',
+            label: '远程搜索列表',
+            field: {
+                type: 'select',
+                BASE: 'SELECT_REMOTE',
+                remoteConfig: {
+                    action:
+                        'http://rap2api.taobao.org/app/mock/245887/example/1582993530845',
+                    queryKey: 'query'
+                }
+            }
+        },
         radioButton: {
             slot: 'searchs',
             type: 'field',
@@ -175,6 +246,15 @@ ams.block('list', {
                 type: 'primary'
             }
         },
+        search: {
+            slot: 'searchs',
+            type: 'button',
+            props: {
+                type: 'primary'
+            },
+            label: '搜索',
+            event: 'list:1'
+        },
         resetItem: {
             slot: 'searchs',
             type: 'reset',
@@ -194,24 +274,15 @@ ams.block('list', {
                 placement: 'top-start'
             },
             badge: {
-                'is-dot': true,      // 原点显示
+                'is-dot': true, // 原点显示
                 // hidden: true,        // 隐藏
                 // type: 'info',        // 类型：primary / success / warning / danger / info
-                max: 3,                 // 超过最大值会显示 '{max}+'
+                max: 3, // 超过最大值会显示 '{max}+'
                 value: function(data) {
                     return true;
                 }
             }
         }
-        // search: {
-        //     slot: 'searchs',
-        //     type: 'button',
-        //     props: {
-        //         type: 'primary'
-        //     },
-        //     label: '搜索',
-        //     event: 'list:1'
-        // },
     },
 
     on: {
