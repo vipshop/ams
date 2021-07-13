@@ -62,7 +62,7 @@ AMS的核心思想是通过[规范数据接口](/api/api.html#read：读取单�
 ```javascript
 ams.resource('demoRes', { // ”demoRes“为资源名
     api: {
-        prefix: 'https://www.yournana.club/vipshop/', // 接口前缀
+        prefix: '//www.yournana.club/vipshop/', // 接口前缀
         update: 'update', // 更新表单数据，值为更新接口的path，和接口前缀组成最终请求的url
         read: 'read', // 读取表单数据，值为读取接口的path
     },

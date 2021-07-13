@@ -24,4 +24,4 @@ export function downloadTemplate(target,name, config) {
 
 // mock接口前缀
 // export const prefix = '//rap2api.taobao.org/app/mock/231578/ams/mock/';
-export const prefix = 'https://www.yournana.club/vipshop/';
+export const prefix = '//www.yournana.club/vipshop/';

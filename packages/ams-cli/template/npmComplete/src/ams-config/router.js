@@ -14,7 +14,7 @@ ams.block('router', {
     actions: {
         async getUsers() {
             const res = await ams.request({
-                url: `https://www.yournana.club/vipshop/getUser`,
+                url: `//www.yournana.club/vipshop/getUser`,
                 method: 'GET'
             });
             if (

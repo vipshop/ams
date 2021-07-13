@@ -5,7 +5,7 @@ export default {
                 withCredentials: false,
                 successCode: 200,
                 // api前缀
-                prefix: 'https://www.yournana.club/vipshop/',
+                prefix: '//www.yournana.club/vipshop/',
                 read: 'array-object-read',
                 list: 'array-object-list'
             },

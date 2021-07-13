@@ -49,7 +49,7 @@ Vue.use(ams); // 类似 Vue.use(element-ui);
     ams.resource('demo', {
         key: 'id',
         api: { // 数据接口相关
-            prefix: 'https://www.yournana.club/vipshop/',
+            prefix: '//www.yournana.club/vipshop/',
             list: 'list'
         },
         fields: { // 字段
