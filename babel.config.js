@@ -13,7 +13,11 @@ module.exports = function (api) {
             }
         ]
     ];
-    const plugins = ['transform-vue-jsx', '@babel/plugin-transform-runtime'];
+    const plugins = [
+        'transform-vue-jsx',
+        '@babel/plugin-transform-runtime',
+        '@babel/plugin-proposal-optional-chaining'
+    ];
     const env = {
         'test': {
             'presets': [['@babel/preset-env', { 'targets': { 'node': 'current' }}]]
