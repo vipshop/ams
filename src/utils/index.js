@@ -4,6 +4,7 @@ export * from './dom';
 export * from './function';
 export * from './tools';
 export * from './localstorage';
+export * from './api';
 export * from './type';
 export * from './loader';
 export * from './list';

@@ -1,5 +1,5 @@
 import ams from '../ams';
-import { getQueryString, getType, isFn } from '../utils';
+import { getQueryString, getType, isFn, responseHandler } from '../utils';
 import { httpRequestTypeExcludeGet } from '../ams/request';
 
 /**
@@ -115,19 +115,14 @@ export const read = ams.createApiAction({
         };
     },
     success(res) {
-        const successCode = this.getConfig('resource.api.read.successCode') || this.getConfig('resource.api.successCode');
-        if (res.data.code === successCode) {
-            const config = this.resource.api.read;
-            if (typeof config === 'object' && typeof config.transform === 'function') {
-                this.setBlockData(config.transform(res.data.data));
-            } else if (typeof config === 'object' && typeof config.responseDataParse === 'function') {
-                this.setBlockData(config.responseDataParse(res.data));
-            } else {
-                this.setBlockData(res.data.data);
-            }
+        const { message, code, isSuccess, data } = responseHandler.call(this, res, 'read');
+        if (isSuccess) {
+            const { transform, responseDataParse } = this.resource.api.read || {};
+            const handler = transform || responseDataParse || (data => data);
+            this.setBlockData(handler(data));
         } else {
-            this.$message.error(`${res.data.msg}(${res.data.code})`);
-            throw '@read:' + res.data.code;
+            this.$message.error(`${message}(${code})`);
+            throw '@read:' + code;
         }
         return res;
     }
@@ -163,16 +158,14 @@ export const update = ams.createApiAction({
         };
     },
     success(res) {
-        // 默认successCode
-        const successCode = this.getConfig('resource.api.update.successCode') || this.getConfig('resource.api.successCode');
-        if (res.data.code === successCode) {
+        const { isSuccess, message, code, data } = responseHandler.call(this, res, 'update');
+        if (isSuccess) {
             this.$message.success('更新成功');
-            if (typeof this.on['update-success'] === 'function') {
-                this.on['update-success'](res.data);
-            }
+            const onSuccess = this.on['update-success'];
+            if (isFn(onSuccess)) onSuccess(data);
         } else {
-            this.$message.error(`${res.data.msg}(${res.data.code})`);
-            throw '@update:' + res.data.code;
+            this.$message.error(`${message}(${code})`);
+            throw '@update:' + code;
         }
         return res;
     }
@@ -209,16 +202,14 @@ export const deleteAction = ams.createApiAction({
         };
     },
     success(res) {
-        // 默认successCode
-        const successCode = this.getConfig('resource.api.delete.successCode') || this.getConfig('resource.api.successCode');
-        if (res.data.code === successCode) {
+        const { isSuccess, message, code, data } = responseHandler.call(this, res, 'delete');
+        if (isSuccess) {
             this.$message.success('删除成功');
-            if (typeof this.on['delete-success'] === 'function') {
-                this.on['delete-success'](res.data);
-            }
+            const onSuccess = this.on['delete-success'];
+            if (isFn(onSuccess)) onSuccess(data);
         } else {
-            this.$message.error(`${res.data.msg}(${res.data.code})`);
-            throw '@delete:' + res.data.code;
+            this.$message.error(`${message}(${code})`);
+            throw '@delete:' + code;
         }
         return res;
     }
@@ -248,21 +239,21 @@ export const create = ams.createApiAction({
         };
     },
     success(res) {
-        // 默认successCode
-        const successCode = this.getConfig('resource.api.create.successCode') || this.getConfig('resource.api.successCode');
-        if (res.data.code === successCode) {
+        const { isSuccess, message, code, data } = responseHandler.call(this, res, 'create');
+        if (isSuccess) {
             this.$message.success('创建成功');
-            if (typeof this.on['create-success'] === 'function') {
-                this.on['create-success'](res.data);
-            }
+            const onSuccess = this.on['create-success'];
+            if (isFn(onSuccess)) onSuccess(data);
         } else {
-            this.$message.error(`${res.data.msg}(${res.data.code})`);
-            throw '@create code:' + res.data.code;
+            this.$message.error(`${message}(${code})`);
+            throw '@create code:' + code;
         }
         return res;
     }
 });
 
+// https://github.com/vipshop/ams/blob/5c8e0112c3b8e42c4bed9ff658767bbdbcf9bbd4/src/ams/request.js#L162
+// createApiAction -> src/ams/request.js
 export const list = ams.createApiAction({
     getOptions(params) {
         // 使用传入页数，如搜索使用 @list:1 将页数重置为1
@@ -339,35 +330,40 @@ export const list = ams.createApiAction({
             params: arg
         };
     },
+    /**
+     *
+     * @param {*} res { status: statusCode, data: JSON.parse(xhr.responseText) }
+     */
     success(res) {
-        // 默认successCode
-        const successCode = this.getConfig('resource.api.list.successCode') || this.getConfig('resource.api.successCode');
-        if (
-            res.data.code === successCode &&
-            res.data.data
-        ) {
-            const config = this.resource.api.list;
-            this.data.total = res.data.data.total;
+        const { message, code, isSuccess, data, getter } = responseHandler.call(this, res, 'list');
+        if (isSuccess) {
+            const total = data[getter.totalPath];
+            const list = data[getter.listPath];
+            this.data.list = list;
+            this.data.total = total;
 
-            if (typeof config === 'object' && typeof config.transform === 'function') {
-                this.data.list = config.transform(res.data.data.list) || [];
-            } else if (typeof config === 'object' && typeof config.responseDataParse === 'function') {
-                const convertResponseDataParse = config.responseDataParse(res.data);
-                if (getType(convertResponseDataParse) !== 'object') {
+            const { transform, responseDataParse } = this.resource.api.list || {};
+            if (isFn(transform)) {
+                this.data.list = transform(list);
+            } else if (isFn(responseDataParse)) {
+                const parsedData = responseDataParse({
+                    ...res,
+                    msg: message,
+                    code,
+                    data
+                });
+                if (getType(parsedData) !== 'object') {
                     console.error('responseDataParse中需要返回object类型，如{ list: [] }');
                     this.data.list = [];
                 } else {
-                    Object.assign(this.data, convertResponseDataParse);
+                    Object.assign(this.data, parsedData);
                 }
-            } else {
-                this.data.list = res.data.data.list || [];
             }
-            if (typeof this.on['list-success'] === 'function') {
-                this.on['list-success'](res.data);
-            }
+            const onSuccess = this.on['list-success'];
+            if (isFn(onSuccess)) onSuccess(data);
         } else {
-            this.$message.error(`${res.data.msg}(${res.data.code})`);
-            throw '@list:' + res.data.code;
+            this.$message.error(`${message}(${code})`);
+            throw '@list:' + code;
         }
 
         return res;
