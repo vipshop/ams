@@ -199,6 +199,11 @@ export default {
                 });
             }
         },
+        initResource() {
+            const resource = this.block.resource
+            const isString =  typeof this.block.resource === 'string'
+            this.resource = isString ? ams.resources[resource] : ams.resource('', resource);
+        },
         // 借鉴vue源码中的initMethods
         initActionsToVM() {
             const props = this.$options.props;
@@ -286,94 +291,79 @@ export default {
                 field.ctx = this.block.ctx || 'view';
             }
         },
+        /**
+         * 初始化 列表/表格 字段信息
+         * @param {String} fieldKey 字段key
+         * @param {Object} field 字段对应的对象，即 { type, props, width }
+         * @returns
+         */
+        initListField(fieldKey, field) {
+            const blockType = ams.configs.baseBlockType[this.block.type]
+            if (blockType !== 'list') return
+            // 排序
+            if (this.block.sorts[fieldKey]) {
+                field.props.sortable = 'custom';
+            }
+            // 过滤
+            const filter = this.block.filters[fieldKey];
+            if (!filter) return
+            let filterOptions = filter.options || field.props.options;
+            if (!filterOptions) return
+            if (Array.isArray(filterOptions)) {
+                filterOptions = filterOptions.map(option => ({
+                    text: option.label,
+                    value: option.value,
+                }));
+            } else {
+                filterOptions = Object.keys(filterOptions).map(key => ({
+                    text: filterOptions[key],
+                    value: key
+                }));
+            }
+            field.props.filters = filterOptions;
+            field.props['filter-multiple'] = !!filter.multiple;
+            if (filter.remote) return
+            field.props['filter-method'] = (value, row, column) => listStringHasValue(
+                row[fieldKey],
+                value
+            );
+        },
         initFields() {
+            const resourceFields = this.resource && this.resource.fields;
+            const blockFields = this.block.fields || {};
+            if (!resourceFields) {
+                this.fields = null;
+                return;
+            }
             // 为了可以做过滤、合并props等功能、通过computed属性重新处理field列表
             // 为了上层可以快速定位修改
-            if (this.resource && this.resource.fields) {
-                const fields = {};
-                let fieldKeys = Object.keys(this.resource.fields);
-                fieldKeys.forEach(name => {
-                    const resourceField = this.resource.fields[name];
-                    let blockField =
-                        this.block.fields && this.block.fields[name];
-                    // 字段隐藏，bock内可以通过 fields: {testMarkdown: false} 隐藏字段
-                    if (blockField === false) {
-                        return;
-                    }
-                    blockField = blockField || {};
+            const fields = {};
+            let fieldKeys = Object.keys(resourceFields);
+            fieldKeys.forEach(fieldKey => {
+                const resourceField = resourceFields[fieldKey];
+                let blockField = blockFields[fieldKey];
+                // 字段隐藏，bock内可以通过 fields: {[fieldKey]: false} 隐藏字段
+                if (blockField === false) return;
+                blockField = blockField || {};
 
-                    const field = {
-                        // 默认block级ctx
-                        name,
-                        ctx: this.block.ctx || 'view',
-                        props: {},
-                        on: {}
-                    };
-                    // 按优先级测试合并
-                    // deepExtend(field, defaultFieldConfig[blockField.type || resourceField.type]);
-                    deepExtend(field, resourceField);
-                    deepExtend(field, blockField);
-                    this.initDefaultField(field);
-                    // console.log(field);
-                    // 处理列表
-                    if (ams.configs.baseBlockType[this.block.type] === 'list') {
-                        // 排序
-                        if (this.block.sorts[name]) {
-                            field.props.sortable = 'custom';
-                        }
-                        // 过滤
-                        const filter = this.block.filters[name];
-                        if (filter) {
-                            let filterOptions =
-                                filter.options || field.props.options;
-
-                            if (filterOptions) {
-                                if (Array.isArray(filterOptions)) {
-                                    filterOptions = filterOptions.map(option => {
-                                        return {
-                                            text: option.label,
-                                            value: option.value,
-                                        };
-                                    });
-                                } else {
-                                    filterOptions = Object.keys(filterOptions).map(
-                                        key => {
-                                            const label = filterOptions[key];
-                                            return {
-                                                text: label,
-                                                value: key
-                                            };
-                                        }
-                                    );
-                                }
-                                field.props.filters = filterOptions;
-                                field.props[
-                                    'filter-multiple'
-                                ] = !!filter.multiple;
-                                if (!filter.remote) {
-                                    field.props['filter-method'] = (
-                                        value,
-                                        row,
-                                        column
-                                    ) => {
-                                        // console.log('filter-method', value, row, column);
-                                        return listStringHasValue(
-                                            row[name],
-                                            value
-                                        );
-                                    };
-                                }
-                            }
-                        }
-                    }
-                    fields[name] = field;
-                });
-                this.fields = fields;
-                this.layout = this.getFieldsLayout(fields, this.block.layout);
-                // console.log(this.layout)
-            } else {
-                this.fields = null;
-            }
+                const field = {
+                    // 默认block级ctx
+                    name: fieldKey,
+                    ctx: this.block.ctx || 'view',
+                    props: {},
+                    on: {}
+                };
+                // 按优先级测试合并
+                // deepExtend(field, defaultFieldConfig[blockField.type || resourceField.type]);
+                deepExtend(field, resourceField);
+                deepExtend(field, blockField);
+                this.initDefaultField(field);
+                this.initListField(fieldKey, field) // 处理列表
+                fields[fieldKey] = field;
+            });
+            this.fields = fields;
+            this.layout = this.getFieldsLayout(fields, this.block.layout);
+            // console.log(this.layout)
         },
         getFieldsLayout(fields, layout) {
             let la = {};
