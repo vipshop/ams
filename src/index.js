@@ -68,6 +68,7 @@ import tree from './fields/tree';
 import link from './fields/link';
 import fbutton from './fields/button';
 import html from './fields/html';
+import code from './fields/code';
 
 // operation
 import button from './operations/button';
@@ -162,6 +163,7 @@ ams.install = function(Vue) {
     ams.registerField(link);
     ams.registerField(fbutton);
     ams.registerField(html);
+    ams.registerField(code);
     // operations
     ams.registerOperation(button);
     ams.registerOperation(operationsText);
