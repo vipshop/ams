@@ -15,7 +15,7 @@ export default [
     },
     {
         version: '0.33.7',
-        date: '2020.08.6',
+        date: '2020.08.06',
         log: [
             'feat: 点击 Logo，在首次重复路径后，将会刷新当前页面',
             'feat: routerPush 在异常场景将异常信息 reject 出去',
@@ -32,7 +32,7 @@ export default [
         ]
     },
     {
-        version: '0.34.50',
+        version: '0.32.10',
         date: '2020.07.30',
         log: [
             'feat: route配置支持componen',
