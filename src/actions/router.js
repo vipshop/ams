@@ -1,4 +1,3 @@
-
 import ams from '../ams';
 import { getRouter } from '../ams/mixins/router';
 
@@ -20,8 +19,8 @@ export function routerPush(params) {
             () => {
                 resolve();
             },
-            () => {
-                reject(new Error('cancel'));
+            (err) => {
+                reject(err);
             }
         );
     });

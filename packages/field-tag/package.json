@@ -1,6 +1,6 @@
 {
     "name": "@ams-team/field-tag",
-    "version": "1.2.7",
+    "version": "1.2.9",
     "description": "AMS标签",
     "author": "ams",
     "main": "lib/field-tag.js",

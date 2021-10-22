@@ -27,8 +27,9 @@
 
                 <el-option
                     v-else
-                    :label="option.label"
                     v-bind="option"
+                    :key="option.value"
+                    :label="option.label"
                     :value="option.value">
 
                     <!-- 使用slot定制自定义html -->

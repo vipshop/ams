@@ -38,6 +38,7 @@ ams.block('router', {
         }
     },
     router: {
+        // keepAlive: true, // 设置为true的话，所有菜单都会keepAlive
         // mode: 'history',
         // base: '/app/', // 要在history下才会发挥作用
         // showMenu: false,   // 隐藏所有菜单配置项，默认为true
@@ -47,7 +48,7 @@ ams.block('router', {
         // textColor: '#bfcbd9', // 菜单的文字颜色（仅支持 hex 格式），默认值：#bfcbd9
         // activeTextColor: '#409EFF', // 菜单的文字颜色（仅支持 hex 格式），默认值：#409EFF
         // defaultBreadcrumb: false, // 默认为true，会把首个route作为默认首页加到所有面包屑，设置为false禁用此行为， 0.7.5+支持
-        // shwoBreadcrumb: false, // 默认为true，是否显示面包屑
+        // showBreadcrumb: false, // 默认为true，是否显示面包屑
         routes: [
             {
                 name: '首页',
@@ -57,6 +58,9 @@ ams.block('router', {
                 // redirect: '/list',
                 meta: {
                     icon: 'el-icon-menu'
+                },
+                tooltip: {
+                    content: '首页提示文字'
                 }
             },
             {
@@ -232,6 +236,11 @@ ams.block('router', {
                                 name: '前端分页',
                                 path: 'list-simulate',
                                 block: 'list-simulate'
+                            },
+                            {
+                                name: 'tab中的list',
+                                path: 'list-tab',
+                                block: 'list-tab'
                             }
                         ]
                     },
@@ -369,6 +378,11 @@ ams.block('router', {
                         name: 'Alert告警',
                         path: 'alert',
                         block: 'alert'
+                    },
+                    {
+                        name: '时间线',
+                        path: 'timeline',
+                        block: 'timeline'
                     }
                 ]
             },

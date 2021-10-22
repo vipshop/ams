@@ -6,9 +6,9 @@
                     :index="resolvePath(item).path">
             <template slot="title">
                 <i :class="iconClassName(item.meta.icon)"
-                   v-if="item.meta.icon"></i>
+                v-if="item.meta.icon"></i>
                 <span slot="title"
-                      v-if="item.name">{{item.name}}</span>
+                    v-if="item.name">{{item.name}}</span>
             </template>
 
             <template v-for="child in item.children">
@@ -21,23 +21,27 @@
                 <app-link v-else
                           :to="resolvePath(child)"
                           :key="child.name">
-                    <el-menu-item :index="resolvePath(child).path" @click="clickItem(child)">
-                        <i :class="iconClassName(child.meta.icon)"
-                           v-if="child.meta.icon"></i>
-                        <span slot="title"
-                              v-if="child.name">{{child.name}}</span>
-                    </el-menu-item>
+                    <el-tooltip placement="right-start" :disabled="!child.tooltip" v-bind="child.tooltip">
+                        <el-menu-item :index="resolvePath(child).path" @click="clickItem(child)">
+                            <i :class="iconClassName(child.meta.icon)"
+                            v-if="child.meta.icon"></i>
+                            <span slot="title"
+                                v-if="child.name">{{child.name}}</span>
+                        </el-menu-item>
+                    </el-tooltip>
                 </app-link>
             </template>
         </el-submenu>
         <app-link :to="resolvePath(item)"
                   v-else>
-            <el-menu-item :index="resolvePath(item).path" @click="clickItem(item)">
-                <i :class="iconClassName(item.meta.icon)"
-                   v-if="item.meta.icon"></i>
-                <span slot="title"
-                      v-if="item.name">{{item.name}}</span>
-            </el-menu-item>
+            <el-tooltip placement="right-start" :disabled="!item.tooltip" v-bind="item.tooltip">
+                <el-menu-item :index="resolvePath(item).path" @click="clickItem(item)">
+                    <i :class="iconClassName(item.meta.icon)"
+                    v-if="item.meta.icon"></i>
+                    <span slot="title"
+                        v-if="item.name">{{item.name}}</span>
+                </el-menu-item>
+            </el-tooltip>
         </app-link>
 
     </div>

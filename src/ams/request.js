@@ -57,16 +57,16 @@ export default function initRequest(ams) {
             if (ams.configs.resource.requestInterceptor) {
                 options = ams.configs.resource.requestInterceptor(options);
             }
-
+            const api = ams.configs.resource.api;
             let {
                 method,
                 url,
                 data,
                 params,
                 headers = {},
-                withCredentials = ams.configs.withCredentials,
-                contentType = ams.configs.contentType,
-                responseType = ams.configs.responseType || '',
+                withCredentials = api.withCredentials,
+                contentType = api.contentType,
+                responseType = api.responseType,
             } = options;
 
             const xhr = new XMLHttpRequest();

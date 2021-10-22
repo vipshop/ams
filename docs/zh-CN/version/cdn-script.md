@@ -12,7 +12,33 @@
 
 ## AMS版本
 
-[0.32.10](https://h5rsc.vipstatic.com/ams/ams@0.32.10.js)
+[0.34.5](https://h5rsc.vipstatic.com/ams/ams@0.34.5.js)
+
+[0.34.4](https://h5rsc.vipstatic.com/ams/ams@0.34.4.js)
+
+[0.34.3](https://h5rsc.vipstatic.com/ams/ams@0.34.3.js)
+
+[0.34.2](https://h5rsc.vipstatic.com/ams/ams@0.34.2.js)
+
+[0.34.1](https://h5rsc.vipstatic.com/ams/ams@0.34.1.js)
+
+[0.34.0](https://h5rsc.vipstatic.com/ams/ams@0.34.0.js)
+
+[0.33.7](https://h5rsc.vipstatic.com/ams/ams@0.33.7.js)
+
+[0.33.6](https://h5rsc.vipstatic.com/ams/ams@0.33.6.js)
+
+[0.33.5](https://h5rsc.vipstatic.com/ams/ams@0.33.5.js)
+
+[0.33.4](https://h5rsc.vipstatic.com/ams/ams@0.33.4.js)
+
+[0.33.3](https://h5rsc.vipstatic.com/ams/ams@0.33.3.js)
+
+[0.33.2](https://h5rsc.vipstatic.com/ams/ams@0.33.2.js)
+
+[0.33.1](https://h5rsc.vipstatic.com/ams/ams@0.33.1.js)
+
+[0.33.0](https://h5rsc.vipstatic.com/ams/ams@0.33.0.js)
 
 [0.32.9](https://h5rsc.vipstatic.com/ams/ams@0.32.9.js)
 
@@ -26,7 +52,7 @@
 
 [0.32.3](https://h5rsc.vipstatic.com/ams/ams@0.32.3.js)
 
-[0.32.1](https://h5rsc.vipstatic.com/ams/ams@0.32.1.js)
+[0.34.5](https://h5rsc.vipstatic.com/ams/ams@0.34.5.js)
 
 [0.32.0](https://h5rsc.vipstatic.com/ams/ams@0.32.0.js)
 

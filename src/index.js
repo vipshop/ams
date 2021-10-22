@@ -33,6 +33,7 @@ import carousel from './blocks/carousel';
 import backtop from './blocks/backtop';
 import popover from './blocks/popover';
 import popconfirm from './blocks/popconfirm';
+import timeline from './blocks/timeline';
 
 // field 和文件夹一一对应
 import array from './fields/array';
@@ -78,7 +79,7 @@ import field from './operations/field';
 import dropdown from './operations/dropdown';
 import filter from './operations/filter';
 // 版本号
-ams.version = '0.33.0';
+ams.version = '0.34.5';
 // 挂载到ams上
 ams.mixins = mixins;
 ams.utils = utils;
@@ -127,6 +128,7 @@ ams.install = function(Vue) {
     ams.registerBlock(backtop);
     ams.registerBlock(popover);
     ams.registerBlock(popconfirm);
+    ams.registerBlock(timeline);
 
     // fields
     ams.registerField(array);

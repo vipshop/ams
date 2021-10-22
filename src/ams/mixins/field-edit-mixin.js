@@ -11,7 +11,9 @@ export default {
             },
             set(val) {
                 const newValue = this.field.set ? this.field.set(val, this.field) : val;
-                const isNotChange = this.field.equals ? this.field.equals(newValue, this.value, this.field) : equals(newValue, this.value, this.field);
+                const isNotChange = this.field.equals ?
+                    this.field.equals(newValue, this.value, this.field) :
+                    equals(newValue, this.value, this.field);
                 if (!isNotChange) {
                     this.fieldChange(newValue, this.field, this.path);
                 }

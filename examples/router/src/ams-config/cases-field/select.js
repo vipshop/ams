@@ -149,9 +149,7 @@ ams.block('select', {
                         queryKey: 'requiredName',
                         labelKey: 'name',
                         params: {
-                            params: {
-                                a: 2
-                            }
+                            a: 2
                         },
                         isCache: false,
                         transform($field, data) {

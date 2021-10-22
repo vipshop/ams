@@ -1,8 +1,10 @@
 <template>
-    <ams-router v-if="ready && routerReady"
-                v-loading="loading"
-                class="ams-block-router"
-                v-bind="block.props"/>
+    <ams-router
+        v-if="ready && routerReady"
+        v-loading.fullscreen.lock="loading"
+        class="ams-block-router"
+        v-bind="block.props"
+    />
 </template>
 
 <script>
