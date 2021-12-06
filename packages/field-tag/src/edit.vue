@@ -6,6 +6,7 @@
       :key="index"
       v-on="on"
       v-bind="field.props"
+      @click="on && on.click(tag)"
       @close="handleDelete(tag)">
       {{ field.props.template ? field.props.template.replace(idRegExp, tag[field.props['idKey']] || '').replace(nameRegExp, tag[field.props['nameKey']] || '').replace(subNameRegExp, tag[field.props['subNameKey']] || '') : (tag[field.props['nameKey']] || tag) }}
     </el-tag>
@@ -218,9 +219,13 @@ export default {
                     // pageSize: 20
                 };
                 if (item) {
-                    params.data[this.field.props['idKey']] = item;
-                    params.data[this.field.props['nameKey']] = item;
-                    params.data[this.field.props['subNameKey']] = item;
+                    if (this.field.props['queryKey']) {
+                        params.data[this.field.props['queryKey']] = item;
+                    } else {
+                        params.data[this.field.props['idKey']] = item;
+                        params.data[this.field.props['nameKey']] = item;
+                        params.data[this.field.props['subNameKey']] = item;
+                    }
                 }
             } else {
                 params.params = {
@@ -228,9 +233,13 @@ export default {
                     // pageSize: 20
                 };
                 if (item) {
-                    params.params[this.field.props['idKey']] = item;
-                    params.params[this.field.props['nameKey']] = item;
-                    params.params[this.field.props['subNameKey']] = item;
+                    if (props['queryKey']) {
+                        params.params[props['queryKey']] = item;
+                    } else {
+                        params.params[props['idKey']] = item;
+                        params.params[props['nameKey']] = item;
+                        params.params[props['subNameKey']] = item;
+                    }
                 }
             }
             const resource = ams.resources[ams.blocks[this.name].resource];

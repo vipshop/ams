@@ -1,6 +1,6 @@
 <template>
     <component v-if="block && block.type"
-               :is="'ams-block-'+block.type"
+               :is="'ams-block-' + block.type"
                :name="name"
                class="ams-block" />
     <ams-blocks v-else-if="block"

@@ -30,7 +30,9 @@ export const resource = {
         // 全局默认contentType json|form|multipart
         contentType: 'form',
         // 全局成功code
-        successCode: 0
+        successCode: 0,
+        // 全局responseType
+        responseType: ''
     },
 
     codes: {

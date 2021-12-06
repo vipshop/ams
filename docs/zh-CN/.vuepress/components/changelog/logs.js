@@ -1,18 +1,54 @@
 // 更新日志
 export default [
     {
-        version: '0.32.1',
-        date: '2020.06.03',
+        version: '0.34.5',
+        date: '2020.09.15',
         log: [
+            'feat: block-mixin文件在created中，init和created生命周期调整',
+            'feat: array字段增加getShowState判断',
+            'feat: 新增timeline字段',
+            'feat: timeline的content支持html',
+            'feat: router增加tooltip配置',
+            'feat: tag(ams-plugin)增加后端参数',
+            'fix: field-tag(ams-plugin)的@clik自定义绑定事件',
+        ]
+    },
+    {
+        version: '0.33.7',
+        date: '2020.08.06',
+        log: [
+            'feat: 点击 Logo，在首次重复路径后，将会刷新当前页面',
+            'feat: routerPush 在异常场景将异常信息 reject 出去',
+            'feat: Logo 点击跳转使用 AMS 封装的 routerPush',
+            'feat: 新增ams.configs.defaultBlockConfig配置，修复小问题',
+            'fix: 动态路由匹配和路由懒加载同时使用时报错',
+            'fix: 全局config.resource.api增加responseType',
+            'fix: ams.request修复从api的默认取值',
+            'fix: 修复list中获取headerSelected的时机',
+            'fix: 修复ams-init中的请求登录跳转问题',
+            'fix: 修复block-xlsx(ams-plugin)中数值为0的解析问题',
+            'fix: 修复init.js中过去materiel缺失问题',
+            'fix: Select 字段在远程搜索场景映射值错误',
+        ]
+    },
+    {
+        version: '0.32.10',
+        date: '2020.07.30',
+        log: [
+            'feat: route配置支持componen',
             'feat: 设置add/editDialogDrawer 默认为 append-to-body',
             'feat: 添加addItemDrawer和editItemDrawer配置',
             'feat: 点击删除的时候，显示弹窗进行二次确认',
-            'feat: text增加tooltip配置',
-            'feat: multiple的operation增加allowNoSelect配置',
-            'feat: list增加表头管理',
-            'fix: 修复表头管理设置后operation错乱，先请空触发渲染；增加缓存字段跟resource对比',
-            'fix: 修复远程搜索再设置了isInitEmpty:true情况下，设置额外传参报错问题',
-            'fix: 更改列表区块的total赋值逻辑'
+            'fix: 更改列表区块的total赋值逻辑',
+            'fix: 修复列表区块created时导致的渲染异常场景',
+            'fix: 修复ams.request读取config中api配置问题',
+            'fix: 修复list配置action的responseDataParse，导致search被清空问题',
+            'fix: 修复list区块在created阶段的异常',
+            'feat: select字段增加autoOptions配置',
+            'fix: 优化select字段增加autoOptions配置',
+            'fix: 修复图片放大时z-index导致的异常',
+            'fix: 修复对象字段内，子字段配置说明文案（desc）后重复渲染的问题',
+            'fix: 修复field-get-set中的对于file类型的判断',
         ]
     },
     {

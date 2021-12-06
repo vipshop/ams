@@ -401,14 +401,9 @@ export default {
             return tableColumn;
         },
     },
-    created() {
-        // 最后执行
-        this.$nextTick(() => {
-            this.headerSelected = this.handerGetHeaderSelected();
-        });
-    },
     methods: {
         afterReady() {
+            this.headerSelected = this.handleGetHeaderSelected();
             // 表格拖拽
             if (this.isDrag) {
                 const dragOptions = this.block && this.block.dragOptions || {};
@@ -627,7 +622,7 @@ export default {
                     type: 'text'
                 };
 
-                // 1、如果表头含有fiedls则合并fields到defaultColumn
+                // 1、如果表头含有fields则合并fields到defaultColumn
                 if (this.fields[val.name]) {
                     deepExtend(defaultColumn, this.fields[val.name]);
                 }
@@ -656,9 +651,9 @@ export default {
         },
         showHeaderSelectedDialog() {
             this.headerSelectedDialog.show = true;
-            this.headerSelectedDialog.headers = this.handerGetHeaderSelected();
+            this.headerSelectedDialog.headers = this.handleGetHeaderSelected();
         },
-        handerGetHeaderSelected() {
+        handleGetHeaderSelected() {
             const name = this.name;
             let headerFromStorage = LocalStorage.get(`BLOCK_${name}`);
 

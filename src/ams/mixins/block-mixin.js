@@ -61,8 +61,9 @@ export default {
             // 初始化init
             this.ready = true;
 
-            await this.emitEvent('created');
             await this.emitEvent('init');
+            await this.emitEvent('created');
+
             this.afterReady && this.afterReady();
 
             let wmOptions = this.block.options && this.block.options.watermark;

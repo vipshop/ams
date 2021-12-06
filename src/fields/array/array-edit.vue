@@ -38,13 +38,14 @@
                     {{field.field.label && field.field.label + (index + 1)}}
                 </div>
 
-                <component :is="`ams-field-${field.field.type}-${field.field.ctx}`"
+                <component v-if="getShowState(field.field, val)"
+                           :is="`ams-field-${field.field.type}-${field.field.ctx}`"
                            :field="field.field"
                            :value="val"
                            :name="name"
                            :context="context"
                            :path="`${path}[${index}]`"
-                           :class="`ams-field ams-field-${field.field.type}-${field.field.ctx} ${!field.field.label ? 'ams-field-no-label': ''}`" />
+                           :class="`ams-field ams-field-${field.field.type}-${field.field.ctx} ${!field.field.label ? 'ams-field-no-label' : ''}`" />
             </el-form-item>
         </div>
 
@@ -56,7 +57,7 @@
 import mixins from '../../ams/mixins';
 
 export default {
-    mixins: [mixins.fieldEditArrayMixin],
+    mixins: [mixins.fieldEditArrayMixin, mixins.getShowState],
     data() {
         return {
             showOperationIndex: -1

@@ -9,16 +9,17 @@
                  :sidebar="sidebar" />
 
         <!-- 面包屑 -->
-        <breadcrumb v-if="shwoBreadcrumb" class="breadcrumb-container" />
+        <breadcrumb v-if="showBreadcrumb" class="breadcrumb-container" />
         <!-- 主内容 -->
-        <div class="main-container" :class="shwoBreadcrumb ? '' : 'main-container-nobreadcrumb'">
+        <div class="main-container" :class="showBreadcrumb ? '' : 'main-container-nobreadcrumb'">
             <!-- <tags-view /> -->
             <section class="ams-router-main">
                 <transition name="fade-transform"
                             mode="out-in">
-                    <!-- <keep-alive :include="cachedViews"> -->
-                    <router-view :key="key" />
-                    <!-- </keep-alive> -->
+                    <keep-alive v-if="keepAlive">
+                        <router-view :key="key" />
+                    </keep-alive>
+                    <router-view v-else :key="key" />
                 </transition>
             </section>
         </div>
@@ -106,6 +107,9 @@ export default {
             ]
          }
          */
+        keepAlive() {
+            return this.$block.block.router.keepAlive;
+        },
         key() {
             return this.$route.fullPath;
         },
@@ -136,13 +140,13 @@ export default {
             } else {
                 return true;
             }
-
         },
-        shwoBreadcrumb() {
-            if (this.$block.block.router && typeof this.$block.block.router.showBreadcrumb === 'undefined') {
+        showBreadcrumb() {
+            const showBreadcrumb = this.$block.block.router.showBreadcrumb || this.$block.block.router.shwoBreadcrumb;
+            if (this.$block.block.router && typeof showBreadcrumb === 'undefined') {
                 return true;
             }
-            return this.$block.block.router.showBreadcrumb;
+            return showBreadcrumb;
         }
     },
     methods: {

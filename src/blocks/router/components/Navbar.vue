@@ -7,8 +7,10 @@
             :class="handleLogoClassNames"
             class="ams-logo"
         >
-            <img class="ams-logo__img" v-if="$block.data.logo" :src="$block.data.logo">
-            <h1 class="ams-logo__title">{{ $block.data.title }}</h1>
+            <div class="ams-logo__inner">
+                <img class="ams-logo__img" v-if="$block.data.logo" :src="$block.data.logo">
+                <h1 class="ams-logo__title">{{ $block.data.title }}</h1>
+            </div>
         </div>
 
         <ams-blocks :blocks="$block.block.slotBlocks['nav-left']" class="ams-navbar-slot-left"></ams-blocks>
@@ -68,7 +70,15 @@ export default {
         handleLogoClick(path = '') {
             if (!path) return;
 
-            this.$router.push({ path });
+            ams.callAction('@routerPush:' + path).catch(err => {
+                const { name: errorName } = err;
+                // 重复 Push 相同路径，首次后将会刷新当前页面
+                if (errorName === 'NavigationDuplicated') {
+                    window.location.reload();
+                } else {
+                    Promise.reject(new Error(`${errorName || 'cancel'}`));
+                }
+            });
         }
     }
 };
@@ -130,19 +140,22 @@ export default {
 .ams-logo {
     display: inline-block;
     vertical-align: top;
-    margin-right: 20px;
+    margin-left: 10px;
     height: 100%;
+    &__inner {
+        display: flex;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
     &__img {
-        display: inline-block;
-        vertical-align: top;
+        margin-right: 10px;
         height: 100%;
-        padding: 5px 10px;
+        max-height: 54px;
     }
     &__title {
-        display: inline-block;
-        vertical-align: top;
         margin: 0;
         font-size: 20px;
+        line-height: 54px;
     }
     &--has-path {
         cursor: pointer;

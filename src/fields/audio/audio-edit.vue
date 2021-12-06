@@ -24,7 +24,7 @@ export default {
     mixins: [mixins.fieldEditMixin],
     methods: {
         beforeUpload(file) {
-            return new Promise(async (resolve, reject) => {
+            return new Promise((resolve, reject) => {
                 if (!this.field.check) {
                     return resolve();
                 }
@@ -36,7 +36,7 @@ export default {
                 }
                 const props = this.field.props || {};
                 if (typeof props['before-upload'] === 'function') {
-                    await props['before-upload'](file);
+                    resolve(props['before-upload'](file));
                 }
                 resolve();
             });
