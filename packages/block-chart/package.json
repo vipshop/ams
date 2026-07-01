@@ -11,6 +11,6 @@
         }
     },
     "dependencies": {
-        "echarts": "4.2.1"
+        "echarts": "6.1.0"
     }
 }
